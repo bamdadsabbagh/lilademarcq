@@ -1,4 +1,5 @@
 {
+  "name": "lilademarcq",
   "scripts": {
     "build": "next build && yarn build:post",
     "build:post": "find .next -type f -name \"*.map\" -exec rm {} \\;",
