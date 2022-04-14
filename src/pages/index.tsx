@@ -1,6 +1,4 @@
-import React, {ReactElement} from 'react';
-import {GetStaticPropsResult} from 'next';
-import {StaticImageData} from 'next/image';
+import React, {ReactElement, useState} from 'react';
 import instagramWithCircle
   from '@iconify/icons-entypo-social/instagram-with-circle';
 import facebookIcon from '@iconify/icons-fa6-brands/facebook';
@@ -30,18 +28,46 @@ import {
   SocialButtonComponent,
 } from '../components/social-button/social-button.component';
 
-interface Product {
-  image: StaticImageData;
-  title: string;
-  description: string;
-  href: string;
-}
+export default function Index(): ReactElement {
+  const [products] = useState([
+    {
+      image: Object01Image,
+      title: 'INDLU',
+      description: 'Portant et créateur d\'espaces',
+      href: '/objets/indlu',
+    },
+    {
+      image: Object02Image,
+      title: 'isiqu',
+      description: 'Le canapé hybride',
+      href: '/objets/isiqu',
+    },
+    {
+      image: Object03Image,
+      title: 'isihla',
+      description: 'Une oeuvre-persienne',
+      href: '/objets/isihla',
+    },
+    {
+      image: Object04Image,
+      title: 'sa-poro',
+      description: 'Le nouveau Senufo',
+      href: '/objets/sa-poro',
+    },
+    {
+      image: Object05Image,
+      title: 'usha',
+      description: 'La finesse de l\'acier',
+      href: '/objets/usha-acier',
+    },
+    {
+      image: Object06Image,
+      title: 'usha',
+      description: 'La douceur du papier',
+      href: '/objets/usha-papier',
+    },
+  ]);
 
-interface IndexPageProps {
-  products: Product[];
-}
-
-export default function Index({products}: IndexPageProps): ReactElement {
   return (
     <>
       <SectionComponent>
@@ -126,49 +152,4 @@ export default function Index({products}: IndexPageProps): ReactElement {
       </SectionComponent>
     </>
   );
-}
-
-export async function getStaticProps(): Promise<GetStaticPropsResult<{products: Product[];}>> {
-  const products = [
-    {
-      image: Object01Image,
-      title: 'INDLU',
-      description: 'Portant et créateur d\'espaces',
-      href: '/objets/indlu',
-    },
-    {
-      image: Object02Image,
-      title: 'isiqu',
-      description: 'Le canapé hybride',
-      href: '/objets/isiqu',
-    },
-    {
-      image: Object03Image,
-      title: 'isihla',
-      description: 'Une oeuvre-persienne',
-      href: '/objets/isihla',
-    },
-    {
-      image: Object04Image,
-      title: 'sa-poro',
-      description: 'Le nouveau Senufo',
-      href: '/objets/sa-poro',
-    },
-    {
-      image: Object05Image,
-      title: 'usha',
-      description: 'La finesse de l\'acier',
-      href: '/objets/usha-acier',
-    },
-    {
-      image: Object06Image,
-      title: 'usha',
-      description: 'La douceur du papier',
-      href: '/objets/usha-papier',
-    },
-  ];
-
-  return {
-    props: {products},
-  };
 }
