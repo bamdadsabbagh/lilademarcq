@@ -1,15 +1,27 @@
 import React, {ReactElement} from 'react';
-import {StyledSection} from './footer.styles';
+import Link from 'next/link';
+import {Section, Span} from './footer.styles';
 
 export function FooterComponent(): ReactElement {
   return (
-    <StyledSection>
-      <div>
-        <span>Mentions Légales</span>
-        <span>Conditions Générales de Vente</span>
-        <span>Catalogue 2020</span>
-        <span>Contact</span>
-      </div>
-    </StyledSection>
+    <Section>
+      <Link href="/mentions-legales">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a>
+          <Span>Mentions Légales</Span>
+        </a>
+      </Link>
+
+      <Link href="/cgv">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a>
+          <Span>Conditions Générales de Vente</Span>
+        </a>
+      </Link>
+
+      <Span>Catalogue 2022</Span>
+
+      <Span noAfter={1}>Contact</Span>
+    </Section>
   );
 }

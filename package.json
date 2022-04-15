@@ -18,12 +18,16 @@
   },
   "dependencies": {
     "@fontsource/montserrat": "^4.5.7",
+    "gray-matter": "^4.0.3",
     "jotai": "^1.6.3",
     "next": "^12.1.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-use-measure": "^2.1.1",
-    "styled-components": "^5.3.5"
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1",
+    "styled-components": "^5.3.5",
+    "vfile": "^5.3.2"
   },
   "devDependencies": {
     "@bamdadsabbagh/eslint-config": "^2.0.23",
