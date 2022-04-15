@@ -5,7 +5,12 @@ import {Section, Span} from './footer.styles';
 export function FooterComponent(): ReactElement {
   return (
     <Section>
-      <Span>Mentions Légales</Span>
+      <Link href="/mentions-legales">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a>
+          <Span>Mentions Légales</Span>
+        </a>
+      </Link>
 
       <Link href="/cgv">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}

@@ -8,6 +8,7 @@ export const Title = styled.h1`
 
 export const Content = styled.div`
   h2 {
+    margin-top: 3em;
     font-weight: 500;
   }
 
