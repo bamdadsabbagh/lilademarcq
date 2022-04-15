@@ -21,9 +21,11 @@ export default function NavComponent(): ReactElement {
             {text: 'Isiqu', href: '/objets/isiqu'},
             {text: 'Isihla', href: '/objets/isihla'},
             {text: 'empty-1'},
+            {text: 'Sa-Poro', href: '/objets/sa-poro'},
+            {text: 'empty-2'},
             {text: 'Usha papier', href: '/objets/usha-papier'},
             {text: 'Usha acier', href: '/objets/usha-acier'},
-            {text: 'empty-2'},
+            {text: 'empty-3'},
           ]}
         />
         <MenuComponent k={3} main={{text: 'poésie', href: '/poesie'}} />
