@@ -1,25 +1,21 @@
 import styled from 'styled-components';
 import {fontSizes} from '../../app/styles/font-sizes';
 
-export const StyledSection = styled.section`
+export const Section = styled.section`
   display: flex;
   justify-content: center;
 
-  > div {
-    padding: 2em 0;
+  padding: 2em 0;
 
-    span {
-      font-style: italic;
-      font-size: ${fontSizes.twelve};
+  font-style: italic;
+  font-size: ${fontSizes.twelve};
 
-      &::after {
-        content: ' | ';
-      }
+  user-select: none;
+`;
 
-      &:last-child::after {
-        display: none;
-      }
-    }
-
+export const Span = styled.span<{noAfter?: number;}>`
+  &:after {
+    margin: 0 ${(props) => props.noAfter ? 0 : '0.2em'};
+    content: '${(props) => props.noAfter ? '' : '|'}';
   }
 `;
