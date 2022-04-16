@@ -3,7 +3,7 @@ import {GetStaticPropsResult} from 'next';
 import {SectionComponent} from '../components/section/section.component';
 import {theme} from '../app/styles/theme';
 import {getHtmlFromMarkdown} from '../utils/get-html-from-markdown';
-import {Title} from '../pages-styles/cgv.styles';
+import {Markdown, Title} from '../pages-styles/cgv.styles';
 import {MarkdownComponent} from '../components/markdown/markdown.component';
 
 interface CgvProps {
@@ -17,7 +17,9 @@ export default function Cgv({html}: CgvProps): ReactElement {
         <Title>
           Conditions Générales de Vente
         </Title>
-        <MarkdownComponent content={html} />
+        <Markdown>
+          <MarkdownComponent content={html} />
+        </Markdown>
       </>
     </SectionComponent>
   );

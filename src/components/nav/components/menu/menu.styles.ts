@@ -84,6 +84,8 @@ export const Items = styled.div<{display: number;}>`
 
   color: ${(props) => props.theme.grayDark};
   background: white;
+
+  font-size: 0.9em;
 `;
 
 export const Item = styled.span`
@@ -93,7 +95,7 @@ export const Item = styled.span`
 `;
 
 export const EmptyItem = styled.span`
-  height: 1.2em;
+  height: 1.1em;
   width: 100%;
   cursor: default;
 `;

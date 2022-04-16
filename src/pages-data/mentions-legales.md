@@ -2,7 +2,7 @@
 
 Le site de Lila Demarcq, artiste, designer, et poétesse
 
-[lilademarcq.com](https://www.lilademarcq.com)
+[https://www.lilademarcq.com/](https://www.lilademarcq.com/)
 
 ## Identification du propriétaire du site
 
@@ -28,7 +28,7 @@ Lila Demarcq
 
 ## Réalisation du site
 
-Bamdad Sabbagh
+[Bamdad Sabbagh](https://www.bamdadsabbagh.com/)
 
 ## Hébergeur du site
 
