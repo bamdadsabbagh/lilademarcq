@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
-export const StyledSection = styled.section`
+export const Nav = styled.nav`
   height: 2em;
   margin-bottom: 1em;
 `;

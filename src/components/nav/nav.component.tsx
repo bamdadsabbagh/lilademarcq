@@ -1,10 +1,10 @@
 import React, {ReactElement} from 'react';
-import {StyledList, StyledSection} from './nav.styles';
+import {Nav, StyledList} from './nav.styles';
 import {MenuComponent} from './components/menu/menu.component';
 
 export default function NavComponent(): ReactElement {
   return (
-    <StyledSection>
+    <Nav>
       <StyledList>
         <MenuComponent k={0} main={{text: 'home', href: '/'}} noLeft active />
         <MenuComponent
@@ -36,6 +36,6 @@ export default function NavComponent(): ReactElement {
           noRight
         />
       </StyledList>
-    </StyledSection>
+    </Nav>
   );
 }
