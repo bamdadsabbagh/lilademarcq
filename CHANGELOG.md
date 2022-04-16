@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.1.0...v1.2.0) (2022-04-16)
+
+
+### Bug Fixes
+
+* **MentionsLegales:** Add complete text for website identification + Add link for developer ([6f3d3b3](https://github.com/bamdadsabbagh/lilademarcq/commit/6f3d3b302154ac25bcc9aa3cec01c715de3e365f))
+
+
+### Features
+
+* Add `/a-propos` page + Add `/objets` page + Various improvements, updates, fixes ([cb23b47](https://github.com/bamdadsabbagh/lilademarcq/commit/cb23b47b2f795c8ce946e060daefc2cbc3adcf48))
+* Add `/sa-poro` page + Add link to navigation menu + Remove dead code ([549b5da](https://github.com/bamdadsabbagh/lilademarcq/commit/549b5da810e16f1c222ca02d70bdb6b32f590404))
+
 # [1.1.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.0.1...v1.1.0) (2022-04-15)
 
 
