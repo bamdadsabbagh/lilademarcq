@@ -14,7 +14,7 @@ export default function NavComponent(): ReactElement {
         />
         <MenuComponent
           k={2}
-          main={{text: 'objets'}}
+          main={{text: 'objets', href: '/objets'}}
           items={[
             {text: 'empty-0'},
             {text: 'Indlu', href: '/objets/indlu'},

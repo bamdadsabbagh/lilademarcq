@@ -3,6 +3,7 @@ import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const StyledSection = styled.section`
   height: 2em;
+  margin-bottom: 1em;
 `;
 
 export const StyledList = styled.ul`
