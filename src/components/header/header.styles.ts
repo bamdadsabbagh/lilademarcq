@@ -6,7 +6,7 @@ import {
 import {tf} from '../../app/styles/timers';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
-export const StyledSection = styled.section`
+export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;

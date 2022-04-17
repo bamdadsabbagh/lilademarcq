@@ -1,11 +1,11 @@
 import React, {ReactElement} from 'react';
 import Link from 'next/link';
-import {StyledImage, StyledSection} from './header.styles';
+import {Header, StyledImage} from './header.styles';
 
 export function HeaderComponent(): ReactElement {
   return (
     <>
-      <StyledSection>
+      <Header>
         <Link href="/">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a>
@@ -20,7 +20,7 @@ export function HeaderComponent(): ReactElement {
             </StyledImage>
           </a>
         </Link>
-      </StyledSection>
+      </Header>
     </>
   );
 }

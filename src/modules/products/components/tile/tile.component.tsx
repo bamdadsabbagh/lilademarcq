@@ -2,11 +2,7 @@ import React, {ReactElement} from 'react';
 import Link from 'next/link';
 import {StaticImageData} from 'next/image';
 import useMeasure from 'react-use-measure';
-import {
-  StyledContainer,
-  StyledContent,
-  StyledImage,
-} from './product-tile.styles';
+import {StyledContainer, StyledContent, StyledImage} from './tile.styles';
 
 interface ProductTileComponentProps {
   image: StaticImageData;
@@ -15,7 +11,7 @@ interface ProductTileComponentProps {
   href: string;
 }
 
-export function ProductTileComponent({
+export function TileComponent({
   image,
   title,
   description,

@@ -1,14 +1,16 @@
 import React, {ReactElement} from 'react';
 import {SectionComponent} from '../components/section/section.component';
-import {TitleComponent} from '../components/title/title.component';
+import {
+  ContentTitleComponent,
+} from '../components/content-title/content-title.component';
 
 export default function NotFound(): ReactElement {
   return (
     <>
       <SectionComponent>
-        <TitleComponent align="center">
+        <ContentTitleComponent align="center">
           Page non trouvée
-        </TitleComponent>
+        </ContentTitleComponent>
       </SectionComponent>
     </>
   );

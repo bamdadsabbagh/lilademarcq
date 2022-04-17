@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {fontSizes} from '../../app/styles/font-sizes';
 
-export const Section = styled.section`
+export const Footer = styled.footer`
   display: flex;
   justify-content: center;
 

@@ -1,10 +1,10 @@
 import React, {ReactElement} from 'react';
 import Link from 'next/link';
-import {Section, Span} from './footer.styles';
+import {Footer, Span} from './footer.styles';
 
 export function FooterComponent(): ReactElement {
   return (
-    <Section>
+    <Footer>
       <Link href="/mentions-legales">
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>
@@ -22,6 +22,6 @@ export function FooterComponent(): ReactElement {
       <Span>Catalogue 2022</Span>
 
       <Span noAfter={1}>Contact</Span>
-    </Section>
+    </Footer>
   );
 }

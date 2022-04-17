@@ -12,21 +12,15 @@ export const AnimationDelay = css<Pick<StyledContainerProps, 'index'>>`
   animation-delay: calc((0.7s + ${to}s * ${({index}) => index}) * ${tf});
 `;
 
-export const StyledContainer = styled.div<StyledContainerProps>`
+export const Cell = styled.div<StyledContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
-  width: fit-content;
-  padding: 0 1em;
-
-  margin-left: -2px;
+  margin-left: -21px;
   border-left: ${({noLeft}) => noLeft ? 0 : '1px'} solid black;
   border-right: ${({noRight}) => noRight ? 0 : '1px'} solid black;
-
-  //margin-left: 1px;
-  //box-shadow: -1px 0 0 0 black, 1px 0 0 0 black;
 
   z-index: 100;
 
@@ -56,24 +50,25 @@ const handleMainColor = (props) => {
   }
 };
 
-export const StyledMain = styled.div<StyledMainProps>`
+export const Text = styled.div<StyledMainProps>`
   text-transform: uppercase;
   cursor: ${({isLink}) => isLink ? 'pointer' : 'default'};
   color: ${handleMainColor};
+  transition: color calc((0.1s + ${to}s) * ${tf}) ease;
 
   &:hover {
     color: ${handleMainColor};
   }
 `;
 
-export const Items = styled.div<{display: number;}>`
+export const Dropdown = styled.div<{display: number;}>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   line-height: 1.4em;
 
-  width: calc(100% + 2em);
+  width: 100%;
   max-height: ${(props) => props.display ? '200px' : '0'};
 
   z-index: 100;
@@ -88,13 +83,16 @@ export const Items = styled.div<{display: number;}>`
   font-size: 0.9em;
 `;
 
-export const Item = styled.span`
+export const DropdownItem = styled.span<{active?: boolean;}>`
+  color: ${(props) => props.active ? props.theme.salmon : props.theme.grayDark};
+  transition: color calc((0.1s + ${to}s) * ${tf}) ease;
+
   &:hover {
-    color: ${(props) => props.theme.grayLight};
+    color: ${(props) => props.active ? props.theme.salmon : props.theme.grayLight};
   }
 `;
 
-export const EmptyItem = styled.span`
+export const DropdownEmptyItem = styled.span`
   height: 1.1em;
   width: 100%;
   cursor: default;

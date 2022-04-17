@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import {tf, to} from '../../app/styles/timers';
+import {tf, to} from '../../../../app/styles/timers';
 
 export const StyledContainer = styled.div`
   display: flex;

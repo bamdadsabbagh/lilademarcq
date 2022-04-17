@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import {mediaQueries} from '../../app/styles/breakpoints';
+import {mediaQueries} from '../../../../app/styles/breakpoints';
 
-export const StyledList = styled.ul`
+export const Container = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const StyledContainer = styled.div`
+export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 2em;

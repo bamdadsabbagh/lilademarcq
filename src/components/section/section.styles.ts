@@ -7,10 +7,10 @@ import {tf} from '../../app/styles/timers';
 type StyledSectionProps =
   Pick<ContentSectionComponentProps, 'backgroundColor'>
   & {
-  appLoaded: number;
+  skipTransition: number;
 };
 
-export const StyledSection = styled.section<StyledSectionProps>`
+export const Container = styled.section<StyledSectionProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,19 +18,23 @@ export const StyledSection = styled.section<StyledSectionProps>`
   background: ${(props) => props.backgroundColor ? props.backgroundColor : 'none'};
 
   opacity: 0;
-  animation: ${FadeInHeroAnimation} calc(1s * ${tf}) forwards calc(${({appLoaded}) => !appLoaded ? 1.1 : 0}s * ${tf});
+  animation: ${FadeInHeroAnimation} calc(1s * ${tf}) forwards calc(${({skipTransition}) => skipTransition ? 0 : 1.1}s * ${tf});
 `;
 
 type StyledContainerProps =
   Pick<ContentSectionComponentProps, 'width'>
   & Pick<ContentSectionComponentProps, 'verticalPadding'>
 
-export const StyledContainer = styled.div<StyledContainerProps>`
+export const Content = styled.div<StyledContainerProps>`
   width: ${(props) => props.width ? props.width : 80}vw;
-  padding: ${(props) => props.verticalPadding ? props.verticalPadding : 4}em 0;
+  padding: ${(props) => props.verticalPadding ? props.verticalPadding : 2}em 0;
+
+  ${mediaQueries.above.mobile} {
+    width: 90vw;
+  }
 
   ${mediaQueries.above.tablet} {
-    width: 92vw;
+    width: 90vw;
   }
 
   ${mediaQueries.above.desktop} {
@@ -38,14 +42,15 @@ export const StyledContainer = styled.div<StyledContainerProps>`
   }
 
   ${mediaQueries.above.widescreen} {
-    width: 80vw;
+    width: 90vw;
   }
 
   ${mediaQueries.above.fullhd} {
-    width: 60vw;
+    width: 80vw;
+    max-width: 1200px;
   }
 
   ${mediaQueries.above.qhd} {
-    width: 45vw;
+    width: 60vw;
   }
 `;
