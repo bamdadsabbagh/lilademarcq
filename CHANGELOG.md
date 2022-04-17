@@ -1,3 +1,20 @@
+# [1.3.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.2.0...v1.3.0) (2022-04-17)
+
+
+### Bug Fixes
+
+* **Styles:** Tune paddings and widths + Work on next HeroComponent ([13187dd](https://github.com/bamdadsabbagh/lilademarcq/commit/13187ddbe1b681ff55e9fff883a5f398517d23e3))
+
+
+### Features
+
+* **Nav:** Set fixed size for correct border calculations + Set dynamic active colors ([f61c6b9](https://github.com/bamdadsabbagh/lilademarcq/commit/f61c6b9cf486ded192fe76191d9113e12ad3121e))
+
+
+### Performance Improvements
+
+* Better html semantics for header, nav and footer ([f19c928](https://github.com/bamdadsabbagh/lilademarcq/commit/f19c9287ae387b724537dbb881c31a10f854e526))
+
 # [1.2.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.1.0...v1.2.0) (2022-04-16)
 
 
