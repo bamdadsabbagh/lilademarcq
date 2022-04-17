@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {useAtom} from 'jotai';
-import {StyledContainer, StyledSection} from './section.styles';
+import {Container, Content} from './section.styles';
 import {appLoadedAtom} from '../../atoms/app-loaded';
 
 export interface ContentSectionComponentProps {
@@ -17,18 +17,18 @@ export function SectionComponent({
   backgroundColor,
 }: ContentSectionComponentProps): ReactElement {
   const [appLoaded] = useAtom(appLoadedAtom);
-  
+
   return (
-    <StyledSection
+    <Container
       backgroundColor={backgroundColor ? backgroundColor : undefined}
-      appLoaded={appLoaded ? 1 : 0}
+      skipTransition={appLoaded ? 1 : 0}
     >
-      <StyledContainer
+      <Content
         width={width ? width : undefined}
         verticalPadding={verticalPadding ? verticalPadding : undefined}
       >
         {children}
-      </StyledContainer>
-    </StyledSection>
+      </Content>
+    </Container>
   );
 }

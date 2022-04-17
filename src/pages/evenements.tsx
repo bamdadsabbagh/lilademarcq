@@ -1,14 +1,16 @@
 import React, {ReactElement} from 'react';
 import {SectionComponent} from '../components/section/section.component';
-import {TitleComponent} from '../components/title/title.component';
+import {
+  ContentTitleComponent,
+} from '../components/content-title/content-title.component';
 
 export default function Evenements(): ReactElement {
   return (
     <>
       <SectionComponent>
-        <TitleComponent align="center">
+        <ContentTitleComponent align="center">
           Page en cours de construction
-        </TitleComponent>
+        </ContentTitleComponent>
       </SectionComponent>
     </>
   );

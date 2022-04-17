@@ -1,10 +1,10 @@
 import React, {ReactElement, useState} from 'react';
 import {SectionComponent} from '../../components/section/section.component';
-import {TitleComponent} from '../../components/title/title.component';
-import {ListComponent} from '../../components/list/list.component';
 import {
-  ProductTileComponent,
-} from '../../components/product-tile/product-tile.component';
+  ContentTitleComponent,
+} from '../../components/content-title/content-title.component';
+import {GridComponent} from './components/grid/grid.component';
+import {TileComponent} from './components/tile/tile.component';
 import Object01Image from '../../../public/images/object-01.png';
 import Object02Image from '../../../public/images/object-02.png';
 import Object03Image from '../../../public/images/object-03.png';
@@ -12,7 +12,12 @@ import Object04Image from '../../../public/images/object-04.png';
 import Object05Image from '../../../public/images/object-05.png';
 import Object06Image from '../../../public/images/object-06.png';
 
-export function ProductsModule(): ReactElement {
+interface ProductsModuleProps {
+  // padding top
+  pT?: number;
+}
+
+export function ProductsModule({pT}: ProductsModuleProps): ReactElement {
   const [products] = useState([
     {
       image: Object01Image,
@@ -54,19 +59,21 @@ export function ProductsModule(): ReactElement {
 
   return (
     <>
-      <SectionComponent>
-        <TitleComponent>
+      <SectionComponent verticalPadding={pT}>
+        <ContentTitleComponent>
           Objets design
-        </TitleComponent>
-        <ListComponent>
-          {products.map((product) => <ProductTileComponent
-            key={product.href}
-            image={product.image}
-            title={product.title}
-            description={product.description}
-            href={product.href}
-          />)}
-        </ListComponent>
+        </ContentTitleComponent>
+        <GridComponent>
+          {products.map((product) => (
+            <TileComponent
+              key={product.href}
+              image={product.image}
+              title={product.title}
+              description={product.description}
+              href={product.href}
+            />
+          ))}
+        </GridComponent>
       </SectionComponent>
     </>
   );

@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import {useAtom} from 'jotai';
 import NavComponent from '../../components/nav/nav.component';
 import {HeaderComponent} from '../../components/header/header.component';
-import {FooterComponent} from '../../components/footer/footer.component';
 import {fontMontserrat} from '../../app/styles/fonts';
 import {appLoadedAtom} from '../../atoms/app-loaded';
 import {useTimeout} from '../../hooks/use-timeout';
+import {FooterComponent} from '../../components/footer/footer.component';
 
-const StyledContainer = styled.div`
+const Container = styled.div`
   ${fontMontserrat};
 `;
 
@@ -27,11 +27,11 @@ export function AppLayout({children}: AppLayoutProps): ReactElement {
   }, 2100);
 
   return (
-    <StyledContainer>
+    <Container>
       <HeaderComponent />
       <NavComponent />
       {children}
       <FooterComponent />
-    </StyledContainer>
+    </Container>
   );
 }

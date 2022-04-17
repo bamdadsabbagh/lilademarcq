@@ -9,7 +9,9 @@ import {theme} from '../app/styles/theme';
 import {FormComponent} from '../components/form/form.component';
 import {ContactComponent} from '../components/contact/contact.component';
 import {SectionComponent} from '../components/section/section.component';
-import {TitleComponent} from '../components/title/title.component';
+import {
+  ContentTitleComponent,
+} from '../components/content-title/content-title.component';
 import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
@@ -17,7 +19,9 @@ import Object01Image from '../../public/images/object-01.png';
 import Object02Image from '../../public/images/object-02.png';
 import Object03Image from '../../public/images/object-03.png';
 import PortraitImage from '../../public/images/portrait.jpg';
-import {CenterComponent} from '../components/center/center.component';
+import {
+  ContentCenterComponent,
+} from '../components/content-center/content-center.component';
 import {
   SocialButtonComponent,
 } from '../components/social-button/social-button.component';
@@ -27,48 +31,48 @@ import {AProposMarkdown} from '../pages-styles/index.styles';
 import {ProductsModule} from '../modules/products/products.module';
 
 interface IndexProps {
-  aPropos: string;
+  about: string;
 }
 
-export default function Index({aPropos}: IndexProps): ReactElement {
+export default function Index({about}: IndexProps): ReactElement {
   return (
     <>
       <ProductsModule />
 
-      <SectionComponent backgroundColor={theme.salmonLight}>
-        <TitleComponent align="center">
+      <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
+        <ContentTitleComponent align="center">
           Artiste, designer et poétesse
-        </TitleComponent>
+        </ContentTitleComponent>
         <ImageTextComponent
           alt="portrait"
           image={PortraitImage}
         >
           <AProposMarkdown>
-            <MarkdownComponent content={aPropos} />
+            <MarkdownComponent content={about} />
           </AProposMarkdown>
         </ImageTextComponent>
       </SectionComponent>
 
-      <SectionComponent>
-        <TitleComponent align="right">
+      <SectionComponent verticalPadding={4}>
+        <ContentTitleComponent align="right">
           Mes valeurs
-        </TitleComponent>
+        </ContentTitleComponent>
         <div>
           content
         </div>
       </SectionComponent>
 
-      <SectionComponent backgroundColor={theme.salmonLight}>
-        <TitleComponent align="left">
+      <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
+        <ContentTitleComponent align="left">
           Mes distinctions
-        </TitleComponent>
+        </ContentTitleComponent>
         <div>
           content
         </div>
       </SectionComponent>
 
-      <SectionComponent>
-        <CenterComponent>
+      <SectionComponent verticalPadding={4}>
+        <ContentCenterComponent>
           <SocialButtonComponent
             href="https://www.instagram.com/lila.demarcq"
             front={instagramWithCircle}
@@ -84,14 +88,14 @@ export default function Index({aPropos}: IndexProps): ReactElement {
             front={linkedinWithCircle}
             back={Object03Image}
           />
-        </CenterComponent>
+        </ContentCenterComponent>
       </SectionComponent>
 
-      <SectionComponent backgroundColor={theme.green}>
+      <SectionComponent backgroundColor={theme.green} verticalPadding={4}>
         <FormComponent />
       </SectionComponent>
 
-      <SectionComponent backgroundColor={theme.salmonLight}>
+      <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
         <ContactComponent />
       </SectionComponent>
     </>
@@ -101,7 +105,7 @@ export default function Index({aPropos}: IndexProps): ReactElement {
 export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>> {
   return {
     props: {
-      aPropos: await getHtmlFromMarkdown('a-propos'),
+      about: await getHtmlFromMarkdown('a-propos'),
     },
   };
 }
