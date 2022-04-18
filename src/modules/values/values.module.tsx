@@ -1,39 +1,11 @@
 import React, {ReactElement} from 'react';
-import Image from 'next/image';
-import styled from 'styled-components';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   ContentTitleComponent,
 } from '../../components/content-title/content-title.component';
 import {BubbleComponent} from './components/bubble/bubble.component';
 import Workshop from '../../../public/assets/images/workshop.jpg';
-
-const Container = styled.div`
-  height: 50em;
-`;
-
-const StyledImage = styled(Image)`
-  transform: translateY(12em);
-`;
-
-const Bubbles = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-
-  width: 100%;
-  height: 100%;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  padding-top: 6em;
-
-  z-index: 100;
-
-  overflow: hidden;
-`;
+import {Bubbles, Container, Image} from './values.styles';
 
 export function ValuesModule(): ReactElement {
   return (
@@ -93,7 +65,7 @@ export function ValuesModule(): ReactElement {
             />
           </Bubbles>
 
-          <StyledImage
+          <Image
             src={Workshop}
             alt="Workshop"
             layout="fill"

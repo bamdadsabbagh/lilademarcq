@@ -1,6 +1,5 @@
 import React, {ReactElement, useState} from 'react';
 import Image from 'next/image';
-import styled, {css} from 'styled-components';
 import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
 import {
@@ -9,64 +8,13 @@ import {
 import AwardADesign from '../../../public/assets/images/award-a-design.png';
 import AwardHouzz from '../../../public/assets/images/award-houzz.jpg';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
-import {fontSpectral} from '../../app/styles/fonts';
-import {simpleTransition} from '../../app/styles/transitions';
-
-interface CommonProps {
-  gap: number;
-}
-
-const common = css<CommonProps>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-gap: ${({gap}) => gap}px;
-`;
-
-const Images = styled.div<CommonProps>`
-  ${common};
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-`;
-
-const Texts = styled.div<CommonProps & {visible: boolean;}>`
-  ${common};
-  overflow: hidden;
-
-  max-height: ${({visible}) => visible ? '300px' : 0};
-
-  ${simpleTransition('max-height')}
-`;
-
-const Text = styled.p`
-  ${fontSpectral};
-  font-size: 1.6em;
-  line-height: 1.2em;
-
-  text-align: center;
-  width: 100%;
-  padding: 0 4em;
-
-  margin-top: 1em;
-
-  i {
-    font-style: italic;
-  }
-`;
-
-const Expand = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 3em;
-`;
+import {
+  ButtonContainer,
+  ImageContainer,
+  Images,
+  Text,
+  Texts,
+} from './awards.styles';
 
 export function AwardsModule(): ReactElement {
   const [size] = useState(400);
@@ -111,14 +59,14 @@ export function AwardsModule(): ReactElement {
           expériences positives de mes clients et collaborateurs.
         </Text>
       </Texts>
-      <Expand>
+      <ButtonContainer>
         <TriangleComponent
           color={theme.green}
           isBottom={!open}
           isTop={open}
           onClick={() => setOpen((o) => !o)}
         />
-      </Expand>
+      </ButtonContainer>
     </SectionComponent>
   );
 }
