@@ -1,16 +1,16 @@
 import React, {ReactElement} from 'react';
 import {SectionComponent} from '../../components/section/section.component';
 import {
-  ContentTitleComponent,
-} from '../../components/content-title/content-title.component';
+  SectionTitleComponent,
+} from '../../components/section-title/section-title.component';
 
 export default function UshaAcier(): ReactElement {
   return (
     <>
       <SectionComponent>
-        <ContentTitleComponent align="center">
+        <SectionTitleComponent align="center">
           Page en cours de construction
-        </ContentTitleComponent>
+        </SectionTitleComponent>
       </SectionComponent>
     </>
   );

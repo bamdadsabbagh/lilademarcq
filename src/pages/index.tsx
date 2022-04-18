@@ -10,8 +10,8 @@ import {FormComponent} from '../components/form/form.component';
 import {ContactComponent} from '../components/contact/contact.component';
 import {SectionComponent} from '../components/section/section.component';
 import {
-  ContentTitleComponent,
-} from '../components/content-title/content-title.component';
+  SectionTitleComponent,
+} from '../components/section-title/section-title.component';
 import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
@@ -42,9 +42,9 @@ export default function Index({about}: IndexProps): ReactElement {
       <ProductsModule />
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
-        <ContentTitleComponent align="center">
+        <SectionTitleComponent align="center">
           Artiste, designer et poétesse
-        </ContentTitleComponent>
+        </SectionTitleComponent>
         <ImageTextComponent
           alt="portrait"
           image={Portrait}

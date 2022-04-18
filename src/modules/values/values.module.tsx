@@ -1,8 +1,8 @@
 import React, {ReactElement} from 'react';
 import {SectionComponent} from '../../components/section/section.component';
 import {
-  ContentTitleComponent,
-} from '../../components/content-title/content-title.component';
+  SectionTitleComponent,
+} from '../../components/section-title/section-title.component';
 import {BubbleComponent} from './components/bubble/bubble.component';
 import Workshop from '../../../public/assets/images/workshop.jpg';
 import {Bubbles, Container, Image} from './values.styles';
@@ -12,9 +12,9 @@ export function ValuesModule(): ReactElement {
     <>
       <SectionComponent verticalPadding={4}>
         <Container>
-          <ContentTitleComponent align="right">
+          <SectionTitleComponent align="right">
             Mes Valeurs
-          </ContentTitleComponent>
+          </SectionTitleComponent>
 
           <Bubbles>
             <BubbleComponent

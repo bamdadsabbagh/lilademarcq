@@ -1,8 +1,8 @@
 import React, {ReactElement, useState} from 'react';
 import {SectionComponent} from '../../components/section/section.component';
 import {
-  ContentTitleComponent,
-} from '../../components/content-title/content-title.component';
+  SectionTitleComponent,
+} from '../../components/section-title/section-title.component';
 import {GridComponent} from './components/grid/grid.component';
 import {TileComponent} from './components/tile/tile.component';
 import Object01Image from '../../../public/images/object-01.png';
@@ -55,9 +55,9 @@ export function ProductsModule(): ReactElement {
   return (
     <>
       <SectionComponent>
-        <ContentTitleComponent>
+        <SectionTitleComponent>
           Objets design
-        </ContentTitleComponent>
+        </SectionTitleComponent>
         <GridComponent>
           {products.map((product) => (
             <TileComponent

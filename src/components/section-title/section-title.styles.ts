@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {fontFarmhouse} from '../../app/styles/fonts';
 import {fontSizes} from '../../app/styles/font-sizes';
-import {ContentTitleComponentProps} from './content-title.component';
+import {ContentTitleComponentProps} from './section-title.component';
 
 type StyledTitleProps = Pick<ContentTitleComponentProps, 'align'>
 

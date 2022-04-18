@@ -3,8 +3,8 @@ import Image from 'next/image';
 import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
 import {
-  ContentTitleComponent,
-} from '../../components/content-title/content-title.component';
+  SectionTitleComponent,
+} from '../../components/section-title/section-title.component';
 import AwardADesign from '../../../public/assets/images/award-a-design.png';
 import AwardHouzz from '../../../public/assets/images/award-houzz.jpg';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
@@ -22,9 +22,9 @@ export function AwardsModule(): ReactElement {
 
   return (
     <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
-      <ContentTitleComponent align="left">
+      <SectionTitleComponent align="left">
         Mes distinctions
-      </ContentTitleComponent>
+      </SectionTitleComponent>
       <Images gap={size / 4}>
         <ImageContainer>
           <Image

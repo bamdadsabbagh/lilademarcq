@@ -1,6 +1,7 @@
 import styled, {css} from 'styled-components';
 import {tf, to} from '../../../../app/styles/timers';
 import {SlideInAnimation} from '../../../../app/styles/animations';
+import {simpleTransition} from '../../../../app/styles/transitions';
 
 interface StyledContainerProps {
   index: number;
@@ -8,7 +9,7 @@ interface StyledContainerProps {
   noRight?: number;
 }
 
-export const AnimationDelay = css<Pick<StyledContainerProps, 'index'>>`
+const AnimationDelay = css<Pick<StyledContainerProps, 'index'>>`
   animation-delay: calc((0.7s + ${to}s * ${({index}) => index}) * ${tf});
 `;
 
@@ -27,7 +28,7 @@ export const Cell = styled.div<StyledContainerProps>`
   user-select: none;
 
   opacity: 0;
-  transition: color calc((0.1s + ${to}s) * ${tf}) ease;
+
   animation: ${SlideInAnimation} calc(0.9s * ${tf}) forwards calc(0.5s * ${tf});
   ${AnimationDelay};
 `;
@@ -54,7 +55,7 @@ export const Text = styled.div<StyledMainProps>`
   text-transform: uppercase;
   cursor: ${({isLink}) => isLink ? 'pointer' : 'default'};
   color: ${handleMainColor};
-  transition: color calc((0.1s + ${to}s) * ${tf}) ease;
+  ${simpleTransition('color', 0.1)};
 
   &:hover {
     color: ${handleMainColor};
@@ -75,7 +76,7 @@ export const Dropdown = styled.div<{display: number;}>`
   cursor: pointer;
 
   overflow: hidden;
-  transition: max-height calc((0.4s + ${to}s) * ${tf}) ease;
+  ${simpleTransition('max-height', 0.4)};
 
   color: ${(props) => props.theme.grayDark};
   background: white;
@@ -85,7 +86,7 @@ export const Dropdown = styled.div<{display: number;}>`
 
 export const DropdownItem = styled.span<{active?: boolean;}>`
   color: ${(props) => props.active ? props.theme.salmon : props.theme.grayDark};
-  transition: color calc((0.1s + ${to}s) * ${tf}) ease;
+  ${simpleTransition('color', 0.1)};
 
   &:hover {
     color: ${(props) => props.active ? props.theme.salmon : props.theme.grayLight};
