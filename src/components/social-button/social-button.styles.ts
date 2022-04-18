@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import {Icon} from '@iconify/react';
-import {tf, to} from '../../app/styles/timers';
+import {Icon as Iconify} from '@iconify/react';
+import {simpleTransition} from '../../app/styles/transitions';
 
-export const StyledContainer = styled.div<{display: number;}>`
+export const Container = styled.div<{display: number;}>`
   position: absolute;
-  transition: all calc((0.2s + ${to}s) * ${tf}) ease;
+  ${simpleTransition('transform, opacity')};
 
   transform: translate(-50%, -50%) scale(${(props) => props.display ? 100 : 0}%);
   opacity: ${(props) => props.display ? 1 : 0};
 `;
 
-export const StyledIcon = styled(Icon)`
+export const Icon = styled(Iconify)`
   position: absolute;
   color: ${(props) => props.theme.salmon};
   transform: translate(-50%, -50%);

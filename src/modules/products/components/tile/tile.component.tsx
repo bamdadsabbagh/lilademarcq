@@ -2,7 +2,7 @@ import React, {ReactElement} from 'react';
 import Link from 'next/link';
 import {StaticImageData} from 'next/image';
 import useMeasure from 'react-use-measure';
-import {StyledContainer, StyledContent, StyledImage} from './tile.styles';
+import {Container, Content, Image} from './tile.styles';
 
 interface ProductTileComponentProps {
   image: StaticImageData;
@@ -24,18 +24,18 @@ export function TileComponent({
       <Link href={href}>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a>
-          <StyledContainer>
-            <StyledImage
+          <Container>
+            <Image
               src={image}
               width={350}
               height={350}
               objectFit="cover"
             />
-            <StyledContent size={bounds.width}>
+            <Content size={bounds.width}>
               <h3>{title}</h3>
               <span>{description}</span>
-            </StyledContent>
-          </StyledContainer>
+            </Content>
+          </Container>
         </a>
       </Link>
     </li>

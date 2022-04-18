@@ -41,3 +41,15 @@ export const NavSpacerAnimationKeyframes = keyframes`
     transform: translateY(0.1em);
   }
 `;
+
+export const WiggleAnimation = keyframes`
+  0% {
+    transform: translateY(-5%);
+  }
+  50% {
+    transform: translateY(5%);
+  }
+  100% {
+    transform: translateY(-5%);
+  }
+`;
