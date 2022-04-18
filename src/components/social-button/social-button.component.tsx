@@ -1,11 +1,7 @@
 import React, {ReactElement, useState} from 'react';
 import {StaticImageData} from 'next/image';
 import {IconifyIcon} from '@iconify/react';
-import {
-  StyledContainer,
-  StyledIcon,
-  StyledImage,
-} from './social-button.styles';
+import {Container, Icon, StyledImage} from './social-button.styles';
 
 interface SocialButtonComponentProps {
   href: string;
@@ -29,12 +25,12 @@ export function SocialButtonComponent({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <StyledContainer
+        <Container
           display={!isHovered ? 1 : 0}
         >
-          <StyledIcon icon={front} />
-        </StyledContainer>
-        <StyledContainer
+          <Icon icon={front} />
+        </Container>
+        <Container
           display={isHovered ? 1 : 0}
         >
           <StyledImage
@@ -43,7 +39,7 @@ export function SocialButtonComponent({
             width={150}
             height={150}
           />
-        </StyledContainer>
+        </Container>
       </a>
     </>
   );

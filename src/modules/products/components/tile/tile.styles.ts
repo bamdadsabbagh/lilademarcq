@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import Image from 'next/image';
-import {tf, to} from '../../../../app/styles/timers';
+import NextImage from 'next/image';
+import {simpleTransition} from '../../../../app/styles/transitions';
 
-export const StyledContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,11 +18,11 @@ export const StyledContainer = styled.div`
   }
 `;
 
-export const StyledImage = styled(Image)`
-  transition: filter calc((0.2s + ${to}s) * ${tf}) ease;
+export const Image = styled(NextImage)`
+  ${simpleTransition('filter')};
 `;
 
-export const StyledContent = styled.div<{size: number;}>`
+export const Content = styled.div<{size: number;}>`
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: 0;
@@ -30,7 +30,7 @@ export const StyledContent = styled.div<{size: number;}>`
   height: 50%;
   color: white;
   transform: translateY(105%);
-  transition: transform calc((0.2s + ${to}s) * ${tf}) ease;
+  ${simpleTransition('transform')};
   padding: 1.1em;
 
   font-size: ${({size}) => size * 0.3}%;

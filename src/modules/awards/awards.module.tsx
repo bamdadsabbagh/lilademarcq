@@ -10,7 +10,7 @@ import AwardADesign from '../../../public/assets/images/award-a-design.png';
 import AwardHouzz from '../../../public/assets/images/award-houzz.jpg';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
 import {fontSpectral} from '../../app/styles/fonts';
-import {tf, to} from '../../app/styles/timers';
+import {simpleTransition} from '../../app/styles/transitions';
 
 interface CommonProps {
   gap: number;
@@ -39,9 +39,9 @@ const Texts = styled.div<CommonProps & {visible: boolean;}>`
   ${common};
   overflow: hidden;
 
-  max-height: ${({visible}) => visible ? '1000px' : 0};
+  max-height: ${({visible}) => visible ? '300px' : 0};
 
-  transition: max-height calc((0.1s + ${to}s) * ${tf}) ease;
+  ${simpleTransition('max-height')}
 `;
 
 const Text = styled.p`
