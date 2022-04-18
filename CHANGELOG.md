@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.5.0...v1.5.1) (2022-04-18)
+
+
+### Bug Fixes
+
+* Replace single quotes with low quotes (apostrophes) ([3127840](https://github.com/bamdadsabbagh/lilademarcq/commit/3127840ec645ac7aef880c0fa16db23f4c52f6d0))
+
 # [1.5.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.4.0...v1.5.0) (2022-04-18)
 
 
