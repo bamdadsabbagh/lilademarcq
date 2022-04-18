@@ -5,7 +5,7 @@ import {ContentTitleComponentProps} from './content-title.component';
 
 type StyledTitleProps = Pick<ContentTitleComponentProps, 'align'>
 
-export const StyledTitle = styled.h2<StyledTitleProps>`
+export const Title = styled.h2<StyledTitleProps>`
   //margin-bottom: 1em;
   margin-bottom: 0.9em;
 

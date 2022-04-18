@@ -12,12 +12,7 @@ import Object04Image from '../../../public/images/object-04.png';
 import Object05Image from '../../../public/images/object-05.png';
 import Object06Image from '../../../public/images/object-06.png';
 
-interface ProductsModuleProps {
-  // padding top
-  pT?: number;
-}
-
-export function ProductsModule({pT}: ProductsModuleProps): ReactElement {
+export function ProductsModule(): ReactElement {
   const [products] = useState([
     {
       image: Object01Image,
@@ -59,7 +54,7 @@ export function ProductsModule({pT}: ProductsModuleProps): ReactElement {
 
   return (
     <>
-      <SectionComponent verticalPadding={pT}>
+      <SectionComponent>
         <ContentTitleComponent>
           Objets design
         </ContentTitleComponent>

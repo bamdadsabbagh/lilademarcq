@@ -12,10 +12,9 @@ export const Nav = styled.nav`
 
 export const StyledList = styled.ul`
   display: grid;
-  grid-template-columns: 4em 7em 6em 5em 8em 5em 7em;
+  grid-template-columns: 5em 7em 6em 6em 9em 6em 8em;
   justify-content: center;
   align-items: flex-start;
-  grid-gap: 20px;
 
   height: 100%;
   width: 900px;

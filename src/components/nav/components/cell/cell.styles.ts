@@ -18,7 +18,7 @@ export const Cell = styled.div<StyledContainerProps>`
   justify-content: flex-start;
   align-items: center;
 
-  margin-left: -21px;
+  margin-left: -1px;
   border-left: ${({noLeft}) => noLeft ? 0 : '1px'} solid black;
   border-right: ${({noRight}) => noRight ? 0 : '1px'} solid black;
 

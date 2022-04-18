@@ -15,10 +15,10 @@ import {
 import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
+import Portrait from '../../public/assets/images/portrait.jpg';
 import Object01Image from '../../public/images/object-01.png';
 import Object02Image from '../../public/images/object-02.png';
 import Object03Image from '../../public/images/object-03.png';
-import PortraitImage from '../../public/images/portrait.jpg';
 import {
   ContentCenterComponent,
 } from '../components/content-center/content-center.component';
@@ -29,6 +29,7 @@ import {getHtmlFromMarkdown} from '../utils/get-html-from-markdown';
 import {MarkdownComponent} from '../components/markdown/markdown.component';
 import {AProposMarkdown} from '../pages-styles/index.styles';
 import {ProductsModule} from '../modules/products/products.module';
+import {ValuesModule} from '../modules/values/values.module';
 
 interface IndexProps {
   about: string;
@@ -45,7 +46,7 @@ export default function Index({about}: IndexProps): ReactElement {
         </ContentTitleComponent>
         <ImageTextComponent
           alt="portrait"
-          image={PortraitImage}
+          image={Portrait}
         >
           <AProposMarkdown>
             <MarkdownComponent content={about} />
@@ -53,14 +54,7 @@ export default function Index({about}: IndexProps): ReactElement {
         </ImageTextComponent>
       </SectionComponent>
 
-      <SectionComponent verticalPadding={4}>
-        <ContentTitleComponent align="right">
-          Mes valeurs
-        </ContentTitleComponent>
-        <div>
-          content
-        </div>
-      </SectionComponent>
+      <ValuesModule />
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
         <ContentTitleComponent align="left">
