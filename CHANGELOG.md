@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.4.0...v1.5.0) (2022-04-18)
+
+
+### Features
+
+* **AwardsModule:** Add `awards` block ([358db26](https://github.com/bamdadsabbagh/lilademarcq/commit/358db26320027f16dc60dd6ab1176151f130097b))
+
+
+### Performance Improvements
+
+* Merge similar transitions to its own generator + Less verbose styled components ([3ad21f3](https://github.com/bamdadsabbagh/lilademarcq/commit/3ad21f3bcb670b797516dbef7b7fe773f92c8f09))
+* **TriangleComponent:** Add hover styling + Add rotation transition + Clean code ([97b7538](https://github.com/bamdadsabbagh/lilademarcq/commit/97b753815e94a34220c00abeb83f12f0c805d1bd))
+
 # [1.4.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.3.0...v1.4.0) (2022-04-18)
 
 
