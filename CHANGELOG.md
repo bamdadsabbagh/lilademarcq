@@ -1,3 +1,22 @@
+# [1.4.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.3.0...v1.4.0) (2022-04-18)
+
+
+### Bug Fixes
+
+* **ImageTextComponent:** Add better styling ([b84f374](https://github.com/bamdadsabbagh/lilademarcq/commit/b84f3743ec4b8a60b2d7de821d86656108756224))
+* **Index:** Replace portrait image with new one ([d6058b1](https://github.com/bamdadsabbagh/lilademarcq/commit/d6058b17dce0e14e9fe6f6dd353f024e7b271cc5))
+* **Nav:** Improve grid widths and gaps ([f84a973](https://github.com/bamdadsabbagh/lilademarcq/commit/f84a973b06dd53c34b2cec5a0c77d2897df64e0d))
+
+
+### Features
+
+* Add new ValuesModule with styles and assets + misc ([9f76c42](https://github.com/bamdadsabbagh/lilademarcq/commit/9f76c427ccbe62352b8e4a333044c5fb65ea04eb))
+
+
+### Performance Improvements
+
+* **ProductsModule:** Clean dead code ([1ec9402](https://github.com/bamdadsabbagh/lilademarcq/commit/1ec9402aa9f24f9ad1e3d0d599bfcc702adbde7c))
+
 # [1.3.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.2.0...v1.3.0) (2022-04-17)
 
 
