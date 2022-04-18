@@ -15,10 +15,10 @@ import {
 import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
+import Portrait from '../../public/assets/images/portrait.jpg';
 import Object01Image from '../../public/images/object-01.png';
 import Object02Image from '../../public/images/object-02.png';
 import Object03Image from '../../public/images/object-03.png';
-import PortraitImage from '../../public/images/portrait.jpg';
 import {
   ContentCenterComponent,
 } from '../components/content-center/content-center.component';
@@ -45,7 +45,7 @@ export default function Index({about}: IndexProps): ReactElement {
         </ContentTitleComponent>
         <ImageTextComponent
           alt="portrait"
-          image={PortraitImage}
+          image={Portrait}
         >
           <AProposMarkdown>
             <MarkdownComponent content={about} />
