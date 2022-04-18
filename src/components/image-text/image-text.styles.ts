@@ -19,8 +19,9 @@ export const Container = styled.div<StyledContentProps>`
 
 export const ImageWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-self: flex-end;
+
+  max-width: 90%;
 `;
 
 export const TextWrapper = styled.div<StyledContentProps>`

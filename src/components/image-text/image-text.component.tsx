@@ -22,8 +22,9 @@ export function ImageTextComponent({
         <Image
           alt={alt}
           src={image}
-          layout="intrinsic"
           placeholder="blur"
+          layout="intrinsic"
+          objectFit="contain"
         />
       </ImageWrapper>
       {bounds.width !== 0 && bounds.right !== 0 && (
