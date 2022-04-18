@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {StyledTitle} from './content-title.styles';
+import {Title} from './content-title.styles';
 
 export interface ContentTitleComponentProps {
   children: string;
@@ -11,8 +11,8 @@ export function ContentTitleComponent({
   align = 'left',
 }: ContentTitleComponentProps): ReactElement {
   return (
-    <StyledTitle align={align}>
+    <Title align={align}>
       {children}
-    </StyledTitle>
+    </Title>
   );
 }

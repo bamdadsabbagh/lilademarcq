@@ -29,6 +29,7 @@ import {getHtmlFromMarkdown} from '../utils/get-html-from-markdown';
 import {MarkdownComponent} from '../components/markdown/markdown.component';
 import {AProposMarkdown} from '../pages-styles/index.styles';
 import {ProductsModule} from '../modules/products/products.module';
+import {ValuesModule} from '../modules/values/values.module';
 
 interface IndexProps {
   about: string;
@@ -53,14 +54,7 @@ export default function Index({about}: IndexProps): ReactElement {
         </ImageTextComponent>
       </SectionComponent>
 
-      <SectionComponent verticalPadding={4}>
-        <ContentTitleComponent align="right">
-          Mes valeurs
-        </ContentTitleComponent>
-        <div>
-          content
-        </div>
-      </SectionComponent>
+      <ValuesModule />
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
         <ContentTitleComponent align="left">
