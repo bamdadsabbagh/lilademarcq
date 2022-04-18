@@ -17,7 +17,7 @@ export function ProductsModule(): ReactElement {
     {
       image: Object01Image,
       title: 'INDLU',
-      description: 'Portant et créateur d\'espaces',
+      description: 'Portant et créateur d’espaces',
       href: '/objets/indlu',
     },
     {
@@ -41,7 +41,7 @@ export function ProductsModule(): ReactElement {
     {
       image: Object05Image,
       title: 'usha',
-      description: 'La finesse de l\'acier',
+      description: 'La finesse de l’acier',
       href: '/objets/usha-acier',
     },
     {
