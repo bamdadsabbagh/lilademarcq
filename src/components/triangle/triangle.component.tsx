@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {theme} from '../../app/styles/theme';
-import {StyledContainer, StyledTriangle} from './triangle.styles';
+import {Container, Triangle} from './triangle.styles';
 
 interface TriangleComponentProps {
   size?: number;
@@ -19,27 +19,27 @@ const defaultProps = {
 };
 
 export function TriangleComponent({
-  size,
-  color,
-  onClick,
+  size = defaultProps.size,
+  color = defaultProps.color,
+  onClick = defaultProps.onClick,
   isTop,
   isBottom,
   isRight,
   isLeft,
 }: TriangleComponentProps): ReactElement {
   return (
-    <StyledContainer
-      size={size ? size : defaultProps.size}
-      onClick={onClick ? onClick : defaultProps.onClick}
+    <Container
+      size={size}
+      onClick={onClick}
     >
-      <StyledTriangle
-        size={size ? size : defaultProps.size}
-        color={color ? color : defaultProps.color}
-        isTop={isTop ? isTop : false}
-        isBottom={isBottom ? isBottom : false}
-        isRight={isRight ? isRight : false}
-        isLeft={isLeft ? isLeft : false}
+      <Triangle
+        size={size}
+        color={color}
+        isTop={isTop}
+        isBottom={isBottom}
+        isRight={isRight}
+        isLeft={isLeft}
       />
-    </StyledContainer>
+    </Container>
   );
 }
