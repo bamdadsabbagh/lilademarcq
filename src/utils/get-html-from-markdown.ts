@@ -25,7 +25,7 @@ export async function getHtmlFromMarkdown(targetSlug: string, directory = DATA_D
       return;
     }
 
-    data = content;
+    data = content.replace('\'', '’');
   });
 
   if (!data) {

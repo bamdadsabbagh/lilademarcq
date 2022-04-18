@@ -12,11 +12,20 @@ import {
   ButtonContainer,
   ImageContainer,
   Images,
-  Text,
+  TextContainer,
   Texts,
 } from './awards.styles';
+import {MarkdownComponent} from '../../components/markdown/markdown.component';
 
-export function AwardsModule(): ReactElement {
+export interface AwardsModuleProps {
+  aDesign: string;
+  houzz: string;
+}
+
+export function AwardsModule({
+  aDesign,
+  houzz,
+}: AwardsModuleProps): ReactElement {
   const [size] = useState(400);
   const [open, setOpen] = useState(false);
 
@@ -49,15 +58,12 @@ export function AwardsModule(): ReactElement {
         gap={size / 4}
         visible={open}
       >
-        <Text>
-          En 2019, je remporte le prix de bronze de l&rsquo;
-          <i>A Design Award and Competition</i>
-          , reconnu à l&rsquo;international, grâce à mon canapé hybride Isiqu.
-        </Text>
-        <Text>
-          En 2020, je remporte le prix <i>Best of Houzz Service</i>, grâce aux
-          expériences positives de mes clients et collaborateurs.
-        </Text>
+        <TextContainer>
+          <MarkdownComponent content={aDesign} />
+        </TextContainer>
+        <TextContainer>
+          <MarkdownComponent content={houzz} />
+        </TextContainer>
       </Texts>
       <ButtonContainer>
         <TriangleComponent

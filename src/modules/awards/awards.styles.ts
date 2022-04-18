@@ -34,18 +34,21 @@ export const Texts = styled.div<CommonProps & {visible: boolean;}>`
   ${simpleTransition('max-height')}
 `;
 
-export const Text = styled.p`
-  ${fontSpectral};
-  font-size: 1.6em;
-  line-height: 1.2em;
-
-  text-align: center;
+export const TextContainer = styled.div`
   width: 100%;
-  padding: 0 4em;
 
-  margin-top: 1em;
+  p {
+    ${fontSpectral};
+    font-size: 1.6em;
+    line-height: 1.2em;
 
-  i {
+    text-align: center;
+    padding: 0 4em;
+
+    margin-top: 1em;
+  }
+
+  em {
     font-style: italic;
   }
 `;

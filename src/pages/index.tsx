@@ -7,7 +7,10 @@ import linkedinWithCircle
 import {GetStaticPropsResult} from 'next';
 import {theme} from '../app/styles/theme';
 import {FormComponent} from '../components/form/form.component';
-import {ContactComponent} from '../components/contact/contact.component';
+import {
+  ContactComponent,
+  ContactComponentProps,
+} from '../components/contact/contact.component';
 import {SectionComponent} from '../components/section/section.component';
 import {
   SectionTitleComponent,
@@ -30,13 +33,19 @@ import {MarkdownComponent} from '../components/markdown/markdown.component';
 import {AProposMarkdown} from '../pages-styles/index.styles';
 import {ProductsModule} from '../modules/products/products.module';
 import {ValuesModule} from '../modules/values/values.module';
-import {AwardsModule} from '../modules/awards/awards.module';
+import {AwardsModule, AwardsModuleProps} from '../modules/awards/awards.module';
 
 interface IndexProps {
   about: string;
+  awards: AwardsModuleProps;
+  contact: ContactComponentProps;
 }
 
-export default function Index({about}: IndexProps): ReactElement {
+export default function Index({
+  about,
+  awards,
+  contact,
+}: IndexProps): ReactElement {
   return (
     <>
       <ProductsModule />
@@ -57,7 +66,7 @@ export default function Index({about}: IndexProps): ReactElement {
 
       <ValuesModule />
 
-      <AwardsModule />
+      <AwardsModule aDesign={awards.aDesign} houzz={awards.houzz} />
 
       <SectionComponent verticalPadding={4}>
         <ContentCenterComponent>
@@ -84,7 +93,7 @@ export default function Index({about}: IndexProps): ReactElement {
       </SectionComponent>
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
-        <ContactComponent />
+        <ContactComponent content={contact.content} />
       </SectionComponent>
     </>
   );
@@ -94,6 +103,13 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
   return {
     props: {
       about: await getHtmlFromMarkdown('a-propos'),
+      awards: {
+        aDesign: await getHtmlFromMarkdown('dinstinctions-a-design'),
+        houzz: await getHtmlFromMarkdown('dinstinctions-houzz'),
+      },
+      contact: {
+        content: await getHtmlFromMarkdown('contact'),
+      },
     },
   };
 }
