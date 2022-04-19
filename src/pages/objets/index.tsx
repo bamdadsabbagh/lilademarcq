@@ -1,10 +1,27 @@
 import React, {ReactElement} from 'react';
-import {ProductsModule} from '../../modules/products/products.module';
+import {GetStaticPropsResult} from 'next';
+import {
+  ProductsModule,
+  ProductTile,
+} from '../../modules/products/products.module';
+import {getProductsProps} from '../../utils/get-products-props';
 
-export default function Objets(): ReactElement {
+interface ObjetsProps {
+  products: ProductTile[];
+}
+
+export default function Objets({products}: ObjetsProps): ReactElement {
   return (
     <>
-      <ProductsModule />
+      <ProductsModule products={products} />
     </>
   );
+}
+
+export async function getStaticProps(): Promise<GetStaticPropsResult<ObjetsProps>> {
+  return {
+    props: {
+      products: getProductsProps(),
+    },
+  };
 }

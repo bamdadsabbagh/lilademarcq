@@ -1,17 +1,25 @@
 import React, {ReactElement} from 'react';
-import {SectionComponent} from '../../components/section/section.component';
+import {GetStaticPropsResult} from 'next';
 import {
-  SectionTitleComponent,
-} from '../../components/section-title/section-title.component';
+  ProductLayout,
+  ProductLayoutProps,
+} from '../../layouts/product/product.layout';
+import {theme} from '../../app/styles/theme';
+import {getProductProps} from '../../utils/get-product-props';
 
-export default function UshaPapier(): ReactElement {
+export default function UshaPapier({
+  data,
+  content,
+}: ProductLayoutProps): ReactElement {
   return (
     <>
-      <SectionComponent>
-        <SectionTitleComponent align="center">
-          Page en cours de construction
-        </SectionTitleComponent>
-      </SectionComponent>
+      <ProductLayout data={data} content={content} color={theme.gold} />
     </>
   );
+}
+
+export async function getStaticProps(): Promise<GetStaticPropsResult<ProductLayoutProps>> {
+  return {
+    props: await getProductProps('objets-usha-papier'),
+  };
 }

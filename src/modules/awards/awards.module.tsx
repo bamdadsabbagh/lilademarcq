@@ -3,6 +3,7 @@ import Image from 'next/image';
 import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
 import {
+  AlignKeys,
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
 import AwardADesign from '../../../public/assets/images/award-a-design.png';
@@ -31,7 +32,7 @@ export function AwardsModule({
 
   return (
     <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
-      <SectionTitleComponent align="left">
+      <SectionTitleComponent align={AlignKeys.left}>
         Mes distinctions
       </SectionTitleComponent>
       <Images gap={size / 4}>

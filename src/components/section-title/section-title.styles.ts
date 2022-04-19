@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 import {fontFarmhouse} from '../../app/styles/fonts';
 import {fontSizes} from '../../app/styles/font-sizes';
-import {ContentTitleComponentProps} from './section-title.component';
+import {AlignKeys} from './section-title.component';
 
-type StyledTitleProps = Pick<ContentTitleComponentProps, 'align'>
+interface TitleProps {
+  align: AlignKeys;
+  color: string;
+}
 
-export const Title = styled.h2<StyledTitleProps>`
+export const Title = styled.h2<TitleProps>`
   //margin-bottom: 1em;
   margin-bottom: 0.9em;
 
-  color: ${({theme}) => theme.salmon};
+  color: ${({color}) => color};
 
   ${fontFarmhouse};
     // font-size: ${fontSizes.fiftyTwo};

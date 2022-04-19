@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
-interface StyledContentProps {
+interface ContainerProps {
   width: number;
   right: number;
+  gap: number;
 }
 
-export const Container = styled.div<StyledContentProps>`
+export const Container = styled.div<ContainerProps>`
   display: grid;
   justify-content: center;
   align-items: flex-start;
   //grid-template-columns: repeat(2, 43%);
   //grid-template-columns: repeat(2, 48%);
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 3em;
+  grid-gap: ${({gap}) => gap}em;
 
   line-height: 1.6em;
 `;
@@ -24,10 +25,18 @@ export const ImageWrapper = styled.div`
   max-width: 90%;
 `;
 
-export const TextWrapper = styled.div<StyledContentProps>`
+interface TextWrapperProps {
+  width: number;
+  right: number;
+  textVerticalCenter: boolean;
+}
+
+export const TextWrapper = styled.div<TextWrapperProps>`
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: ${({textVerticalCenter}) => textVerticalCenter ? 'center' : 'flex-start'};
+
+  height: 100%;
 
   font-family: Spectral, sans-serif;
   font-weight: 200;

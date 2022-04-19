@@ -7,12 +7,10 @@ import linkedinWithCircle
 import {GetStaticPropsResult} from 'next';
 import {theme} from '../app/styles/theme';
 import {FormComponent} from '../components/form/form.component';
-import {
-  ContactComponent,
-  ContactComponentProps,
-} from '../components/contact/contact.component';
+import {ContactComponent} from '../components/contact/contact.component';
 import {SectionComponent} from '../components/section/section.component';
 import {
+  AlignKeys,
   SectionTitleComponent,
 } from '../components/section-title/section-title.component';
 import {
@@ -28,34 +26,38 @@ import {
 import {
   SocialButtonComponent,
 } from '../components/social-button/social-button.component';
-import {getHtmlFromMarkdown} from '../utils/get-html-from-markdown';
+import {getMarkdown} from '../utils/get-markdown';
 import {MarkdownComponent} from '../components/markdown/markdown.component';
 import {AProposMarkdown} from '../pages-styles/index.styles';
-import {ProductsModule} from '../modules/products/products.module';
+import {ProductsModule, ProductTile} from '../modules/products/products.module';
 import {ValuesModule} from '../modules/values/values.module';
 import {AwardsModule, AwardsModuleProps} from '../modules/awards/awards.module';
+import {convertMarkdownToHtml} from '../utils/convert-markdown-to-html';
+import {getProductsProps} from '../utils/get-products-props';
 
 interface IndexProps {
   about: string;
   awards: AwardsModuleProps;
-  contact: ContactComponentProps;
+  contact: string;
+  products: ProductTile[];
 }
 
 export default function Index({
   about,
   awards,
   contact,
+  products,
 }: IndexProps): ReactElement {
   return (
     <>
-      <ProductsModule />
+      <ProductsModule products={products} />
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
-        <SectionTitleComponent align="center">
+        <SectionTitleComponent align={AlignKeys.center}>
           Artiste, designer et poétesse
         </SectionTitleComponent>
         <ImageTextComponent
-          alt="portrait"
+          imageAlt="portrait"
           image={Portrait}
         >
           <AProposMarkdown>
@@ -93,23 +95,27 @@ export default function Index({
       </SectionComponent>
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
-        <ContactComponent content={contact.content} />
+        <ContactComponent content={contact} />
       </SectionComponent>
     </>
   );
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>> {
+  const about = getMarkdown('a-propos');
+  const aDesign = getMarkdown('dinstinctions-a-design');
+  const houzz = getMarkdown('dinstinctions-houzz');
+  const contact = getMarkdown('contact');
+
   return {
     props: {
-      about: await getHtmlFromMarkdown('a-propos'),
+      about: await convertMarkdownToHtml(about),
       awards: {
-        aDesign: await getHtmlFromMarkdown('dinstinctions-a-design'),
-        houzz: await getHtmlFromMarkdown('dinstinctions-houzz'),
+        aDesign: await convertMarkdownToHtml(aDesign),
+        houzz: await convertMarkdownToHtml(houzz),
       },
-      contact: {
-        content: await getHtmlFromMarkdown('contact'),
-      },
+      contact: await convertMarkdownToHtml(contact),
+      products: getProductsProps(),
     },
   };
 }

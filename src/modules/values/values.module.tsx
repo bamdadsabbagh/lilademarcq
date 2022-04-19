@@ -1,6 +1,7 @@
 import React, {ReactElement} from 'react';
 import {SectionComponent} from '../../components/section/section.component';
 import {
+  AlignKeys,
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
 import {BubbleComponent} from './components/bubble/bubble.component';
@@ -12,7 +13,7 @@ export function ValuesModule(): ReactElement {
     <>
       <SectionComponent verticalPadding={4}>
         <Container>
-          <SectionTitleComponent align="right">
+          <SectionTitleComponent align={AlignKeys.right}>
             Mes Valeurs
           </SectionTitleComponent>
 
