@@ -1,3 +1,22 @@
+# [1.6.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.5.1...v1.6.0) (2022-04-19)
+
+
+### Bug Fixes
+
+* **ContactComponent:** Prevent y overflow ([d0bebad](https://github.com/bamdadsabbagh/lilademarcq/commit/d0bebada6d5c52d5fe71914b00c094b3b7687fd4))
+
+
+### Features
+
+* Add products pages (WIP) + Various improvements ([4381bfb](https://github.com/bamdadsabbagh/lilademarcq/commit/4381bfb7e50830fd4860a48bd5147910f6d21183))
+
+
+### Performance Improvements
+
+* Extract styles code from react components ([e549d73](https://github.com/bamdadsabbagh/lilademarcq/commit/e549d7334bd3ea5bee7251678398626a664819a0))
+* Extract text from `AwardsModule` to its markdown file + Move markdown files to `data` folder ([1b9f6e1](https://github.com/bamdadsabbagh/lilademarcq/commit/1b9f6e13e3c65307d2c149eb1fec91c29f8dadd4))
+* Small improvements ([a3d13b4](https://github.com/bamdadsabbagh/lilademarcq/commit/a3d13b4b68749ee19dd898f21a34ce63ca7feb7e))
+
 ## [1.5.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.5.0...v1.5.1) (2022-04-18)
 
 
