@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{padding: number;}>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,5 +9,5 @@ export const Container = styled.div`
   //width: 20vw;
 
   //padding: 4.35em 0 3.9em 0;
-  padding: 7em 0;
+  padding: ${({padding}) => padding}em 0;
 `;

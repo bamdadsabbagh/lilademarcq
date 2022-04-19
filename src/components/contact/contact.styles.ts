@@ -1,28 +1,33 @@
 import styled from 'styled-components';
-import Image from 'next/image';
+import NextImage from 'next/image';
 
-export const StyledWrapper = styled.div`
+export const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-export const StyledContainer = styled.div`
+export const Container = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 52% 1fr;
-  grid-gap: 3em;
+  grid-gap: 2em;
 
   transform: translateX(3.5em);
 `;
 
-export const StyledImage = styled(Image)`
+export const Image = styled(NextImage)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
 `;
 
-export const StyledContent = styled.p`
-  font-size: 1.45em;
-  font-weight: 300;
-  line-height: 1.4em;
-  transform: translateY(-0.05em);
+export const TextContainer = styled.div`
+  p {
+    font-size: 1.4em;
+    font-weight: 300;
+  }
+
+  hr {
+    border: 0;
+    height: 1em;
+  }
 `;

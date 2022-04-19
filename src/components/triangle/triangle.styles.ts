@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import {tf, to} from '../../app/styles/timers';
+import {tf} from '../../app/styles/timers';
 import {WiggleAnimation} from '../../app/styles/animations';
+import {simpleTransition} from '../../app/styles/transitions';
 
 export const Container = styled.span<{size: number;}>`
   display: inline-flex;
@@ -11,7 +12,7 @@ export const Container = styled.span<{size: number;}>`
 
   &:hover {
     cursor: pointer;
-    transition: transform calc((0.1s + ${to}s) * ${tf}) ease;
+    ${simpleTransition('transform', 0.1)};
     animation: ${WiggleAnimation} calc(1.3s * ${tf}) ease infinite;
   }
 `;
@@ -38,7 +39,7 @@ export const Triangle = styled.div<TriangleProps>`
   z-index: 100;
   pointer-events: none;
 
-  transition: transform calc((0.1s + ${to}s) * ${tf}) ease;
+  ${simpleTransition('transform', 0.1)};
 
   transform: translateY(${(props) => {
     if (props.isTop) {

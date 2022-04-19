@@ -1,46 +1,28 @@
 import React, {ReactElement} from 'react';
 import ContactImage from '../../../public/images/contact.jpg';
-import {
-  StyledContainer,
-  StyledContent,
-  StyledImage,
-  StyledWrapper,
-} from './contact.styles';
+import {Container, Image, TextContainer, Wrapper} from './contact.styles';
+import {MarkdownComponent} from '../markdown/markdown.component';
 
-export function ContactComponent(): ReactElement {
+export interface ContactComponentProps {
+  content: string;
+}
+
+export function ContactComponent({content}: ContactComponentProps): ReactElement {
   return (
-    <StyledWrapper>
-      <StyledContainer>
-        <StyledImage
+    <Wrapper>
+      <Container>
+        <Image
           alt="contact"
           src={ContactImage}
           placeholder="blur"
           objectFit="contain"
-          width={640}
-          height={480}
+          width={640 * 0.8}
+          height={480 * 0.8}
         />
-        <StyledContent>
-          <span>lila@demarcq.com</span>
-          <br />
-          <span>06 09 79 38 25</span>
-          <br />
-          <span />
-          <br />
-          <span>Lila Demarcq Design</span>
-          <br />
-          <span>3 rue Georges Teissier</span>
-          <br />
-          <span>42000, Saint-Etienne</span>
-          <br />
-          <span>FRANCE</span>
-          <br />
-          <span />
-          <br />
-          <span>Je répondrai avec</span>
-          <br />
-          <span> plaisir à vos questions !</span>
-        </StyledContent>
-      </StyledContainer>
-    </StyledWrapper>
+        <TextContainer>
+          <MarkdownComponent content={content} />
+        </TextContainer>
+      </Container>
+    </Wrapper>
   );
 }

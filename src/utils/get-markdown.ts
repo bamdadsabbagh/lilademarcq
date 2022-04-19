@@ -1,14 +1,19 @@
-import {remark} from 'remark';
-import html from 'remark-html';
 import {join} from 'path';
 import fs from 'fs';
 import matter from 'gray-matter';
 import {DATA_DIRECTORY} from '../constants';
 
-export async function getHtmlFromMarkdown(targetSlug: string, directory = DATA_DIRECTORY): Promise<string> {
+export interface Markdown {
+  content: string;
+  data: {
+    [key: string]: string;
+  };
+}
+
+export function getMarkdown(targetSlug: string, directory = DATA_DIRECTORY): Markdown {
   const workingDirectory = join(process.cwd(), directory);
   const filenames = fs.readdirSync(workingDirectory);
-  let data = null;
+  const payload: Markdown[] = [];
 
   filenames.forEach((filename) => {
     const slug = filename.replace(/\.md$/, '');
@@ -19,19 +24,15 @@ export async function getHtmlFromMarkdown(targetSlug: string, directory = DATA_D
 
     const path = join(workingDirectory, filename);
     const f = fs.readFileSync(path, 'utf8');
-    const {content} = matter(f);
+    const {data, content} = matter(f);
 
-    if (!content) {
-      return;
-    }
+    const cleanedContent = content.replace('\'', '’');
 
-    data = content;
+    payload.push({
+      content: cleanedContent,
+      data,
+    });
   });
 
-  if (!data) {
-    return '';
-  }
-
-  const payload = await remark().use(html).process(data);
-  return payload.toString();
+  return payload[0];
 }

@@ -3,11 +3,19 @@ import {Container} from './content-center.styles';
 
 interface CenterComponentProps {
   children: ReactElement | ReactElement[];
+  padding?: number;
 }
 
-export function ContentCenterComponent({children}: CenterComponentProps): ReactElement {
+const defaultProps = {
+  padding: 7,
+};
+
+export function ContentCenterComponent({
+  children,
+  padding = defaultProps.padding,
+}: CenterComponentProps): ReactElement {
   return (
-    <Container>
+    <Container padding={padding}>
       {children}
     </Container>
   );

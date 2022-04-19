@@ -1,17 +1,25 @@
 import React, {ReactElement} from 'react';
-import {SectionComponent} from '../../components/section/section.component';
+import {GetStaticPropsResult} from 'next';
 import {
-  ContentTitleComponent,
-} from '../../components/content-title/content-title.component';
+  ProductLayout,
+  ProductLayoutProps,
+} from '../../layouts/product/product.layout';
+import {theme} from '../../app/styles/theme';
+import {getProductProps} from '../../utils/get-product-props';
 
-export default function SaPoro(): ReactElement {
+export default function SaPoro({
+  data,
+  content,
+}: ProductLayoutProps): ReactElement {
   return (
     <>
-      <SectionComponent>
-        <ContentTitleComponent align="center">
-          Page en cours de construction
-        </ContentTitleComponent>
-      </SectionComponent>
+      <ProductLayout data={data} content={content} color={theme.brown} />
     </>
   );
+}
+
+export async function getStaticProps(): Promise<GetStaticPropsResult<ProductLayoutProps>> {
+  return {
+    props: await getProductProps('objets-sa-poro'),
+  };
 }
