@@ -30,7 +30,7 @@ export const Content = styled.div<{size: number;}>`
   height: 50%;
   color: white;
   transform: translateY(105%);
-  ${simpleTransition('transform')};
+  ${simpleTransition('transform', 0.25)};
   padding: 1.1em;
 
   font-size: ${({size}) => size * 0.3}%;

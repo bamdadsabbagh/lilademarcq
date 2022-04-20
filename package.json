@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@fontsource/montserrat": "^4.5.7",
+    "@fontsource/spectral": "^4.5.5",
+    "file-loader": "^6.2.0",
     "gray-matter": "^4.0.3",
     "jotai": "^1.6.4",
     "next": "^12.1.5",
@@ -41,6 +43,7 @@
     "eslint-config-next": "^12.1.5",
     "eslint-plugin-jest-dom": "^4.0.1",
     "eslint-plugin-testing-library": "^5.3.1",
+    "null-loader": "^4.0.1",
     "rimraf": "^3.0.2",
     "sass": "^1.50.0",
     "sass-reset": "^1.0.4",

@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect, useState} from 'react';
+import React, {ReactElement} from 'react';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   SectionTitleComponent,
@@ -6,6 +6,7 @@ import {
 import {GridComponent} from './components/grid/grid.component';
 import {TileComponent} from './components/tile/tile.component';
 import {capitalizeFirstLetter} from '../../utils/capitalize-first-letter';
+import {useImageSource} from '../../hooks/use-image-source';
 
 export interface ProductTile {
   name: string;
@@ -19,27 +20,11 @@ interface ProductsModuleProps {
 }
 
 export function ProductsModule({products}: ProductsModuleProps): ReactElement {
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    const array = [];
-
-    products.forEach((product) => {
-      (async () => {
-        const image = (await import('../../../public/images/' + product.thumbnail)).default;
-
-        array.push(image);
-
-        if (array.length === products.length) {
-          setImages(array);
-        }
-      })();
-    });
-  }, [products]);
+  const [sources, loading] = useImageSource(products.map((p) => `/images/${p.thumbnail}`));
 
   return (
     <>
-      {images.length !== 0 && (
+      {!loading && (
         <SectionComponent>
           <SectionTitleComponent>
             Objets design
@@ -48,7 +33,7 @@ export function ProductsModule({products}: ProductsModuleProps): ReactElement {
             {products.map((product, index) => (
               <TileComponent
                 key={product.slug}
-                image={images[index]}
+                image={sources[index]}
                 title={product.name.toUpperCase()}
                 description={capitalizeFirstLetter(product.description.toLowerCase())}
                 href={`/objets/${product.slug}`}

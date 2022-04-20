@@ -15,6 +15,8 @@ export const Container = styled.section<StyledSectionProps>`
   justify-content: center;
   align-items: center;
 
+  overflow: hidden;
+
   background: ${(props) => props.backgroundColor ? props.backgroundColor : 'none'};
 
   opacity: 0;
