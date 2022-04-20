@@ -10,6 +10,7 @@ const configuration = {
         rules: [
           ...config.module.rules,
           {test: /\.txt$/, use: 'null-loader'},
+          {test: /\.ttf$/, use: 'file-loader'},
         ],
       },
     };
