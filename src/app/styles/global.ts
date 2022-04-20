@@ -8,6 +8,6 @@ export const Global = createGlobalStyle`
     font-style: normal;
     font-display: swap;
     font-weight: 400;
-    src: url('../data/fonts/Farmhouse-avec-accents.ttf') format('ttf');
+    src: url('/fonts/Farmhouse-avec-accents.ttf') format('truetype');
   }
 `;
