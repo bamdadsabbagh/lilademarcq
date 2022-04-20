@@ -1,3 +1,27 @@
+# [1.7.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.6.0...v1.7.0) (2022-04-20)
+
+
+### Bug Fixes
+
+* **CarouselComponent:** Rectify decrement and increment functions + Better styling ([8e052ff](https://github.com/bamdadsabbagh/lilademarcq/commit/8e052ff8835678afbf0d910910553ffde4642905))
+* **Fonts:** Add correct public path + SSR ([b787f0c](https://github.com/bamdadsabbagh/lilademarcq/commit/b787f0c19d2d5449f64f40cdd8fc3ec5c33d55bc))
+* **ProductLayout:** Set arbitrary padding ([a3960c6](https://github.com/bamdadsabbagh/lilademarcq/commit/a3960c6ffe5eacd6632803ad94a37b02bb2af750))
+* **SectionComponent:** Hide overflow ([9619fa0](https://github.com/bamdadsabbagh/lilademarcq/commit/9619fa00afb4cda28f2e983da61c5ebebe0b15de))
+* **SectionTitle:** Remove media queries for now ([d5713eb](https://github.com/bamdadsabbagh/lilademarcq/commit/d5713eb6ef0a6fd152341bd74cc25b6247fff286))
+
+
+### Features
+
+* Add `CarouselComponent`, implement it to pages and use it for one product + Various improvements ([f809925](https://github.com/bamdadsabbagh/lilademarcq/commit/f809925db318887396a3960acd52ca9bdd4841d6))
+* Add fonts ([e560c93](https://github.com/bamdadsabbagh/lilademarcq/commit/e560c93d6c772038e414804e70aaa084c5ce3830))
+* **CarouselComponent:** Extract hook code to their own files ([ddbfa14](https://github.com/bamdadsabbagh/lilademarcq/commit/ddbfa14100dfa71fae1c1c1a80c4c751e7d2a9f0))
+
+
+### Performance Improvements
+
+* **AppLayout:** Extract hook code to their own file ([59395b5](https://github.com/bamdadsabbagh/lilademarcq/commit/59395b590283f277a0b20802570c9d573a1424a8))
+* **CarouselComponent:** Extract hook code to their own files ([d7e5c44](https://github.com/bamdadsabbagh/lilademarcq/commit/d7e5c4468130e769adafb7a2531810c615f7678d))
+
 # [1.6.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.5.1...v1.6.0) (2022-04-19)
 
 
