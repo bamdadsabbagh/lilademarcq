@@ -33,7 +33,7 @@ export function CarouselComponent({images}: CarouselComponentProps): ReactElemen
   const [nextIndex, setNextIndex] = useState(1);
 
   const incrementNextIndex = useCallback((i) => {
-    setNextIndex(i + 1 >= images.length ? 0 : i + 1);
+    setNextIndex(i + 2 >= images.length ? 0 : i + 2);
   }, [images.length]);
 
   const increment = useCallback(() => {
@@ -50,7 +50,7 @@ export function CarouselComponent({images}: CarouselComponentProps): ReactElemen
   }, [index, images.length, incrementNextIndex]);
 
   const decrementPreviousIndex = useCallback((i) => {
-    setPreviousIndex(i - 1 === -1 ? images.length - 1 : i - 1);
+    setPreviousIndex(i - 2 <= -1 ? images.length - 1 : i - 2);
   }, [images.length]);
 
   const decrement = useCallback(() => {
@@ -94,9 +94,7 @@ export function CarouselComponent({images}: CarouselComponentProps): ReactElemen
     <>
       {!loading && (
         <Container>
-          <Images
-            onClick={handleClick}
-          >
+          <Images>
             <ImagePrevious>
               <Image
                 src={sources[previousIndex]}
@@ -109,7 +107,7 @@ export function CarouselComponent({images}: CarouselComponentProps): ReactElemen
               />
             </ImagePrevious>
 
-            <ImageCurrent>
+            <ImageCurrent onClick={handleClick}>
               <Image
                 src={sources[index]}
                 placeholder="blur"

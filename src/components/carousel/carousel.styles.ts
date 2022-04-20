@@ -12,7 +12,6 @@ export const Container = styled.div`
 export const Images = styled.div`
   position: relative;
   overflow: hidden;
-  cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
@@ -23,16 +22,20 @@ const ImageContainer = styled.div`
   height: 100%;
 `;
 
-export const ImagePrevious = styled(ImageContainer)`
+const ImageSide = styled(ImageContainer)`
   position: absolute;
+  //opacity: 0.3;
+`;
+
+export const ImagePrevious = styled(ImageSide)`
   transform: translate3d(-100%, 0, 0);
 `;
 
 export const ImageCurrent = styled(ImageContainer)`
+  cursor: pointer;
 `;
 
-export const ImageNext = styled(ImageContainer)`
-  position: absolute;
+export const ImageNext = styled(ImageSide)`
   transform: translate3d(100%, -100%, 0);
 `;
 
