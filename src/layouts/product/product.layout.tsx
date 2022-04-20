@@ -39,8 +39,8 @@ export function ProductLayout({
 }: ProductLayoutProps): ReactElement {
   return (
     <>
-      <SectionComponent backgroundColor={theme.salmonLight}>
-        <SectionTitleComponent color={color} bottomPadding={0.4}>
+      <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={3}>
+        <SectionTitleComponent color={color} bottomPadding={0.6}>
           {`${data.name.toUpperCase()}, ${data.description}`}
         </SectionTitleComponent>
 
