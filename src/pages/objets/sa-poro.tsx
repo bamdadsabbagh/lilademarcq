@@ -10,10 +10,16 @@ import {getProductProps} from '../../utils/get-product-props';
 export default function SaPoro({
   data,
   content,
+  images,
 }: ProductLayoutProps): ReactElement {
   return (
     <>
-      <ProductLayout data={data} content={content} color={theme.brown} />
+      <ProductLayout
+        data={data}
+        content={content}
+        color={theme.brown}
+        images={images}
+      />
     </>
   );
 }

@@ -10,10 +10,16 @@ import {getProductProps} from '../../utils/get-product-props';
 export default function UshaPapier({
   data,
   content,
+  images,
 }: ProductLayoutProps): ReactElement {
   return (
     <>
-      <ProductLayout data={data} content={content} color={theme.gold} />
+      <ProductLayout
+        data={data}
+        content={content}
+        color={theme.gold}
+        images={images}
+      />
     </>
   );
 }

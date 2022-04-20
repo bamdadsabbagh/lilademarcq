@@ -3,6 +3,7 @@ export const theme = {
   white: '#ffffff',
   grayDark: '#6b6a6b',
   grayLight: '#bfbebe',
+  antracite: '#474747',
   salmon: '#f8a284',
   salmonLight: '#f4eeed',
   salmonDark: '#f79c81',

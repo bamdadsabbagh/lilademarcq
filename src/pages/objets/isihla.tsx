@@ -10,10 +10,16 @@ import {getProductProps} from '../../utils/get-product-props';
 export default function Isihla({
   data,
   content,
+  images,
 }: ProductLayoutProps): ReactElement {
   return (
     <>
-      <ProductLayout data={data} content={content} color={theme.blueLight} />
+      <ProductLayout
+        data={data}
+        content={content}
+        color={theme.blueLight}
+        images={images}
+      />
     </>
   );
 }

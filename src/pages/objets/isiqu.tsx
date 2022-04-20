@@ -10,10 +10,16 @@ import {getProductProps} from '../../utils/get-product-props';
 export default function Isiqu({
   data,
   content,
+  images,
 }: ProductLayoutProps): ReactElement {
   return (
     <>
-      <ProductLayout data={data} content={content} color={theme.blue} />
+      <ProductLayout
+        data={data}
+        content={content}
+        color={theme.blue}
+        images={images}
+      />
     </>
   );
 }

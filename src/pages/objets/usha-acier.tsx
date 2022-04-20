@@ -10,10 +10,16 @@ import {getProductProps} from '../../utils/get-product-props';
 export default function UshaAcier({
   data,
   content,
+  images,
 }: ProductLayoutProps): ReactElement {
   return (
     <>
-      <ProductLayout data={data} content={content} color={theme.greenDark} />
+      <ProductLayout
+        data={data}
+        content={content}
+        color={theme.greenDark}
+        images={images}
+      />
     </>
   );
 }

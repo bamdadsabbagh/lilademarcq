@@ -10,6 +10,10 @@ import {
 } from '../../components/section-title/section-title.component';
 import {MarkdownComponent} from '../../components/markdown/markdown.component';
 import {Container, MadeIn, MarkdownContainer} from './product.styles';
+import {
+  CarouselComponent,
+  CarouselImage,
+} from '../../components/carousel/carousel.component';
 
 export interface ProductLayoutProps {
   data: {
@@ -19,6 +23,7 @@ export interface ProductLayoutProps {
     structureDetails: string;
   };
   content: string;
+  images: CarouselImage[];
   color?: string;
 }
 
@@ -29,15 +34,22 @@ const defaultProps = {
 export function ProductLayout({
   data,
   content,
+  images,
   color = defaultProps.color,
 }: ProductLayoutProps): ReactElement {
   return (
     <>
-      <SectionComponent>
-        <SectionTitleComponent color={color}>
+      <SectionComponent backgroundColor={theme.salmonLight}>
+        <SectionTitleComponent color={color} bottomPadding={0.4}>
           {`${data.name.toUpperCase()}, ${data.description}`}
         </SectionTitleComponent>
 
+        {images.length !== 0 && (
+          <CarouselComponent images={images} />
+        )}
+      </SectionComponent>
+
+      <SectionComponent>
         <MarkdownContainer>
           <MarkdownComponent content={content} />
         </MarkdownContainer>
