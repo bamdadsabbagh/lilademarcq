@@ -1,3 +1,23 @@
+# [1.8.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.7.0...v1.8.0) (2022-04-21)
+
+
+### Bug Fixes
+
+* **CgvPage:** Set correct font weight ([b34e8f1](https://github.com/bamdadsabbagh/lilademarcq/commit/b34e8f19b078af21b86d036a2a029096fa9da7a2))
+* **NavComponent:** Fetch routes at app layout level to prevent drawing anything before data retrieval ([d8db040](https://github.com/bamdadsabbagh/lilademarcq/commit/d8db0408346f50c09c6758be477f6a6c02778ebb))
+* **NavComponent:** Rename Cell to Menu + Better cursor hovering style ([63185f1](https://github.com/bamdadsabbagh/lilademarcq/commit/63185f19ede3e0dd054d0be32c1127bdea0c707c))
+
+
+### Features
+
+* Add Carousel pointer layer + Add previous, next and zoom events + Add Modal + Various tweaks ([cfdca8b](https://github.com/bamdadsabbagh/lilademarcq/commit/cfdca8b83879ac3279f07d963ed8bab5ced95fe4))
+* Better file structure for content management + Make routes dynamic with API + Various ([72ee7e8](https://github.com/bamdadsabbagh/lilademarcq/commit/72ee7e8aec63338cd9f4dc254df401a999fd3dc4))
+
+
+### Performance Improvements
+
+* **ModalComponent:** Split style and hook code ([f89b1c3](https://github.com/bamdadsabbagh/lilademarcq/commit/f89b1c38288c64828531be159e1fecb70a58f8a7))
+
 # [1.7.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.6.0...v1.7.0) (2022-04-20)
 
 
