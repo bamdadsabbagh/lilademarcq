@@ -1,7 +1,7 @@
 import React, {ReactElement, useState} from 'react';
 import {useRouter} from 'next/router';
 import {Nav, StyledList} from './nav.styles';
-import {CellComponent} from './components/cell/cell.component';
+import {MenuComponent} from './components/menu/menu.component';
 
 export default function NavComponent(): ReactElement {
   const router = useRouter();
@@ -37,7 +37,7 @@ export default function NavComponent(): ReactElement {
         {routes.map((route, index) => {
           const {text, href, items} = route;
           return (
-            <CellComponent
+            <MenuComponent
               key={text}
               k={index}
               primary={{text, href}}

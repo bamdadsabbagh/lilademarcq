@@ -73,7 +73,6 @@ export const Dropdown = styled.div<{display: number;}>`
   max-height: ${(props) => props.display ? '200px' : '0'};
 
   z-index: 100;
-  cursor: pointer;
 
   overflow: hidden;
   ${simpleTransition('max-height', 0.4)};
@@ -89,6 +88,7 @@ export const DropdownItem = styled.span<{active?: boolean;}>`
   ${simpleTransition('color', 0.1)};
 
   &:hover {
+    cursor: pointer;
     color: ${(props) => props.active ? props.theme.salmon : props.theme.grayLight};
   }
 `;

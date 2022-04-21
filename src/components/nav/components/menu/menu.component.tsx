@@ -7,7 +7,7 @@ import {
   DropdownEmptyItem,
   DropdownItem,
   Text,
-} from './cell.styles';
+} from './menu.styles';
 
 export interface MenuComponentMain {
   text: string;
@@ -28,7 +28,7 @@ interface MenuComponentProps {
   noRight?: boolean;
 }
 
-export function CellComponent({
+export function MenuComponent({
   k,
   primary,
   items,
