@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.8.0...v1.8.1) (2022-04-21)
+
+
+### Bug Fixes
+
+* **ProductPage:** Watch `slug` instead of `name` to avoid collisions ([9d26ac5](https://github.com/bamdadsabbagh/lilademarcq/commit/9d26ac53a1eccebd3ba2533c5ed12077b7c777ae))
+
 # [1.8.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.7.0...v1.8.0) (2022-04-21)
 
 
