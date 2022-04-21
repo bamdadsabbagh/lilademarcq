@@ -10,6 +10,7 @@ interface TriangleComponentProps {
   isBottom?: boolean;
   isRight?: boolean;
   isLeft?: boolean;
+  isHover?: boolean;
 }
 
 const defaultProps = {
@@ -26,10 +27,12 @@ export function TriangleComponent({
   isBottom,
   isRight,
   isLeft,
+  isHover,
 }: TriangleComponentProps): ReactElement {
   return (
     <Container
       size={size}
+      isHover={isHover}
       onClick={onClick}
     >
       <Triangle

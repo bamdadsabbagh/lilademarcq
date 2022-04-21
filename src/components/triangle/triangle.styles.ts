@@ -3,12 +3,15 @@ import {tf} from '../../app/styles/timers';
 import {WiggleAnimation} from '../../app/styles/animations';
 import {simpleTransition} from '../../app/styles/transitions';
 
-export const Container = styled.span<{size: number;}>`
+export const Container = styled.span<{size: number; isHover?: boolean;}>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: ${({size}) => size * 3}px;
   height: ${({size}) => size * 3}px;
+
+  ${simpleTransition('transform', 0.1)};
+  animation: ${WiggleAnimation} calc(${({isHover}) => isHover ? '1.3s' : 0} * ${tf}) ease infinite;
 
   &:hover {
     cursor: pointer;
