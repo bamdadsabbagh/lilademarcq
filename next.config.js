@@ -9,7 +9,7 @@ const configuration = {
         ...config.module,
         rules: [
           ...config.module.rules,
-          {test: /\.txt$/, use: 'null-loader'},
+          {test: /\.md$/, use: 'null-loader'},
           {test: /\.ttf$/, use: 'file-loader'},
         ],
       },

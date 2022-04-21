@@ -1,10 +1,13 @@
 import React, {useCallback, useState} from 'react';
+import {useAtom} from 'jotai';
+import {StaticImageData} from 'next/image';
+import {setModalAtom} from '../../../atoms/modal.atom';
 
 export interface UseIncrements {
   previousIndex: number;
   index: number;
   nextIndex: number;
-  handleClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  handleClick: (e: React.MouseEvent<HTMLDivElement>, src: StaticImageData) => void;
   select: (i: number) => void;
 }
 
@@ -12,6 +15,7 @@ export function useIncrements(length: number): UseIncrements {
   const [index, setIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(length - 1);
   const [nextIndex, setNextIndex] = useState(1);
+  const [, setModal] = useAtom(setModalAtom);
 
   const incrementNextIndex = useCallback((i) => {
     setNextIndex(i + 2 >= length ? 0 : i + 2);
@@ -57,19 +61,31 @@ export function useIncrements(length: number): UseIncrements {
     incrementNextIndex(i);
   }, [index, incrementNextIndex, decrementPreviousIndex]);
 
-  const handleClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLImageElement;
+  const handleClick = useCallback((
+    e: React.MouseEvent<HTMLDivElement>,
+    src: StaticImageData,
+  ) => {
+    const target = e.target as HTMLDivElement;
     const x = e.nativeEvent.offsetX;
-    const width = target.width;
+    const width = target.clientWidth;
 
-    const delta = x - width * 0.5;
+    const gap = 0.3;
+    const percent = x / width;
 
-    if (delta >= 0) {
-      increment();
-    } else {
-      decrement();
+    if (percent >= gap && percent <= 1 - gap) {
+      setModal({isOpen: true, src});
+      return;
     }
-  }, [decrement, increment]);
+
+    if (percent < gap) {
+      decrement();
+      return;
+    }
+
+    if (percent > 1 - gap) {
+      increment();
+    }
+  }, [decrement, increment, setModal]);
 
   return {
     previousIndex,

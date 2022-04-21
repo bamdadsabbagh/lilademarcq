@@ -1,7 +1,9 @@
 ---
+position: 6
+menuName: Usha acier
 name: Usha
 description: la finesse de l'acier
-slug: usha-acier
+color: greenDark
 thumbnail: object-05.png
 structure: Acier thermolacqué et découpe laser
 structureDetails: couleur, lumière et dimensions personnalisables

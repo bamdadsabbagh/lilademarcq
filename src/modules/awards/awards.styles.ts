@@ -39,7 +39,7 @@ export const TextContainer = styled.div`
 
   p {
     ${fontSpectral};
-    font-size: 1.6em;
+    font-size: 1.4em;
     line-height: 1.2em;
 
     text-align: center;

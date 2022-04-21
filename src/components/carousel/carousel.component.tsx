@@ -10,12 +10,13 @@ import {
   ImageNext,
   ImagePrevious,
   Images,
+  PointerLayer,
 } from './carousel.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
 
 export interface CarouselImage {
-  // image: StaticImageData;
   image: string;
+  position?: number;
   caption?: string;
 }
 
@@ -41,6 +42,11 @@ export function CarouselComponent({images}: CarouselComponentProps): ReactElemen
     <>
       {!loading && (
         <Container>
+          <PointerLayer
+            onClick={
+              (e) => handleClick(e, sources[index])
+            }
+          />
           <Images>
             <ImagePrevious>
               <Image
@@ -54,7 +60,7 @@ export function CarouselComponent({images}: CarouselComponentProps): ReactElemen
               />
             </ImagePrevious>
 
-            <ImageCurrent onClick={handleClick}>
+            <ImageCurrent>
               <Image
                 src={sources[index]}
                 placeholder="blur"

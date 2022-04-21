@@ -7,7 +7,7 @@ import {
   DropdownEmptyItem,
   DropdownItem,
   Text,
-} from './cell.styles';
+} from './menu.styles';
 
 export interface MenuComponentMain {
   text: string;
@@ -28,7 +28,7 @@ interface MenuComponentProps {
   noRight?: boolean;
 }
 
-export function CellComponent({
+export function MenuComponent({
   k,
   primary,
   items,
@@ -69,22 +69,18 @@ export function CellComponent({
           </Text>
         )}
 
-        {items && (
+        {items.length > 0 && (
           <Dropdown display={open ? 1 : 0}>
-            {items.map((item) => {
-              if (item.text.includes('empty')) {
-                return <DropdownEmptyItem key={item.text} />;
-              }
-
-              return (
-                <Link href={item.href} key={item.text}>
-                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  <a>
-                    <DropdownItem active={item.href === router.pathname}>{item.text}</DropdownItem>
-                  </a>
-                </Link>
-              );
-            })}
+            <DropdownEmptyItem />
+            {items.map((item) => (
+              <Link href={item.href} key={item.text}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a>
+                  <DropdownItem active={item.href === router.asPath}>{item.text}</DropdownItem>
+                </a>
+              </Link>
+            ))}
+            <DropdownEmptyItem />
           </Dropdown>
         )}
       </Cell>

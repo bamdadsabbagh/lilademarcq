@@ -27,7 +27,7 @@ export function AwardsModule({
   aDesign,
   houzz,
 }: AwardsModuleProps): ReactElement {
-  const [size] = useState(400);
+  const [size] = useState(250);
   const [open, setOpen] = useState(false);
 
   return (

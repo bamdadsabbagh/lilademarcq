@@ -10,4 +10,8 @@ export const Global = createGlobalStyle`
     font-weight: 400;
     src: url('/fonts/Farmhouse-avec-accents.ttf') format('truetype');
   }
+
+  html {
+    overflow-y: scroll;
+  }
 `;
