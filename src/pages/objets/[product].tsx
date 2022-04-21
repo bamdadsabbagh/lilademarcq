@@ -16,15 +16,15 @@ export default function Product({
   content,
   images,
 }: ProductLayoutProps): ReactElement {
-  const [name, setName] = useState(data.name);
+  const [slug, setSlug] = useState(data.slug);
 
   useEffect(() => {
-    setName(data.name);
-  }, [data.name]);
+    setSlug(data.slug);
+  }, [data.slug]);
 
   return (
     <>
-      {data.name !== name ? (
+      {data.slug !== slug ? (
         <></>
       ) : (
         <ProductLayout

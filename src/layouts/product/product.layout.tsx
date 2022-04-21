@@ -18,6 +18,7 @@ import {ModalComponent} from '../../components/modal/modal.component';
 
 export interface ProductLayoutProps {
   data: {
+    slug: string;
     name: string;
     description: string;
     structure: string;

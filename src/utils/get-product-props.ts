@@ -33,6 +33,7 @@ export async function getProductProps(slug: string): Promise<ProductLayoutProps>
 
   return {
     data: {
+      slug,
       name,
       description,
       structure,
