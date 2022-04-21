@@ -2,6 +2,12 @@ import styled, {css} from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontSpectral} from '../../app/styles/fonts';
 
+export const Container = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 interface CommonProps {
   gap: number;
 }
@@ -11,6 +17,7 @@ const common = css<CommonProps>`
   justify-content: center;
   align-items: center;
   grid-gap: ${({gap}) => gap}px;
+  user-select: none;
 `;
 
 export const Images = styled.div<CommonProps>`
@@ -27,12 +34,12 @@ export const ImageContainer = styled.div`
 
 export const Texts = styled.div<CommonProps & {visible: boolean;}>`
   ${common};
+  ${simpleTransition('max-height, opacity', 0.25)};
+
   overflow: hidden;
+
   opacity: ${({visible}) => visible ? 1 : 0};
-
   max-height: ${({visible}) => visible ? '300px' : 0};
-
-  ${simpleTransition('max-height, opacity')};
 `;
 
 export const TextContainer = styled.div`
