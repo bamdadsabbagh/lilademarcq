@@ -9,7 +9,7 @@ interface Item {
   position: number;
 }
 
-interface Route {
+export interface Route {
   text: string;
   href: string;
   items?: Item[];

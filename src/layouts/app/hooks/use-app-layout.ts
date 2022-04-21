@@ -1,11 +1,16 @@
-import {useAtom} from 'jotai';
-import {appLoadedAtom} from '../../../atoms/app-loaded';
-import {useTimeout} from '../../../hooks/use-timeout';
+import {Route} from '../../../pages/api/routes';
+import {useRoutes} from './use-routes';
+import {useAppLoad} from './use-app-load';
 
-export function useAppLayout(): void {
-  const [, setAppLoaded] = useAtom(appLoadedAtom);
+interface UseAppLayout {
+  routes: Route[];
+}
 
-  useTimeout(() => {
-    setAppLoaded(true);
-  }, 2100);
+export function useAppLayout(): UseAppLayout {
+  useAppLoad();
+  const routes = useRoutes();
+
+  return {
+    routes,
+  };
 }

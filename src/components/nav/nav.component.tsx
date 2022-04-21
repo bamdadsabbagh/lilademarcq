@@ -1,25 +1,20 @@
-import React, {ReactElement, useEffect, useState} from 'react';
+import React, {ReactElement} from 'react';
 import {useRouter} from 'next/router';
-import axios from 'axios';
 import {Nav, StyledList} from './nav.styles';
 import {MenuComponent} from './components/menu/menu.component';
+import {Route} from '../../pages/api/routes';
 
-export default function NavComponent(): ReactElement {
+interface NavComponentProps {
+  routes: Route[];
+}
+
+export default function NavComponent({routes}: NavComponentProps): ReactElement {
   const router = useRouter();
-  const [routes, setRoutes] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const response = await axios.get('/api/routes');
-      const data = await response.data;
-      setRoutes(data);
-    })();
-  }, []);
 
   return (
     <Nav>
       <StyledList>
-        {routes.length !== 0 && routes.map((route, index) => {
+        {routes.map((route, index) => {
           const {text, href, items} = route;
           return (
             <MenuComponent
