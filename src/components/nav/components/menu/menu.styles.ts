@@ -75,7 +75,7 @@ export const Dropdown = styled.div<{display: number;}>`
   z-index: 100;
 
   overflow: hidden;
-  ${simpleTransition('max-height', 0.4)};
+  ${simpleTransition('max-height', 0.5)};
 
   color: ${(props) => props.theme.grayDark};
   background: white;
@@ -94,7 +94,6 @@ export const DropdownItem = styled.span<{active?: boolean;}>`
 `;
 
 export const DropdownEmptyItem = styled.span`
-  height: 1.1em;
+  height: 0.5em;
   width: 100%;
-  cursor: default;
 `;

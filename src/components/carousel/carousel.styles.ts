@@ -9,9 +9,38 @@ export const Container = styled.div`
   position: relative;
 `;
 
+const gap = 30;
+
+export const PointerLayer = styled.div`
+  position: absolute;
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 10;
+
+  // right
+  cursor: pointer;
+
+  // left
+  &:before {
+    content: '';
+    width: ${gap}%;
+    cursor: pointer;
+  }
+
+  // center
+  &:after {
+    content: '';
+    width: ${100 - 2 * gap}%;
+    cursor: zoom-in;
+  }
+`;
+
 export const Images = styled.div`
   position: relative;
-  overflow: hidden;
+  //overflow: hidden;
 `;
 
 const ImageContainer = styled.div`
@@ -24,19 +53,19 @@ const ImageContainer = styled.div`
 
 const ImageSide = styled(ImageContainer)`
   position: absolute;
-  //opacity: 0.3;
+  opacity: 0.3;
+  filter: grayscale(100%);
 `;
 
 export const ImagePrevious = styled(ImageSide)`
-  transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-102%, 0, 0);
 `;
 
 export const ImageCurrent = styled(ImageContainer)`
-  cursor: pointer;
 `;
 
 export const ImageNext = styled(ImageSide)`
-  transform: translate3d(100%, -100%, 0);
+  transform: translate3d(102%, -100%, 0);
 `;
 
 export const Features = styled.div`
@@ -82,6 +111,8 @@ export const Dot = styled.span<DotProps>`
 
   pointer-events: fill;
 
+  z-index: 20;
+
   &:hover {
     cursor: pointer;
     background: red;
@@ -109,10 +140,9 @@ export const Caption = styled.div<CaptionProps>`
     justify-content: flex-start;
     align-items: center;
 
-    width: 60%;
     height: 2.5em;
 
-    padding-left: 0.8em;
+    padding: 0 0.8em;
 
     border-top-left-radius: 0.5em;
     border-bottom-left-radius: 0.5em;

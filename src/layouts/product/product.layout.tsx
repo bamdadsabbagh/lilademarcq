@@ -14,6 +14,7 @@ import {
   CarouselComponent,
   CarouselImage,
 } from '../../components/carousel/carousel.component';
+import {ModalComponent} from '../../components/modal/modal.component';
 
 export interface ProductLayoutProps {
   data: {
@@ -39,6 +40,8 @@ export function ProductLayout({
 }: ProductLayoutProps): ReactElement {
   return (
     <>
+      <ModalComponent />
+
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={3}>
         <SectionTitleComponent color={color} bottomPadding={0.6}>
           {`${data.name.toUpperCase()}, ${data.description}`}
