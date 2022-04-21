@@ -11,7 +11,7 @@ export const Title = styled.h1`
 
 export const Markdown = styled.div`
   h2 {
-    font-weight: 500;
+    font-weight: 600;
     margin-top: 3em;
   }
 `;
