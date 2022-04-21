@@ -4,7 +4,7 @@ import {
   ProductsModule,
   ProductTile,
 } from '../../modules/products/products.module';
-import {getProductsProps} from '../../utils/get-products-props';
+import {getProducts} from '../../utils/get-products';
 
 interface ObjetsProps {
   products: ProductTile[];
@@ -21,7 +21,7 @@ export default function Objets({products}: ObjetsProps): ReactElement {
 export async function getStaticProps(): Promise<GetStaticPropsResult<ObjetsProps>> {
   return {
     props: {
-      products: getProductsProps(),
+      products: getProducts(),
     },
   };
 }

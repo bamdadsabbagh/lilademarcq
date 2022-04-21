@@ -3,7 +3,6 @@ position: 2
 name: Isiqu
 description: le canapé hybride
 color: blue
-thumbnail: object-02.png
 structure: Structure en acier thermolacqué, tricot de laine, mousse, tissu
 structureDetails: couleur, taille et matière personnalisable
 ---

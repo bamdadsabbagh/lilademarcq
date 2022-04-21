@@ -28,10 +28,11 @@ export const ImageContainer = styled.div`
 export const Texts = styled.div<CommonProps & {visible: boolean;}>`
   ${common};
   overflow: hidden;
+  opacity: ${({visible}) => visible ? 1 : 0};
 
   max-height: ${({visible}) => visible ? '300px' : 0};
 
-  ${simpleTransition('max-height')}
+  ${simpleTransition('max-height, opacity')};
 `;
 
 export const TextContainer = styled.div`

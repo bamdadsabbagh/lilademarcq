@@ -20,7 +20,7 @@ interface ProductsModuleProps {
 }
 
 export function ProductsModule({products}: ProductsModuleProps): ReactElement {
-  const [sources, loading] = useImageSource(products.map((p) => `/images/${p.thumbnail}`));
+  const [sources, loading] = useImageSource(products.map(({thumbnail}) => thumbnail));
 
   return (
     <>

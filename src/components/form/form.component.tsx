@@ -59,8 +59,7 @@ export function FormComponent({
             column={[1, 4]}
           >
             <span>Objet*</span>
-            <Select>
-              <option value="" selected disabled />
+            <Select defaultValue="">
               <option value="value">Label</option>
             </Select>
           </Label>

@@ -37,7 +37,7 @@ export const FormContainer = styled.div<FormProps>`
   width: 100%;
   height: 100%;
 
-  ${simpleTransition('max-height, opacity, margin-top')}
+  ${simpleTransition('max-height, opacity, margin-top', 0.25)}
 `;
 
 export const Form = styled.form`
@@ -99,15 +99,21 @@ export const Label = styled.label<LabelProps>`
 
 export const Input = styled.input`
   width: 100%;
+  height: 2em;
 
   margin-top: 0.1em;
 
   ${fontMontserrat};
-  height: 2em;
   font-size: 0.7em;
-  border-bottom: 1px solid white;
-
   color: white;
+
+  ${simpleTransition('box-shadow, background')};
+  box-shadow: 0 1px 0 0 white;
+
+  &:focus {
+    box-shadow: 0 2px 0 0 white;
+    background: rgba(0, 0, 0, 0.02);
+  }
 
   ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: white;

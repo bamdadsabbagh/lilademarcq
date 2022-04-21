@@ -2,7 +2,6 @@
 position: 3
 name: Isihla
 description: une oeuvre-persienne
-thumbnail: object-03.png
 color: blueLight
 structure: Structure en acier et pales de céramique
 structureDetails: taille personnalisable
