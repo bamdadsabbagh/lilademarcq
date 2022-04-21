@@ -15,8 +15,8 @@ import {
 import {useCarouselComponent} from './hooks/use-carousel-component';
 
 export interface CarouselImage {
-  // image: StaticImageData;
   image: string;
+  position?: number;
   caption?: string;
 }
 

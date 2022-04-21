@@ -10,15 +10,13 @@ export interface Markdown {
   };
 }
 
-export function getMarkdown(targetSlug: string, directory = DATA_DIRECTORY): Markdown {
-  const workingDirectory = join(process.cwd(), directory);
+export function getMarkdown(targetSlug: string, targetDirectory = DATA_DIRECTORY): Markdown {
+  const workingDirectory = join(process.cwd(), targetDirectory);
   const filenames = fs.readdirSync(workingDirectory);
   const payload: Markdown[] = [];
 
   filenames.forEach((filename) => {
-    const slug = filename.replace(/\.md$/, '');
-
-    if (slug !== targetSlug) {
+    if (filename !== `${targetSlug}.md`) {
       return;
     }
 

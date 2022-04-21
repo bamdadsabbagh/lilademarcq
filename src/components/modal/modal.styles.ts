@@ -18,7 +18,7 @@ export const Modal = styled.div`
 
   z-index: 1000;
 
-  cursor: pointer;
+  cursor: zoom-out;
 `;
 
 export const Container = styled.div`

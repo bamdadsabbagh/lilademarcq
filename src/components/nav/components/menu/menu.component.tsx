@@ -76,7 +76,7 @@ export function MenuComponent({
               <Link href={item.href} key={item.text}>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a>
-                  <DropdownItem active={item.href === router.pathname}>{item.text}</DropdownItem>
+                  <DropdownItem active={item.href === router.asPath}>{item.text}</DropdownItem>
                 </a>
               </Link>
             ))}

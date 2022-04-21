@@ -1,27 +1,25 @@
 import {getMarkdown} from './get-markdown';
 import {ProductTile} from '../modules/products/products.module';
+import {getProductSlugs} from './get-product-slugs';
+import {PRODUCTS_DIRECTORY} from '../constants';
 
 export function getProductsProps(): ProductTile[] {
-  const indlu = getMarkdown('objets-indlu');
-  const isiqu = getMarkdown('objets-isiqu');
-  const isihla = getMarkdown('objets-isihla');
-  const saPoro = getMarkdown('objets-sa-poro');
-  const ushaPapier = getMarkdown('objets-usha-papier');
-  const ushaAcier = getMarkdown('objets-usha-acier');
+  const products = getProductSlugs();
+  const props = [];
 
-  const build = (p) => ({
-    name: p.data.name,
-    description: p.data.description,
-    slug: p.data.slug,
-    thumbnail: p.data.thumbnail,
+  products.forEach((product) => {
+    const {data} = getMarkdown(product, `${PRODUCTS_DIRECTORY}/${product}`);
+
+    props.push({
+      slug: product,
+      position: data.position,
+      name: data.name,
+      description: data.description,
+      thumbnail: data.thumbnail,
+    });
   });
 
-  return [
-    build(indlu),
-    build(isiqu),
-    build(isihla),
-    build(saPoro),
-    build(ushaPapier),
-    build(ushaAcier),
-  ];
+  props.sort((a, b) => a.position - b.position);
+
+  return props;
 }

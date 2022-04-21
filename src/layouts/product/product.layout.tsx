@@ -22,6 +22,7 @@ export interface ProductLayoutProps {
     description: string;
     structure: string;
     structureDetails: string;
+    color: string;
   };
   content: string;
   images: CarouselImage[];
