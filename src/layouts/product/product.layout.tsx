@@ -101,7 +101,10 @@ export function ProductLayout({
       </SectionComponent>
 
       <SectionComponent backgroundColor={color} verticalPadding={4}>
-        <FormComponent text="Demandez votre devis ou votre nuancier" />
+        <FormComponent
+          text="Demandez votre devis ou votre nuancier"
+          backgroundColor={color}
+        />
       </SectionComponent>
     </>
   );
