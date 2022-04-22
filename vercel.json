@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/routes.js": {
+    "pages/api/routes.js": {
       "excludeFiles": "public/**"
     }
   }
