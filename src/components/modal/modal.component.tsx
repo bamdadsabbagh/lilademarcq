@@ -13,7 +13,7 @@ export function ModalComponent(): ReactElement {
           <Container>
             <Image
               src={src}
-              placeholder="blur"
+              // placeholder="blur"
               layout="intrinsic"
               objectFit="contain"
               width={1280}

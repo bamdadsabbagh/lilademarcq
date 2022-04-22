@@ -1,25 +1,26 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {SectionComponent} from '../components/section/section.component';
 import {theme} from '../app/styles/theme';
-import {getMarkdown} from '../utils/get-markdown';
-import {MarkdownComponent} from '../components/markdown/markdown.component';
 import {Markdown, Title} from '../pages-styles/mentions-legales.styles';
-import {convertMarkdownToHtml} from '../utils/convert-markdown-to-html';
+import {fetchSection, LDSection} from '../utils/fetch-section';
 
 interface MentionsLegalesProps {
-  html: string;
+  section: LDSection;
 }
 
-export default function MentionsLegales({html}: MentionsLegalesProps): ReactElement {
+export default function MentionsLegales({
+  section,
+}: MentionsLegalesProps): ReactElement {
   return (
     <SectionComponent backgroundColor={theme.salmonLight}>
       <>
         <Title>
-          Mentions Légales
+          {section.title}
         </Title>
         <Markdown>
-          <MarkdownComponent content={html} />
+          {documentToReactComponents(section.body.json)}
         </Markdown>
       </>
     </SectionComponent>
@@ -27,12 +28,11 @@ export default function MentionsLegales({html}: MentionsLegalesProps): ReactElem
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<MentionsLegalesProps>> {
-  const markdown = getMarkdown('mentions-legales');
-  const html = await convertMarkdownToHtml(markdown);
+  const section = await fetchSection('mentions-legales');
 
   return {
     props: {
-      html,
+      section,
     },
   };
 }

@@ -13,6 +13,7 @@ import {
   PointerLayer,
 } from './carousel.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
+import {LDImage} from '../../utils/fetch-objects';
 
 export interface CarouselImage {
   image: string;
@@ -21,7 +22,7 @@ export interface CarouselImage {
 }
 
 interface CarouselComponentProps {
-  images: CarouselImage[];
+  images: LDImage[];
 }
 
 /**
@@ -29,8 +30,6 @@ interface CarouselComponentProps {
  */
 export function CarouselComponent({images}: CarouselComponentProps): ReactElement {
   const {
-    loading,
-    sources,
     previousIndex,
     index,
     nextIndex,
@@ -40,71 +39,69 @@ export function CarouselComponent({images}: CarouselComponentProps): ReactElemen
 
   return (
     <>
-      {!loading && (
-        <Container>
-          <PointerLayer
-            onClick={
-              (e) => handleClick(e, sources[index])
-            }
-          />
-          <Images>
-            <ImagePrevious>
-              <Image
-                src={sources[previousIndex]}
-                placeholder="blur"
-                layout="intrinsic"
-                objectFit="cover"
-                width={1280}
-                height={720}
-                quality={95}
+      <Container>
+        <PointerLayer
+          onClick={
+            (e) => handleClick(e, images[index].url)
+          }
+        />
+        <Images>
+          <ImagePrevious>
+            <Image
+              src={images[previousIndex]?.url ?? images[index].url}
+              // placeholder="blur"
+              layout="intrinsic"
+              objectFit="cover"
+              width={1280}
+              height={720}
+              quality={95}
+            />
+          </ImagePrevious>
+
+          <ImageCurrent>
+            <Image
+              src={images[index].url}
+              // placeholder="blur"
+              layout="intrinsic"
+              objectFit="cover"
+              width={1280}
+              height={720}
+              quality={95}
+              priority
+            />
+          </ImageCurrent>
+
+          <ImageNext>
+            <Image
+              src={images[nextIndex]?.url ?? images[index].url}
+              // placeholder="blur"
+              layout="intrinsic"
+              objectFit="cover"
+              width={1280}
+              height={720}
+              quality={95}
+            />
+          </ImageNext>
+        </Images>
+
+        <Features>
+          <Dots>
+            {images.map((image, key) => (
+              <Dot
+                key={image.url}
+                active={index === key}
+                onClick={() => select(key)}
               />
-            </ImagePrevious>
+            ))}
+          </Dots>
 
-            <ImageCurrent>
-              <Image
-                src={sources[index]}
-                placeholder="blur"
-                layout="intrinsic"
-                objectFit="cover"
-                width={1280}
-                height={720}
-                quality={95}
-                priority
-              />
-            </ImageCurrent>
-
-            <ImageNext>
-              <Image
-                src={sources[nextIndex]}
-                placeholder="blur"
-                layout="intrinsic"
-                objectFit="cover"
-                width={1280}
-                height={720}
-                quality={95}
-              />
-            </ImageNext>
-          </Images>
-
-          <Features>
-            <Dots>
-              {images.map((image, key) => (
-                <Dot
-                  key={image.image}
-                  active={index === key}
-                  onClick={() => select(key)}
-                />
-              ))}
-            </Dots>
-
-            <Caption hide={typeof images[index].caption === 'undefined'}>
-              <span>
-                {images[index].caption || ''}
-              </span>
-            </Caption>
-          </Features>
-        </Container>
-      )}
+          <Caption hide={typeof images[index].description === 'undefined'}>
+            <span>
+              {images[index].description || images[index].title || ''}
+            </span>
+          </Caption>
+        </Features>
+      </Container>
     </>
   );
 }

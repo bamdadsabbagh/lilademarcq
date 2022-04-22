@@ -1,10 +1,10 @@
 import React, {ReactElement} from 'react';
-import Image, {StaticImageData} from 'next/image';
+import Image from 'next/image';
 import useMeasure from 'react-use-measure';
 import {Container, ImageWrapper, TextWrapper} from './image-text.styles';
 
 interface ContentTextImageComponentProps {
-  image: StaticImageData;
+  image: string;
   imageAlt: string;
   children: string | ReactElement;
   gap?: number;
@@ -36,9 +36,9 @@ export function ImageTextComponent({
         <Image
           alt={imageAlt}
           src={image}
-          placeholder="blur"
-          layout="intrinsic"
           objectFit="contain"
+          width={1000}
+          height={1000}
         />
       </ImageWrapper>
       {bounds.width !== 0 && bounds.right !== 0 && (

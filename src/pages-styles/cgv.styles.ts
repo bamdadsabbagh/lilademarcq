@@ -14,4 +14,9 @@ export const Markdown = styled.div`
     font-weight: 600;
     margin-top: 3em;
   }
+
+  ul > li {
+    list-style: disc;
+    margin-left: 2em;
+  }
 `;

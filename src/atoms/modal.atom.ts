@@ -1,9 +1,8 @@
 import {atom} from 'jotai';
-import {StaticImageData} from 'next/image';
 
 interface ModalAtom {
   isOpen: boolean;
-  src: StaticImageData;
+  src: string;
 }
 
 export const modalAtom = atom({

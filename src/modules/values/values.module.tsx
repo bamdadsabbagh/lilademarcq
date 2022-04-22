@@ -5,10 +5,14 @@ import {
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
 import {BubbleComponent} from './components/bubble/bubble.component';
-import Workshop from '../../../public/assets/images/workshop.jpg';
 import {Bubbles, Container, Image} from './values.styles';
+import {LDValues} from '../../utils/fetch-objects';
 
-export function ValuesModule(): ReactElement {
+interface ValuesModuleProps {
+  values: LDValues;
+}
+
+export function ValuesModule({values}: ValuesModuleProps): ReactElement {
   return (
     <>
       <SectionComponent verticalPadding={4}>
@@ -19,23 +23,23 @@ export function ValuesModule(): ReactElement {
 
           <Bubbles>
             <BubbleComponent
-              title="Fabrication locale Made in Loire"
-              text="Avec mes artisans à proximités, mon empreinte carbone est faible et je peux facilement contrôler la fabrication."
+              title={values.topLeftTitle}
+              text={values.topLeftBody}
               size={30}
               fontSize={1.7}
               x={5}
             />
             <BubbleComponent
-              title="De la poésie"
-              text="Je crée par les émotions et les souvenirs"
+              title={values.topCenterTitle}
+              text={values.topCenterBody}
               size={14}
               fontSize={1.1}
               x={60}
               y={40}
             />
             <BubbleComponent
-              title="Des objets uniques pour chacun"
-              text="Personnalisable et sur-mesure pour vous !"
+              title={values.topRightTitle}
+              text={values.topRightBody}
               size={20}
               fontSize={1.1}
               x={40}
@@ -43,22 +47,24 @@ export function ValuesModule(): ReactElement {
             />
 
             <BubbleComponent
-              title="Les matériaux sont français à 90%"
-              text="Pour les 10% restants, j'ai les choisi, si possible, en fonction des labels environnementaux qu'ils respectent."
+              title={values.bottomLeftTitle}
+              text={values.bottomLeftBody}
               size={25}
               fontSize={1.4}
               x={30}
               y={5}
             />
             <BubbleComponent
-              text="Possibilités de conseils et d'un accompagnement en décoration avec votre commande."
+              title={values.bottomCenterTitle ?? ''}
+              text={values.bottomCenterBody}
               size={18}
               fontSize={1.2}
               x={35}
               y={25}
             />
             <BubbleComponent
-              title="Des objets libres et multi-usages"
+              title={values.bottomRightTitle}
+              text={values.bottomRightBody ?? ''}
               size={16}
               fontSize={1.2}
               x={10}
@@ -67,7 +73,7 @@ export function ValuesModule(): ReactElement {
           </Bubbles>
 
           <Image
-            src={Workshop}
+            src={values.image.url}
             alt="Workshop"
             layout="fill"
             objectFit="cover"

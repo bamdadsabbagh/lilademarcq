@@ -10,13 +10,14 @@ import {
 } from './menu.styles';
 
 export interface MenuComponentMain {
-  text: string;
-  href?: string;
+  name: string;
+  slug?: string;
 }
 
 export interface MenuComponentItem {
-  text: string;
-  href?: string;
+  name: string;
+  menuName: string | null;
+  slug?: string;
 }
 
 interface MenuComponentProps {
@@ -50,8 +51,8 @@ export function MenuComponent({
         noRight={noRight ? 1 : 0}
         index={k}
       >
-        {primary.href ? (
-          <Link href={primary.href}>
+        {primary.slug ? (
+          <Link href={primary.slug}>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>
               <Text
@@ -59,13 +60,13 @@ export function MenuComponent({
                 isOpen={isOpen()}
                 isLink
               >
-                {primary.text}
+                {primary.name}
               </Text>
             </a>
           </Link>
         ) : (
           <Text isActive={isActive()} isOpen={isOpen()}>
-            {primary.text}
+            {primary.name}
           </Text>
         )}
 
@@ -73,10 +74,13 @@ export function MenuComponent({
           <Dropdown display={open ? 1 : 0}>
             <DropdownEmptyItem />
             {items.map((item) => (
-              <Link href={item.href} key={item.text}>
+              <Link
+                href={`/objets/${item.slug}`}
+                key={item.menuName ?? item.name}
+              >
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a>
-                  <DropdownItem active={item.href === router.asPath}>{item.text}</DropdownItem>
+                  <DropdownItem active={item.slug === router.asPath}>{item.menuName ?? item.name}</DropdownItem>
                 </a>
               </Link>
             ))}

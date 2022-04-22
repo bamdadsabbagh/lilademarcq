@@ -1,13 +1,12 @@
 import React, {ReactElement, useState} from 'react';
 import Image from 'next/image';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
-import AwardADesign from '../../../public/assets/images/award-a-design.png';
-import AwardHouzz from '../../../public/assets/images/award-houzz.jpg';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
 import {
   ButtonContainer,
@@ -17,16 +16,14 @@ import {
   TextContainer,
   Texts,
 } from './awards.styles';
-import {MarkdownComponent} from '../../components/markdown/markdown.component';
+import {LDAward} from '../../utils/fetch-objects';
 
 export interface AwardsModuleProps {
-  aDesign: string;
-  houzz: string;
+  awards: LDAward[];
 }
 
 export function AwardsModule({
-  aDesign,
-  houzz,
+  awards,
 }: AwardsModuleProps): ReactElement {
   const [size] = useState(250);
   const [open, setOpen] = useState(false);
@@ -47,8 +44,8 @@ export function AwardsModule({
         <Images gap={size / 4}>
           <ImageContainer>
             <Image
-              src={AwardADesign}
-              alt="A'Design"
+              src={awards[0].image.url}
+              alt={awards[0].slug}
               layout="intrinsic"
               width={size}
               height={size}
@@ -56,8 +53,8 @@ export function AwardsModule({
           </ImageContainer>
           <ImageContainer>
             <Image
-              src={AwardHouzz}
-              alt="Houzz"
+              src={awards[1].image.url}
+              alt={awards[1].slug}
               layout="intrinsic"
               width={size}
               height={size}
@@ -70,10 +67,10 @@ export function AwardsModule({
           visible={open}
         >
           <TextContainer>
-            <MarkdownComponent content={aDesign} />
+            {documentToReactComponents(awards[0].body.json)}
           </TextContainer>
           <TextContainer>
-            <MarkdownComponent content={houzz} />
+            {documentToReactComponents(awards[1].body.json)}
           </TextContainer>
         </Texts>
 

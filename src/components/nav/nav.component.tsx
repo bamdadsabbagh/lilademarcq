@@ -15,15 +15,15 @@ export default function NavComponent({routes}: NavComponentProps): ReactElement 
     <Nav>
       <StyledList>
         {routes.map((route, index) => {
-          const {text, href, items} = route;
+          const {name, slug, items} = route;
           return (
             <MenuComponent
-              key={text}
+              key={name}
               k={index}
-              primary={{text, href}}
+              primary={{name, slug}}
               noLeft={index === 0}
               noRight={index === routes.length - 1}
-              active={router.pathname === href}
+              active={router.pathname === slug}
               items={items || []}
             />
           );

@@ -8,42 +8,35 @@ import {
   ProductLayout,
   ProductLayoutProps,
 } from '../../layouts/product/product.layout';
-import {getProduct} from '../../utils/get-product';
-import {getProductSlugs} from '../../utils/get-product-slugs';
+import {fetchObjects} from '../../utils/fetch-objects';
+import {fetchObject} from '../../utils/fetch-object';
 
 export default function Product({
-  data,
-  content,
-  images,
+  object,
 }: ProductLayoutProps): ReactElement {
-  const [slug, setSlug] = useState(data.slug);
+  const [slug, setSlug] = useState(object.slug);
 
   useEffect(() => {
-    setSlug(data.slug);
-  }, [data.slug]);
+    setSlug(object.slug);
+  }, [object.slug]);
 
   return (
     <>
-      {data.slug !== slug ? (
+      {object.slug !== slug ? (
         <></>
       ) : (
-        <ProductLayout
-          data={data}
-          content={content}
-          color={data.color}
-          images={images}
-        />
+        <ProductLayout object={object} />
       )}
     </>
   );
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const products = getProductSlugs();
+  const objects = await fetchObjects();
 
-  const paths = products.map((product) => ({
+  const paths = objects.map((object) => ({
     params: {
-      product,
+      product: object.slug,
     },
   }));
 
@@ -60,7 +53,9 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
     throw new Error('Product name is not defined');
   }
 
+  const object = await fetchObject(product);
+
   return {
-    props: await getProduct(product),
+    props: {object},
   };
 }

@@ -1,11 +1,10 @@
 import React, {ReactElement} from 'react';
 import Link from 'next/link';
-import {StaticImageData} from 'next/image';
 import useMeasure from 'react-use-measure';
 import {Container, Content, Image} from './tile.styles';
 
 interface ProductTileComponentProps {
-  image: StaticImageData;
+  image: string;
   title: string;
   description: string;
   href: string;
@@ -18,7 +17,6 @@ export function TileComponent({
   href,
 }: ProductTileComponentProps): ReactElement {
   const [ref, bounds] = useMeasure();
-
   return (
     <li ref={ref}>
       <Link href={href}>

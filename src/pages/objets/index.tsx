@@ -1,27 +1,25 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {
-  ProductsModule,
-  ProductTile,
-} from '../../modules/products/products.module';
-import {getProducts} from '../../utils/get-products';
+import {ProductsModule} from '../../modules/products/products.module';
+import {fetchObjects} from '../../utils/fetch-objects';
+import {LDObject} from '../../utils/fetch-object';
 
 interface ObjetsProps {
-  products: ProductTile[];
+  objects: LDObject[];
 }
 
-export default function Objets({products}: ObjetsProps): ReactElement {
+export default function Objets({objects}: ObjetsProps): ReactElement {
   return (
     <>
-      <ProductsModule products={products} />
+      <ProductsModule products={objects} />
     </>
   );
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<ObjetsProps>> {
+  const objects = await fetchObjects();
+
   return {
-    props: {
-      products: getProducts(),
-    },
+    props: {objects},
   };
 }

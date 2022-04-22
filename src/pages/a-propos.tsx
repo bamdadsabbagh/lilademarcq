@@ -1,26 +1,25 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {SectionComponent} from '../components/section/section.component';
-import Portrait from '../../public/assets/images/portrait.jpg';
-import {getMarkdown} from '../utils/get-markdown';
-import {MarkdownComponent} from '../components/markdown/markdown.component';
 import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
 import {StyledMarkdownContainer} from '../pages-styles/a-propos.styles';
-import {convertMarkdownToHtml} from '../utils/convert-markdown-to-html';
+import {fetchSection, LDSection} from '../utils/fetch-section';
 
 interface AProposProps {
-  html: string;
+  about: LDSection;
 }
 
-export default function APropos({html}: AProposProps): ReactElement {
+export default function APropos({about}: AProposProps): ReactElement {
   return (
     <>
       <SectionComponent>
-        <ImageTextComponent image={Portrait} imageAlt="a">
+        <ImageTextComponent image={about.image.url} imageAlt="a">
           <StyledMarkdownContainer>
-            <MarkdownComponent content={html} />
+            <h2>{about.title}</h2>
+            {documentToReactComponents(about.body.json)}
           </StyledMarkdownContainer>
         </ImageTextComponent>
       </SectionComponent>
@@ -29,10 +28,11 @@ export default function APropos({html}: AProposProps): ReactElement {
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<AProposProps>> {
-  const markdown = getMarkdown('a-propos');
-  const html = await convertMarkdownToHtml(markdown);
+  const about = await fetchSection('about');
 
   return {
-    props: {html},
+    props: {
+      about,
+    },
   };
 }

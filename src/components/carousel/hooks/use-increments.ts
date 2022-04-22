@@ -1,13 +1,12 @@
 import React, {useCallback, useState} from 'react';
 import {useAtom} from 'jotai';
-import {StaticImageData} from 'next/image';
 import {setModalAtom} from '../../../atoms/modal.atom';
 
 export interface UseIncrements {
   previousIndex: number;
   index: number;
   nextIndex: number;
-  handleClick: (e: React.MouseEvent<HTMLDivElement>, src: StaticImageData) => void;
+  handleClick: (e: React.MouseEvent<HTMLDivElement>, src: string) => void;
   select: (i: number) => void;
 }
 
@@ -63,7 +62,7 @@ export function useIncrements(length: number): UseIncrements {
 
   const handleClick = useCallback((
     e: React.MouseEvent<HTMLDivElement>,
-    src: StaticImageData,
+    src: string,
   ) => {
     const target = e.target as HTMLDivElement;
     const x = e.nativeEvent.offsetX;

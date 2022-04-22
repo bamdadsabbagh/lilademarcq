@@ -1,5 +1,6 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {theme} from '../app/styles/theme';
 import {FormComponent} from '../components/form/form.component';
 import {ContactComponent} from '../components/contact/contact.component';
@@ -11,80 +12,85 @@ import {
 import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
-import Portrait from '../../public/assets/images/portrait.jpg';
-import {getMarkdown} from '../utils/get-markdown';
-import {MarkdownComponent} from '../components/markdown/markdown.component';
 import {AProposMarkdown} from '../pages-styles/index.styles';
 import {ProductsModule, ProductTile} from '../modules/products/products.module';
 import {ValuesModule} from '../modules/values/values.module';
-import {AwardsModule, AwardsModuleProps} from '../modules/awards/awards.module';
-import {convertMarkdownToHtml} from '../utils/convert-markdown-to-html';
-import {getProducts} from '../utils/get-products';
+import {AwardsModule} from '../modules/awards/awards.module';
 import {SocialsModule} from '../modules/socials/socials.module';
+import {fetchObjects} from '../utils/fetch-objects';
+import {fetchSection, LDSection} from '../utils/fetch-section';
+import {fetchAwards, LDAward} from '../utils/fetch-awards';
+import {fetchValues, LDValues} from '../utils/fetch-values';
+import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 
 interface IndexProps {
-  about: string;
-  awards: AwardsModuleProps;
-  contact: string;
-  products: ProductTile[];
+  about: LDSection;
+  awards: LDAward[];
+  objects: ProductTile[];
+  contact: LDSection;
+  socials: LDSocial[];
+  values: LDValues;
 }
 
 export default function Index({
-  about,
   awards,
+  objects,
+  about,
   contact,
-  products,
+  socials,
+  values,
 }: IndexProps): ReactElement {
   return (
     <>
-      <ProductsModule products={products} />
+      <ProductsModule products={objects} />
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
         <SectionTitleComponent align={AlignKeys.center}>
-          Artiste, designer et poétesse
+          {about.title}
         </SectionTitleComponent>
         <ImageTextComponent
           imageAlt="portrait"
-          image={Portrait}
+          image={about.image.url}
         >
           <AProposMarkdown>
-            <MarkdownComponent content={about} />
+            {documentToReactComponents(about.body.json)}
           </AProposMarkdown>
         </ImageTextComponent>
       </SectionComponent>
 
-      <ValuesModule />
+      <ValuesModule values={values} />
 
-      <AwardsModule aDesign={awards.aDesign} houzz={awards.houzz} />
+      <AwardsModule awards={awards} />
 
-      <SocialsModule />
+      <SocialsModule socials={socials} />
 
       <SectionComponent backgroundColor={theme.green} verticalPadding={4}>
         <FormComponent />
       </SectionComponent>
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
-        <ContactComponent content={contact} />
+        <ContactComponent contact={contact} />
       </SectionComponent>
     </>
   );
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>> {
-  const about = getMarkdown('a-propos');
-  const aDesign = getMarkdown('dinstinctions-a-design');
-  const houzz = getMarkdown('dinstinctions-houzz');
-  const contact = getMarkdown('contact');
+  const objects = await fetchObjects();
+  const about = await fetchSection('about');
+  const contact = await fetchSection('contact');
+  const awards = await fetchAwards();
+  const socials = await fetchSocials();
+  const values = await fetchValues();
 
   return {
     props: {
-      about: await convertMarkdownToHtml(about),
-      awards: {
-        aDesign: await convertMarkdownToHtml(aDesign),
-        houzz: await convertMarkdownToHtml(houzz),
-      },
-      contact: await convertMarkdownToHtml(contact),
-      products: getProducts(),
+      about,
+      contact,
+      objects,
+      awards,
+      socials,
+      values,
     },
   };
 }
