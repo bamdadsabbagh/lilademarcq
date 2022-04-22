@@ -1,3 +1,15 @@
+# [1.10.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.9.1...v1.10.0) (2022-04-22)
+
+
+### Bug Fixes
+
+* Set correct import paths ([2f585ad](https://github.com/bamdadsabbagh/lilademarcq/commit/2f585ad51b8dc99d87d9a07269278640d2c48e87))
+
+
+### Features
+
+* Move all static data to contentful CMS ([de4df54](https://github.com/bamdadsabbagh/lilademarcq/commit/de4df54ace80077ee198c347dda86a00a9438211))
+
 ## [1.9.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.9.0...v1.9.1) (2022-04-22)
 
 
