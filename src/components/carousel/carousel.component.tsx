@@ -1,5 +1,6 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useCallback} from 'react';
 import Image from 'next/image';
+import useMeasure from 'react-use-measure';
 import {
   Caption,
   Container,
@@ -37,52 +38,60 @@ export function CarouselComponent({images}: CarouselComponentProps): ReactElemen
     handleClick,
   } = useCarouselComponent(images);
 
+  const [ref, bounds] = useMeasure();
+  const isReady = useCallback(() => bounds.width !== 0, [bounds.width]);
+  const getPreviousImage = useCallback(() => images[previousIndex]?.url, [images, previousIndex]);
+  const getNextImage = useCallback(() => images[nextIndex]?.url, [images, nextIndex]);
+
   return (
     <>
-      <Container>
+      <Container ref={ref}>
         <PointerLayer
           onClick={
             (e) => handleClick(e, images[index].url)
           }
         />
-        <Images>
-          <ImagePrevious>
-            <Image
-              src={images[previousIndex]?.url ?? images[index].url}
-              // placeholder="blur"
-              layout="intrinsic"
-              objectFit="cover"
-              width={1280}
-              height={720}
-              quality={95}
-            />
-          </ImagePrevious>
+        {isReady() && (
+          <Images>
+            <ImagePrevious>
+              {getPreviousImage() && (
+                <Image
+                  src={getPreviousImage()}
+                  alt={images[previousIndex].title}
+                  layout="intrinsic"
+                  objectFit="cover"
+                  width={bounds.width}
+                  height={bounds.width * 0.5625}
+                />
+              )}
+            </ImagePrevious>
 
-          <ImageCurrent>
-            <Image
-              src={images[index].url}
-              // placeholder="blur"
-              layout="intrinsic"
-              objectFit="cover"
-              width={1280}
-              height={720}
-              quality={95}
-              priority
-            />
-          </ImageCurrent>
+            <ImageCurrent>
+              <Image
+                src={images[index].url}
+                alt={images[index].title}
+                layout="intrinsic"
+                objectFit="cover"
+                width={bounds.width}
+                height={bounds.width * 0.5625}
+                priority
+              />
+            </ImageCurrent>
 
-          <ImageNext>
-            <Image
-              src={images[nextIndex]?.url ?? images[index].url}
-              // placeholder="blur"
-              layout="intrinsic"
-              objectFit="cover"
-              width={1280}
-              height={720}
-              quality={95}
-            />
-          </ImageNext>
-        </Images>
+            <ImageNext>
+              {getNextImage() && (
+                <Image
+                  src={getNextImage()}
+                  alt={images[nextIndex].title}
+                  layout="intrinsic"
+                  objectFit="cover"
+                  width={bounds.width}
+                  height={bounds.width * 0.5625}
+                />
+              )}
+            </ImageNext>
+          </Images>
+        )}
 
         <Features>
           <Dots>

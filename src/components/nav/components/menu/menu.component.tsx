@@ -41,14 +41,19 @@ export function MenuComponent({
   const [open, setOpen] = useState(false);
   const isActive = useCallback(() => active ? 1 : 0, [active]);
   const isOpen = useCallback(() => open ? 1 : 0, [open]);
+  const getRoute = useCallback((slug: string) => `/objets/${slug}`, []);
+  const getLeft = useCallback(() => noLeft ? 1 : 0, [noLeft]);
+  const getRight = useCallback(() => noRight ? 1 : 0, [noRight]);
+  const getOpen = useCallback(() => open ? 1 : 0, [open]);
+  const isMenu = useCallback(() => items.length > 0, [items.length]);
 
   return (
     <>
       <Cell
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        noLeft={noLeft ? 1 : 0}
-        noRight={noRight ? 1 : 0}
+        noLeft={getLeft()}
+        noRight={getRight()}
         index={k}
       >
         {primary.slug ? (
@@ -70,17 +75,17 @@ export function MenuComponent({
           </Text>
         )}
 
-        {items.length > 0 && (
-          <Dropdown display={open ? 1 : 0}>
+        {isMenu() && (
+          <Dropdown display={getOpen()}>
             <DropdownEmptyItem />
             {items.map((item) => (
               <Link
-                href={`/objets/${item.slug}`}
+                href={getRoute(item.slug)}
                 key={item.menuName ?? item.name}
               >
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a>
-                  <DropdownItem active={item.slug === router.asPath}>{item.menuName ?? item.name}</DropdownItem>
+                  <DropdownItem active={getRoute(item.slug) === router.asPath}>{item.menuName ?? item.name}</DropdownItem>
                 </a>
               </Link>
             ))}
