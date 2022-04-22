@@ -2,6 +2,9 @@
   "functions": {
     "pages/api/**/*.js": {
       "excludeFiles": "{+(.now|.next|_next|node_modules|public|assets|components|pages)/**,yarn.lock,README.md}"
+    },
+    "api/**/*.js": {
+      "excludeFiles": "{+(.now|.next|_next|node_modules|public|assets|components|pages)/**,yarn.lock,README.md}"
     }
   }
 }
