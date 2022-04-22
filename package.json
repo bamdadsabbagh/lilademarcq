@@ -3,7 +3,8 @@
   "scripts": {
     "build": "next build && yarn build:post",
     "build:post": "find .next -type f -name \"*.map\" -exec rm {} \\;",
-    "dev": "next dev",
+    "clean": "npx rimraf .next",
+    "dev": "yarn clean && next dev",
     "export": "next export",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
     "package:clean": "rimraf .next && rimraf node_modules",
