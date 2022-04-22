@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/routes.js": {
+      "excludeFiles": "public/**"
+    }
+  }
+}
