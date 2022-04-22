@@ -4,7 +4,6 @@
     "build": "next build && yarn build:post",
     "build:post": "find .next -type f -name \"*.map\" -exec rm {} \\;",
     "dev": "next dev",
-    "dev:vercel": "vercel dev",
     "export": "next export",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
     "package:clean": "rimraf .next && rimraf node_modules",
@@ -49,8 +48,7 @@
     "rimraf": "^3.0.2",
     "sass": "^1.50.0",
     "sass-reset": "^1.0.4",
-    "typescript-plugin-styled-components": "^2.0.0",
-    "vercel": "^24.1.0"
+    "typescript-plugin-styled-components": "^2.0.0"
   },
   "version": "1.9.0"
 }

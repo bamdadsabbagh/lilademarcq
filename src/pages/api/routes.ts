@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import {getProductSlugs} from '../src/utils/get-product-slugs';
-import {getMarkdown} from '../src/utils/get-markdown';
-import {PRODUCTS_DIRECTORY} from '../src/constants';
+import {getProductSlugs} from '../../utils/get-product-slugs';
+import {getMarkdown} from '../../utils/get-markdown';
+import {PRODUCTS_DIRECTORY} from '../../constants';
 
 interface Item {
   text: string;

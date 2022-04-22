@@ -1,4 +1,4 @@
-import {Route} from '../../../../api/routes';
+import {Route} from '../../../pages/api/routes';
 import {useRoutes} from './use-routes';
 import {useAppLoad} from './use-app-load';
 

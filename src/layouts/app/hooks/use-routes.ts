@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import {Route} from '../../../../api/routes';
+import {Route} from '../../../pages/api/routes';
 
 export function useRoutes(): Route[] {
   const [routes, setRoutes] = useState<Route[]>([]);
