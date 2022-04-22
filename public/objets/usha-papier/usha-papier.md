@@ -4,7 +4,6 @@ menuName: Usha papier
 name: Usha
 description: la douceur du papier
 color: gold
-thumbnail: object-06.png
 structure: Carte de Lyon à fibres recyclés et découpe laser
 structureDetails: couleur de la lumière et dimensions personnalisables
 ---

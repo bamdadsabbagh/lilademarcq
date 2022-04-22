@@ -1,9 +1,4 @@
 import React, {ReactElement} from 'react';
-import instagramWithCircle
-  from '@iconify/icons-entypo-social/instagram-with-circle';
-import facebookIcon from '@iconify/icons-fa6-brands/facebook';
-import linkedinWithCircle
-  from '@iconify/icons-entypo-social/linkedin-with-circle';
 import {GetStaticPropsResult} from 'next';
 import {theme} from '../app/styles/theme';
 import {FormComponent} from '../components/form/form.component';
@@ -17,15 +12,6 @@ import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
 import Portrait from '../../public/assets/images/portrait.jpg';
-import Object01Image from '../../public/images/object-01.png';
-import Object02Image from '../../public/images/object-02.png';
-import Object03Image from '../../public/images/object-03.png';
-import {
-  ContentCenterComponent,
-} from '../components/content-center/content-center.component';
-import {
-  SocialButtonComponent,
-} from '../components/social-button/social-button.component';
 import {getMarkdown} from '../utils/get-markdown';
 import {MarkdownComponent} from '../components/markdown/markdown.component';
 import {AProposMarkdown} from '../pages-styles/index.styles';
@@ -33,7 +19,8 @@ import {ProductsModule, ProductTile} from '../modules/products/products.module';
 import {ValuesModule} from '../modules/values/values.module';
 import {AwardsModule, AwardsModuleProps} from '../modules/awards/awards.module';
 import {convertMarkdownToHtml} from '../utils/convert-markdown-to-html';
-import {getProductsProps} from '../utils/get-products-props';
+import {getProducts} from '../utils/get-products';
+import {SocialsModule} from '../modules/socials/socials.module';
 
 interface IndexProps {
   about: string;
@@ -70,25 +57,7 @@ export default function Index({
 
       <AwardsModule aDesign={awards.aDesign} houzz={awards.houzz} />
 
-      <SectionComponent verticalPadding={4}>
-        <ContentCenterComponent>
-          <SocialButtonComponent
-            href="https://www.instagram.com/lila.demarcq"
-            front={instagramWithCircle}
-            back={Object01Image}
-          />
-          <SocialButtonComponent
-            href="https://www.facebook.com/lilademarcq"
-            front={facebookIcon}
-            back={Object02Image}
-          />
-          <SocialButtonComponent
-            href="https://www.linkedin.com/in/lila-demarcq"
-            front={linkedinWithCircle}
-            back={Object03Image}
-          />
-        </ContentCenterComponent>
-      </SectionComponent>
+      <SocialsModule />
 
       <SectionComponent backgroundColor={theme.green} verticalPadding={4}>
         <FormComponent />
@@ -115,7 +84,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
         houzz: await convertMarkdownToHtml(houzz),
       },
       contact: await convertMarkdownToHtml(contact),
-      products: getProductsProps(),
+      products: getProducts(),
     },
   };
 }

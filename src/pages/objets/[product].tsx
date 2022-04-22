@@ -8,7 +8,7 @@ import {
   ProductLayout,
   ProductLayoutProps,
 } from '../../layouts/product/product.layout';
-import {getProductProps} from '../../utils/get-product-props';
+import {getProduct} from '../../utils/get-product';
 import {getProductSlugs} from '../../utils/get-product-slugs';
 
 export default function Product({
@@ -61,6 +61,6 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
   }
 
   return {
-    props: await getProductProps(product),
+    props: await getProduct(product),
   };
 }

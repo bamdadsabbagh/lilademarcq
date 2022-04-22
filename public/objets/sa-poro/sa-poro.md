@@ -3,7 +3,6 @@ position: 4
 name: Sa-Poro
 description: le nouveau Senufo
 color: brown
-thumbnail: object-04.png
 structure: Bois de sapin et feutre
 structureDetails: couleurs, finitions et taille personnalisable
 ---

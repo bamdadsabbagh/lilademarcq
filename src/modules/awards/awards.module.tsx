@@ -11,6 +11,7 @@ import AwardHouzz from '../../../public/assets/images/award-houzz.jpg';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
 import {
   ButtonContainer,
+  Container,
   ImageContainer,
   Images,
   TextContainer,
@@ -29,51 +30,63 @@ export function AwardsModule({
 }: AwardsModuleProps): ReactElement {
   const [size] = useState(250);
   const [open, setOpen] = useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
     <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
       <SectionTitleComponent align={AlignKeys.left}>
         Mes distinctions
       </SectionTitleComponent>
-      <Images gap={size / 4}>
-        <ImageContainer>
-          <Image
-            src={AwardADesign}
-            alt="A'Design"
-            layout="intrinsic"
-            width={size}
-            height={size}
-          />
-        </ImageContainer>
-        <ImageContainer>
-          <Image
-            src={AwardHouzz}
-            alt="Houzz"
-            layout="intrinsic"
-            width={size}
-            height={size}
-          />
-        </ImageContainer>
-      </Images>
-      <Texts
-        gap={size / 4}
-        visible={open}
+
+      <Container
+        onClick={() => setOpen((o) => !o)}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
-        <TextContainer>
-          <MarkdownComponent content={aDesign} />
-        </TextContainer>
-        <TextContainer>
-          <MarkdownComponent content={houzz} />
-        </TextContainer>
-      </Texts>
-      <ButtonContainer>
-        <TriangleComponent
-          color={theme.green}
-          isBottom={!open}
-          isTop={open}
-          onClick={() => setOpen((o) => !o)}
-        />
-      </ButtonContainer>
+
+        <Images gap={size / 4}>
+          <ImageContainer>
+            <Image
+              src={AwardADesign}
+              alt="A'Design"
+              layout="intrinsic"
+              width={size}
+              height={size}
+            />
+          </ImageContainer>
+          <ImageContainer>
+            <Image
+              src={AwardHouzz}
+              alt="Houzz"
+              layout="intrinsic"
+              width={size}
+              height={size}
+            />
+          </ImageContainer>
+        </Images>
+
+        <Texts
+          gap={size / 4}
+          visible={open}
+        >
+          <TextContainer>
+            <MarkdownComponent content={aDesign} />
+          </TextContainer>
+          <TextContainer>
+            <MarkdownComponent content={houzz} />
+          </TextContainer>
+        </Texts>
+
+        <ButtonContainer>
+          <TriangleComponent
+            color={theme.green}
+            isBottom={!open}
+            isTop={open}
+            isHover={hover}
+          />
+        </ButtonContainer>
+
+      </Container>
     </SectionComponent>
   );
 }

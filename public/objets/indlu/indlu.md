@@ -3,7 +3,6 @@ position: 1
 name: Indlu
 description: portant et créateur d'espaces
 color: salmonDark
-thumbnail: object-01.png
 structure: Structure en acier thermolacqué
 structureDetails: couleur, taille et forme personnalisable
 ---
