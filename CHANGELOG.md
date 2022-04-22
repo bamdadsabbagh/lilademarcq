@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.10.0...v1.10.1) (2022-04-22)
+
+
+### Performance Improvements
+
+* Use callbacks for image sources and sizes + Reduce image quality from 95 to default ([33ed6b0](https://github.com/bamdadsabbagh/lilademarcq/commit/33ed6b049237371ae74ad503c7aa6c2013a57913))
+
 # [1.10.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.9.1...v1.10.0) (2022-04-22)
 
 
