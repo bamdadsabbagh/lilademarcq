@@ -1,7 +1,7 @@
 {
   "functions": {
-    "pages/api/routes.js": {
-      "excludeFiles": "public/**"
+    "pages/api/**/*.js": {
+      "excludeFiles": "{+(.now|.next|_next|node_modules|public|assets|components|pages)/**,yarn.lock,README.md}"
     }
   }
 }
