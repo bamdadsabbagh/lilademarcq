@@ -16,7 +16,7 @@ import {
   TextContainer,
   Texts,
 } from './awards.styles';
-import {LDAward} from '../../utils/fetch-objects';
+import {LDAward} from '../../utils/fetch-awards';
 
 export interface AwardsModuleProps {
   awards: LDAward[];

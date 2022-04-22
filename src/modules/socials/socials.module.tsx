@@ -11,7 +11,7 @@ import {
 import {
   SocialButtonComponent,
 } from '../../components/social-button/social-button.component';
-import {LDSocial} from '../../utils/fetch-objects';
+import {LDSocial} from '../../utils/fetch-socials';
 
 interface SocialsModuleProps {
   socials: LDSocial[];

@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {Container, Image, TextContainer, Wrapper} from './contact.styles';
-import {LDSection} from '../../utils/fetch-objects';
+import {LDSection} from '../../utils/fetch-section';
 
 export interface ContactComponentProps {
   contact: LDSection;

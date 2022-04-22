@@ -12,7 +12,7 @@ import {
 import {Container, MadeIn, RichTextContainer} from './product.styles';
 import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {ModalComponent} from '../../components/modal/modal.component';
-import {LDObject} from '../../utils/fetch-objects';
+import {LDObject} from '../../utils/fetch-object';
 
 export interface ProductLayoutProps {
   object: LDObject;

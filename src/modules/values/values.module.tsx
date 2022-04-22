@@ -6,7 +6,7 @@ import {
 } from '../../components/section-title/section-title.component';
 import {BubbleComponent} from './components/bubble/bubble.component';
 import {Bubbles, Container, Image} from './values.styles';
-import {LDValues} from '../../utils/fetch-objects';
+import {LDValues} from '../../utils/fetch-values';
 
 interface ValuesModuleProps {
   values: LDValues;
