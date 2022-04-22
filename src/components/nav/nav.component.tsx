@@ -2,7 +2,7 @@ import React, {ReactElement} from 'react';
 import {useRouter} from 'next/router';
 import {Nav, StyledList} from './nav.styles';
 import {MenuComponent} from './components/menu/menu.component';
-import {Route} from '../../pages/api/routes';
+import {Route} from '../../../api/routes';
 
 interface NavComponentProps {
   routes: Route[];
