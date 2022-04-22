@@ -1,12 +1,11 @@
 import React, {ReactElement, useState} from 'react';
-import {StaticImageData} from 'next/image';
 import {IconifyIcon} from '@iconify/react';
 import {Container, Icon, StyledImage} from './social-button.styles';
 
 interface SocialButtonComponentProps {
   href: string;
   front: IconifyIcon;
-  back: StaticImageData;
+  back: string;
 }
 
 export function SocialButtonComponent({

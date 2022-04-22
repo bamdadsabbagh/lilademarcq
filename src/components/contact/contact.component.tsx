@@ -1,26 +1,26 @@
 import React, {ReactElement} from 'react';
-import ContactImage from '../../../public/images/contact.jpg';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {Container, Image, TextContainer, Wrapper} from './contact.styles';
-import {MarkdownComponent} from '../markdown/markdown.component';
+import {LDSection} from '../../utils/fetch-section';
 
 export interface ContactComponentProps {
-  content: string;
+  contact: LDSection;
 }
 
-export function ContactComponent({content}: ContactComponentProps): ReactElement {
+export function ContactComponent({contact}: ContactComponentProps): ReactElement {
   return (
     <Wrapper>
       <Container>
         <Image
           alt="contact"
-          src={ContactImage}
-          placeholder="blur"
+          src={contact.image.url}
+          // placeholder="blur"
           objectFit="contain"
           width={640 * 0.8}
           height={480 * 0.8}
         />
         <TextContainer>
-          <MarkdownComponent content={content} />
+          {documentToReactComponents(contact.body.json)}
         </TextContainer>
       </Container>
     </Wrapper>

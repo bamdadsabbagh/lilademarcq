@@ -1,48 +1,34 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import {getProductSlugs} from '../../utils/get-product-slugs';
-import {getMarkdown} from '../../utils/get-markdown';
-import {PRODUCTS_DIRECTORY} from '../../constants';
+import {fetchMenu} from '../../utils/fetch-menu';
 
 interface Item {
-  text: string;
-  href: string;
+  slug: string;
   position: number;
+  name: string;
+  menuName: string | null;
 }
 
 export interface Route {
-  text: string;
-  href: string;
+  name: string;
+  slug: string;
   items?: Item[];
 }
 
-export default function ApiRoutes(_req: NextApiRequest, res: NextApiResponse<Route[]>): void {
-  const slugs = getProductSlugs();
-
-  const objects: Item[] = slugs.map((slug) => {
-    const markdown = getMarkdown(slug, `${PRODUCTS_DIRECTORY}/${slug}`);
-    const {name, menuName, position} = markdown.data;
-
-    return {
-      text: menuName ? menuName : name,
-      href: `/objets/${slug}`,
-      position: position ? Number(position) : 1000,
-    };
-  });
-
-  // sort objects by position
-  objects.sort((a, b) => a.position - b.position);
+export default async function ApiRoutes(_req: NextApiRequest, res: NextApiResponse<Route[]>): Promise<void> {
+  const menu = await fetchMenu();
+  menu.sort((a, b) => a.position - b.position);
 
   res.status(200).json([
-    {text: 'home', href: '/'},
-    {text: 'à propos', href: '/a-propos'},
+    {name: 'home', slug: '/'},
+    {name: 'à propos', slug: '/a-propos'},
     {
-      text: 'objets',
-      href: '/objets',
-      items: objects,
+      name: 'objets',
+      slug: '/objets',
+      items: menu,
     },
-    {text: 'poésie', href: '/poesie'},
-    {text: 'événements', href: '/evenements'},
-    {text: 'presse', href: '/presse'},
-    {text: 'livre d\'or', href: '/livre-d-or'},
+    {name: 'poésie', slug: '/poesie'},
+    {name: 'événements', slug: '/evenements'},
+    {name: 'presse', slug: '/presse'},
+    {name: 'livre d\'or', slug: '/livre-d-or'},
   ]);
 }

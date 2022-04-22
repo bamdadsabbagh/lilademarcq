@@ -2,6 +2,11 @@
 
 const configuration = {
   poweredByHeader: false,
+  images: {
+    domains: [
+      'images.ctfassets.net',
+    ],
+  },
   webpack: (config) => {
     config = {
       ...config,

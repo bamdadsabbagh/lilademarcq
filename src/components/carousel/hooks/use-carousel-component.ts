@@ -1,11 +1,7 @@
-import {StaticImageData} from 'next/image';
-import {useImageSource} from '../../../hooks/use-image-source';
-import {CarouselImage} from '../carousel.component';
 import {UseIncrements, useIncrements} from './use-increments';
+import {LDImage} from '../../../utils/fetch-objects';
 
 interface UseCarouselComponent {
-  loading: boolean;
-  sources: StaticImageData[];
   previousIndex: UseIncrements['previousIndex'];
   index: UseIncrements['index'];
   nextIndex: UseIncrements['nextIndex'];
@@ -13,8 +9,7 @@ interface UseCarouselComponent {
   select: UseIncrements['select'];
 }
 
-export function useCarouselComponent(images: CarouselImage[]): UseCarouselComponent {
-  const [sources, loading] = useImageSource(images.map(({image}) => image));
+export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
   const {
     previousIndex,
     index,
@@ -24,8 +19,6 @@ export function useCarouselComponent(images: CarouselImage[]): UseCarouselCompon
   } = useIncrements(images.length);
 
   return {
-    loading,
-    sources,
     previousIndex,
     index,
     nextIndex,

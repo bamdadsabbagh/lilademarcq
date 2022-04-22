@@ -1,11 +1,10 @@
 import {useCallback} from 'react';
 import {useAtom} from 'jotai';
-import {StaticImageData} from 'next/image';
 import {modalAtom, setModalAtom} from '../../../atoms/modal.atom';
 
 interface UseModalComponent {
   isOpen: boolean;
-  src: StaticImageData;
+  src: string;
   handleClick: () => void;
 }
 

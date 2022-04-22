@@ -1,25 +1,24 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {SectionComponent} from '../components/section/section.component';
 import {theme} from '../app/styles/theme';
-import {getMarkdown} from '../utils/get-markdown';
 import {Markdown, Title} from '../pages-styles/cgv.styles';
-import {MarkdownComponent} from '../components/markdown/markdown.component';
-import {convertMarkdownToHtml} from '../utils/convert-markdown-to-html';
+import {fetchSection, LDSection} from '../utils/fetch-section';
 
 interface CgvProps {
-  html: string;
+  section: LDSection;
 }
 
-export default function Cgv({html}: CgvProps): ReactElement {
+export default function Cgv({section}: CgvProps): ReactElement {
   return (
     <SectionComponent backgroundColor={theme.salmonLight}>
       <>
         <Title>
-          Conditions Générales de Vente
+          {section.title}
         </Title>
         <Markdown>
-          <MarkdownComponent content={html} />
+          {documentToReactComponents(section.body.json)}
         </Markdown>
       </>
     </SectionComponent>
@@ -27,12 +26,11 @@ export default function Cgv({html}: CgvProps): ReactElement {
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<CgvProps>> {
-  const markdown = getMarkdown('cgv');
-  const html = await convertMarkdownToHtml(markdown);
+  const section = await fetchSection('cgv');
 
   return {
     props: {
-      html,
+      section,
     },
   };
 }

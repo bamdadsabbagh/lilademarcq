@@ -1,52 +1,39 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useState} from 'react';
 import Image from 'next/image';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {SectionComponent} from '../../components/section/section.component';
 import {theme} from '../../app/styles/theme';
-import France from '../../../public/assets/icons/france.png';
-import Saw from '../../../public/assets/icons/saw.png';
+import France from '../../../public/icons/france.png';
+import Saw from '../../../public/icons/saw.png';
 import {FormComponent} from '../../components/form/form.component';
 import {
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
-import {MarkdownComponent} from '../../components/markdown/markdown.component';
-import {Container, MadeIn, MarkdownContainer} from './product.styles';
-import {
-  CarouselComponent,
-  CarouselImage,
-} from '../../components/carousel/carousel.component';
+import {Container, MadeIn, RichTextContainer} from './product.styles';
+import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {ModalComponent} from '../../components/modal/modal.component';
+import {LDObject} from '../../utils/fetch-object';
 
 export interface ProductLayoutProps {
-  data: {
-    slug: string;
-    name: string;
-    description: string;
-    structure: string;
-    structureDetails: string;
-    color: string;
-  };
-  content: string;
-  images: CarouselImage[];
-  color?: string;
+  object: LDObject;
 }
 
-const defaultProps = {
-  color: theme.black,
-};
-
 export function ProductLayout({
-  data,
-  content,
-  images,
-  color = defaultProps.color,
+  object,
 }: ProductLayoutProps): ReactElement {
+  const [color] = useState(theme[object.color] ?? theme.black);
+  const [images] = useState(object.imagesCollection.items);
+
   return (
     <>
       <ModalComponent />
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={3}>
-        <SectionTitleComponent color={color} bottomPadding={0.6}>
-          {`${data.name.toUpperCase()}, ${data.description}`}
+        <SectionTitleComponent
+          color={color}
+          bottomPadding={0.6}
+        >
+          {`${object.name.toUpperCase()}, ${object.description}`}
         </SectionTitleComponent>
 
         {images.length !== 0 && (
@@ -55,9 +42,9 @@ export function ProductLayout({
       </SectionComponent>
 
       <SectionComponent>
-        <MarkdownContainer>
-          <MarkdownComponent content={content} />
-        </MarkdownContainer>
+        <RichTextContainer>
+          {documentToReactComponents(object.body.json)}
+        </RichTextContainer>
       </SectionComponent>
 
       <SectionComponent backgroundColor={theme.salmonLight}>
@@ -91,10 +78,10 @@ export function ProductLayout({
           />
           <MadeIn>
             <p>
-              <b>{data.structure}</b>
+              <b>{object.structure}</b>
             </p>
             <p>
-              <small>{data.structureDetails}</small>
+              <small>{object.structureDetails.toLowerCase()}</small>
             </p>
           </MadeIn>
         </Container>

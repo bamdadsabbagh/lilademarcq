@@ -6,13 +6,15 @@ import {
 import {GridComponent} from './components/grid/grid.component';
 import {TileComponent} from './components/tile/tile.component';
 import {capitalizeFirstLetter} from '../../utils/capitalize-first-letter';
-import {useImageSource} from '../../hooks/use-image-source';
 
 export interface ProductTile {
+  slug: string;
+  position: number;
   name: string;
   description: string;
-  slug: string;
-  thumbnail: string;
+  thumbnail: {
+    url: string;
+  };
 }
 
 interface ProductsModuleProps {
@@ -20,28 +22,24 @@ interface ProductsModuleProps {
 }
 
 export function ProductsModule({products}: ProductsModuleProps): ReactElement {
-  const [sources, loading] = useImageSource(products.map(({thumbnail}) => thumbnail));
-
   return (
     <>
-      {!loading && (
-        <SectionComponent>
-          <SectionTitleComponent>
-            Objets design
-          </SectionTitleComponent>
-          <GridComponent>
-            {products.map((product, index) => (
-              <TileComponent
-                key={product.slug}
-                image={sources[index]}
-                title={product.name.toUpperCase()}
-                description={capitalizeFirstLetter(product.description.toLowerCase())}
-                href={`/objets/${product.slug}`}
-              />
-            ))}
-          </GridComponent>
-        </SectionComponent>
-      )}
+      <SectionComponent>
+        <SectionTitleComponent>
+          Objets design
+        </SectionTitleComponent>
+        <GridComponent>
+          {products.map((product) => (
+            <TileComponent
+              key={product.slug}
+              image={product.thumbnail.url}
+              title={product.name.toUpperCase()}
+              description={capitalizeFirstLetter(product.description.toLowerCase())}
+              href={`/objets/${product.slug}`}
+            />
+          ))}
+        </GridComponent>
+      </SectionComponent>
     </>
   );
 }

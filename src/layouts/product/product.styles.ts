@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {fontMontserrat, fontSpectral} from '../../app/styles/fonts';
 
-export const MarkdownContainer = styled.div`
+export const RichTextContainer = styled.div`
   ${fontSpectral};
   width: 60%;
   //margin-left: 10%;
@@ -14,7 +14,7 @@ export const MarkdownContainer = styled.div`
 
   hr {
     border: 0;
-    height: 1em;
+    margin-bottom: 1em;
   }
 `;
 

@@ -56,7 +56,7 @@ export const TextContainer = styled.div`
     margin-top: 1em;
   }
 
-  em {
+  i {
     font-style: italic;
   }
 `;

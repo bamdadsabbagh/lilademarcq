@@ -18,6 +18,7 @@
     "test:watch:all": "jest --watchAll"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.12.1",
     "@fontsource/montserrat": "^4.5.7",
     "@fontsource/spectral": "^4.5.5",
     "axios": "^0.26.1",
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@bamdadsabbagh/eslint-config": "^2.0.23",
+    "@contentful/rich-text-types": "^15.12.1",
     "@iconify/icons-entypo-social": "^1.2.2",
     "@iconify/icons-fa6-brands": "^1.2.2",
     "@iconify/react": "^3.2.1",
