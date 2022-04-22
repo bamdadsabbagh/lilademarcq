@@ -1,3 +1,20 @@
+## [1.9.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.9.0...v1.9.1) (2022-04-22)
+
+
+### Bug Fixes
+
+* **Next.js:** Remove `.next` folder before starting dev ([fb9963c](https://github.com/bamdadsabbagh/lilademarcq/commit/fb9963c9c571d9c3ebe7d7f4440aea2236d01fcb))
+* **Utils:** Reduce expense of system file reading ([280de1b](https://github.com/bamdadsabbagh/lilademarcq/commit/280de1bab3c54c0b19e29d083207d4e3b0240d23))
+* **Vercel:** Reverting not working workaround ([df99050](https://github.com/bamdadsabbagh/lilademarcq/commit/df9905017ef8141265079ccffd1abad94d07155d))
+* **Vercel:** Testing workaround with vercel-cli ([9a89bda](https://github.com/bamdadsabbagh/lilademarcq/commit/9a89bda5384db8e5dfab6e2c4887b8dbd044ae24))
+
+
+### Performance Improvements
+
+* **AwardsModule:** Improve styling and hover effects ([ea2f5c0](https://github.com/bamdadsabbagh/lilademarcq/commit/ea2f5c0512ffe9d907826a17895cd6c46d961d4e))
+* Set relative thumbnail folders and files + Misc improvements ([b339869](https://github.com/bamdadsabbagh/lilademarcq/commit/b339869517fb4ac48bf9713dbde5d970e3a296f8))
+* **Utils:** Split code ([84ec256](https://github.com/bamdadsabbagh/lilademarcq/commit/84ec256e616ad98b0d30539c64eedef3036b7ace))
+
 # [1.9.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.8.1...v1.9.0) (2022-04-21)
 
 
