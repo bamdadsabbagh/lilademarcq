@@ -2,6 +2,7 @@
 
 const configuration = {
   poweredByHeader: false,
+  unstable_excludeFiles: ['public/**/*'],
   webpack: (config) => {
     config = {
       ...config,
