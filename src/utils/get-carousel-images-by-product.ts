@@ -7,8 +7,15 @@ const getExtension = (name: string): string => name.split('.').pop();
 export function getCarouselImagesByProduct(slug: string): CarouselImage[] {
   try {
     const path = `/objets/${slug}/images`;
+    const publicPath = `public${path}`;
 
-    const files = fs.readdirSync(`public${path}`);
+    const dirStat = fs.statSync(publicPath);
+
+    if (!dirStat.isDirectory()) {
+      return [];
+    }
+
+    const files = fs.readdirSync(publicPath);
 
     const images = files.filter((file) => {
       const extension = getExtension(file);
@@ -19,7 +26,7 @@ export function getCarouselImagesByProduct(slug: string): CarouselImage[] {
 
     images.forEach((image) => {
       const imageName = image.split('.')[0];
-      const markdown = getMarkdown(imageName, `public${path}`);
+      const markdown = getMarkdown(imageName, publicPath);
 
       // @ts-expect-error initialize object
       const obj: CarouselImage = {};

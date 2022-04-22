@@ -11,26 +11,31 @@ export interface Markdown {
 }
 
 export function getMarkdown(targetSlug: string, targetDirectory = DATA_DIRECTORY): Markdown {
-  const workingDirectory = join(process.cwd(), targetDirectory);
-  const filenames = fs.readdirSync(workingDirectory);
-  const payload: Markdown[] = [];
+  try {
+    const workingDirectory = join(process.cwd(), targetDirectory);
 
-  filenames.forEach((filename) => {
-    if (filename !== `${targetSlug}.md`) {
+    const dirStat = fs.statSync(workingDirectory);
+
+    if (!dirStat.isDirectory()) {
       return;
     }
 
-    const path = join(workingDirectory, filename);
-    const f = fs.readFileSync(path, 'utf8');
-    const {data, content} = matter(f);
+    const filePath = join(workingDirectory, `${targetSlug}.md`);
+    const fileStat = fs.statSync(filePath);
 
+    if (!fileStat.isFile()) {
+      return;
+    }
+
+    const file = fs.readFileSync(filePath, 'utf8');
+    const {data, content} = matter(file);
     const cleanedContent = content.replace('\'', '’');
 
-    payload.push({
+    return {
       content: cleanedContent,
       data,
-    });
-  });
-
-  return payload[0];
+    };
+  } catch {
+    // silent fail
+  }
 }
