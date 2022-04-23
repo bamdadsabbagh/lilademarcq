@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.10.2...v1.11.0) (2022-04-23)
+
+
+### Features
+
+* **Form:** Make subscribe button clickable from its description + More consistent submit button styling ([1c1add4](https://github.com/bamdadsabbagh/lilademarcq/commit/1c1add4968ae6b8aa3bdecb8853ea7c2b3da1dd1))
+
 ## [1.10.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.10.1...v1.10.2) (2022-04-23)
 
 
