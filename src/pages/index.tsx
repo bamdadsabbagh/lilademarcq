@@ -43,10 +43,6 @@ export default function Index({
 }: IndexProps): ReactElement {
   return (
     <>
-      <SectionComponent backgroundColor={theme.green} verticalPadding={4}>
-        <FormComponent />
-      </SectionComponent>
-
       <ProductsModule products={objects} />
 
       <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
