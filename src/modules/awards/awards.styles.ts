@@ -34,7 +34,7 @@ export const ImageContainer = styled.div`
 
 export const Texts = styled.div<CommonProps & {visible: boolean;}>`
   ${common};
-  ${simpleTransition('max-height, opacity', 0.25)};
+  ${simpleTransition('max-height, opacity', 0.42)};
 
   overflow: hidden;
 

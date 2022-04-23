@@ -110,9 +110,9 @@ export const Input = styled.input`
   ${simpleTransition('box-shadow, background')};
   box-shadow: 0 1px 0 0 white;
 
-  &:focus {
-    box-shadow: 0 2px 0 0 white;
-    background: rgba(0, 0, 0, 0.02);
+  &:focus, &:hover {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.03);
   }
 
   ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -134,7 +134,13 @@ export const Input = styled.input`
   }
 `;
 
-export const Submit = styled.button<{backgroundColor: string;}>`
+interface SubmitProps {
+  backgroundColor: string;
+  width: number;
+  height: number;
+}
+
+export const Submit = styled.button<SubmitProps>`
   grid-row: 6;
   grid-column: 3;
   align-self: flex-end;
@@ -146,14 +152,14 @@ export const Submit = styled.button<{backgroundColor: string;}>`
   font-weight: 600;
 
   border: 3px solid white;
-  border-radius: 10px;
+  //border-radius: 10px;
 
   text-transform: uppercase;
 
   line-height: 2em;
 
   position: relative;
-  transition: 0.08s ease-in;
+  ${simpleTransition('color')};
 
   &:hover {
     color: ${({backgroundColor}) => backgroundColor};
@@ -168,13 +174,12 @@ export const Submit = styled.button<{backgroundColor: string;}>`
     position: absolute;
     background: white;
 
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: -2px;
+    transform: translateY(-1px);
     top: 100%;
 
     z-index: -1;
-    transition: top 0.09s ease-in;
+    ${simpleTransition('top')};
   }
 `;
 
@@ -189,7 +194,12 @@ export const Subscribe = styled.div`
   font-size: 0.7em;
 `;
 
-export const SubscribeCheckbox = styled.label<{backgroundColor: string;}>`
+interface SubscribeCheckboxProps {
+  backgroundColor: string;
+  hover: boolean;
+}
+
+export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -211,15 +221,11 @@ export const SubscribeCheckbox = styled.label<{backgroundColor: string;}>`
     height: 25px;
     width: 25px;
     border-radius: 50%;
-    background: transparent;
     border: 2px solid white;
+    background: ${({hover}) => hover ? 'white' : 'transparent'};
+    cursor: ${({hover}) => hover ? 'pointer' : 'inherit'};
 
     ${simpleTransition('background')};
-
-    &:hover {
-      background: white;
-      cursor: pointer;
-    }
   }
 
   input:checked ~ span {
@@ -249,4 +255,8 @@ export const SubscribeCheckbox = styled.label<{backgroundColor: string;}>`
 
 export const SubscribeText = styled.span`
   margin-left: 2em;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

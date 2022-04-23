@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {ReactElement, useCallback, useState} from 'react';
+import useMeasure from 'react-use-measure';
 import {TriangleComponent} from '../triangle/triangle.component';
 import {
   Container,
@@ -32,6 +33,17 @@ export function FormComponent({
 }: FormComponentProps): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
+  const [isSubscribe, setIsSubscribe] = useState(false);
+  const [isSubscribeHover, setIsSubscribeHover] = useState(false);
+  const [submitRef, bounds] = useMeasure();
+
+  const toggleSubscribe = useCallback(() => {
+    setIsSubscribe((s) => !s);
+  }, []);
+
+  const hoverSubscribe = useCallback((enter: boolean) => {
+    setIsSubscribeHover(enter);
+  }, []);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
@@ -134,19 +146,35 @@ export function FormComponent({
           </Label>
 
           <Subscribe>
-            <SubscribeCheckbox backgroundColor={backgroundColor}>
-              <input type="checkbox" />
+            <SubscribeCheckbox
+              backgroundColor={backgroundColor}
+              hover={isSubscribeHover}
+              onMouseEnter={() => hoverSubscribe(true)}
+              onMouseLeave={() => hoverSubscribe(false)}
+            >
+              <input
+                type="checkbox"
+                checked={isSubscribe}
+                onClick={() => toggleSubscribe()}
+              />
               <span />
             </SubscribeCheckbox>
-            <SubscribeText>
+            <SubscribeText
+              onClick={() => toggleSubscribe()}
+              onMouseEnter={() => hoverSubscribe(true)}
+              onMouseLeave={() => hoverSubscribe(false)}
+            >
               Cocher la case si vous acceptez de recevoir ma newsletter et des
               promotions
             </SubscribeText>
           </Subscribe>
 
           <Submit
+            ref={submitRef}
             backgroundColor={backgroundColor}
             type="submit"
+            width={bounds.width}
+            height={bounds.height}
           >
             Envoyer
           </Submit>
