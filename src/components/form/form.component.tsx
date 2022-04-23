@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, {ReactElement, useCallback, useState} from 'react';
-import useMeasure from 'react-use-measure';
+import React, {ReactElement} from 'react';
 import {TriangleComponent} from '../triangle/triangle.component';
 import {
   Container,
@@ -16,6 +15,7 @@ import {
   Title,
 } from './form.styles';
 import {theme} from '../../app/styles/theme';
+import {useFormComponent} from './hooks/use-form-component';
 
 interface FormComponentProps {
   text?: string;
@@ -31,23 +31,17 @@ export function FormComponent({
   text = defaultProps.text,
   backgroundColor = defaultProps.backgroundColor,
 }: FormComponentProps): ReactElement {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isHover, setIsHover] = useState(false);
-  const [isSubscribe, setIsSubscribe] = useState(false);
-  const [isSubscribeHover, setIsSubscribeHover] = useState(false);
-  const [submitRef, bounds] = useMeasure();
-
-  const toggleSubscribe = useCallback(() => {
-    setIsSubscribe((s) => !s);
-  }, []);
-
-  const hoverSubscribe = useCallback((enter: boolean) => {
-    setIsSubscribeHover(enter);
-  }, []);
-
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-  }, []);
+  const {
+    isOpen,
+    setIsOpen,
+    isHover,
+    setIsHover,
+    isSubscribe,
+    isSubscribeHover,
+    toggleSubscribe,
+    hoverSubscribe,
+    handleSubmit,
+  } = useFormComponent();
 
   return (
     <Container>
@@ -78,12 +72,16 @@ export function FormComponent({
 
           <Label htmlFor="nom" row={2} column={1} isColumn>
             <span>Nom*</span>
-            <Input type="text" />
+            <Input
+              type="text"
+            />
           </Label>
 
           <Label htmlFor="prenom" row={2} column={2} isColumn>
             <span>Prenom*</span>
-            <Input type="text" />
+            <Input
+              type="text"
+            />
           </Label>
 
           <Label
@@ -106,6 +104,17 @@ export function FormComponent({
           >
             <Input
               placeholder="Code postal"
+              type="text"
+            />
+          </Label>
+
+          <Label
+            row={4}
+            column={3}
+            isColumn
+          >
+            <Input
+              placeholder="Ville*"
               type="text"
             />
           </Label>
@@ -134,17 +143,6 @@ export function FormComponent({
             />
           </Label>
 
-          <Label
-            row={4}
-            column={3}
-            isColumn
-          >
-            <Input
-              placeholder="Ville*"
-              type="text"
-            />
-          </Label>
-
           <Subscribe>
             <SubscribeCheckbox
               backgroundColor={backgroundColor}
@@ -156,6 +154,7 @@ export function FormComponent({
                 type="checkbox"
                 checked={isSubscribe}
                 onClick={() => toggleSubscribe()}
+                readOnly
               />
               <span />
             </SubscribeCheckbox>
@@ -170,11 +169,8 @@ export function FormComponent({
           </Subscribe>
 
           <Submit
-            ref={submitRef}
             backgroundColor={backgroundColor}
             type="submit"
-            width={bounds.width}
-            height={bounds.height}
           >
             Envoyer
           </Submit>

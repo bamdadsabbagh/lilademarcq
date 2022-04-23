@@ -136,8 +136,6 @@ export const Input = styled.input`
 
 interface SubmitProps {
   backgroundColor: string;
-  width: number;
-  height: number;
 }
 
 export const Submit = styled.button<SubmitProps>`
@@ -174,8 +172,7 @@ export const Submit = styled.button<SubmitProps>`
     position: absolute;
     background: white;
 
-    inset: -2px;
-    transform: translateY(-1px);
+    inset: 0;
     top: 100%;
 
     z-index: -1;
