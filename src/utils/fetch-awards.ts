@@ -28,22 +28,15 @@ export interface LDAward {
 }
 
 interface AwardResponse {
-  data: {
-    awardCollection: {
-      items: LDAward[];
-    };
+  awardCollection: {
+    items: LDAward[];
   };
 }
 
 export async function fetchAwards(): Promise<LDAward[]> {
   const response: AwardResponse = await fetchContentful(queryAwards);
 
-  if (!response.data) {
-    throw new Error('No data found');
-  }
-
-  const awards = response.data.awardCollection.items;
-
+  const awards = response.awardCollection.items;
   awards.sort((a, b) => a.position - b.position);
 
   return awards;

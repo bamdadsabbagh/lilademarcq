@@ -1,20 +1,18 @@
 import React, {ReactElement} from 'react';
 import {useRouter} from 'next/router';
+import {useAtom} from 'jotai';
 import {Nav, StyledList} from './nav.styles';
 import {MenuComponent} from './components/menu/menu.component';
-import {Route} from '../../pages/api/routes';
+import {navAtom} from '../../atoms/nav.atom';
 
-interface NavComponentProps {
-  routes: Route[];
-}
-
-export default function NavComponent({routes}: NavComponentProps): ReactElement {
+export default function NavComponent(): ReactElement {
   const router = useRouter();
+  const [nav] = useAtom(navAtom);
 
   return (
     <Nav>
       <StyledList>
-        {routes.map((route, index) => {
+        {nav.map((route, index) => {
           const {name, slug, items} = route;
           return (
             <MenuComponent
@@ -22,7 +20,7 @@ export default function NavComponent({routes}: NavComponentProps): ReactElement 
               k={index}
               primary={{name, slug}}
               noLeft={index === 0}
-              noRight={index === routes.length - 1}
+              noRight={index === nav.length - 1}
               active={router.pathname === slug}
               items={items || []}
             />

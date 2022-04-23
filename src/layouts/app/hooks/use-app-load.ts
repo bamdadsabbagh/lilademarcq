@@ -1,5 +1,5 @@
 import {useAtom} from 'jotai';
-import {appLoadedAtom} from '../../../atoms/app-loaded';
+import {appLoadedAtom} from '../../../atoms/app-loaded.atom';
 import {useTimeout} from '../../../hooks/use-timeout';
 
 export function useAppLoad(): void {

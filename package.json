@@ -21,7 +21,6 @@
     "@contentful/rich-text-react-renderer": "^15.12.1",
     "@fontsource/montserrat": "^4.5.7",
     "@fontsource/spectral": "^4.5.5",
-    "axios": "^0.26.1",
     "file-loader": "^6.2.0",
     "gray-matter": "^4.0.3",
     "jotai": "^1.6.4",

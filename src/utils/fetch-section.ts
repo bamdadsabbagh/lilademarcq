@@ -28,19 +28,12 @@ export interface LDSection {
 }
 
 interface SectionResponse {
-  data: {
-    sectionCollection: {
-      items: LDSection[];
-    };
+  sectionCollection: {
+    items: LDSection[];
   };
 }
 
 export async function fetchSection(slug: string): Promise<LDSection> {
   const response: SectionResponse = await fetchContentful(querySection(slug));
-
-  if (!response.data) {
-    throw new Error('No data found');
-  }
-
-  return response.data.sectionCollection.items[0];
+  return response.sectionCollection.items[0];
 }

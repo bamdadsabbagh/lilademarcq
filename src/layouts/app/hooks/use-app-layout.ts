@@ -1,16 +1,15 @@
-import {Route} from '../../../pages/api/routes';
-import {useRoutes} from './use-routes';
 import {useAppLoad} from './use-app-load';
+import {useReady} from './use-ready';
 
 interface UseAppLayout {
-  routes: Route[];
+  isReady: boolean;
 }
 
 export function useAppLayout(): UseAppLayout {
   useAppLoad();
-  const routes = useRoutes();
+  const isReady = useReady();
 
   return {
-    routes,
+    isReady,
   };
 }

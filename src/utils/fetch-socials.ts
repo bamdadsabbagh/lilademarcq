@@ -25,21 +25,16 @@ export interface LDSocial {
 }
 
 interface SocialResponse {
-  data: {
-    socialCollection: {
-      items: LDSocial[];
-    };
+  socialCollection: {
+    items: LDSocial[];
   };
 }
 
 export async function fetchSocials(): Promise<LDSocial[]> {
   const response: SocialResponse = await fetchContentful(querySocial);
 
-  if (!response.data) {
-    throw new Error('No data found');
-  }
-
-  const socials = response.data.socialCollection.items;
+  const socials = response.socialCollection.items;
   socials.sort((a, b) => a.position - b.position);
+  
   return socials;
 }

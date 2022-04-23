@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {useAtom} from 'jotai';
 import {Container, Content} from './section.styles';
-import {appLoadedAtom} from '../../atoms/app-loaded';
+import {appLoadedAtom} from '../../atoms/app-loaded.atom';
 
 export interface ContentSectionComponentProps {
   children: ReactElement | ReactElement[];

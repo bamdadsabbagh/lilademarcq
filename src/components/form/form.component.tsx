@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, {ReactElement, useCallback, useState} from 'react';
-import useMeasure from 'react-use-measure';
+import React, {ReactElement, useCallback} from 'react';
 import {TriangleComponent} from '../triangle/triangle.component';
 import {
   Container,
@@ -16,6 +15,7 @@ import {
   Title,
 } from './form.styles';
 import {theme} from '../../app/styles/theme';
+import {useFormComponent} from './hooks/use-form-component';
 
 interface FormComponentProps {
   text?: string;
@@ -31,23 +31,20 @@ export function FormComponent({
   text = defaultProps.text,
   backgroundColor = defaultProps.backgroundColor,
 }: FormComponentProps): ReactElement {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isHover, setIsHover] = useState(false);
-  const [isSubscribe, setIsSubscribe] = useState(false);
-  const [isSubscribeHover, setIsSubscribeHover] = useState(false);
-  const [submitRef, bounds] = useMeasure();
+  const {
+    form,
+    isOpen,
+    setIsOpen,
+    isHover,
+    setIsHover,
+    isSubscribe,
+    isSubscribeHover,
+    toggleSubscribe,
+    hoverSubscribe,
+    handleSubmit,
+  } = useFormComponent();
 
-  const toggleSubscribe = useCallback(() => {
-    setIsSubscribe((s) => !s);
-  }, []);
-
-  const hoverSubscribe = useCallback((enter: boolean) => {
-    setIsSubscribeHover(enter);
-  }, []);
-
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-  }, []);
+  const cleanSlug = useCallback((s: string) => s.replace('*', ''), []);
 
   return (
     <Container>
@@ -65,37 +62,42 @@ export function FormComponent({
       <FormContainer visible={isOpen}>
         <Form onSubmit={handleSubmit}>
 
-          <Label
-            htmlFor="objet"
-            row={1}
-            column={[1, 4]}
-          >
-            <span>Objet*</span>
-            <Select defaultValue="">
-              <option value="value">Label</option>
+          <Label htmlFor={cleanSlug(form.topicTitle)} row={1} column={[1, 4]}>
+            <span>{form.topicTitle}</span>
+            <Select>
+              {form.topic.map((topic) => (
+                <option key={topic} value={topic}>{topic}</option>
+              ))}
             </Select>
           </Label>
 
-          <Label htmlFor="nom" row={2} column={1} isColumn>
-            <span>Nom*</span>
-            <Input type="text" />
-          </Label>
-
-          <Label htmlFor="prenom" row={2} column={2} isColumn>
-            <span>Prenom*</span>
+          <Label htmlFor={cleanSlug(form.name)} row={2} column={1} isColumn>
+            <span>{form.name}</span>
             <Input type="text" />
           </Label>
 
           <Label
-            htmlFor="adresse"
+            htmlFor={cleanSlug(form.firstName)}
+            row={2}
+            column={2}
+            isColumn
+          >
+            <span>{form.firstName}</span>
+            <Input
+              type="text"
+            />
+          </Label>
+
+          <Label
+            htmlFor={cleanSlug(form.address)}
             row={2}
             column={3}
             isColumn
           >
-            <span>Adresse</span>
+            <span>{form.address}</span>
             <Input
               type="text"
-              placeholder="Voie"
+              placeholder={form.road}
             />
           </Label>
 
@@ -105,20 +107,31 @@ export function FormComponent({
             isColumn
           >
             <Input
-              placeholder="Code postal"
+              placeholder={form.postcode}
               type="text"
             />
           </Label>
 
           <Label
-            htmlFor="contact"
+            row={4}
+            column={3}
+            isColumn
+          >
+            <Input
+              placeholder={form.city}
+              type="text"
+            />
+          </Label>
+
+          <Label
+            htmlFor={cleanSlug(form.contact)}
             row={4}
             column={1}
             isColumn
           >
-            <span>Contact</span>
+            <span>{form.contact}</span>
             <Input
-              placeholder="E-mail*"
+              placeholder={form.email}
               type="text"
             />
           </Label>
@@ -129,18 +142,7 @@ export function FormComponent({
             isColumn
           >
             <Input
-              placeholder="Téléphone"
-              type="text"
-            />
-          </Label>
-
-          <Label
-            row={4}
-            column={3}
-            isColumn
-          >
-            <Input
-              placeholder="Ville*"
+              placeholder={form.phone}
               type="text"
             />
           </Label>
@@ -156,6 +158,7 @@ export function FormComponent({
                 type="checkbox"
                 checked={isSubscribe}
                 onClick={() => toggleSubscribe()}
+                readOnly
               />
               <span />
             </SubscribeCheckbox>
@@ -163,20 +166,16 @@ export function FormComponent({
               onClick={() => toggleSubscribe()}
               onMouseEnter={() => hoverSubscribe(true)}
               onMouseLeave={() => hoverSubscribe(false)}
-            >
-              Cocher la case si vous acceptez de recevoir ma newsletter et des
-              promotions
-            </SubscribeText>
+            >{
+              form.subscription
+            }</SubscribeText>
           </Subscribe>
 
           <Submit
-            ref={submitRef}
             backgroundColor={backgroundColor}
             type="submit"
-            width={bounds.width}
-            height={bounds.height}
           >
-            Envoyer
+            {form.submit}
           </Submit>
         </Form>
       </FormContainer>
