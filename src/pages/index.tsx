@@ -22,6 +22,7 @@ import {fetchSection, LDSection} from '../utils/fetch-section';
 import {fetchAwards, LDAward} from '../utils/fetch-awards';
 import {fetchValues, LDValues} from '../utils/fetch-values';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
+import {REVALIDATE} from '../constants';
 
 interface IndexProps {
   about: LDSection;
@@ -92,5 +93,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
       socials,
       values,
     },
+    revalidate: REVALIDATE,
   };
 }

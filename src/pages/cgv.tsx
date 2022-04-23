@@ -5,6 +5,7 @@ import {SectionComponent} from '../components/section/section.component';
 import {theme} from '../app/styles/theme';
 import {Markdown, Title} from '../pages-styles/cgv.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
+import {REVALIDATE} from '../constants';
 
 interface CgvProps {
   section: LDSection;
@@ -32,5 +33,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<CgvProps>> 
     props: {
       section,
     },
+    revalidate: REVALIDATE,
   };
 }

@@ -10,6 +10,7 @@ import {
 } from '../../layouts/product/product.layout';
 import {fetchObjects} from '../../utils/fetch-objects';
 import {fetchObject} from '../../utils/fetch-object';
+import {REVALIDATE} from '../../constants';
 
 export default function Product({
   object,
@@ -42,7 +43,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
@@ -56,6 +57,9 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
   const object = await fetchObject(product);
 
   return {
-    props: {object},
+    props: {
+      object,
+    },
+    revalidate: REVALIDATE,
   };
 }

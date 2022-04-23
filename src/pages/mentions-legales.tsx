@@ -5,6 +5,7 @@ import {SectionComponent} from '../components/section/section.component';
 import {theme} from '../app/styles/theme';
 import {Markdown, Title} from '../pages-styles/mentions-legales.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
+import {REVALIDATE} from '../constants';
 
 interface MentionsLegalesProps {
   section: LDSection;
@@ -34,5 +35,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<MentionsLeg
     props: {
       section,
     },
+    revalidate: REVALIDATE,
   };
 }

@@ -7,6 +7,7 @@ import {
 } from '../components/image-text/image-text.component';
 import {StyledMarkdownContainer} from '../pages-styles/a-propos.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
+import {REVALIDATE} from '../constants';
 
 interface AProposProps {
   about: LDSection;
@@ -34,5 +35,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<AProposProp
     props: {
       about,
     },
+    revalidate: REVALIDATE,
   };
 }
