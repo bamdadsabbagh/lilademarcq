@@ -1,3 +1,21 @@
+# [1.12.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.11.0...v1.12.0) (2022-04-23)
+
+
+### Bug Fixes
+
+* Remove testing code ([7afceb8](https://github.com/bamdadsabbagh/lilademarcq/commit/7afceb88313b2ae5e23adb68bb588cec86945b98))
+
+
+### Features
+
+* Fetch form initial data from CMS + Remove `axios` + Refactor fetcher functions ([c53fd22](https://github.com/bamdadsabbagh/lilademarcq/commit/c53fd2275620b49a3d5e965660dff2f23fc36cb9))
+
+
+### Performance Improvements
+
+* **Form:** Place `city` input in order for tab order + Split component hook code + Remove unused code ([859bd36](https://github.com/bamdadsabbagh/lilademarcq/commit/859bd367eef7aedcd786c36005c0f1ab00620ef0))
+* **Nav:** Add navigation data to store + Fetch it earlier at `_app` level ([e3aa988](https://github.com/bamdadsabbagh/lilademarcq/commit/e3aa98847c8c6bbafbfd7053e7601dd14ef66f39))
+
 # [1.11.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.10.2...v1.11.0) (2022-04-23)
 
 
