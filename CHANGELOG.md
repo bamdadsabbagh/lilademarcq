@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.10.1...v1.10.2) (2022-04-23)
+
+
+### Performance Improvements
+
+* Add revalidation + Add fallbacks ([5a698c4](https://github.com/bamdadsabbagh/lilademarcq/commit/5a698c4405c2f7090d00cd7b7b330e786b1f6fda))
+
 ## [1.10.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.10.0...v1.10.1) (2022-04-22)
 
 
