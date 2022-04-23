@@ -13,14 +13,14 @@ interface AppLayoutProps {
  * Component for the app layout
  */
 export function AppLayout({children}: AppLayoutProps): ReactElement {
-  const {routes} = useAppLayout();
+  const {isReady} = useAppLayout();
 
   return (
     <>
-      {routes.length !== 0 && (
+      {isReady && (
         <Container>
           <HeaderComponent />
-          <NavComponent routes={routes} />
+          <NavComponent />
           {children}
           <FooterComponent />
         </Container>
