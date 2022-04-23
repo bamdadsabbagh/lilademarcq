@@ -1,5 +1,12 @@
-export async function fetchContentful(query, preview = false) {
-  return fetch(
+type ContentfulResponse<T> = {
+  data: T;
+}
+
+export async function fetchContentful<Collection>(
+  query: string,
+  preview = false,
+): Promise<Collection> {
+  const f = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
       method: 'POST',
@@ -13,5 +20,13 @@ export async function fetchContentful(query, preview = false) {
       },
       body: JSON.stringify({query}),
     },
-  ).then((response) => response.json());
+  );
+
+  const response: ContentfulResponse<Collection> = await f.json();
+
+  if (!response?.data) {
+    throw new Error('No data found');
+  }
+
+  return response.data;
 }

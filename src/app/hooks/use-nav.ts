@@ -1,6 +1,5 @@
 import {useAtom} from 'jotai';
 import {useEffect} from 'react';
-import axios from 'axios';
 import {setNavAtom} from '../../atoms/nav.atom';
 
 export function useNav(): void {
@@ -8,8 +7,8 @@ export function useNav(): void {
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get('/api/nav');
-      const data = await response.data;
+      const response = await fetch('/api/nav');
+      const data = await response.json();
       setNav(data);
     })();
   }, [setNav]);

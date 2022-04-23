@@ -5,8 +5,11 @@ import {
   useCallback,
   useState,
 } from 'react';
+import {useAtom} from 'jotai';
+import {FormAtom, formAtom} from '../../../atoms/form.atom';
 
 interface UseFormComponent {
+  form: FormAtom;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<this['isOpen']>>;
   isHover: boolean;
@@ -19,7 +22,7 @@ interface UseFormComponent {
 }
 
 export function useFormComponent(): UseFormComponent {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isHover, setIsHover] = useState(false);
   const [isSubscribe, setIsSubscribe] = useState(false);
   const [isSubscribeHover, setIsSubscribeHover] = useState(false);
@@ -36,7 +39,10 @@ export function useFormComponent(): UseFormComponent {
     e.preventDefault();
   }, []);
 
+  const [form] = useAtom(formAtom);
+
   return {
+    form,
     isOpen,
     setIsOpen,
     isHover,

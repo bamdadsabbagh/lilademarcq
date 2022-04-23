@@ -48,20 +48,13 @@ export interface LDObject {
 }
 
 export interface ObjectResponse {
-  data: {
-    objectCollection: {
-      items: LDObject[];
-    };
+  objectCollection: {
+    items: LDObject[];
   };
 }
 
 export async function fetchObject(slug: string): Promise<LDObject> {
   const response: ObjectResponse = await fetchContentful(queryObject(slug));
-
-  if (!response.data) {
-    throw new Error('No data found');
-  }
-
-  const objects = response.data.objectCollection.items;
+  const objects = response.objectCollection.items;
   return objects[0];
 }

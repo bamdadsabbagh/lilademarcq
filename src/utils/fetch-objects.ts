@@ -31,11 +31,8 @@ export interface RichText {
 export async function fetchObjects(): Promise<LDObject[]> {
   const response: ObjectResponse = await fetchContentful(queryObjects);
 
-  if (!response.data) {
-    throw new Error('No data found');
-  }
-
-  const objects = response.data.objectCollection.items;
+  const objects = response.objectCollection.items;
   objects.sort((a, b) => a.position - b.position);
+
   return objects;
 }

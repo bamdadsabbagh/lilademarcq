@@ -15,11 +15,6 @@ query {
 `;
 
 export async function fetchMenu(): Promise<LDObject[]> {
-  const response: ObjectResponse = await fetchContentful(queryMenu);
-
-  if (!response.data) {
-    throw new Error('No data found');
-  }
-
-  return response.data.objectCollection.items;
+  const response = await fetchContentful<ObjectResponse>(queryMenu);
+  return response.objectCollection.items;
 }

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useCallback} from 'react';
 import {TriangleComponent} from '../triangle/triangle.component';
 import {
   Container,
@@ -32,6 +32,7 @@ export function FormComponent({
   backgroundColor = defaultProps.backgroundColor,
 }: FormComponentProps): ReactElement {
   const {
+    form,
     isOpen,
     setIsOpen,
     isHover,
@@ -42,6 +43,8 @@ export function FormComponent({
     hoverSubscribe,
     handleSubmit,
   } = useFormComponent();
+
+  const cleanSlug = useCallback((s: string) => s.replace('*', ''), []);
 
   return (
     <Container>
@@ -59,41 +62,42 @@ export function FormComponent({
       <FormContainer visible={isOpen}>
         <Form onSubmit={handleSubmit}>
 
-          <Label
-            htmlFor="objet"
-            row={1}
-            column={[1, 4]}
-          >
-            <span>Objet*</span>
-            <Select defaultValue="">
-              <option value="value">Label</option>
+          <Label htmlFor={cleanSlug(form.topicTitle)} row={1} column={[1, 4]}>
+            <span>{form.topicTitle}</span>
+            <Select>
+              {form.topic.map((topic) => (
+                <option key={topic} value={topic}>{topic}</option>
+              ))}
             </Select>
           </Label>
 
-          <Label htmlFor="nom" row={2} column={1} isColumn>
-            <span>Nom*</span>
-            <Input
-              type="text"
-            />
+          <Label htmlFor={cleanSlug(form.name)} row={2} column={1} isColumn>
+            <span>{form.name}</span>
+            <Input type="text" />
           </Label>
 
-          <Label htmlFor="prenom" row={2} column={2} isColumn>
-            <span>Prenom*</span>
+          <Label
+            htmlFor={cleanSlug(form.firstName)}
+            row={2}
+            column={2}
+            isColumn
+          >
+            <span>{form.firstName}</span>
             <Input
               type="text"
             />
           </Label>
 
           <Label
-            htmlFor="adresse"
+            htmlFor={cleanSlug(form.address)}
             row={2}
             column={3}
             isColumn
           >
-            <span>Adresse</span>
+            <span>{form.address}</span>
             <Input
               type="text"
-              placeholder="Voie"
+              placeholder={form.road}
             />
           </Label>
 
@@ -103,7 +107,7 @@ export function FormComponent({
             isColumn
           >
             <Input
-              placeholder="Code postal"
+              placeholder={form.postcode}
               type="text"
             />
           </Label>
@@ -114,20 +118,20 @@ export function FormComponent({
             isColumn
           >
             <Input
-              placeholder="Ville*"
+              placeholder={form.city}
               type="text"
             />
           </Label>
 
           <Label
-            htmlFor="contact"
+            htmlFor={cleanSlug(form.contact)}
             row={4}
             column={1}
             isColumn
           >
-            <span>Contact</span>
+            <span>{form.contact}</span>
             <Input
-              placeholder="E-mail*"
+              placeholder={form.email}
               type="text"
             />
           </Label>
@@ -138,7 +142,7 @@ export function FormComponent({
             isColumn
           >
             <Input
-              placeholder="Téléphone"
+              placeholder={form.phone}
               type="text"
             />
           </Label>
@@ -162,17 +166,16 @@ export function FormComponent({
               onClick={() => toggleSubscribe()}
               onMouseEnter={() => hoverSubscribe(true)}
               onMouseLeave={() => hoverSubscribe(false)}
-            >
-              Cocher la case si vous acceptez de recevoir ma newsletter et des
-              promotions
-            </SubscribeText>
+            >{
+              form.subscription
+            }</SubscribeText>
           </Subscribe>
 
           <Submit
             backgroundColor={backgroundColor}
             type="submit"
           >
-            Envoyer
+            {form.submit}
           </Submit>
         </Form>
       </FormContainer>
