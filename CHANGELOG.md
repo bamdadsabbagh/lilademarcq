@@ -1,3 +1,16 @@
+## [1.13.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.3...v1.13.4) (2022-04-26)
+
+
+### Bug Fixes
+
+* Rename files + Provide absolute URL for client side fetches + Clean code ([4cd8d0a](https://github.com/bamdadsabbagh/lilademarcq/commit/4cd8d0a586337328567ca9615f80513348432909))
+* **Stylings:** Better margins and paddings ([f7ef613](https://github.com/bamdadsabbagh/lilademarcq/commit/f7ef613971ea56b082443535739d7dd2f4482ba4))
+
+
+### Performance Improvements
+
+* **Deps:** Update to latest ([d18a97a](https://github.com/bamdadsabbagh/lilademarcq/commit/d18a97a09fdbb1585ad650d1b9c0b77293af3c35))
+
 ## [1.13.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.2...v1.13.3) (2022-04-26)
 
 
