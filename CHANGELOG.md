@@ -1,3 +1,18 @@
+# [1.13.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.12.0...v1.13.0) (2022-04-26)
+
+
+### Bug Fixes
+
+* **FormComponent:** Set back default state to not opened ([6e46232](https://github.com/bamdadsabbagh/lilademarcq/commit/6e4623255e55f459ec5935b72a8e0c0c810566f8))
+* Use `gap` instead of `grid-gap` ([9cc32ba](https://github.com/bamdadsabbagh/lilademarcq/commit/9cc32ba41782d77d6a596fada098c7aefb5c05dd))
+
+
+### Features
+
+* **AwardsModule:** Rewrite body ([a32a9bf](https://github.com/bamdadsabbagh/lilademarcq/commit/a32a9bfe45eb549baf9a98317c924fc5eabf66ef))
+* **ProductLayout:** Rewrite banner blocks ([4fe25dd](https://github.com/bamdadsabbagh/lilademarcq/commit/4fe25dd68d668270e753df22e8fdafa3ba9316db))
+* Refactor NavigationComponent + Merge header logo into it + Add stickiness on scroll + Fix SocialButtonComponent ([3820417](https://github.com/bamdadsabbagh/lilademarcq/commit/3820417ebf80f57c72fbc6b85f9c7b749694e42f))
+
 # [1.12.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.11.0...v1.12.0) (2022-04-23)
 
 
