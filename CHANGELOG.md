@@ -1,3 +1,10 @@
+## [1.13.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.2...v1.13.3) (2022-04-26)
+
+
+### Bug Fixes
+
+* Improve layout and styling ([00adfa7](https://github.com/bamdadsabbagh/lilademarcq/commit/00adfa7ff33c5a33e2a8094f17b7a9aff20824c4))
+
 ## [1.13.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.1...v1.13.2) (2022-04-26)
 
 
