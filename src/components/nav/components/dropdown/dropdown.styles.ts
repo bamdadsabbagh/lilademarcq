@@ -23,8 +23,6 @@ export const Cell = styled.div<StyledContainerProps>`
   border-left: ${({noLeft}) => noLeft ? 0 : '1px'} solid black;
   border-right: ${({noRight}) => noRight ? 0 : '1px'} solid black;
 
-  z-index: 100;
-
   user-select: none;
 
   opacity: 0;
@@ -72,7 +70,7 @@ export const Dropdown = styled.div<{display: number;}>`
   width: 100%;
   max-height: ${(props) => props.display ? '200px' : '0'};
 
-  z-index: 100;
+  //z-index: 100;
 
   overflow: hidden;
   ${simpleTransition('max-height', 0.5)};
