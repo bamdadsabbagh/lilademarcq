@@ -1,4 +1,4 @@
-import React, {ReactElement, useState} from 'react';
+import React, {ReactElement, useCallback, useState} from 'react';
 import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {theme} from '../../app/styles/theme';
@@ -7,16 +7,15 @@ import {
   AlignKeys,
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
-import {TriangleComponent} from '../../components/triangle/triangle.component';
 import {
+  Award,
   ButtonContainer,
-  Container,
-  ImageContainer,
-  Images,
+  NewContainer,
+  NewImage,
   TextContainer,
-  Texts,
 } from './awards.styles';
 import {LDAward} from '../../utils/fetch-awards';
+import {TriangleComponent} from '../../components/triangle/triangle.component';
 
 export interface AwardsModuleProps {
   awards: LDAward[];
@@ -26,8 +25,9 @@ export function AwardsModule({
   awards,
 }: AwardsModuleProps): ReactElement {
   const [size] = useState(250);
-  const [open, setOpen] = useState(false);
-  const [hover, setHover] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const toggleOpen = useCallback(() => setIsOpen((o) => !o), []);
 
   return (
     <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
@@ -35,55 +35,39 @@ export function AwardsModule({
         Mes distinctions
       </SectionTitleComponent>
 
-      <Container
-        onClick={() => setOpen((o) => !o)}
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
+      <NewContainer
+        onClick={toggleOpen}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
       >
+        {awards.map((award) => (
+          <Award imageHeight={size}>
+            <NewImage>
+              <Image
+                src={award.image.url}
+                alt={award.slug}
+                layout="fixed"
+                width={size}
+                height={size}
+              />
+            </NewImage>
+            <TextContainer visible={isOpen}>
+              {documentToReactComponents(award.body.json)}
+            </TextContainer>
+          </Award>
 
-        <Images gap={size / 4}>
-          <ImageContainer>
-            <Image
-              src={awards[0].image.url}
-              alt={awards[0].slug}
-              layout="intrinsic"
-              width={size}
-              height={size}
-            />
-          </ImageContainer>
-          <ImageContainer>
-            <Image
-              src={awards[1].image.url}
-              alt={awards[1].slug}
-              layout="intrinsic"
-              width={size}
-              height={size}
-            />
-          </ImageContainer>
-        </Images>
+        ))}
+      </NewContainer>
 
-        <Texts
-          gap={size / 4}
-          visible={open}
-        >
-          <TextContainer>
-            {documentToReactComponents(awards[0].body.json)}
-          </TextContainer>
-          <TextContainer>
-            {documentToReactComponents(awards[1].body.json)}
-          </TextContainer>
-        </Texts>
-
-        <ButtonContainer>
-          <TriangleComponent
-            color={theme.green}
-            isBottom={!open}
-            isTop={open}
-            isHover={hover}
-          />
-        </ButtonContainer>
-
-      </Container>
+      <ButtonContainer onClick={toggleOpen}>
+        <TriangleComponent
+          color={theme.green}
+          isBottom={!isOpen}
+          isTop={isOpen}
+          isHover={isHover}
+        />
+      </ButtonContainer>
+      
     </SectionComponent>
   );
 }

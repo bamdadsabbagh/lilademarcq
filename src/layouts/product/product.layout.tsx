@@ -9,7 +9,12 @@ import {FormComponent} from '../../components/form/form.component';
 import {
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
-import {Container, MadeIn, RichTextContainer} from './product.styles';
+import {
+  Banner,
+  BannerImage,
+  BannerText,
+  RichTextContainer,
+} from './product.styles';
 import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {ModalComponent} from '../../components/modal/modal.component';
 import {LDObject} from '../../utils/fetch-object';
@@ -48,43 +53,45 @@ export function ProductLayout({
       </SectionComponent>
 
       <SectionComponent backgroundColor={theme.salmonLight}>
-        <Container>
-          <span />
-          <Image
-            alt="Loire"
-            src={France}
-            placeholder="blur"
-            layout="intrinsic"
-            objectFit="contain"
-          />
-          <MadeIn>
+        <Banner>
+          <BannerImage>
+            <Image
+              alt="Loire"
+              src={France}
+              placeholder="blur"
+              layout="intrinsic"
+              objectFit="contain"
+            />
+          </BannerImage>
+          <BannerText>
             <p>
               <b>Made in Loire</b>
               (France)
             </p>
-          </MadeIn>
-        </Container>
+          </BannerText>
+        </Banner>
       </SectionComponent>
 
       <SectionComponent backgroundColor={theme.white}>
-        <Container>
-          <span />
-          <Image
-            alt="Saw"
-            src={Saw}
-            placeholder="blur"
-            layout="intrinsic"
-            objectFit="contain"
-          />
-          <MadeIn>
+        <Banner>
+          <BannerImage>
+            <Image
+              alt="Saw"
+              src={Saw}
+              placeholder="blur"
+              layout="intrinsic"
+              objectFit="contain"
+            />
+          </BannerImage>
+          <BannerText>
             <p>
               <b>{object.structure}</b>
             </p>
             <p>
               <small>{object.structureDetails.toLowerCase()}</small>
             </p>
-          </MadeIn>
-        </Container>
+          </BannerText>
+        </Banner>
       </SectionComponent>
 
       <SectionComponent backgroundColor={color} verticalPadding={4}>

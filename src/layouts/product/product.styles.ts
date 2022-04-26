@@ -4,7 +4,6 @@ import {fontMontserrat, fontSpectral} from '../../app/styles/fonts';
 export const RichTextContainer = styled.div`
   ${fontSpectral};
   width: 60%;
-  //margin-left: 10%;
   line-height: 1.2em;
 
   p {
@@ -18,16 +17,29 @@ export const RichTextContainer = styled.div`
   }
 `;
 
-export const Container = styled.div`
-  display: grid;
-  justify-content: center;
+export const Banner = styled.div`
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
+  margin: 2em 0;
 
-  grid-template-columns: 29% 5em 1fr;
-  grid-gap: 2em;
+  right: 50%;
+  transform: translateX(50%);
 `;
 
-export const MadeIn = styled.div`
+export const BannerImage = styled.div`
+  position: absolute;
+  transform: translateX(-200px);
+`;
+
+export const BannerText = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  transform: translateX(-100px);
+
   ${fontMontserrat};
   font-size: 1.3em;
   font-weight: 300;

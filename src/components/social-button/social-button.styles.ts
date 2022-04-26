@@ -3,12 +3,16 @@ import Image from 'next/image';
 import {Icon as Iconify} from '@iconify/react';
 import {simpleTransition} from '../../app/styles/transitions';
 
-export const Container = styled.div<{display: number;}>`
+interface ContainerProps {
+  isOpen: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   position: absolute;
   ${simpleTransition('transform, opacity')};
 
-  transform: translate(-50%, -50%) scale(${(props) => props.display ? 100 : 0}%);
-  opacity: ${(props) => props.display ? 1 : 0};
+  transform: translate(-50%, -50%) scale(${({isOpen}) => isOpen ? 100 : 0}%);
+  opacity: ${({isOpen}) => isOpen ? 1 : 0};
 `;
 
 export const Icon = styled(Iconify)`

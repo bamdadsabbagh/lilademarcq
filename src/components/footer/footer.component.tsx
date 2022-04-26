@@ -1,23 +1,17 @@
 import React, {ReactElement} from 'react';
-import Link from 'next/link';
 import {Footer, Span} from './footer.styles';
+import {LinkComponent} from '../link/link.component';
 
 export function FooterComponent(): ReactElement {
   return (
     <Footer>
-      <Link href="/mentions-legales">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
-          <Span>Mentions Légales</Span>
-        </a>
-      </Link>
+      <LinkComponent href="/mentions-legales">
+        <Span>Mentions Légales</Span>
+      </LinkComponent>
 
-      <Link href="/cgv">
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
-          <Span>Conditions Générales de Vente</Span>
-        </a>
-      </Link>
+      <LinkComponent href="/cgv">
+        <Span>Conditions Générales de Vente</Span>
+      </LinkComponent>
 
       <Span>Catalogue 2022</Span>
 

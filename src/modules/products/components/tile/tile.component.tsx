@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
-import Link from 'next/link';
 import useMeasure from 'react-use-measure';
 import {Container, Content, Image} from './tile.styles';
+import {LinkComponent} from '../../../../components/link/link.component';
 
 interface ProductTileComponentProps {
   image: string;
@@ -19,23 +19,20 @@ export function TileComponent({
   const [ref, bounds] = useMeasure();
   return (
     <li ref={ref}>
-      <Link href={href}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
-          <Container>
-            <Image
-              src={image}
-              width={350}
-              height={350}
-              objectFit="cover"
-            />
-            <Content size={bounds.width}>
-              <h3>{title}</h3>
-              <span>{description}</span>
-            </Content>
-          </Container>
-        </a>
-      </Link>
+      <LinkComponent href={href}>
+        <Container>
+          <Image
+            src={image}
+            width={350}
+            height={350}
+            objectFit="cover"
+          />
+          <Content size={bounds.width}>
+            <h3>{title}</h3>
+            <span>{description}</span>
+          </Content>
+        </Container>
+      </LinkComponent>
     </li>
   );
 }

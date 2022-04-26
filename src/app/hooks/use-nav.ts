@@ -1,9 +1,9 @@
 import {useAtom} from 'jotai';
 import {useEffect} from 'react';
-import {setNavAtom} from '../../atoms/nav.atom';
+import {setMenuAtom} from '../../atoms/menuAtom';
 
 export function useNav(): void {
-  const [, setNav] = useAtom(setNavAtom);
+  const [, setNav] = useAtom(setMenuAtom);
 
   useEffect(() => {
     (async () => {

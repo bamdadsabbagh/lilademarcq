@@ -13,7 +13,7 @@ export function SocialButtonComponent({
   front,
   back,
 }: SocialButtonComponentProps): ReactElement {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -21,17 +21,13 @@ export function SocialButtonComponent({
         href={href}
         target="_blank"
         rel="noreferrer"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
       >
-        <Container
-          display={!isHovered ? 1 : 0}
-        >
+        <Container isOpen={!isOpen}>
           <Icon icon={front} />
         </Container>
-        <Container
-          display={isHovered ? 1 : 0}
-        >
+        <Container isOpen={isOpen}>
           <StyledImage
             src={back}
             objectFit="cover"
