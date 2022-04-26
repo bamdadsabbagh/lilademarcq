@@ -43,7 +43,7 @@ export const Banner = styled.div`
 
 export const BannerImage = styled.div`
   position: absolute;
-  transform: translate3d(-150px, calc(1em * 0.1), 0);
+  transform: translate3d(-155px, calc(1em * 0.1), 0);
 `;
 
 export const BannerText = styled.div`

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
 import {FadeInHeroAnimation} from '../../app/styles/animations';
 import {tf} from '../../app/styles/timers';
+import {PADDING} from '../../constants';
 
 interface StyledSectionProps {
   backgroundColor: string;
@@ -22,7 +23,7 @@ export const Section = styled.section<StyledSectionProps>`
 `;
 
 export const Wrapper = styled.div`
-  padding: 4rem 0;
+  padding: ${PADDING}rem 0;
 
   ${mediaQueries.above.mobile} {
     width: 90vw;

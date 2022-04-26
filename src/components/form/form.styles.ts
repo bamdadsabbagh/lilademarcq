@@ -250,7 +250,7 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
 `;
 
 export const SubscribeText = styled.span`
-  margin-left: 50px;
+  margin-left: 3rem;
   font-size: 0.75em;
 
   &:hover {
