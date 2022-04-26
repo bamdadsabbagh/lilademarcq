@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {SlideInAnimation} from '../../../../app/styles/animations';
 import {tf, to} from '../../../../app/styles/timers';
 import {simpleTransition} from '../../../../app/styles/transitions';
@@ -15,30 +15,21 @@ const getColor = (props) => {
   }
 };
 
-interface CellProps {
+interface ContainerProps {
   index: number;
-  first?: boolean;
-  last?: boolean;
   hasChildren?: boolean;
   isOpen: boolean;
 }
 
-export const Container = styled.div<CellProps>`
+export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
-  margin-left: -1px;
-  border-left: ${({first}) => first ? 0 : '1px'} solid black;
-  border-right: ${({last}) => last ? 0 : '1px'} solid black;
-
   user-select: none;
 
   opacity: 0;
-
-  animation: ${SlideInAnimation} calc(0.9s * ${tf}) forwards calc(0.5s * ${tf});
-  animation-delay: calc((0.7s + ${to}s * ${({index}) => index}) * ${tf});
 
   height: ${({
     hasChildren,
@@ -46,7 +37,33 @@ export const Container = styled.div<CellProps>`
   }) => hasChildren && isOpen ? '100%' : '1.2em'};
   ${simpleTransition('height', 0.3)};
 
+  animation: ${SlideInAnimation} calc(0.9s * ${tf}) forwards calc(0.5s * ${tf});
+  animation-delay: calc((0.7s + ${to}s * ${({index}) => index}) * ${tf});
+
   background: ${({theme}) => theme.white};
+`;
+
+interface BorderProps {
+  isOpen: boolean;
+}
+
+const Border = css<BorderProps>`
+  //height: 1.2em;
+  width: 100%;
+  height: ${({isOpen}) => isOpen ? '100%' : '1.2em'};
+  ${simpleTransition('height', 0.3)};
+  position: absolute;
+  pointer-events: none;
+`;
+
+export const BorderLeft = styled.div<{isOpen: boolean;}>`
+  ${Border};
+  border-left: 1px solid black;
+`;
+
+export const BorderRight = styled.div<{isOpen: boolean;}>`
+  ${Border};
+  border-right: 1px solid black;
 `;
 
 interface ItemProps {

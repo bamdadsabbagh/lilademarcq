@@ -27,7 +27,8 @@ export const MenuContainer = styled.div`
 
   display: grid;
   justify-content: center;
-  grid-template-columns: 5em 7em 6em 6em 9em 6em 8em;
+  //grid-template-columns: 5em 7em 6em 6em 9em 6em 8em;
+  grid-template-columns: 80px 112px 96px 96px 144px 96px 128px;
 
   height: 1.1em;
 `;

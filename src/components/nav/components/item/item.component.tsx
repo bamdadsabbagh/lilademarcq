@@ -3,6 +3,8 @@ import {useRouter} from 'next/router';
 import {MenuDropdownItems} from '../../../../atoms/menuAtom';
 import {LinkComponent} from '../../../link/link.component';
 import {
+  BorderLeft,
+  BorderRight,
   Container,
   Dropdown,
   DropdownItem,
@@ -14,8 +16,8 @@ interface DropdownProps {
   index: number;
   name: string;
   slug: string;
-  first?: boolean;
-  last?: boolean;
+  noBorderLeft: boolean;
+  noBorderRight: boolean;
   dropdownItems?: MenuDropdownItems[];
 }
 
@@ -23,8 +25,8 @@ export function ItemComponent({
   index,
   name,
   slug,
-  first,
-  last,
+  noBorderLeft,
+  noBorderRight,
   dropdownItems,
 }: DropdownProps): ReactElement {
   const router = useRouter();
@@ -34,13 +36,13 @@ export function ItemComponent({
     <>
       <Container
         index={index}
-        first={first}
-        last={last}
         hasChildren={!!dropdownItems}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
         isOpen={isOpen}
       >
+        {!noBorderLeft && <BorderLeft isOpen={isOpen} />}
+        {!noBorderRight && <BorderRight isOpen={isOpen} />}
         <LinkComponent href={slug}>
           <Item isOpen={isOpen} isActive={slug === router.asPath}>
             {name}

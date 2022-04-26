@@ -1,18 +1,17 @@
 import React, {ReactElement} from 'react';
-import {useAtom} from 'jotai';
-import {menuAtom} from '../../../../atoms/menuAtom';
 import {ItemComponent} from '../item/item.component';
+import {useMenuComponent} from './hooks/use-menu-component';
 
 export function MenuComponent(): ReactElement {
-  const [menu] = useAtom(menuAtom);
+  const {menu, borders} = useMenuComponent();
 
   return (
     <>
-      {menu.map((item, index) => {
+      {borders.length > 0 && menu.map((item, index) => {
         const {
           name,
           slug,
-          dropdownItems,
+          dropdown,
         } = item;
 
         return (
@@ -21,9 +20,9 @@ export function MenuComponent(): ReactElement {
             index={index}
             name={name}
             slug={slug}
-            first={index === 0}
-            last={index === menu.length - 1}
-            dropdownItems={dropdownItems}
+            noBorderLeft={!borders[index][0]}
+            noBorderRight={!borders[index][1]}
+            dropdownItems={dropdown}
           />
         );
       })}

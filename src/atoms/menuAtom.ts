@@ -7,17 +7,15 @@ export interface MenuDropdownItems {
   menuName: string | null;
 }
 
-interface MenuItem {
+export interface MenuItem {
   name: string;
   slug: string;
-  dropdownItems?: MenuDropdownItems[];
+  dropdown?: MenuDropdownItems[];
 }
-
-export type NavAtom = MenuItem[];
 
 export const menuAtom = atom<MenuItem[]>([]);
 
 export const setMenuAtom = atom(
   null,
-  (_get, set, p: NavAtom) => set(menuAtom, p),
+  (_get, set, p: MenuItem[]) => set(menuAtom, p),
 );

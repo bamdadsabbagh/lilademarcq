@@ -1,10 +1,10 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import {fetchMenu} from '../../utils/fetch-menu';
-import {NavAtom} from '../../atoms/menuAtom';
+import {MenuItem} from '../../atoms/menuAtom';
 
 export default async function NavHandler(
   _req: NextApiRequest,
-  res: NextApiResponse<NavAtom>,
+  res: NextApiResponse<MenuItem[]>,
 ): Promise<void> {
   const dropdownItems = await fetchMenu();
 
@@ -17,7 +17,7 @@ export default async function NavHandler(
   res.status(200).json([
     {name: 'home', slug: '/'},
     {name: 'à propos', slug: '/a-propos'},
-    {name: 'objets', slug: '/objets', dropdownItems},
+    {name: 'objets', slug: '/objets', dropdown: dropdownItems},
     {name: 'poésie', slug: '/poesie'},
     {name: 'événements', slug: '/evenements'},
     {name: 'presse', slug: '/presse'},
