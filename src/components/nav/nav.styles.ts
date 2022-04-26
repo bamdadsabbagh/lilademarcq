@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
+const logoSize = '108px';
+
 export const Nav = styled.nav`
   position: sticky;
-  top: calc(-8em - 1.5rem);
+  top: calc(-${logoSize} - 1.5rem);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -15,7 +17,7 @@ export const Nav = styled.nav`
 `;
 
 export const LogoContainer = styled.div`
-  height: 8em;
+  height: ${logoSize};
   width: 100%;
 `;
 
@@ -26,4 +28,6 @@ export const MenuContainer = styled.div`
   display: grid;
   justify-content: center;
   grid-template-columns: 5em 7em 6em 6em 9em 6em 8em;
+
+  height: 1.1em;
 `;

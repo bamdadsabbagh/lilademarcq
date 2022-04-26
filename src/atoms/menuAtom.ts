@@ -1,6 +1,6 @@
 import {atom} from 'jotai';
 
-interface MenuChild {
+export interface MenuDropdownItems {
   slug: string;
   position: number;
   name: string;
@@ -10,7 +10,7 @@ interface MenuChild {
 interface MenuItem {
   name: string;
   slug: string;
-  children?: MenuChild[];
+  dropdownItems?: MenuDropdownItems[];
 }
 
 export type NavAtom = MenuItem[];
