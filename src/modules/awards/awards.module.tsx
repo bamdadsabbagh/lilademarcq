@@ -10,8 +10,7 @@ import {
 import {
   Award,
   ButtonContainer,
-  NewContainer,
-  NewImage,
+  Container,
   TextContainer,
 } from './awards.styles';
 import {LDAward} from '../../utils/fetch-awards';
@@ -35,14 +34,14 @@ export function AwardsModule({
         Mes distinctions
       </SectionTitleComponent>
 
-      <NewContainer
+      <Container
         onClick={toggleOpen}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
         {awards.map((award) => (
           <Award imageHeight={size} key={award.slug}>
-            <NewImage>
+            <div>
               <Image
                 src={award.image.url}
                 alt={award.slug}
@@ -50,14 +49,14 @@ export function AwardsModule({
                 width={size}
                 height={size}
               />
-            </NewImage>
+            </div>
             <TextContainer visible={isOpen}>
               {documentToReactComponents(award.body.json)}
             </TextContainer>
           </Award>
 
         ))}
-      </NewContainer>
+      </Container>
 
       <ButtonContainer onClick={toggleOpen}>
         <TriangleComponent

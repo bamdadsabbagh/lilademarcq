@@ -1,10 +1,9 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import {fetchForm} from '../../utils/fetch-form';
-import {FormAtom} from '../../atoms/form.atom';
+import {fetchForm, FormInterface} from '../../utils/fetch-form';
 
 export default async function FormHandler(
   _req: NextApiRequest,
-  res: NextApiResponse<FormAtom>,
+  res: NextApiResponse<FormInterface>,
 ): Promise<void> {
   const form = await fetchForm();
   res.status(200).json(form);

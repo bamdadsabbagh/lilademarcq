@@ -15,16 +15,18 @@ export default function MentionsLegales({
   section,
 }: MentionsLegalesProps): ReactElement {
   return (
-    <SectionComponent backgroundColor={theme.salmonLight}>
-      <>
-        <Title>
-          {section.title}
-        </Title>
-        <Markdown>
-          {documentToReactComponents(section.body.json)}
-        </Markdown>
-      </>
-    </SectionComponent>
+    <>
+      <SectionComponent backgroundColor={theme.salmonLight}>
+        <>
+          <Title>
+            {section.title}
+          </Title>
+          <Markdown>
+            {documentToReactComponents(section.body.json)}
+          </Markdown>
+        </>
+      </SectionComponent>
+    </>
   );
 }
 

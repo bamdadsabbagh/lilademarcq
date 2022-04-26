@@ -1,15 +1,16 @@
-import {useAtom} from 'jotai';
 import {useEffect, useState} from 'react';
-import {menuAtom, MenuItem} from '../../../../../atoms/menuAtom';
+import {useAtom} from 'jotai';
+import {MenuInterface} from '../../../../../utils/fetch-menu';
+import {menuAtom} from '../../../../../atoms/menu.atom';
 
 interface UseMenuComponent {
-  menu: MenuItem[];
+  menu: MenuInterface;
   borders: [number, number][];
 }
 
 export function useMenuComponent(): UseMenuComponent {
-  const [menu] = useAtom(menuAtom);
   const [borders, setBorders] = useState([]);
+  const [menu] = useAtom(menuAtom);
 
   useEffect(() => {
     const b = [];

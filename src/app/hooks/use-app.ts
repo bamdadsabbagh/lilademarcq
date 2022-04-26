@@ -1,7 +1,9 @@
 import {useGoogleAnalytics} from './use-google-analytics';
-import {useNav} from './use-nav';
+import {useMenuFetch} from './use-menu-fetch';
+import {useFormFetch} from './use-form-fetch';
 
 export function useApp(): void {
   useGoogleAnalytics();
-  useNav();
+  useMenuFetch();
+  useFormFetch();
 }

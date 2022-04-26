@@ -37,7 +37,6 @@ export const Content = styled.div<{size: number;}>`
 
   > h3 {
     text-transform: uppercase;
-    margin-bottom: 0.3em;
     font-size: 2.5em;
   }
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {useAtom} from 'jotai';
 import {tf} from '../../app/styles/timers';
 import {FadeInHeroAnimation} from '../../app/styles/animations';
-import {appLoadedAtom} from '../../atoms/app-loaded.atom';
+import {isFirstDrawAtom} from '../../atoms/is-first-draw';
 
 const Container = styled.section`
   display: flex;
@@ -19,7 +19,12 @@ const Container = styled.section`
   //margin-bottom: 1em;
 `;
 
-const Content = styled.div<{hover: number; skipTransition: number;}>`
+interface ContentProps {
+  hover: boolean;
+  skipTransition: boolean;
+}
+
+const Content = styled.div<ContentProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,7 +72,11 @@ const Image = styled.div`
   }
 `;
 
-const Dot = styled.div<{hover: number;}>`
+interface DotProps {
+  hover: boolean;
+}
+
+const Dot = styled.div<DotProps>`
   height: 40px;
   width: 10px;
   position: fixed;
@@ -97,7 +106,11 @@ const Dot = styled.div<{hover: number;}>`
 
 const triangleSize = 7;
 
-const Triangle = styled.div<{hover: number;}>`
+interface TriangleProps {
+  hover: boolean;
+}
+
+const Triangle = styled.div<TriangleProps>`
   position: absolute;
   width: 0;
   height: 0;
@@ -112,12 +125,12 @@ const Triangle = styled.div<{hover: number;}>`
   transition: opacity 200ms ease;
 `;
 
-const TriangleRight = styled(Triangle)<{hover: number;}>`
+const TriangleRight = styled(Triangle)<TriangleProps>`
   right: 17px;
   transform: rotateZ(45deg);
 `;
 
-const TriangleLeft = styled(Triangle)<{hover: number;}>`
+const TriangleLeft = styled(Triangle)<TriangleProps>`
   left: 17px;
   transform: rotateZ(-135deg);
 `;
@@ -132,7 +145,7 @@ const Footer = styled.div`
 
 export function HeroComponent(): ReactElement {
   const [hover, setHover] = useState(false);
-  const [appLoaded] = useAtom(appLoadedAtom);
+  const [isFirstDraw] = useAtom(isFirstDrawAtom);
 
   return (
     <>
@@ -140,7 +153,7 @@ export function HeroComponent(): ReactElement {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <Content hover={hover ? 1 : 0} skipTransition={appLoaded ? 1 : 0}>
+        <Content hover={hover} skipTransition={!isFirstDraw}>
           <Image>
             <img
               alt="hero"
@@ -148,14 +161,14 @@ export function HeroComponent(): ReactElement {
             />
           </Image>
 
-          <Dot hover={hover ? 1 : 0}>
+          <Dot hover={hover}>
             <span />
             <span />
             <span />
           </Dot>
 
-          <TriangleRight hover={hover ? 1 : 0} />
-          <TriangleLeft hover={hover ? 1 : 0} />
+          <TriangleRight hover={hover} />
+          <TriangleLeft hover={hover} />
 
           <Footer />
         </Content>

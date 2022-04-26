@@ -9,7 +9,9 @@ interface ObjetsProps {
   objects: LDObject[];
 }
 
-export default function Objets({objects}: ObjetsProps): ReactElement {
+export default function Objets({
+  objects,
+}: ObjetsProps): ReactElement {
   return (
     <>
       <ObjectsModule objects={objects} />

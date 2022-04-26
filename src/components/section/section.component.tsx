@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {useAtom} from 'jotai';
 import {Section, Wrapper} from './section.styles';
-import {appLoadedAtom} from '../../atoms/app-loaded.atom';
+import {isFirstDrawAtom} from '../../atoms/is-first-draw';
 
 export interface ContentSectionComponentProps {
   children: ReactElement | ReactElement[];
@@ -12,10 +12,10 @@ export function SectionComponent({
   children,
   backgroundColor,
 }: ContentSectionComponentProps): ReactElement {
-  const [appLoaded] = useAtom(appLoadedAtom);
+  const [isFirstDraw] = useAtom(isFirstDrawAtom);
 
   return (
-    <Section backgroundColor={backgroundColor} skipTransition={appLoaded}>
+    <Section backgroundColor={backgroundColor} skipTransition={!isFirstDraw}>
       <Wrapper>
         {children}
       </Wrapper>
