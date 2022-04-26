@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.1...v1.13.2) (2022-04-26)
+
+
+### Bug Fixes
+
+* **Awards:** Set key and rectify semantics ([b83c08e](https://github.com/bamdadsabbagh/lilademarcq/commit/b83c08ec6a4356f715146d1b801c745a0f1aef78))
+
 ## [1.13.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.0...v1.13.1) (2022-04-26)
 
 
