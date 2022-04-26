@@ -12,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  grid-gap: 0.5em;
+  gap: 0.5em;
 
   //width: 100%;
   //height: 100%;

@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
   //grid-template-columns: repeat(2, 43%);
   //grid-template-columns: repeat(2, 48%);
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: ${({gap}) => gap}em;
+  gap: ${({gap}) => gap}em;
 
   line-height: 1.6em;
 `;

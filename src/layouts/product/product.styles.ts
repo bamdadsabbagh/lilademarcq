@@ -24,7 +24,7 @@ export const Container = styled.div`
   align-items: center;
 
   grid-template-columns: 29% 5em 1fr;
-  grid-gap: 2em;
+  gap: 2em;
 `;
 
 export const MadeIn = styled.div`

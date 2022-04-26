@@ -4,7 +4,7 @@ export const Container = styled.div<{padding: number;}>`
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-gap: 10em;
+  gap: 10em;
 
   //width: 20vw;
 
