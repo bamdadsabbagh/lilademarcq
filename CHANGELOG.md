@@ -1,3 +1,10 @@
+## [1.13.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.4...v1.13.5) (2022-04-26)
+
+
+### Bug Fixes
+
+* Recreate `ObjectLayout` to scope local state + Rename `isFirstDrawAtom` ([0b164cb](https://github.com/bamdadsabbagh/lilademarcq/commit/0b164cbe3173ca01231e54ff3e48c0efd667cb90))
+
 ## [1.13.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.3...v1.13.4) (2022-04-26)
 
 
