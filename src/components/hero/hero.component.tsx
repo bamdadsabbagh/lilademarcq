@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {useAtom} from 'jotai';
 import {tf} from '../../app/styles/timers';
 import {FadeInHeroAnimation} from '../../app/styles/animations';
-import {isFirstDrawAtom} from '../../atoms/is-first-draw';
+import {isFirstDrawAtom} from '../../atoms/is-first-draw.atom';
 
 const Container = styled.section`
   display: flex;

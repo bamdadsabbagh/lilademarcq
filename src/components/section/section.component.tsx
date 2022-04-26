@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {useAtom} from 'jotai';
 import {Section, Wrapper} from './section.styles';
-import {isFirstDrawAtom} from '../../atoms/is-first-draw';
+import {isFirstDrawAtom} from '../../atoms/is-first-draw.atom';
 
 export interface ContentSectionComponentProps {
   children: ReactElement | ReactElement[];

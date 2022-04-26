@@ -3,7 +3,7 @@ import {useAtom} from 'jotai';
 import NavComponent from '../../components/nav/nav.component';
 import {FooterComponent} from '../../components/footer/footer.component';
 import {Children, Container} from './app.styles';
-import {setIsFirstDrawAtom} from '../../atoms/is-first-draw';
+import {setIsFirstDrawAtom} from '../../atoms/is-first-draw.atom';
 import {useTimeout} from '../../hooks/use-timeout';
 import {FIRST_DRAW_TIMEOUT} from '../../constants';
 
