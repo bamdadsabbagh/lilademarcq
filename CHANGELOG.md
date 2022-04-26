@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.0...v1.13.1) (2022-04-26)
+
+
+### Bug Fixes
+
+* **Nav:** Prevent overlapping of border for dropdown menus ([5b04901](https://github.com/bamdadsabbagh/lilademarcq/commit/5b04901e18c4a994507b6884f8507f3e8569995a))
+
 # [1.13.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.12.0...v1.13.0) (2022-04-26)
 
 
