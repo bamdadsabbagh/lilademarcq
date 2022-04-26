@@ -1,30 +1,34 @@
 import React, {ReactElement} from 'react';
+import {useAtom} from 'jotai';
 import NavComponent from '../../components/nav/nav.component';
 import {FooterComponent} from '../../components/footer/footer.component';
 import {Children, Container} from './app.styles';
-import {useAppLayout} from './hooks/use-app-layout';
+import {setIsFirstDrawAtom} from '../../atoms/is-first-draw';
+import {useTimeout} from '../../hooks/use-timeout';
+import {FIRST_DRAW_TIMEOUT} from '../../constants';
 
 interface AppLayoutProps {
-  children?: ReactElement;
+  children: ReactElement[] | ReactElement;
 }
 
-/**
- * Component for the app layout
- */
-export function AppLayout({children}: AppLayoutProps): ReactElement {
-  const {isReady} = useAppLayout();
+export function AppLayout({
+  children,
+}: AppLayoutProps): ReactElement {
+  const [, setIsFirstDraw] = useAtom(setIsFirstDrawAtom);
+
+  useTimeout(() => {
+    setIsFirstDraw(false);
+  }, FIRST_DRAW_TIMEOUT);
 
   return (
     <>
-      {isReady && (
-        <Container>
-          <NavComponent />
-          <Children>
-            {children}
-          </Children>
-          <FooterComponent />
-        </Container>
-      )}
+      <Container>
+        <NavComponent />
+        <Children>
+          {children}
+        </Children>
+        <FooterComponent />
+      </Container>
     </>
   );
 }

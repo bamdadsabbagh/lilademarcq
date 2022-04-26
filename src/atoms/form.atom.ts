@@ -1,24 +1,9 @@
 import {atom} from 'jotai';
+import {FormInterface} from '../utils/fetch-form';
 
-export interface FormAtom {
-  topicTitle: string;
-  topic: string[];
-  name: string;
-  firstName: string;
-  address: string;
-  road: string;
-  postcode: string;
-  city: string;
-  contact: string;
-  email: string;
-  phone: string;
-  subscription: string;
-  submit: string;
-}
+export const formAtom = atom<FormInterface>(undefined as FormInterface | undefined);
 
-export const formAtom = atom(
-  (async () => {
-    const response = await fetch('/api/form');
-    return response.json();
-  })(),
+export const setFormAtom = atom(
+  null,
+  (_get, set, p: FormInterface) => set(formAtom, p),
 );

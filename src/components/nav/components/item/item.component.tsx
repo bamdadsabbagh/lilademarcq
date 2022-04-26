@@ -1,6 +1,5 @@
 import React, {ReactElement, useState} from 'react';
 import {useRouter} from 'next/router';
-import {MenuDropdownItems} from '../../../../atoms/menuAtom';
 import {LinkComponent} from '../../../link/link.component';
 import {
   BorderLeft,
@@ -11,6 +10,7 @@ import {
   DropdownSpacer,
   Item,
 } from './item.styles';
+import {MenuDropdownInterface} from '../../../../utils/fetch-menu';
 
 interface DropdownProps {
   index: number;
@@ -18,7 +18,7 @@ interface DropdownProps {
   slug: string;
   noBorderLeft: boolean;
   noBorderRight: boolean;
-  dropdownItems?: MenuDropdownItems[];
+  dropdown?: MenuDropdownInterface[];
 }
 
 export function ItemComponent({
@@ -27,7 +27,7 @@ export function ItemComponent({
   slug,
   noBorderLeft,
   noBorderRight,
-  dropdownItems,
+  dropdown,
 }: DropdownProps): ReactElement {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +36,7 @@ export function ItemComponent({
     <>
       <Container
         index={index}
-        hasChildren={!!dropdownItems}
+        hasChildren={!!dropdown}
         onMouseEnter={() => setIsOpen(true)}
         onMouseLeave={() => setIsOpen(false)}
         isOpen={isOpen}
@@ -49,15 +49,15 @@ export function ItemComponent({
           </Item>
         </LinkComponent>
         <Dropdown isOpen={isOpen}>
-          {dropdownItems && <DropdownSpacer />}
-          {dropdownItems && dropdownItems.map((item) => (
+          {dropdown && <DropdownSpacer />}
+          {dropdown && dropdown.map((item) => (
             <LinkComponent href={item.slug} key={item.slug}>
               <DropdownItem isActive={item.slug === router.asPath}>
                 {item.menuName ?? item.name}
               </DropdownItem>
             </LinkComponent>
           ))}
-          {dropdownItems && <DropdownSpacer />}
+          {dropdown && <DropdownSpacer />}
         </Dropdown>
       </Container>
     </>

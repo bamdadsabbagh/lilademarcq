@@ -11,18 +11,22 @@ interface CgvProps {
   section: LDSection;
 }
 
-export default function Cgv({section}: CgvProps): ReactElement {
+export default function Cgv({
+  section,
+}: CgvProps): ReactElement {
   return (
-    <SectionComponent backgroundColor={theme.salmonLight}>
-      <>
-        <Title>
-          {section.title}
-        </Title>
-        <Markdown>
-          {documentToReactComponents(section.body.json)}
-        </Markdown>
-      </>
-    </SectionComponent>
+    <>
+      <SectionComponent backgroundColor={theme.salmonLight}>
+        <>
+          <Title>
+            {section.title}
+          </Title>
+          <Markdown>
+            {documentToReactComponents(section.body.json)}
+          </Markdown>
+        </>
+      </SectionComponent>
+    </>
   );
 }
 

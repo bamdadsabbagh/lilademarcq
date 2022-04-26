@@ -6,10 +6,11 @@ import {
   useState,
 } from 'react';
 import {useAtom} from 'jotai';
-import {FormAtom, formAtom} from '../../../atoms/form.atom';
+import {formAtom} from '../../../atoms/form.atom';
+import {FormInterface} from '../../../utils/fetch-form';
 
 interface UseFormComponent {
-  form: FormAtom;
+  form: FormInterface;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<this['isOpen']>>;
   isHover: boolean;
@@ -26,6 +27,7 @@ export function useFormComponent(): UseFormComponent {
   const [isHover, setIsHover] = useState(false);
   const [isSubscribe, setIsSubscribe] = useState(false);
   const [isSubscribeHover, setIsSubscribeHover] = useState(false);
+  const [form] = useAtom(formAtom);
 
   const toggleSubscribe = useCallback(() => {
     setIsSubscribe((s) => !s);
@@ -38,8 +40,6 @@ export function useFormComponent(): UseFormComponent {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
   }, []);
-
-  const [form] = useAtom(formAtom);
 
   return {
     form,

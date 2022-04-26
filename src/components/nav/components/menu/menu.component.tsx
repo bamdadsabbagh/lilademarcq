@@ -22,7 +22,7 @@ export function MenuComponent(): ReactElement {
             slug={slug}
             noBorderLeft={!borders[index][0]}
             noBorderRight={!borders[index][1]}
-            dropdownItems={dropdown}
+            dropdown={dropdown}
           />
         );
       })}

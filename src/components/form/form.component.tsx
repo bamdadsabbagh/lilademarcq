@@ -47,6 +47,10 @@ export function FormComponent({
 
   const cleanSlug = useCallback((s: string) => s.replace('*', ''), []);
 
+  if (!form) {
+    return <></>;
+  }
+
   return (
     <Container>
       <TitleContainer
