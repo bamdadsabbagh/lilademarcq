@@ -13,7 +13,7 @@ import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
 import {AProposMarkdown} from '../pages-styles/index.styles';
-import {ProductsModule, ProductTile} from '../modules/products/products.module';
+import {ObjectsModule, ObjectTile} from '../modules/objects/objects.module';
 import {ValuesModule} from '../modules/values/values.module';
 import {AwardsModule} from '../modules/awards/awards.module';
 import {SocialsModule} from '../modules/socials/socials.module';
@@ -27,7 +27,7 @@ import {REVALIDATE} from '../constants';
 interface IndexProps {
   about: LDSection;
   awards: LDAward[];
-  objects: ProductTile[];
+  objects: ObjectTile[];
   contact: LDSection;
   socials: LDSocial[];
   values: LDValues;
@@ -43,9 +43,9 @@ export default function Index({
 }: IndexProps): ReactElement {
   return (
     <>
-      <ProductsModule products={objects} />
+      <ObjectsModule objects={objects} />
 
-      <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
+      <SectionComponent backgroundColor={theme.salmonLight}>
         <SectionTitleComponent align={AlignKeys.center}>
           {about.title}
         </SectionTitleComponent>
@@ -65,11 +65,11 @@ export default function Index({
 
       <SocialsModule socials={socials} />
 
-      <SectionComponent backgroundColor={theme.green} verticalPadding={4}>
+      <SectionComponent backgroundColor={theme.green}>
         <FormComponent />
       </SectionComponent>
 
-      <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
+      <SectionComponent backgroundColor={theme.salmonLight}>
         <ContactComponent contact={contact} />
       </SectionComponent>
     </>

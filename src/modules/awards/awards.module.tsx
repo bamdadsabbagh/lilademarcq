@@ -30,7 +30,7 @@ export function AwardsModule({
   const toggleOpen = useCallback(() => setIsOpen((o) => !o), []);
 
   return (
-    <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={4}>
+    <SectionComponent backgroundColor={theme.salmonLight}>
       <SectionTitleComponent align={AlignKeys.left}>
         Mes distinctions
       </SectionTitleComponent>

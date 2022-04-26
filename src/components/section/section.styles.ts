@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
-import {ContentSectionComponentProps} from './section.component';
 import {FadeInHeroAnimation} from '../../app/styles/animations';
 import {tf} from '../../app/styles/timers';
 
-type StyledSectionProps =
-  Pick<ContentSectionComponentProps, 'backgroundColor'>
-  & {
-  skipTransition: number;
-};
+interface StyledSectionProps {
+  backgroundColor: string;
+  skipTransition: boolean;
+}
 
-export const Container = styled.section<StyledSectionProps>`
+export const Section = styled.section<StyledSectionProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,13 +21,8 @@ export const Container = styled.section<StyledSectionProps>`
   animation: ${FadeInHeroAnimation} calc(1s * ${tf}) forwards calc(${({skipTransition}) => skipTransition ? 0 : 1.1}s * ${tf});
 `;
 
-type StyledContainerProps =
-  Pick<ContentSectionComponentProps, 'width'>
-  & Pick<ContentSectionComponentProps, 'verticalPadding'>
-
-export const Content = styled.div<StyledContainerProps>`
-  width: ${(props) => props.width ? props.width : 80}vw;
-  padding: ${(props) => props.verticalPadding ? props.verticalPadding : 2}em 0;
+export const Wrapper = styled.div`
+  padding: 4rem 0;
 
   ${mediaQueries.above.mobile} {
     width: 90vw;

@@ -12,23 +12,20 @@ export interface ContentTitleComponentProps {
   children: string;
   align?: AlignKeys;
   color?: string;
-  bottomPadding?: number;
 }
 
 const defaultProps = {
   align: AlignKeys.left,
   color: theme.salmon,
-  bottomPadding: 0.9,
 };
 
 export function SectionTitleComponent({
   children,
   align = defaultProps.align,
   color = defaultProps.color,
-  bottomPadding = defaultProps.bottomPadding,
 }: ContentTitleComponentProps): ReactElement {
   return (
-    <Title align={align} color={color} bottomPadding={bottomPadding}>
+    <Title align={align} color={color}>
       {children}
     </Title>
   );

@@ -13,6 +13,7 @@ import {
   SubscribeCheckbox,
   SubscribeText,
   Title,
+  TitleContainer,
 } from './form.styles';
 import {theme} from '../../app/styles/theme';
 import {useFormComponent} from './hooks/use-form-component';
@@ -48,17 +49,18 @@ export function FormComponent({
 
   return (
     <Container>
-      <Title
+      <TitleContainer
         onClick={() => setIsOpen((i) => !i)}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
-        {text} <TriangleComponent
+        <Title>{text}</Title>
+        <TriangleComponent
           isBottom={!isOpen}
           isTop={isOpen}
           isHover={isHover}
         />
-      </Title>
+      </TitleContainer>
       <FormContainer visible={isOpen}>
         <Form onSubmit={handleSubmit}>
 

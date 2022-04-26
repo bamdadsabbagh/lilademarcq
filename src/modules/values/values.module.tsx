@@ -15,7 +15,7 @@ interface ValuesModuleProps {
 export function ValuesModule({values}: ValuesModuleProps): ReactElement {
   return (
     <>
-      <SectionComponent verticalPadding={4}>
+      <SectionComponent>
         <Container>
           <SectionTitleComponent align={AlignKeys.right}>
             Mes Valeurs

@@ -30,7 +30,7 @@ export function SocialsModule({socials}: SocialsModuleProps): ReactElement {
 
   return (
     <>
-      <SectionComponent verticalPadding={4}>
+      <SectionComponent>
         <ContentCenterComponent>
           {socials.map((social) => (
             <SocialButtonComponent

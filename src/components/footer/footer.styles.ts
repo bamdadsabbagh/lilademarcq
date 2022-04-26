@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {fontSizes} from '../../app/styles/font-sizes';
 import {FadeInHeroAnimation} from '../../app/styles/animations';
 import {tf} from '../../app/styles/timers';
 
@@ -8,9 +7,10 @@ export const Footer = styled.footer`
   justify-content: center;
 
   padding: 4em 0;
+  //padding: 5% 0;
 
   font-style: italic;
-  font-size: ${fontSizes.twelve};
+  font-size: 0.9em;
 
   user-select: none;
 

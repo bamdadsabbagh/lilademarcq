@@ -10,7 +10,5 @@ export const fontMontserrat = css`
 
 export const fontSpectral = css`
   font-family: Spectral, sans-serif;
-  //line-height: 1.2em;
-  font-size: 1.2em;
-  font-weight: 300;
+  //line-height: 1.3em;
 `;

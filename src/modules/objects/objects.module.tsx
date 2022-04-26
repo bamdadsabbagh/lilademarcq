@@ -7,7 +7,7 @@ import {GridComponent} from './components/grid/grid.component';
 import {TileComponent} from './components/tile/tile.component';
 import {capitalizeFirstLetter} from '../../utils/capitalize-first-letter';
 
-export interface ProductTile {
+export interface ObjectTile {
   slug: string;
   position: number;
   name: string;
@@ -17,11 +17,11 @@ export interface ProductTile {
   };
 }
 
-interface ProductsModuleProps {
-  products: ProductTile[];
+interface ObjectsModuleProps {
+  objects: ObjectTile[];
 }
 
-export function ProductsModule({products}: ProductsModuleProps): ReactElement {
+export function ObjectsModule({objects}: ObjectsModuleProps): ReactElement {
   return (
     <>
       <SectionComponent>
@@ -29,13 +29,13 @@ export function ProductsModule({products}: ProductsModuleProps): ReactElement {
           Objets design
         </SectionTitleComponent>
         <GridComponent>
-          {products.map((product) => (
+          {objects.map((object) => (
             <TileComponent
-              key={product.slug}
-              image={product.thumbnail.url}
-              title={product.name.toUpperCase()}
-              description={capitalizeFirstLetter(product.description.toLowerCase())}
-              href={`/objets/${product.slug}`}
+              key={object.slug}
+              image={object.thumbnail.url}
+              title={object.name.toUpperCase()}
+              description={capitalizeFirstLetter(object.description.toLowerCase())}
+              href={`/objets/${object.slug}`}
             />
           ))}
         </GridComponent>

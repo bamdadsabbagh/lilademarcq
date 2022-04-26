@@ -5,9 +5,9 @@ import {
   GetStaticPropsResult,
 } from 'next';
 import {
-  ProductLayout,
+  ObjectLayout,
   ProductLayoutProps,
-} from '../../layouts/product/product.layout';
+} from '../../layouts/object/object.layout';
 import {fetchObjects} from '../../utils/fetch-objects';
 import {fetchObject} from '../../utils/fetch-object';
 import {REVALIDATE} from '../../constants';
@@ -26,7 +26,7 @@ export default function Product({
       {object.slug !== slug ? (
         <></>
       ) : (
-        <ProductLayout object={object} />
+        <ObjectLayout object={object} />
       )}
     </>
   );

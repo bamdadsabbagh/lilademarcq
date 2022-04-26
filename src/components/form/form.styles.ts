@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontFarmhouse, fontMontserrat} from '../../app/styles/fonts';
 
@@ -7,17 +7,15 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  //padding: 2.75em 0;
-  //padding: 3em 0;
 `;
 
-export const Title = styled.h3`
-  ${fontFarmhouse};
-  font-size: 3em;
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
 
   color: ${(props) => props.theme.white};
-
-  transform: translateY(0.05em);
 
   cursor: pointer;
   user-select: none;
@@ -27,7 +25,15 @@ interface FormProps {
   visible: boolean;
 }
 
+export const Title = styled.h3`
+  font-family: Farmhouse, serif;
+  font-size: 2.4em;
+`;
+
 export const FormContainer = styled.div<FormProps>`
+  display: flex;
+  justify-content: center;
+
   overflow: hidden;
 
   margin-top: ${({visible}) => visible ? '2em' : 0};
@@ -47,20 +53,16 @@ export const Form = styled.form`
   gap: 0 2em;
 
   width: 100%;
+  max-width: 60rem;
 
   padding: 0.5em 1em;
 
   ${fontFarmhouse};
-  font-size: 1.6em;
+  font-size: 1.5em;
 
   color: white;
 
   user-select: none;
-`;
-
-const customArrow = css`
-  appearance: none;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right;  
 `;
 
 export const Select = styled.select`
@@ -71,11 +73,9 @@ export const Select = styled.select`
 
   border: 0;
   border-bottom: 1px solid white;
-  color: black;
-  ${fontMontserrat};
-  font-size: 0.7em;
 
-    //${customArrow};
+  ${fontMontserrat};
+  font-size: 0.75em;
 `;
 
 interface LabelProps {
@@ -104,7 +104,7 @@ export const Input = styled.input`
   margin-top: 0.1em;
 
   ${fontMontserrat};
-  font-size: 0.7em;
+  font-size: 0.75em;
   color: white;
 
   ${simpleTransition('box-shadow, background')};
@@ -150,7 +150,7 @@ export const Submit = styled.button<SubmitProps>`
   font-weight: 600;
 
   border: 3px solid white;
-  //border-radius: 10px;
+  border-radius: 10px;
 
   text-transform: uppercase;
 
@@ -188,7 +188,6 @@ export const Subscribe = styled.div`
   align-items: center;
 
   ${fontMontserrat};
-  font-size: 0.7em;
 `;
 
 interface SubscribeCheckboxProps {
@@ -251,7 +250,8 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
 `;
 
 export const SubscribeText = styled.span`
-  margin-left: 2em;
+  margin-left: 50px;
+  font-size: 0.75em;
 
   &:hover {
     cursor: pointer;

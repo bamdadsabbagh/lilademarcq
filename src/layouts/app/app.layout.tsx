@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import NavComponent from '../../components/nav/nav.component';
 import {FooterComponent} from '../../components/footer/footer.component';
-import {Container} from './app.styles';
+import {Children, Container} from './app.styles';
 import {useAppLayout} from './hooks/use-app-layout';
 
 interface AppLayoutProps {
@@ -19,7 +19,9 @@ export function AppLayout({children}: AppLayoutProps): ReactElement {
       {isReady && (
         <Container>
           <NavComponent />
-          {children}
+          <Children>
+            {children}
+          </Children>
           <FooterComponent />
         </Container>
       )}

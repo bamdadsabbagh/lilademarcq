@@ -7,11 +7,13 @@ export const Container = styled.span<{size: number; isHover?: boolean;}>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: ${({size}) => size * 3}px;
-  height: ${({size}) => size * 3}px;
+    // width: ${({size}) => size * 3}px;
+    // height: ${({size}) => size * 3}px;
 
   ${simpleTransition('transform', 0.1)};
   animation: ${WiggleAnimation} calc(${({isHover}) => isHover ? '1.3s' : 0} * ${tf}) ease infinite;
+
+  //transform: translateY(5px);
 
   &:hover {
     cursor: pointer;

@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {ProductsModule} from '../../modules/products/products.module';
+import {ObjectsModule} from '../../modules/objects/objects.module';
 import {fetchObjects} from '../../utils/fetch-objects';
 import {LDObject} from '../../utils/fetch-object';
 import {REVALIDATE} from '../../constants';
@@ -12,7 +12,7 @@ interface ObjetsProps {
 export default function Objets({objects}: ObjetsProps): ReactElement {
   return (
     <>
-      <ProductsModule products={objects} />
+      <ObjectsModule objects={objects} />
     </>
   );
 }

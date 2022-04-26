@@ -3,6 +3,8 @@ import {SlideInAnimation} from '../../../../app/styles/animations';
 import {tf, to} from '../../../../app/styles/timers';
 import {simpleTransition} from '../../../../app/styles/transitions';
 
+const size = '1.3rem';
+
 const getColor = (props) => {
   const {theme, isActive, isOpen} = props;
 
@@ -34,7 +36,7 @@ export const Container = styled.div<ContainerProps>`
   height: ${({
     hasChildren,
     isOpen,
-  }) => hasChildren && isOpen ? '100%' : '1.2em'};
+  }) => hasChildren && isOpen ? '100%' : size};
   ${simpleTransition('height', 0.3)};
 
   animation: ${SlideInAnimation} calc(0.9s * ${tf}) forwards calc(0.5s * ${tf});
@@ -48,9 +50,8 @@ interface BorderProps {
 }
 
 const Border = css<BorderProps>`
-  //height: 1.2em;
   width: 100%;
-  height: ${({isOpen}) => isOpen ? '100%' : '1.2em'};
+  height: ${({isOpen}) => isOpen ? '100%' : size};
   ${simpleTransition('height', 0.3)};
   position: absolute;
   pointer-events: none;

@@ -13,8 +13,8 @@ import {
   Banner,
   BannerImage,
   BannerText,
-  RichTextContainer,
-} from './product.styles';
+  ObjectDescription,
+} from './object.styles';
 import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {ModalComponent} from '../../components/modal/modal.component';
 import {LDObject} from '../../utils/fetch-object';
@@ -23,7 +23,7 @@ export interface ProductLayoutProps {
   object: LDObject;
 }
 
-export function ProductLayout({
+export function ObjectLayout({
   object,
 }: ProductLayoutProps): ReactElement {
   const [color] = useState(theme[object.color] ?? theme.black);
@@ -33,11 +33,8 @@ export function ProductLayout({
     <>
       <ModalComponent />
 
-      <SectionComponent backgroundColor={theme.salmonLight} verticalPadding={3}>
-        <SectionTitleComponent
-          color={color}
-          bottomPadding={0.6}
-        >
+      <SectionComponent backgroundColor={theme.salmonLight}>
+        <SectionTitleComponent color={color}>
           {`${object.name.toUpperCase()}, ${object.description}`}
         </SectionTitleComponent>
 
@@ -47,9 +44,9 @@ export function ProductLayout({
       </SectionComponent>
 
       <SectionComponent>
-        <RichTextContainer>
+        <ObjectDescription>
           {documentToReactComponents(object.body.json)}
-        </RichTextContainer>
+        </ObjectDescription>
       </SectionComponent>
 
       <SectionComponent backgroundColor={theme.salmonLight}>
@@ -87,14 +84,14 @@ export function ProductLayout({
             <p>
               <b>{object.structure}</b>
             </p>
-            <p>
-              <small>{object.structureDetails.toLowerCase()}</small>
-            </p>
+            <span>
+              {object.structureDetails.toLowerCase()}
+            </span>
           </BannerText>
         </Banner>
       </SectionComponent>
 
-      <SectionComponent backgroundColor={color} verticalPadding={4}>
+      <SectionComponent backgroundColor={color}>
         <FormComponent
           text="Demandez votre devis ou votre nuancier"
           backgroundColor={color}
