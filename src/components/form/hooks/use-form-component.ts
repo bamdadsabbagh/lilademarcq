@@ -22,7 +22,7 @@ interface UseFormComponent {
 }
 
 export function useFormComponent(): UseFormComponent {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const [isSubscribe, setIsSubscribe] = useState(false);
   const [isSubscribeHover, setIsSubscribeHover] = useState(false);
