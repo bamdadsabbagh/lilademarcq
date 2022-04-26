@@ -41,7 +41,7 @@ export function AwardsModule({
         onMouseLeave={() => setIsHover(false)}
       >
         {awards.map((award) => (
-          <Award imageHeight={size}>
+          <Award imageHeight={size} key={award.slug}>
             <NewImage>
               <Image
                 src={award.image.url}
@@ -67,7 +67,7 @@ export function AwardsModule({
           isHover={isHover}
         />
       </ButtonContainer>
-      
+
     </SectionComponent>
   );
 }

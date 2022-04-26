@@ -76,7 +76,7 @@ interface ParagraphProps {
   visible: boolean;
 }
 
-export const TextContainer = styled.p<ParagraphProps>`
+export const TextContainer = styled.span<ParagraphProps>`
   ${fontSpectral};
   font-size: 1.4em;
   line-height: 1.2em;
@@ -84,8 +84,6 @@ export const TextContainer = styled.p<ParagraphProps>`
 
   opacity: ${({visible}) => visible ? 1 : 0};
   height: ${({visible}) => visible ? '200px' : 0};
-  //opacity: 0;
-  //height: 0;
 
   ${simpleTransition('opacity, height', 0.4)};
 
