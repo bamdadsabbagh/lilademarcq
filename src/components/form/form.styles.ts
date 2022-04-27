@@ -13,7 +13,7 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 1.5em;
 
   color: ${(props) => props.theme.white};
 
