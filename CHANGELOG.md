@@ -1,3 +1,11 @@
+# [1.18.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.17.1...v1.18.0) (2022-04-27)
+
+
+### Features
+
+* **Banner:** Improve styling ([c24ee40](https://github.com/bamdadsabbagh/lilademarcq/commit/c24ee407f73937cf20d8ab7cdeeceb5f732b3672))
+* **Form:** Improve styling ([b5397cd](https://github.com/bamdadsabbagh/lilademarcq/commit/b5397cd56d0aa5a0f6474c9e20be0074d92b1eec))
+
 ## [1.17.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.17.0...v1.17.1) (2022-04-27)
 
 
