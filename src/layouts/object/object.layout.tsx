@@ -17,6 +17,7 @@ import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
 import {FormComponent} from '../../components/form/form.component';
 import {CarouselModule} from '../../modules/carousel/carousel.module';
+import {getObjectFullName} from '../../utils/get-object-full-name';
 
 interface ObjectLayoutProps {
   object: LDObject;
