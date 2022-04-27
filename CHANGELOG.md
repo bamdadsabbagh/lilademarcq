@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.15.0...v1.16.0) (2022-04-27)
+
+
+### Features
+
+* **Header:** Rename component + Add correct semantics + Add mobile burger navigation ([cd0641c](https://github.com/bamdadsabbagh/lilademarcq/commit/cd0641c24f2a699a94f1d01ced396e1d1b4f6fe3))
+
 # [1.15.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.6...v1.15.0) (2022-04-27)
 
 
