@@ -10,6 +10,7 @@ import {REVALIDATE} from '../../constants';
 import {ObjectLayout} from '../../layouts/object/object.layout';
 import {MetaComponent} from '../../components/meta/meta.component';
 import {DefaultLayout} from '../../layouts/default/default.layout';
+import {getObjectFullName} from '../../utils/get-object-full-name';
 
 export interface ObjectProps {
   object: LDObject;
@@ -31,7 +32,7 @@ export default function Object({
       ) : (
         <>
           <MetaComponent
-            description={object.name}
+            description={getObjectFullName(object)}
             image={object.thumbnail.url}
           />
           <DefaultLayout customMeta>

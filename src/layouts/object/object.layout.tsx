@@ -16,7 +16,6 @@ import {
 import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
 import {FormComponent} from '../../components/form/form.component';
-import {uncapitalizeFirstLetter} from '../../utils/uncapitalize-first-letter';
 import {CarouselModule} from '../../modules/carousel/carousel.module';
 
 interface ObjectLayoutProps {
@@ -31,7 +30,7 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>
         <SectionTitleComponent color={color}>
-          {`${object.name.toUpperCase()}, ${uncapitalizeFirstLetter(object.description)}`}
+          {getObjectFullName(object)}
         </SectionTitleComponent>
 
         {images.length !== 0 && (
