@@ -23,6 +23,10 @@ export const Section = styled.section<StyledSectionProps>`
 export const Wrapper = styled.div`
   padding: ${PADDING}rem 0;
 
+  ${mediaQueries.below.mobile} {
+    width: 90vw;
+  }
+
   ${mediaQueries.above.mobile} {
     width: 90vw;
   }
