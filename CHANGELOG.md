@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.17.0...v1.17.1) (2022-04-27)
+
+
+### Bug Fixes
+
+* **Gallery:** Improve badge positioning and size ([6e66c57](https://github.com/bamdadsabbagh/lilademarcq/commit/6e66c57105197bd0a32d391cf9e98839f4e9536c))
+
 # [1.17.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.16.0...v1.17.0) (2022-04-27)
 
 
