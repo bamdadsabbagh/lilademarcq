@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components';
+import {mediaQueries} from '../../../../app/styles/breakpoints';
 
 interface ContainerProps {
   size: number;
@@ -14,12 +15,8 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   gap: 0.5em;
 
-  //width: 100%;
-  //height: 100%;
-  width: ${({size}) => size}rem;
-  height: ${({size}) => size}rem;
-  font-size: ${({fontSize}) => fontSize}em;
-    // padding: ${({size}) => size * 0.05}rem;
+  width: ${({size}) => size}em;
+  height: ${({size}) => size}em;
 
   position: relative;
   left: ${({x}) => x}%;
@@ -27,24 +24,64 @@ export const Container = styled.div<ContainerProps>`
 
   border-radius: 100%;
 
-  background: rgba(105, 140, 115, 0.8);
+  background: rgba(105, 140, 115, 0.9);
   color: white;
 
   overflow: hidden;
+  font-size: 1.1em;
+
+  ${mediaQueries.below.mobile} {
+    font-size: 1em;
+    transform: translate3d(-15%, 0, 0);
+  }
+
+  ${mediaQueries.above.mobile} {
+    font-size: 1em;
+    transform: translate3d(-10%, 0, 0);
+  }
+
+  ${mediaQueries.above.tablet} {
+    font-size: 1.1em;
+    transform: translate3d(-5%, 0, 0);
+  }
+
+  ${mediaQueries.above.desktop} {
+    font-size: 1.2em;
+  }
+
+  ${mediaQueries.above.widescreen} {
+    font-size: 1.3em;
+    transform: translate3d(-5%, -15%, 0);
+  }
+
+  ${mediaQueries.above.fullhd} {
+    font-size: 1.4em;
+  }
+
+  ${mediaQueries.above.qhd} {
+    font-size: 1.5em;
+  }
 `;
 
-const translate = css`
+const TileBody = css`
   width: 80%;
   padding: 0 1.2em;
-  //transform: translateX(17%);
-  //width: 60%;
 `;
 
 export const Title = styled.span`
-  ${translate};
+  ${TileBody};
   font-weight: 600;
 `;
 
-export const Text = styled.span`
-  ${translate};
+const BodyPaddingLeft = css`
+  padding-left: 2em;
+`;
+
+interface BodyProps {
+  paddingLeft: boolean;
+}
+
+export const Body = styled.span<BodyProps>`
+  ${TileBody};
+  ${({paddingLeft}) => paddingLeft && BodyPaddingLeft};
 `;

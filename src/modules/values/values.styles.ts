@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Image = styled(NextImage)`
-  transform: translateY(12em);
+  transform: translateY(10em);
 `;
 
 export const Bubbles = styled.div`
@@ -21,7 +21,7 @@ export const Bubbles = styled.div`
   top: 0;
   left: 0;
 
-  padding-top: 6em;
+  padding-top: 4em;
 
   z-index: 100;
 

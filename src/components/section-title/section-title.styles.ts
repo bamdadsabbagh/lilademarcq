@@ -9,13 +9,13 @@ interface TitleProps {
   paddingLeft: boolean;
 }
 
-const paddingLeftStyle = css`
+const PaddingLeft = css`
   padding-left: ${PADDING}rem;
 `;
 
 export const Title = styled.h2<TitleProps>`
   padding-bottom: calc(${PADDING}rem - 0.5rem);
-  ${({paddingLeft}) => paddingLeft && paddingLeftStyle}
+  ${({paddingLeft}) => paddingLeft && PaddingLeft}
 
   color: ${({color}) => color};
 

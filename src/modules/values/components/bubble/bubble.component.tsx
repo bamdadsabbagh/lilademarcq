@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {Container, Text, Title} from './bubble.styles';
+import {Body, Container, Title} from './bubble.styles';
 
 interface BubbleComponentProps {
   title?: string;
@@ -24,7 +24,7 @@ export function BubbleComponent({
         <Title>{title}</Title>
       )}
       {text && (
-        <Text>{text}</Text>
+        <Body paddingLeft={typeof title !== 'undefined'}>{text}</Body>
       )}
     </Container>
   );

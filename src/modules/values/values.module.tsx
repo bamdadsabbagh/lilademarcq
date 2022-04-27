@@ -23,52 +23,46 @@ export function ValuesModule({values}: ValuesModuleProps): ReactElement {
 
           <Bubbles>
             <BubbleComponent
-              title={values.topLeftTitle}
-              text={values.topLeftBody}
-              size={30}
-              fontSize={1.7}
+              title={values.topLeftTitle ?? ''}
+              text={values.topLeftBody ?? ''}
+              size={18}
               x={5}
             />
             <BubbleComponent
-              title={values.topCenterTitle}
-              text={values.topCenterBody}
-              size={14}
-              fontSize={1.1}
-              x={60}
-              y={40}
+              title={values.topCenterTitle ?? ''}
+              text={values.topCenterBody ?? ''}
+              size={12}
+              x={40}
+              y={30}
             />
             <BubbleComponent
-              title={values.topRightTitle}
-              text={values.topRightBody}
-              size={20}
-              fontSize={1.1}
-              x={40}
-              y={50}
+              title={values.topRightTitle ?? ''}
+              text={values.topRightBody ?? ''}
+              size={16}
+              x={35}
+              y={40}
             />
 
             <BubbleComponent
-              title={values.bottomLeftTitle}
-              text={values.bottomLeftBody}
-              size={25}
-              fontSize={1.4}
-              x={30}
+              title={values.bottomLeftTitle ?? ''}
+              text={values.bottomLeftBody ?? ''}
+              size={17}
+              x={20}
               y={5}
             />
             <BubbleComponent
               title={values.bottomCenterTitle ?? ''}
-              text={values.bottomCenterBody}
-              size={18}
-              fontSize={1.2}
-              x={35}
-              y={25}
+              text={values.bottomCenterBody ?? ''}
+              size={16}
+              x={15}
+              y={35}
             />
             <BubbleComponent
-              title={values.bottomRightTitle}
+              title={values.bottomRightTitle ?? ''}
               text={values.bottomRightBody ?? ''}
-              size={16}
-              fontSize={1.2}
-              x={10}
-              y={15}
+              size={13}
+              x={20}
+              y={30}
             />
           </Bubbles>
 
