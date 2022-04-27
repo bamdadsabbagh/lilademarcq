@@ -107,7 +107,7 @@ export const Dot = styled.span<DotProps>`
   background: ${(props) => props.active ? props.theme.antracite : props.theme.white};
   opacity: 0.9;
 
-  animation: ${simpleTransition('background')};
+  ${simpleTransition('background')};
 
   pointer-events: fill;
 
@@ -150,7 +150,7 @@ export const Caption = styled.div<CaptionProps>`
     background: rgba(255, 255, 255, 0.85);
 
     transform: translateX(${({hide}) => hide ? 120 : 0}%);
-    animation: ${simpleTransition('transform', 0.3)};
+    ${simpleTransition('transform', 0.3)};
 
     ${fontMontserrat};
     font-size: 0.8em;
