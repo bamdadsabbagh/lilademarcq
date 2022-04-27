@@ -26,7 +26,7 @@ interface FormProps {
 }
 
 export const Title = styled.h3`
-  font-family: Farmhouse, serif;
+  ${fontFarmhouse};
   font-size: 2.4em;
 `;
 

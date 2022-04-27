@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {fontSpectral} from '../../app/styles/fonts';
 
 interface ContainerProps {
   width: number;
@@ -38,7 +39,7 @@ export const TextWrapper = styled.div<TextWrapperProps>`
 
   height: 100%;
 
-  font-family: Spectral, sans-serif;
+  ${fontSpectral};
   font-weight: 200;
 
   font-size: 1.2em;
