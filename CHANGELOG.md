@@ -1,3 +1,11 @@
+## [1.14.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.0...v1.14.1) (2022-04-27)
+
+
+### Bug Fixes
+
+* **SEO:** Add default description ([97cf518](https://github.com/bamdadsabbagh/lilademarcq/commit/97cf5180f3775146a206147c13d1c0bc9db1bf2e))
+* **SEO:** Render MetaComponent outside of layout ([6eeeb4a](https://github.com/bamdadsabbagh/lilademarcq/commit/6eeeb4a89b048b682d4af616c0800da669881923))
+
 # [1.14.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.5...v1.14.0) (2022-04-27)
 
 
