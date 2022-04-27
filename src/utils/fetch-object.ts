@@ -10,8 +10,10 @@ query {
       color
       name
       description
+      madeIn
       structure
       structureDetails
+      formTitle
       imagesCollection {
         total
         items {
@@ -33,10 +35,12 @@ export interface LDObject {
   position: number;
   color: string;
   name: string;
-  menuName: string | null;
+  menuName?: string;
+  madeIn: string;
   description: string;
   structure: string;
   structureDetails: string;
+  formTitle: string;
   thumbnail: {
     url: string;
   };

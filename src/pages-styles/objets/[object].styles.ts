@@ -59,15 +59,11 @@ export const BannerText = styled.div`
   font-weight: 300;
 
   b {
+    max-width: 20rem;
     font-weight: 400;
     margin-right: 0.3em;
   }
-
-  p {
-    max-width: 20rem;
-    margin: 0;
-  }
-
+  
   span {
     font-size: 1em;
     margin-left: 1em;
