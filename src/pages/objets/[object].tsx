@@ -8,6 +8,7 @@ import {fetchObjects} from '../../utils/fetch-objects';
 import {fetchObject, LDObject} from '../../utils/fetch-object';
 import {REVALIDATE} from '../../constants';
 import {ObjectLayout} from '../../layouts/object/object.layout';
+import {MetaComponent} from '../../components/meta/meta.component';
 
 export interface ObjectProps {
   object: LDObject;
@@ -27,7 +28,13 @@ export default function Object({
       {object.slug !== slug ? (
         <></>
       ) : (
-        <ObjectLayout object={object} />
+        <>
+          <MetaComponent
+            description={object.name}
+            image={object.thumbnail.url}
+          />
+          <ObjectLayout object={object} />
+        </>
       )}
     </>
   );

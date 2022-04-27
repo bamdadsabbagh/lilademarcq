@@ -1,18 +1,8 @@
 import React, {ReactElement} from 'react';
-import {SectionComponent} from '../components/section/section.component';
 import {
-  AlignKeys,
-  SectionTitleComponent,
-} from '../components/section-title/section-title.component';
+  UnderDevelopmentLayout,
+} from '../layouts/under-development/under-development.layout';
 
 export default function LivreDOr(): ReactElement {
-  return (
-    <>
-      <SectionComponent>
-        <SectionTitleComponent align={AlignKeys.center}>
-          Page en cours de construction
-        </SectionTitleComponent>
-      </SectionComponent>
-    </>
-  );
+  return <UnderDevelopmentLayout />;
 }

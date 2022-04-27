@@ -8,6 +8,7 @@ import {
 import {StyledMarkdownContainer} from '../pages-styles/a-propos.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
+import {MetaComponent} from '../components/meta/meta.component';
 
 interface AProposProps {
   about: LDSection;
@@ -16,6 +17,7 @@ interface AProposProps {
 export default function APropos({about}: AProposProps): ReactElement {
   return (
     <>
+      <MetaComponent description="A Propos" />
       <SectionComponent>
         <ImageTextComponent image={about.image.url} imageAlt="a">
           <StyledMarkdownContainer>

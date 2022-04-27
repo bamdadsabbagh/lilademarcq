@@ -6,6 +6,7 @@ import {theme} from '../app/styles/theme';
 import {Markdown, Title} from '../pages-styles/mentions-legales.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
+import {MetaComponent} from '../components/meta/meta.component';
 
 interface MentionsLegalesProps {
   section: LDSection;
@@ -16,6 +17,7 @@ export default function MentionsLegales({
 }: MentionsLegalesProps): ReactElement {
   return (
     <>
+      <MetaComponent description={section.title} />
       <SectionComponent backgroundColor={theme.salmonLight}>
         <>
           <Title>

@@ -4,6 +4,7 @@ import {ObjectsModule} from '../../modules/objects/objects.module';
 import {fetchObjects} from '../../utils/fetch-objects';
 import {LDObject} from '../../utils/fetch-object';
 import {REVALIDATE} from '../../constants';
+import {MetaComponent} from '../../components/meta/meta.component';
 
 interface ObjetsProps {
   objects: LDObject[];
@@ -14,6 +15,7 @@ export default function Objets({
 }: ObjetsProps): ReactElement {
   return (
     <>
+      <MetaComponent description="Objets" />
       <ObjectsModule objects={objects} />
     </>
   );

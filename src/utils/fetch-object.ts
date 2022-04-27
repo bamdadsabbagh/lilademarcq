@@ -14,6 +14,9 @@ query {
       structure
       structureDetails
       formTitle
+      thumbnail {
+        url
+      }
       imagesCollection {
         items {
           title
