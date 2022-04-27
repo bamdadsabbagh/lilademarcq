@@ -1,12 +1,10 @@
 import React, {useCallback, useState} from 'react';
-import {useAtom} from 'jotai';
-import {setModalAtom} from '../../../atoms/modal.atom';
 
 export interface UseIncrements {
   previousIndex: number;
   index: number;
   nextIndex: number;
-  handleClick: (e: React.MouseEvent<HTMLDivElement>, src: string) => void;
+  handleClick: (e: React.MouseEvent<HTMLDivElement>, i: number) => void;
   select: (i: number) => void;
 }
 
@@ -14,7 +12,6 @@ export function useIncrements(length: number): UseIncrements {
   const [index, setIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState(length - 1);
   const [nextIndex, setNextIndex] = useState(1);
-  const [, setModal] = useAtom(setModalAtom);
 
   const incrementNextIndex = useCallback((i) => {
     setNextIndex(i + 2 >= length ? 0 : i + 2);
@@ -62,7 +59,7 @@ export function useIncrements(length: number): UseIncrements {
 
   const handleClick = useCallback((
     e: React.MouseEvent<HTMLDivElement>,
-    src: string,
+    i: number,
   ) => {
     const target = e.target as HTMLDivElement;
     const x = e.nativeEvent.offsetX;
@@ -71,20 +68,24 @@ export function useIncrements(length: number): UseIncrements {
     const gap = 0.3;
     const percent = x / width;
 
+    // center
     if (percent >= gap && percent <= 1 - gap) {
-      setModal({isOpen: true, src});
+      const anchor = target.nextElementSibling.firstElementChild.children[i] as HTMLAnchorElement;
+      anchor.click();
       return;
     }
 
+    // left
     if (percent < gap) {
       decrement();
       return;
     }
 
+    // right
     if (percent > 1 - gap) {
       increment();
     }
-  }, [decrement, increment, setModal]);
+  }, [decrement, increment]);
 
   return {
     previousIndex,

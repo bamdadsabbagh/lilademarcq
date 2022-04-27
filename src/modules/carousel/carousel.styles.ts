@@ -32,40 +32,17 @@ export const PointerLayer = styled.div`
 
   // center
   &:after {
-    content: '';
-    width: ${100 - 2 * gap}%;
-    cursor: zoom-in;
+    // nothing
   }
 `;
 
-export const Images = styled.div`
-  position: relative;
-  //overflow: hidden;
-`;
-
-const ImageContainer = styled.div`
+export const GalleryContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
+  width: 100%;
   height: 100%;
-`;
-
-const ImageSide = styled(ImageContainer)`
-  position: absolute;
-  opacity: 0.3;
-  filter: grayscale(100%);
-`;
-
-export const ImagePrevious = styled(ImageSide)`
-  transform: translate3d(-102%, 0, 0);
-`;
-
-export const ImageCurrent = styled(ImageContainer)`
-`;
-
-export const ImageNext = styled(ImageSide)`
-  transform: translate3d(102%, -100%, 0);
 `;
 
 export const Features = styled.div`

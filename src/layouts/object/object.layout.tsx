@@ -3,12 +3,10 @@ import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
 import {LDObject} from '../../utils/fetch-object';
 import {theme} from '../../app/styles/theme';
-import {ModalComponent} from '../../components/modal/modal.component';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
-import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {
   Banner,
   BannerImage,
@@ -19,6 +17,7 @@ import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
 import {FormComponent} from '../../components/form/form.component';
 import {uncapitalizeFirstLetter} from '../../utils/uncapitalize-first-letter';
+import {CarouselModule} from '../../modules/carousel/carousel.module';
 
 interface ObjectLayoutProps {
   object: LDObject;
@@ -30,15 +29,13 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
 
   return (
     <>
-      <ModalComponent />
-
       <SectionComponent backgroundColor={theme.salmonLight}>
         <SectionTitleComponent color={color}>
           {`${object.name.toUpperCase()}, ${uncapitalizeFirstLetter(object.description)}`}
         </SectionTitleComponent>
 
         {images.length !== 0 && (
-          <CarouselComponent images={images} />
+          <CarouselModule images={images} />
         )}
       </SectionComponent>
 
