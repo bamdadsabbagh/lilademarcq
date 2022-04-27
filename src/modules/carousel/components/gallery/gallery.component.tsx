@@ -90,8 +90,8 @@ export function GalleryComponent({
                       alt=""
                       layout="intrinsic"
                       objectFit="cover"
-                      width={100}
-                      height={100}
+                      width={120}
+                      height={120}
                     />
                   </BadgeContainer>
                 )}

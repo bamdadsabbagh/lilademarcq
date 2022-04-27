@@ -65,8 +65,12 @@ export const NativeImage = styled.img`
 
 export const BadgeContainer = styled.div`
   position: absolute;
-  right: 75px;
-  top: -50px;
+  display: flex;
+  justify-content: flex-end;
+
+  width: min(90%, 1200px);
+
+  top: -60px;
 
   pointer-events: none;
   user-select: none;
