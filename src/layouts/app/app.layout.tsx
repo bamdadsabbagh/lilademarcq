@@ -1,6 +1,8 @@
 import React, {ReactElement} from 'react';
 import styled from 'styled-components';
 import {fontMontserrat} from '../../app/styles/fonts';
+import NavComponent from '../../components/nav/nav.component';
+import {FooterComponent} from '../../components/footer/footer.component';
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +21,9 @@ export function AppLayout({
   return (
     <>
       <Container>
+        <NavComponent />
         {children}
+        <FooterComponent />
       </Container>
     </>
   );
