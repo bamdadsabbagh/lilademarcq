@@ -4,11 +4,11 @@ import {setIsFirstDrawAtom} from '../../../atoms/is-first-draw.atom';
 import {FIRST_DRAW_TIMEOUT} from '../../../constants';
 import {menuAtom} from '../../../atoms/menu.atom';
 
-interface UseAppLayout {
+interface UseDefaultLayout {
   isReady: boolean;
 }
 
-export function useAppLayout(): UseAppLayout {
+export function useAppLayout(): UseDefaultLayout {
   const [, setIsFirstDraw] = useAtom(setIsFirstDrawAtom);
   const [menu] = useAtom(menuAtom);
 

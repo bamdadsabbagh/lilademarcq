@@ -9,6 +9,7 @@ import {fetchObject, LDObject} from '../../utils/fetch-object';
 import {REVALIDATE} from '../../constants';
 import {ObjectLayout} from '../../layouts/object/object.layout';
 import {MetaComponent} from '../../components/meta/meta.component';
+import {DefaultLayout} from '../../layouts/default/default.layout';
 
 export interface ObjectProps {
   object: LDObject;
@@ -33,7 +34,9 @@ export default function Object({
             description={object.name}
             image={object.thumbnail.url}
           />
-          <ObjectLayout object={object} />
+          <DefaultLayout customMeta>
+            <ObjectLayout object={object} />
+          </DefaultLayout>
         </>
       )}
     </>
