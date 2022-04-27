@@ -23,6 +23,7 @@ const SlideInKeyframes = keyframes`
 
 export const SlideInAnimation = (start = 0.9, finish = 0.4): FlattenSimpleInterpolation => css`
   animation: ${SlideInKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
+  opacity: 0;
 `;
 
 export const DelayAnimation = (i: number): FlattenSimpleInterpolation => css`

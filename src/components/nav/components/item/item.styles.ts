@@ -33,8 +33,6 @@ export const Container = styled.div<ContainerProps>`
 
   user-select: none;
 
-  opacity: 0;
-
   height: ${({
     hasChildren,
     isOpen,
