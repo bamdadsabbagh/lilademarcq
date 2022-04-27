@@ -11,6 +11,7 @@ import {ObjectLayout} from '../../layouts/object/object.layout';
 import {MetaComponent} from '../../components/meta/meta.component';
 import {DefaultLayout} from '../../layouts/default/default.layout';
 import {getObjectFullName} from '../../utils/get-object-full-name';
+import {getRedirectionObject} from '../../utils/get-redirection-object';
 
 export interface ObjectProps {
   object: LDObject;
@@ -52,6 +53,10 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
   }
 
   const object = await fetchObject(o);
+
+  if (!object) {
+    return getRedirectionObject('/404');
+  }
 
   return {
     props: {
