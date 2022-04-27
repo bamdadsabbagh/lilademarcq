@@ -1,5 +1,5 @@
+import {Document} from '@contentful/rich-text-types';
 import {fetchContentful} from './fetch-contentful';
-import {LDImage, RichText} from './fetch-objects';
 
 const queryObject = (slug: string) => `
 query {
@@ -15,11 +15,12 @@ query {
       structureDetails
       formTitle
       imagesCollection {
-        total
         items {
           title
           description
           url
+          width
+          height
         }
       }
       body {
@@ -29,6 +30,18 @@ query {
   }
 }
 `;
+
+export interface LDImage {
+  title: string;
+  description: string;
+  url: string;
+  width: number;
+  height: number;
+}
+
+export interface LDText {
+  json: Document;
+}
 
 export interface LDObject {
   slug: string;
@@ -45,10 +58,9 @@ export interface LDObject {
     url: string;
   };
   imagesCollection: {
-    total: number;
     items: LDImage[];
   };
-  body: RichText;
+  body: LDText;
 }
 
 export interface ObjectResponse {

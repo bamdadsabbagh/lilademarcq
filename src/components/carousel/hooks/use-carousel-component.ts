@@ -1,5 +1,5 @@
 import {UseIncrements, useIncrements} from './use-increments';
-import {LDImage} from '../../../utils/fetch-objects';
+import {LDImage} from '../../../utils/fetch-object';
 
 interface UseCarouselComponent {
   previousIndex: UseIncrements['previousIndex'];

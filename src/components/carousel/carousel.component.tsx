@@ -14,7 +14,7 @@ import {
   PointerLayer,
 } from './carousel.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
-import {LDImage} from '../../utils/fetch-objects';
+import {LDImage} from '../../utils/fetch-object';
 
 export interface CarouselImage {
   image: string;

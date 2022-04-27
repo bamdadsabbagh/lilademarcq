@@ -1,5 +1,5 @@
 import {fetchContentful} from './fetch-contentful';
-import {RichText} from './fetch-objects';
+import {LDText} from './fetch-object';
 
 const queryAwards = `
 query {
@@ -24,7 +24,7 @@ export interface LDAward {
   image: {
     url: string;
   };
-  body: RichText;
+  body: LDText;
 }
 
 interface AwardResponse {
