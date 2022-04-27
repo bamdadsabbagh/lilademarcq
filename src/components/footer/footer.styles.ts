@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import {FadeInHeroAnimation} from '../../app/styles/animations';
-import {tf} from '../../app/styles/timers';
+import {FadeInAnimation} from '../../app/styles/animations';
 
 export const Footer = styled.footer`
   display: flex;
@@ -14,8 +13,7 @@ export const Footer = styled.footer`
 
   user-select: none;
 
-  opacity: 0;
-  animation: ${FadeInHeroAnimation} calc(1s * ${tf}) forwards calc(1.1s * ${tf});
+  ${FadeInAnimation(1, 1.1)}
 `;
 
 export const Span = styled.span<{noAfter?: number;}>`

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
-import {FadeInHeroAnimation} from '../../app/styles/animations';
-import {tf} from '../../app/styles/timers';
+import {FadeInAnimation} from '../../app/styles/animations';
 import {PADDING} from '../../constants';
 
 interface StyledSectionProps {
@@ -18,8 +17,7 @@ export const Section = styled.section<StyledSectionProps>`
 
   background: ${(props) => props.backgroundColor ? props.backgroundColor : 'none'};
 
-  opacity: 0;
-  animation: ${FadeInHeroAnimation} calc(1s * ${tf}) forwards calc(${({skipTransition}) => skipTransition ? 0 : 1.1}s * ${tf});
+  ${({skipTransition}) => FadeInAnimation(1, skipTransition ? 0 : 1.1)}
 `;
 
 export const Wrapper = styled.div`

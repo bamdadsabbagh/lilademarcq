@@ -19,6 +19,9 @@ export const Nav = styled.nav`
 export const LogoContainer = styled.div`
   width: 100%;
   height: 6em;
+
+  display: flex;
+  justify-content: center;
 `;
 
 export const MenuContainer = styled.div`
