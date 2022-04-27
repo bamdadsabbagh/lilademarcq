@@ -1,3 +1,17 @@
+# [1.17.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.16.0...v1.17.0) (2022-04-27)
+
+
+### Bug Fixes
+
+* **Carousel:** Improve z-indexes and user-selects ([214e976](https://github.com/bamdadsabbagh/lilademarcq/commit/214e9765db4b1addbff1554c85a7dfb4aa12d412))
+* **Header:** Set visibility to none when burger menu is not rendered + Improve styling code ([d91b94e](https://github.com/bamdadsabbagh/lilademarcq/commit/d91b94ec60a538437003bc0ba29df3cc461b1ecb))
+
+
+### Features
+
+* **Carousel:** Add optional floating badge ([6d40636](https://github.com/bamdadsabbagh/lilademarcq/commit/6d406365d86c251a5da87bc55ccc35b7983045d0))
+* **ObjectLayout:** Add vimeo player ([49ecb88](https://github.com/bamdadsabbagh/lilademarcq/commit/49ecb88ae459be83a14f390e0e91dc2ea1dce5ec))
+
 # [1.16.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.15.0...v1.16.0) (2022-04-27)
 
 
