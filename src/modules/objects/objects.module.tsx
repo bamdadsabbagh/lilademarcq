@@ -1,11 +1,13 @@
 import React, {ReactElement} from 'react';
+import useMeasure from 'react-use-measure';
+import Image from 'next/image';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   SectionTitleComponent,
 } from '../../components/section-title/section-title.component';
-import {GridComponent} from './components/grid/grid.component';
-import {TileComponent} from './components/tile/tile.component';
+import {LinkComponent} from '../../components/link/link.component';
 import {capitalizeFirstLetter} from '../../utils/capitalize-first-letter';
+import {GridBody, GridContainer, HoverBox, Tile} from './object.styles';
 
 export interface ObjectTile {
   slug: string;
@@ -22,23 +24,37 @@ interface ObjectsModuleProps {
 }
 
 export function ObjectsModule({objects}: ObjectsModuleProps): ReactElement {
+  const [gridRef, gridBounds] = useMeasure();
+  const [tileRef, tileBounds] = useMeasure();
+
   return (
     <>
       <SectionComponent>
         <SectionTitleComponent>
           Objets design
         </SectionTitleComponent>
-        <GridComponent>
-          {objects.map((object) => (
-            <TileComponent
-              key={object.slug}
-              image={object.thumbnail.url}
-              title={object.name.toUpperCase()}
-              description={capitalizeFirstLetter(object.description.toLowerCase())}
-              href={`/objets/${object.slug}`}
-            />
-          ))}
-        </GridComponent>
+        <GridContainer ref={gridRef}>
+          <GridBody>
+            {objects.map((object) => (
+              <div key={object.slug}>
+                <LinkComponent href={`/objets/${object.slug}`}>
+                  <Tile ref={tileRef}>
+                    <Image
+                      src={object.thumbnail.url}
+                      width={gridBounds.width * 0.5}
+                      height={gridBounds.width * 0.5}
+                      objectFit="cover"
+                    />
+                    <HoverBox size={tileBounds.width}>
+                      <h3>{object.name.toUpperCase()}</h3>
+                      <span>{capitalizeFirstLetter(object.description.toLowerCase())}</span>
+                    </HoverBox>
+                  </Tile>
+                </LinkComponent>
+              </div>
+            ))}
+          </GridBody>
+        </GridContainer>
       </SectionComponent>
     </>
   );
