@@ -1,3 +1,26 @@
+# [1.14.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.5...v1.14.0) (2022-04-27)
+
+
+### Bug Fixes
+
+* **Carousel:** Rectify calls to transition generator ([d472a0e](https://github.com/bamdadsabbagh/lilademarcq/commit/d472a0e0597c38615ede8968934a9bfcab9d076b))
+* **Fonts:** Prevent font re-fetches and re-renders by `font-face` directive in built in global stylesheet ([eb05ddd](https://github.com/bamdadsabbagh/lilademarcq/commit/eb05dddfd7e102a8db4f8c6ea559ef8a97467851))
+* Improve requested fields in requests' interfaces ([634e005](https://github.com/bamdadsabbagh/lilademarcq/commit/634e0055541a589beb0514d6674dc1b3d09b505f))
+* Tune logo + animations ([fe3b958](https://github.com/bamdadsabbagh/lilademarcq/commit/fe3b958f08464fd57e5e35f0d3de5ce07830a0fa))
+
+
+### Features
+
+* **Carousel:** Add lightbox gallery + Create native image inspired by next/image + Remove old ModalComponent ([91c8efc](https://github.com/bamdadsabbagh/lilademarcq/commit/91c8efc01dd0bc3a5a2ae09b098130f12ae3b6a8))
+* **ObjectLayout:** Improve title rendering + Bind to new server data ([4dbbbeb](https://github.com/bamdadsabbagh/lilademarcq/commit/4dbbbebf36487dba505d86135af9de5c9a1c81e3))
+* **SEO:** Add meta descriptions + Add sitemap generator ([554d985](https://github.com/bamdadsabbagh/lilademarcq/commit/554d98555b1ab69b7394a9607c7d578b0dc8160e))
+
+
+### Performance Improvements
+
+* **Animations:** Move animation logic to their own blocks ([4d053b1](https://github.com/bamdadsabbagh/lilademarcq/commit/4d053b1110fc79201f1bba377cd43335b3f570ee))
+* **AppLayout:** Ensure client data is ready before first render ([3110320](https://github.com/bamdadsabbagh/lilademarcq/commit/31103201f1b2bf40e24108adada785fa7ae26f10))
+
 ## [1.13.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.13.4...v1.13.5) (2022-04-26)
 
 
