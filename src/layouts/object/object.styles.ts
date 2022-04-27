@@ -44,7 +44,7 @@ export const Banner = styled.div`
 
 export const BannerImage = styled.div`
   position: absolute;
-  transform: translate3d(-155px, calc(1em * 0.1), 0);
+  transform: translate3d(-150px, calc(1em * 0.1), 0);
 `;
 
 export const BannerText = styled.div`
@@ -53,7 +53,7 @@ export const BannerText = styled.div`
   justify-content: center;
   align-items: flex-start;
 
-  transform: translateX(-50px);
+  transform: translateX(-45px);
 
   ${fontMontserrat};
   font-size: 1.2em;
