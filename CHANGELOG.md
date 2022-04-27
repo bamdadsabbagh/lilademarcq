@@ -1,3 +1,10 @@
+## [1.14.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.4...v1.14.5) (2022-04-27)
+
+
+### Bug Fixes
+
+* **Objects:** Redirect to `/404` if not found ([81a3dde](https://github.com/bamdadsabbagh/lilademarcq/commit/81a3ddec138ce7293aac50fc4bd77eb429b63881))
+
 ## [1.14.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.3...v1.14.4) (2022-04-27)
 
 
