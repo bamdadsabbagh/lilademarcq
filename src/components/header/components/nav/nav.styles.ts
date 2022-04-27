@@ -156,6 +156,7 @@ export const BNav = styled.nav<BNavProps>`
 
 export const BNavItem = styled.span`
   text-transform: uppercase;
+  ${simpleTransition('color')};
 
   &:hover {
     cursor: pointer;

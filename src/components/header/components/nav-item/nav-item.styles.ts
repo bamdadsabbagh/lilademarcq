@@ -37,6 +37,7 @@ export const Container = styled.div<ContainerProps>`
     hasChildren,
     isOpen,
   }) => hasChildren && isOpen ? '100%' : size};
+
   ${simpleTransition('height', 0.3)};
 
   ${SlideInAnimation(0.9, 0.5)};
@@ -57,12 +58,12 @@ const Border = css<BorderProps>`
   pointer-events: none;
 `;
 
-export const BorderLeft = styled.div<{isOpen: boolean;}>`
+export const BorderLeft = styled.div<BorderProps>`
   ${Border};
   border-left: 1px solid black;
 `;
 
-export const BorderRight = styled.div<{isOpen: boolean;}>`
+export const BorderRight = styled.div<BorderProps>`
   ${Border};
   border-right: 1px solid black;
 `;
