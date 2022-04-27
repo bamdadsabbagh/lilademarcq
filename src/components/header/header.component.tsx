@@ -1,20 +1,18 @@
 import React, {ReactElement} from 'react';
-import {LogoContainer, MenuContainer, Nav} from './nav.styles';
-import {MenuComponent} from './components/menu/menu.component';
+import {Header, LogoContainer} from './header.styles';
+import {NavComponent} from './components/nav/nav.component';
 import {LogoComponent} from './components/logo/logo.component';
 import {useNavComponent} from './hooks/use-nav-component';
 
-export default function NavComponent(): ReactElement {
+export default function HeaderComponent(): ReactElement {
   const {navRef} = useNavComponent();
 
   return (
-    <Nav ref={navRef}>
+    <Header ref={navRef}>
       <LogoContainer>
         <LogoComponent />
       </LogoContainer>
-      <MenuContainer>
-        <MenuComponent />
-      </MenuContainer>
-    </Nav>
+      <NavComponent />
+    </Header>
   );
 }

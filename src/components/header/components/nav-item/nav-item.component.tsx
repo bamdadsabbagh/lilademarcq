@@ -9,7 +9,7 @@ import {
   DropdownItem,
   DropdownSpacer,
   Item,
-} from './item.styles';
+} from './nav-item.styles';
 import {MenuDropdownInterface} from '../../../../utils/fetch-menu';
 
 interface DropdownProps {
@@ -21,7 +21,7 @@ interface DropdownProps {
   dropdown?: MenuDropdownInterface[];
 }
 
-export function ItemComponent({
+export function NavItemComponent({
   index,
   name,
   slug,

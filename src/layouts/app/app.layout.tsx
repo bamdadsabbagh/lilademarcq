@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import styled from 'styled-components';
 import {fontMontserrat} from '../../app/styles/fonts';
-import NavComponent from '../../components/nav/nav.component';
+import HeaderComponent from '../../components/header/header.component';
 import {FooterComponent} from '../../components/footer/footer.component';
 
 const Container = styled.div`
@@ -21,7 +21,7 @@ export function AppLayout({
   return (
     <>
       <Container>
-        <NavComponent />
+        <HeaderComponent />
         {children}
         <FooterComponent />
       </Container>

@@ -3,12 +3,12 @@ import {useAtom} from 'jotai';
 import {MenuInterface} from '../../../../../utils/fetch-menu';
 import {menuAtom} from '../../../../../atoms/menu.atom';
 
-interface UseMenuComponent {
+interface UseNavComponent {
   menu: MenuInterface;
   borders: [number, number][];
 }
 
-export function useMenuComponent(): UseMenuComponent {
+export function useNavComponent(): UseNavComponent {
   const [borders, setBorders] = useState([]);
   const [menu] = useAtom(menuAtom);
 
