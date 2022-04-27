@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {AlignKeys} from './section-title.component';
 import {PADDING} from '../../constants';
+import {fontFarmhouse} from '../../app/styles/fonts';
 
 interface TitleProps {
   align: AlignKeys;
@@ -13,7 +14,7 @@ export const Title = styled.h2<TitleProps>`
 
   color: ${({color}) => color};
 
-  font-family: Farmhouse, sans-serif;
+  ${fontFarmhouse};
   font-size: 3em;
 
   text-align: ${({align}) => align};

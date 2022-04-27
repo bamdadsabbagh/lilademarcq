@@ -18,7 +18,7 @@ export interface MenuDropdownInterface {
   slug: string;
   position: number;
   name: string;
-  menuName: string | null;
+  menuName?: string;
 }
 
 interface MenuItem {

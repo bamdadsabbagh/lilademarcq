@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import {fontMontserrat, fontSpectral} from '../../app/styles/fonts';
 
 export const ObjectDescription = styled.div`
-  font-family: Spectral, sans-serif;
+  ${fontSpectral};
   font-size: 1.2em;
   font-weight: 200;
   line-height: 1.3em;
@@ -54,18 +55,14 @@ export const BannerText = styled.div`
 
   transform: translateX(-50px);
 
-  font-family: Montserrat, sans-serif;
+  ${fontMontserrat};
   font-size: 1.2em;
   font-weight: 300;
 
   b {
+    max-width: 20rem;
     font-weight: 400;
     margin-right: 0.3em;
-  }
-
-  p {
-    max-width: 20rem;
-    margin: 0;
   }
 
   span {

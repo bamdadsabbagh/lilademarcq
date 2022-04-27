@@ -1,3 +1,4 @@
+import React, {ReactElement} from 'react';
 import {createGlobalStyle} from 'styled-components';
 import '@fontsource/montserrat/200.css';
 import '@fontsource/montserrat/300.css';
@@ -6,15 +7,19 @@ import '@fontsource/spectral/200.css';
 import '@fontsource/spectral/300.css';
 import {mediaQueries} from './breakpoints';
 
-export const Global = createGlobalStyle`
-  @font-face {
-    font-family: Farmhouse;
-    font-style: normal;
-    font-display: swap;
-    font-weight: 400;
-    src: url('/fonts/Farmhouse-avec-accents.ttf') format('truetype');
-  }
+const GlobalJSX = () => (
+  <style jsx global>{`
+    @font-face {
+      font-family: Farmhouse;
+      font-style: normal;
+      font-display: swap;
+      font-weight: 400;
+      src: url('/fonts/Farmhouse-avec-accents.ttf') format('truetype');
+    }
+  `}</style>
+);
 
+export const GlobalStyled = createGlobalStyle`
   html {
     overflow-y: scroll;
 
@@ -43,3 +48,10 @@ export const Global = createGlobalStyle`
     }
   }
 `;
+
+export const Global = (): ReactElement => (
+  <>
+    <GlobalJSX />
+    <GlobalStyled />
+  </>
+);

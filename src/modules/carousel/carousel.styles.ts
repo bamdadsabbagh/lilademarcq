@@ -32,40 +32,17 @@ export const PointerLayer = styled.div`
 
   // center
   &:after {
-    content: '';
-    width: ${100 - 2 * gap}%;
-    cursor: zoom-in;
+    // nothing
   }
 `;
 
-export const Images = styled.div`
-  position: relative;
-  //overflow: hidden;
-`;
-
-const ImageContainer = styled.div`
+export const GalleryContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
+  width: 100%;
   height: 100%;
-`;
-
-const ImageSide = styled(ImageContainer)`
-  position: absolute;
-  opacity: 0.3;
-  filter: grayscale(100%);
-`;
-
-export const ImagePrevious = styled(ImageSide)`
-  transform: translate3d(-102%, 0, 0);
-`;
-
-export const ImageCurrent = styled(ImageContainer)`
-`;
-
-export const ImageNext = styled(ImageSide)`
-  transform: translate3d(102%, -100%, 0);
 `;
 
 export const Features = styled.div`
@@ -107,7 +84,7 @@ export const Dot = styled.span<DotProps>`
   background: ${(props) => props.active ? props.theme.antracite : props.theme.white};
   opacity: 0.9;
 
-  animation: ${simpleTransition('background')};
+  ${simpleTransition('background')};
 
   pointer-events: fill;
 
@@ -150,7 +127,7 @@ export const Caption = styled.div<CaptionProps>`
     background: rgba(255, 255, 255, 0.85);
 
     transform: translateX(${({hide}) => hide ? 120 : 0}%);
-    animation: ${simpleTransition('transform', 0.3)};
+    ${simpleTransition('transform', 0.3)};
 
     ${fontMontserrat};
     font-size: 0.8em;

@@ -1,6 +1,7 @@
-import {keyframes} from 'styled-components';
+import {css, FlattenSimpleInterpolation, keyframes} from 'styled-components';
+import {tf, to} from './timers';
 
-export const SlideInWrapperAnimation = keyframes`
+export const SoftSlideInKeyframes = keyframes`
   0% {
     transform: translateY(-1%);
   }
@@ -9,7 +10,7 @@ export const SlideInWrapperAnimation = keyframes`
   }
 `;
 
-export const SlideInAnimation = keyframes`
+const SlideInKeyframes = keyframes`
   0% {
     opacity: 0;
     transform: translateY(-10%);
@@ -20,7 +21,16 @@ export const SlideInAnimation = keyframes`
   }
 `;
 
-export const FadeInHeroAnimation = keyframes`
+export const SlideInAnimation = (start = 0.9, finish = 0.4): FlattenSimpleInterpolation => css`
+  animation: ${SlideInKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
+  opacity: 0;
+`;
+
+export const DelayAnimation = (i: number): FlattenSimpleInterpolation => css`
+  animation-delay: calc((0.7s + ${to}s * ${i}) * ${tf});
+`;
+
+const FadeInKeyframes = keyframes`
   0% {
     opacity: 0;
     transform: translateY(1%);
@@ -29,6 +39,11 @@ export const FadeInHeroAnimation = keyframes`
     opacity: 1;
     transform: translateY(0%);
   }
+`;
+
+export const FadeInAnimation = (start = 1, finish = 1.1): FlattenSimpleInterpolation => css`
+  animation: ${FadeInKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
+  opacity: 0;
 `;
 
 export const NavSpacerAnimationKeyframes = keyframes`
@@ -42,7 +57,7 @@ export const NavSpacerAnimationKeyframes = keyframes`
   }
 `;
 
-export const WiggleAnimation = keyframes`
+const WiggleKeyframes = keyframes`
   0% {
     transform: translateY(-5%);
   }
@@ -52,4 +67,8 @@ export const WiggleAnimation = keyframes`
   100% {
     transform: translateY(-5%);
   }
+`;
+
+export const WiggleAnimation = (start = 1.3): FlattenSimpleInterpolation => css`
+  animation: ${WiggleKeyframes} calc(${start}s * ${tf}) ease infinite;
 `;

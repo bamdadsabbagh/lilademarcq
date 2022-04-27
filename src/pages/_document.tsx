@@ -48,13 +48,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            rel="preload"
-            href="/fonts/Farmhouse-avec-accents.ttf"
-            as="font"
-            type="font/ttf"
-            crossOrigin="anonymous"
-          />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async

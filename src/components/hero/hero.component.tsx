@@ -1,8 +1,7 @@
 import React, {ReactElement, useState} from 'react';
 import styled from 'styled-components';
 import {useAtom} from 'jotai';
-import {tf} from '../../app/styles/timers';
-import {FadeInHeroAnimation} from '../../app/styles/animations';
+import {FadeInAnimation} from '../../app/styles/animations';
 import {isFirstDrawAtom} from '../../atoms/is-first-draw.atom';
 
 const Container = styled.section`
@@ -37,9 +36,7 @@ const Content = styled.div<ContentProps>`
   width: 100%;
   height: 100%;
 
-  animation: ${FadeInHeroAnimation} calc(1s * ${tf}) forwards calc(${({skipTransition}) => skipTransition ? 0 : 1.1}s * ${tf});
-  opacity: 0;
-
+  ${({skipTransition}) => FadeInAnimation(1, skipTransition ? 0 : 1.1)}
   &::before, &::after {
     content: '';
     position: absolute;

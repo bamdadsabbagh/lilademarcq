@@ -1,6 +1,8 @@
 import styled, {css} from 'styled-components';
-import {SlideInAnimation} from '../../../../app/styles/animations';
-import {tf, to} from '../../../../app/styles/timers';
+import {
+  DelayAnimation,
+  SlideInAnimation,
+} from '../../../../app/styles/animations';
 import {simpleTransition} from '../../../../app/styles/transitions';
 
 const size = '1.3rem';
@@ -31,16 +33,14 @@ export const Container = styled.div<ContainerProps>`
 
   user-select: none;
 
-  opacity: 0;
-
   height: ${({
     hasChildren,
     isOpen,
   }) => hasChildren && isOpen ? '100%' : size};
   ${simpleTransition('height', 0.3)};
 
-  animation: ${SlideInAnimation} calc(0.9s * ${tf}) forwards calc(0.5s * ${tf});
-  animation-delay: calc((0.7s + ${to}s * ${({index}) => index}) * ${tf});
+  ${SlideInAnimation(0.9, 0.5)};
+  ${({index}) => DelayAnimation(index)}
 
   background: ${({theme}) => theme.white};
 `;

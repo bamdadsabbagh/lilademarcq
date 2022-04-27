@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {tf} from '../../app/styles/timers';
 import {WiggleAnimation} from '../../app/styles/animations';
 import {simpleTransition} from '../../app/styles/transitions';
 
@@ -11,14 +10,13 @@ export const Container = styled.span<{size: number; isHover?: boolean;}>`
     // height: ${({size}) => size * 3}px;
 
   ${simpleTransition('transform', 0.1)};
-  animation: ${WiggleAnimation} calc(${({isHover}) => isHover ? '1.3s' : 0} * ${tf}) ease infinite;
-
+  ${({isHover}) => WiggleAnimation(isHover ? 1.3 : 0)};
   //transform: translateY(5px);
 
   &:hover {
     cursor: pointer;
     ${simpleTransition('transform', 0.1)};
-    animation: ${WiggleAnimation} calc(1.3s * ${tf}) ease infinite;
+    ${WiggleAnimation(1.3)}
   }
 `;
 

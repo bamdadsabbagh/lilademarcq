@@ -23,6 +23,7 @@ import {fetchAwards, LDAward} from '../utils/fetch-awards';
 import {fetchValues, LDValues} from '../utils/fetch-values';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 import {REVALIDATE} from '../constants';
+import {MetaComponent} from '../components/meta/meta.component';
 
 interface IndexProps {
   about: LDSection;
@@ -43,6 +44,7 @@ export default function Index({
 }: IndexProps): ReactElement {
   return (
     <>
+      <MetaComponent description="Home" />
       <ObjectsModule objects={objects} />
 
       <SectionComponent backgroundColor={theme.salmonLight}>
