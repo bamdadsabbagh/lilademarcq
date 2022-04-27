@@ -14,6 +14,7 @@ query {
       structure
       structureDetails
       formTitle
+      vimeo
       thumbnail {
         url
       }
@@ -60,6 +61,7 @@ export interface LDObject {
   structure: string;
   structureDetails: string;
   formTitle: string;
+  vimeo?: string;
   thumbnail: {
     url: string;
   };

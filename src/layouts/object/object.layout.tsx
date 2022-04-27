@@ -1,6 +1,8 @@
 import React, {ReactElement, useState} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
+import ReactPlayer from 'react-player/lazy';
+import useMeasure from 'react-use-measure';
 import {LDObject} from '../../utils/fetch-object';
 import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
@@ -12,7 +14,8 @@ import {
   BannerImage,
   BannerText,
   ObjectDescription,
-} from '../../pages-styles/objets/[object].styles';
+  VimeoContainer,
+} from './object.styles';
 import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
 import {FormComponent} from '../../components/form/form.component';
@@ -25,7 +28,7 @@ interface ObjectLayoutProps {
 
 export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
   const [color] = useState(theme[object.color] ?? theme.black);
-  const [images] = useState(object.imagesCollection.items);
+  const [ref, bounds] = useMeasure();
 
   return (
     <>
@@ -34,8 +37,28 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
           {getObjectFullName(object)}
         </SectionTitleComponent>
 
-        {images.length !== 0 && (
-          <CarouselModule images={images} badge={object.badge?.url} />
+        {object.imagesCollection.items.length !== 0 && (
+          <div ref={ref}>
+            <CarouselModule
+              images={object.imagesCollection.items}
+              badge={object.badge?.url}
+            />
+          </div>
+        )}
+
+        {object?.vimeo && (
+          <VimeoContainer width={bounds.width} height={bounds.height}>
+            <ReactPlayer
+              url={object.vimeo}
+              width={bounds.width}
+              height={bounds.height}
+              playing
+              loop
+              controls={false}
+              volume={0}
+              fallback={<>buildImagePlaceholder(bounds.width, bounds.height)</>}
+            />
+          </VimeoContainer>
         )}
       </SectionComponent>
 
