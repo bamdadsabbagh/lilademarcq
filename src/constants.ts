@@ -8,6 +8,6 @@ export const FIRST_DRAW_TIMEOUT = 2100;
 export const META: MetaComponentProps = {
   title: 'Lila Demarcq',
   url: 'https://www.lilademarcq.com/',
-  description: '',
+  description: 'Artiste, designer et poétesse',
   image: 'https://upload.wikimedia.org/wikipedia/en/7/7d/DJ_Screw.jpeg',
 };
