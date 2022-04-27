@@ -30,7 +30,7 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
   return (
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>
-        <SectionTitleComponent color={color}>
+        <SectionTitleComponent color={color} paddingLeft>
           {getObjectFullName(object)}
         </SectionTitleComponent>
 
