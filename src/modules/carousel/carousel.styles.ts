@@ -18,7 +18,7 @@ export const PointerLayer = styled.div`
   width: 100%;
   height: 100%;
 
-  z-index: 10;
+  z-index: 1;
 
   // right
   cursor: pointer;
@@ -54,8 +54,6 @@ export const Features = styled.div`
 
   width: 100%;
   height: 100%;
-
-  pointer-events: none;
 `;
 
 export const Dots = styled.div`
@@ -67,6 +65,7 @@ export const Dots = styled.div`
   position: absolute;
 
   padding: 1.4em 2em;
+  pointer-events: none;
 `;
 
 interface DotProps {
@@ -88,7 +87,7 @@ export const Dot = styled.span<DotProps>`
 
   pointer-events: fill;
 
-  z-index: 20;
+  z-index: 2;
 
   &:hover {
     cursor: pointer;
@@ -113,6 +112,9 @@ export const Caption = styled.div<CaptionProps>`
   overflow: hidden;
 
   span {
+    user-select: none;
+    z-index: 3;
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
