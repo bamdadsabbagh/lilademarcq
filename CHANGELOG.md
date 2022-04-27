@@ -1,3 +1,10 @@
+## [1.14.6](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.5...v1.14.6) (2022-04-27)
+
+
+### Bug Fixes
+
+* **Layouts:** Move static components outside DefaultLayout ([2b16fed](https://github.com/bamdadsabbagh/lilademarcq/commit/2b16fedf496a12f7b81cc30917572fa05ec4ea62))
+
 ## [1.14.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.4...v1.14.5) (2022-04-27)
 
 
