@@ -1,5 +1,4 @@
-const getBelow = (v) => `@media screenfullhd
-fullhd and (max-width: ${v - 1}px)`;
+const getBelow = (v) => `@media screen and (max-width: ${v - 1}px)`;
 const getAbove = (v) => `@media screen and (min-width: ${v}px)`;
 
 const breakpoints = {
