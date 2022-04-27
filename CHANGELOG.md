@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.1...v1.14.2) (2022-04-27)
+
+
+### Performance Improvements
+
+* Provide full object name to SEO and Layout ([df7236f](https://github.com/bamdadsabbagh/lilademarcq/commit/df7236f49b5174e6653560fcb53d085ef83fcd1a))
+
 ## [1.14.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.0...v1.14.1) (2022-04-27)
 
 
