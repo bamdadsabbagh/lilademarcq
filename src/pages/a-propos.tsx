@@ -9,6 +9,7 @@ import {StyledMarkdownContainer} from '../pages-styles/a-propos.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
 import {MetaComponent} from '../components/meta/meta.component';
+import {DefaultLayout} from '../layouts/default/default.layout';
 
 interface AProposProps {
   about: LDSection;
@@ -18,14 +19,16 @@ export default function APropos({about}: AProposProps): ReactElement {
   return (
     <>
       <MetaComponent description="A Propos" />
-      <SectionComponent>
-        <ImageTextComponent image={about.image.url} imageAlt="a">
-          <StyledMarkdownContainer>
-            <h2>{about.title}</h2>
-            {documentToReactComponents(about.body.json)}
-          </StyledMarkdownContainer>
-        </ImageTextComponent>
-      </SectionComponent>
+      <DefaultLayout customMeta>
+        <SectionComponent>
+          <ImageTextComponent image={about.image.url} imageAlt="a">
+            <StyledMarkdownContainer>
+              <h2>{about.title}</h2>
+              {documentToReactComponents(about.body.json)}
+            </StyledMarkdownContainer>
+          </ImageTextComponent>
+        </SectionComponent>
+      </DefaultLayout>
     </>
   );
 }

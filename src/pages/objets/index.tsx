@@ -5,6 +5,7 @@ import {fetchObjects} from '../../utils/fetch-objects';
 import {LDObject} from '../../utils/fetch-object';
 import {REVALIDATE} from '../../constants';
 import {MetaComponent} from '../../components/meta/meta.component';
+import {DefaultLayout} from '../../layouts/default/default.layout';
 
 interface ObjetsProps {
   objects: LDObject[];
@@ -16,7 +17,9 @@ export default function Objets({
   return (
     <>
       <MetaComponent description="Objets" />
-      <ObjectsModule objects={objects} />
+      <DefaultLayout customMeta>
+        <ObjectsModule objects={objects} />
+      </DefaultLayout>
     </>
   );
 }

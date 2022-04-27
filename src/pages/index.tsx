@@ -24,6 +24,7 @@ import {fetchValues, LDValues} from '../utils/fetch-values';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 import {REVALIDATE} from '../constants';
 import {MetaComponent} from '../components/meta/meta.component';
+import {DefaultLayout} from '../layouts/default/default.layout';
 
 interface IndexProps {
   about: LDSection;
@@ -45,35 +46,37 @@ export default function Index({
   return (
     <>
       <MetaComponent description="Home" />
-      <ObjectsModule objects={objects} />
+      <DefaultLayout customMeta>
+        <ObjectsModule objects={objects} />
 
-      <SectionComponent backgroundColor={theme.salmonLight}>
-        <SectionTitleComponent align={AlignKeys.center}>
-          {about.title}
-        </SectionTitleComponent>
-        <ImageTextComponent
-          imageAlt="portrait"
-          image={about.image.url}
-        >
-          <AProposMarkdown>
-            {documentToReactComponents(about.body.json)}
-          </AProposMarkdown>
-        </ImageTextComponent>
-      </SectionComponent>
+        <SectionComponent backgroundColor={theme.salmonLight}>
+          <SectionTitleComponent align={AlignKeys.center}>
+            {about.title}
+          </SectionTitleComponent>
+          <ImageTextComponent
+            imageAlt="portrait"
+            image={about.image.url}
+          >
+            <AProposMarkdown>
+              {documentToReactComponents(about.body.json)}
+            </AProposMarkdown>
+          </ImageTextComponent>
+        </SectionComponent>
 
-      <ValuesModule values={values} />
+        <ValuesModule values={values} />
 
-      <AwardsModule awards={awards} />
+        <AwardsModule awards={awards} />
 
-      <SocialsModule socials={socials} />
+        <SocialsModule socials={socials} />
 
-      <SectionComponent backgroundColor={theme.green}>
-        <FormComponent />
-      </SectionComponent>
+        <SectionComponent backgroundColor={theme.green}>
+          <FormComponent />
+        </SectionComponent>
 
-      <SectionComponent backgroundColor={theme.salmonLight}>
-        <ContactComponent contact={contact} />
-      </SectionComponent>
+        <SectionComponent backgroundColor={theme.salmonLight}>
+          <ContactComponent contact={contact} />
+        </SectionComponent>
+      </DefaultLayout>
     </>
   );
 }
