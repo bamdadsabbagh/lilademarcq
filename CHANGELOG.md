@@ -1,3 +1,18 @@
+# [1.15.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.6...v1.15.0) (2022-04-27)
+
+
+### Bug Fixes
+
+* **Breakpoints:** Rectify media query for below ([fe3c9b6](https://github.com/bamdadsabbagh/lilademarcq/commit/fe3c9b6917d905cb01a93dd1f2732f598507f25e))
+* **SectionTitle:** Add optional padding left prop ([a1f07b3](https://github.com/bamdadsabbagh/lilademarcq/commit/a1f07b3359fcd588d83d74bb3618b4ee8e02255e))
+
+
+### Features
+
+* **ObjectsModule:** Rewrite grid with responsive ([5130d3b](https://github.com/bamdadsabbagh/lilademarcq/commit/5130d3ba728c76b41241a61657672b0e86126732))
+* **Section:** Add below mobile width ([03d15ff](https://github.com/bamdadsabbagh/lilademarcq/commit/03d15ff5e2dbd6cef54e500c79dc42be7439e722))
+* **ValuesModule:** Rewrite with responsive ([5122ab6](https://github.com/bamdadsabbagh/lilademarcq/commit/5122ab666312f42f471c1ed000160034857b9dcd))
+
 ## [1.14.6](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.14.5...v1.14.6) (2022-04-27)
 
 
