@@ -12,67 +12,12 @@ import {
   NextImageWidths,
 } from '../../../../utils/build-next-image-url';
 import {buildImagePlaceholder} from '../../../../utils/build-image-placeholder';
-
-const NativeContainer = styled.span`
-  box-sizing: border-box;
-  display: inline-block;
-  overflow: hidden;
-  width: initial;
-  height: initial;
-  background: none;
-  opacity: 1;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  max-width: 100%;
-`;
-
-const Placeholder = styled.span`
-  box-sizing: border-box;
-  display: block;
-  width: initial;
-  height: initial;
-  background: none;
-  opacity: 1;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  max-width: 100%;
-
-  > img {
-    display: block;
-    max-width: 100%;
-    width: initial;
-    height: initial;
-    background: none;
-    opacity: 1;
-    border: 0;
-    margin: 0;
-    padding: 0;
-  }
-`;
-
-const NativeImage = styled.img`
-  //width: 100%;
-  //height: 100%;
-  //object-fit: cover;
-
-  position: absolute;
-  inset: 0;
-  box-sizing: border-box;
-  padding: 0;
-  border: none;
-  margin: auto;
-  display: block;
-  width: 0;
-  height: 0;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 100%;
-  max-height: 100%;
-  object-fit: cover;
-`;
+import {
+  BadgeContainer,
+  NativeContainer,
+  NativeImage,
+  Placeholder,
+} from './gallery.styles';
 
 const NextImage = styled(Image)`
   //display: none;
@@ -82,12 +27,14 @@ interface GalleryComponentProps {
   galleryID: string;
   images: LDImage[];
   index: number;
+  badge?: string;
 }
 
 export function GalleryComponent({
   galleryID,
   images,
   index,
+  badge,
 }: GalleryComponentProps): ReactElement {
   const [native] = useState(true);
 
@@ -120,21 +67,35 @@ export function GalleryComponent({
           >
             {/* thumbnail */}
             {native ? (
-              <NativeContainer>
-                <NativeImage
-                  src={buildNextImageUrl(image.url, NextImageWidths.xl, 80)}
-                  alt=""
-                  width={image.width}
-                  height={image.width * 0.5625}
-                />
-                <Placeholder>
-                  <img
+              <>
+                <NativeContainer>
+                  <NativeImage
+                    src={buildNextImageUrl(image.url, NextImageWidths.xl, 80)}
                     alt=""
-                    aria-hidden
-                    src={buildImagePlaceholder(image.width, image.width * 0.5625)}
+                    width={image.width}
+                    height={image.width * 0.5625}
                   />
-                </Placeholder>
-              </NativeContainer>
+                  <Placeholder>
+                    <img
+                      alt=""
+                      aria-hidden
+                      src={buildImagePlaceholder(image.width, image.width * 0.5625)}
+                    />
+                  </Placeholder>
+                </NativeContainer>
+                {badge && (
+                  <BadgeContainer>
+                    <NextImage
+                      src={badge}
+                      alt=""
+                      layout="intrinsic"
+                      objectFit="cover"
+                      width={100}
+                      height={100}
+                    />
+                  </BadgeContainer>
+                )}
+              </>
             ) : (
               <NextImage
                 src={image.url}

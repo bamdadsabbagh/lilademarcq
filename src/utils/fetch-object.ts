@@ -17,6 +17,9 @@ query {
       thumbnail {
         url
       }
+      badge {
+        url
+      }
       imagesCollection {
         items {
           title
@@ -58,6 +61,9 @@ export interface LDObject {
   structureDetails: string;
   formTitle: string;
   thumbnail: {
+    url: string;
+  };
+  badge?: {
     url: string;
   };
   imagesCollection: {

@@ -35,7 +35,7 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
         </SectionTitleComponent>
 
         {images.length !== 0 && (
-          <CarouselModule images={images} />
+          <CarouselModule images={images} badge={object.badge?.url} />
         )}
       </SectionComponent>
 

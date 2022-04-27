@@ -14,12 +14,16 @@ import {GalleryComponent} from './components/gallery/gallery.component';
 
 interface CarouselComponentProps {
   images: LDImage[];
+  badge?: string;
 }
 
 /**
  * @see https://codesandbox.io/s/embla-carousel-arrows-dots-react-z5fbs?file=/src/css/embla.css
  */
-export function CarouselModule({images}: CarouselComponentProps): ReactElement {
+export function CarouselModule({
+  images,
+  badge,
+}: CarouselComponentProps): ReactElement {
   const {
     index,
     select,
@@ -39,6 +43,7 @@ export function CarouselModule({images}: CarouselComponentProps): ReactElement {
             galleryID="carousel"
             images={images}
             index={index}
+            badge={badge}
           />
         </GalleryContainer>
 
