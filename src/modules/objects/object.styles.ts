@@ -10,15 +10,11 @@ export const GridContainer = styled.ul`
 
 export const GridBody = styled.div`
   display: grid;
+  width: 100%;
 
   ${mediaQueries.below.mobile} {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-  }
-
-  ${mediaQueries.above.mobile} {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
   }
 
   ${mediaQueries.above.tablet} {
@@ -30,12 +26,13 @@ export const GridBody = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
   }
-
-  ${mediaQueries.above.fullhd} {
-  }
 `;
 
-export const Tile = styled.div`
+interface TileProps {
+  size: number;
+}
+
+export const Tile = styled.div<TileProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,6 +46,12 @@ export const Tile = styled.div`
       transform: translateY(0);
     }
   }
+`;
+
+export const ImageContainer = styled.div`
+  display: block;
+  width: 100%;
+  height: 100%;
 `;
 
 interface HoverBoxProps {

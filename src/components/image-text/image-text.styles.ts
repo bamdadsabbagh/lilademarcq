@@ -1,51 +1,54 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {fontSpectral} from '../../app/styles/fonts';
+import {mediaQueries} from '../../app/styles/breakpoints';
+import {SECTION_SPACE_AROUND} from '../../constants';
 
-interface ContainerProps {
-  width: number;
-  right: number;
-  gap: number;
-}
+const BodyMobile = css`
+  display: block;
+`;
 
-export const Container = styled.div<ContainerProps>`
+export const Body = styled.div`
   display: grid;
-  justify-content: center;
+  grid-template-columns: ${SECTION_SPACE_AROUND} repeat(2, 1fr) ${SECTION_SPACE_AROUND};
   align-items: flex-start;
-  //grid-template-columns: repeat(2, 43%);
-  //grid-template-columns: repeat(2, 48%);
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${({gap}) => gap}em;
+  gap: 3rem;
 
-  line-height: 1.6em;
+  ${mediaQueries.below.mobile} {
+    ${BodyMobile};
+    padding: 0 ${SECTION_SPACE_AROUND};
+  }
 `;
 
-export const ImageWrapper = styled.div`
-  display: flex;
-  justify-self: flex-end;
-
-  max-width: 90%;
-`;
-
-interface TextWrapperProps {
-  width: number;
-  right: number;
-  textVerticalCenter: boolean;
-}
-
-export const TextWrapper = styled.div<TextWrapperProps>`
-  display: flex;
-  justify-content: flex-start;
-  align-items: ${({textVerticalCenter}) => textVerticalCenter ? 'center' : 'flex-start'};
-
-  height: 100%;
-
+export const Text = styled.div`
   ${fontSpectral};
   font-weight: 200;
-
   font-size: 1.2em;
+  line-height: 1.3em;
 
-  transform: translateY(-2px);
+  h2 {
+    display: none;
+  }
 
-  //width: 75%;
-  //min-width: 20em;
+  p {
+    margin-top: -2px;
+    margin-bottom: 1rem;
+  }
+`;
+
+const ImageContainerMobile = css`
+  img {
+    border-radius: 50%;
+  }
+
+  float: left;
+  width: 8rem;
+  margin-right: 1rem;
+`;
+
+export const ImageContainer = styled.div`
+  ${mediaQueries.below.mobile} {
+    ${ImageContainerMobile};
+  }
+
+  display: block;
 `;

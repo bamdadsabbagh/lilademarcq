@@ -1,11 +1,15 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import Image from 'next/image';
+import useMeasure from 'react-use-measure';
 import {SectionComponent} from '../components/section/section.component';
 import {
-  ImageTextComponent,
-} from '../components/image-text/image-text.component';
-import {StyledMarkdownContainer} from '../pages-styles/a-propos.styles';
+  Container,
+  ImageContainer,
+  StyledMarkdownContainer,
+  TextContainer,
+} from '../pages-styles/a-propos.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
 import {MetaComponent} from '../components/meta/meta.component';
@@ -16,18 +20,49 @@ interface AProposProps {
 }
 
 export default function APropos({about}: AProposProps): ReactElement {
+  const [ref, bounds] = useMeasure();
+
   return (
     <>
+
       <MetaComponent description="A Propos" />
+
       <DefaultLayout customMeta>
+
         <SectionComponent>
-          <ImageTextComponent image={about.image.url} imageAlt="a">
-            <StyledMarkdownContainer>
-              <h2>{about.title}</h2>
-              {documentToReactComponents(about.body.json)}
-            </StyledMarkdownContainer>
-          </ImageTextComponent>
+
+          <Container
+            ref={ref}
+            width={bounds.width}
+            right={bounds.right}
+          >
+
+            <ImageContainer>
+              <Image
+                src={about.image.url}
+                alt="portrait"
+                layout="responsive"
+                width="100%"
+                height="100%"
+              />
+            </ImageContainer>
+
+            {bounds.width !== 0 && bounds.right !== 0 && (
+              <TextContainer
+                width={bounds.width}
+                right={bounds.right}
+              >
+                <StyledMarkdownContainer>
+                  <h2>{about.title}</h2>
+                  {documentToReactComponents(about.body.json)}
+                </StyledMarkdownContainer>
+              </TextContainer>
+            )}
+
+          </Container>
+
         </SectionComponent>
+
       </DefaultLayout>
     </>
   );

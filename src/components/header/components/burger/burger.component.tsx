@@ -1,5 +1,6 @@
 import React, {ReactElement, useState} from 'react';
 import useMeasure from 'react-use-measure';
+import {useRouter} from 'next/router';
 import {
   BNav,
   BNavItem,
@@ -18,6 +19,7 @@ interface BurgerComponentProps {
 export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
   const [hover, setHover] = useState(false);
   const [ref, bounds] = useMeasure();
+  const router = useRouter();
 
   return (
     <>
@@ -37,7 +39,7 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
         >
           {menu.map((item) => (
             <LinkComponent href={item.slug} key={item.slug}>
-              <BNavItem>{item.name}</BNavItem>
+              <BNavItem active={item.slug === router.asPath}>{item.name}</BNavItem>
             </LinkComponent>
           ))}
         </BNav>

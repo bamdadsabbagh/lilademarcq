@@ -1,55 +1,48 @@
 import React, {ReactElement} from 'react';
+import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
-import useMeasure from 'react-use-measure';
-import {Container, ImageWrapper, TextWrapper} from './image-text.styles';
+import {SectionComponent} from '../section/section.component';
+import {theme} from '../../app/styles/theme';
+import {AlignKeys, TitleComponent} from '../title/title.component';
+import {LDSection} from '../../utils/fetch-section';
+import {Body, ImageContainer, Text} from './image-text.styles';
 
-interface ContentTextImageComponentProps {
-  image: string;
-  imageAlt: string;
-  children: string | ReactElement;
-  gap?: number;
-  textVerticalCenter?: boolean;
+interface ImageTextComponentProps {
+  title: LDSection['title'];
+  image: LDSection['image'];
+  body: LDSection['body'];
 }
 
-const defaultProps = {
-  gap: 3,
-  textVerticalCenter: false,
-};
-
 export function ImageTextComponent({
+  title,
   image,
-  imageAlt,
-  children,
-  gap = defaultProps.gap,
-  textVerticalCenter = defaultProps.textVerticalCenter,
-}: ContentTextImageComponentProps): ReactElement {
-  const [ref, bounds] = useMeasure();
-
+  body,
+}: ImageTextComponentProps): ReactElement {
   return (
-    <Container
-      ref={ref}
-      width={bounds.width}
-      right={bounds.right}
-      gap={gap}
-    >
-      <ImageWrapper>
-        <Image
-          alt={imageAlt}
-          src={image}
-          objectFit="contain"
-          width={1000}
-          height={1000}
-        />
-      </ImageWrapper>
-      {bounds.width !== 0 && bounds.right !== 0 && (
-        <TextWrapper
-          width={bounds.width}
-          right={bounds.right}
-          textVerticalCenter={textVerticalCenter}
-        >
-          {children}
-        </TextWrapper>
-      )}
-    </Container>
+    <>
+      <SectionComponent backgroundColor={theme.salmonLight}>
+
+        <TitleComponent align={AlignKeys.center}>
+          {title}
+        </TitleComponent>
+
+        <Body>
+          <span />
+          <ImageContainer>
+            <Image
+              src={image.url}
+              layout="responsive"
+              width="100%"
+              height="100%"
+            />
+          </ImageContainer>
+          <Text>
+            {documentToReactComponents(body.json)}
+          </Text>
+          <span />
+        </Body>
+
+      </SectionComponent>
+    </>
   );
 }

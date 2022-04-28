@@ -6,12 +6,10 @@ import linkedinWithCircle
   from '@iconify/icons-entypo-social/linkedin-with-circle';
 import {SectionComponent} from '../../components/section/section.component';
 import {
-  ContentCenterComponent,
-} from '../../components/content-center/content-center.component';
-import {
   SocialButtonComponent,
-} from '../../components/social-button/social-button.component';
+} from './components/social-button/social-button.component';
 import {LDSocial} from '../../utils/fetch-socials';
+import {Container} from './socials.styles';
 
 interface SocialsModuleProps {
   socials: LDSocial[];
@@ -31,7 +29,7 @@ export function SocialsModule({socials}: SocialsModuleProps): ReactElement {
   return (
     <>
       <SectionComponent>
-        <ContentCenterComponent>
+        <Container>
           {socials.map((social) => (
             <SocialButtonComponent
               key={social.slug}
@@ -39,8 +37,9 @@ export function SocialsModule({socials}: SocialsModuleProps): ReactElement {
               front={getIcon(social.slug)}
               back={social.image.url}
             />
+
           ))}
-        </ContentCenterComponent>
+        </Container>
       </SectionComponent>
     </>
   );

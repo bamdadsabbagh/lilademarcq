@@ -27,10 +27,6 @@ export const Wrapper = styled.div`
     width: 90vw;
   }
 
-  ${mediaQueries.above.mobile} {
-    width: 90vw;
-  }
-
   ${mediaQueries.above.tablet} {
     width: 90vw;
   }
@@ -46,9 +42,5 @@ export const Wrapper = styled.div`
   ${mediaQueries.above.fullhd} {
     width: 80vw;
     max-width: 1200px;
-  }
-
-  ${mediaQueries.above.qhd} {
-    width: 60vw;
   }
 `;

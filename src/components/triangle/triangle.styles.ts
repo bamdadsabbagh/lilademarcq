@@ -1,17 +1,19 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {WiggleAnimation} from '../../app/styles/animations';
 import {simpleTransition} from '../../app/styles/transitions';
+import {mediaQueries} from '../../app/styles/breakpoints';
 
-export const Container = styled.span<{size: number; isHover?: boolean;}>`
+interface ContainerProps {
+  isHover?: boolean;
+}
+
+export const Container = styled.span<ContainerProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-    // width: ${({size}) => size * 3}px;
-    // height: ${({size}) => size * 3}px;
 
   ${simpleTransition('transform', 0.1)};
   ${({isHover}) => WiggleAnimation(isHover ? 1.3 : 0)};
-  //transform: translateY(5px);
 
   &:hover {
     cursor: pointer;
@@ -21,7 +23,6 @@ export const Container = styled.span<{size: number; isHover?: boolean;}>`
 `;
 
 interface TriangleProps {
-  size: number;
   color: string;
   isRight?: boolean;
   isLeft?: boolean;
@@ -29,32 +30,20 @@ interface TriangleProps {
   isBottom?: boolean;
 }
 
-export const Triangle = styled.div<TriangleProps>`
-  width: 0;
-  height: 0;
-
-  border: ${({size}) => size}px solid transparent;
-  border-top: ${({size}) => size}px solid;
-  border-right: ${({size}) => size}px solid;
-  border-radius: 3px;
-
-  color: ${(props) => props.color};
-  z-index: 100;
-  pointer-events: none;
-
-  ${simpleTransition('transform', 0.1)};
-
-  transform: translateY(${(props) => {
-    if (props.isTop) {
-      return 5;
-    } else if (props.isBottom) {
-      return -5;
-    } else if (props.isLeft) {
-      return 0;
-    } else if (props.isRight) {
-      return 0;
-    }
-  }}px) rotateZ(${(props) => {
+const TriangleTransform = (scale = 1) => css<TriangleProps>`
+  transform: scale(${scale}) translateY(${(props) => {
+  if (props.isTop) {
+    return 5;
+  } else if (props.isBottom) {
+    return -5;
+  } else if (props.isLeft) {
+    return 0;
+  } else if (props.isRight) {
+    return 0;
+  } else {
+    return 0;
+  }
+}}px) rotateZ(${(props) => {
   if (props.isRight) {
     return 45;
   } else if (props.isLeft) {
@@ -63,6 +52,30 @@ export const Triangle = styled.div<TriangleProps>`
     return -45;
   } else if (props.isBottom) {
     return 135;
+  } else {
+    return 0;
   }
 }}deg);
+`;
+
+export const Triangle = styled.div<TriangleProps>`
+  width: 0;
+  height: 0;
+
+  border: 15px solid transparent;
+  border-top: 15px solid;
+  border-right: 15px solid;
+  border-radius: 3px;
+
+  color: ${(props) => props.color};
+  z-index: 1;
+  pointer-events: none;
+
+  ${simpleTransition('transform', 0.1)};
+
+  ${TriangleTransform(1)};
+
+  ${mediaQueries.below.mobile} {
+    ${TriangleTransform(0.67)};
+  }
 `;

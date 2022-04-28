@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {Title} from './section-title.styles';
+import {Title} from './title.styles';
 import {theme} from '../../app/styles/theme';
 
 export enum AlignKeys {
@@ -21,7 +21,7 @@ const defaultProps = {
   paddingLeft: false,
 };
 
-export function SectionTitleComponent({
+export function TitleComponent({
   children,
   align = defaultProps.align,
   color = defaultProps.color,

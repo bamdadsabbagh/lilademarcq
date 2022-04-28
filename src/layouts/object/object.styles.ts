@@ -5,7 +5,6 @@ export const ObjectDescription = styled.div`
   ${fontSpectral};
   font-size: 1.2em;
   font-weight: 200;
-  line-height: 1.3em;
 
   width: 70%;
   max-width: 45rem;
@@ -37,7 +36,6 @@ export const Banner = styled.div`
   padding: 1em 0;
 
   right: 50%;
-  //transform: translateX(50%);
   transform: translateX(100%);
   width: 50%;
 `;
