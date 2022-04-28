@@ -1,11 +1,6 @@
 import React, {ReactElement} from 'react';
-import styled from 'styled-components';
 import {useAppLayout} from './hooks/use-default-layout';
 import {MetaComponent} from '../../components/meta/meta.component';
-
-const Wrapper = styled.div`
-  width: 100%;
-`;
 
 interface DefaultLayoutProps {
   children: ReactElement | ReactElement[];
@@ -21,13 +16,7 @@ export function DefaultLayout({
   return (
     <>
       {!customMeta && <MetaComponent />}
-      {isReady && (
-        <>
-          <Wrapper>
-            {children}
-          </Wrapper>
-        </>
-      )}
+      {isReady && children}
     </>
   );
 }

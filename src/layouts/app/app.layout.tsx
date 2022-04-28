@@ -1,15 +1,7 @@
 import React, {ReactElement} from 'react';
-import styled from 'styled-components';
-import {fontMontserrat} from '../../app/styles/fonts';
 import HeaderComponent from '../../components/header/header.component';
 import {FooterComponent} from '../../components/footer/footer.component';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  ${fontMontserrat};
-`;
+import {App, Main, Wrapper} from './app.styles';
 
 interface AppLayoutProps {
   children: ReactElement[] | ReactElement;
@@ -20,11 +12,15 @@ export function AppLayout({
 }: AppLayoutProps): ReactElement {
   return (
     <>
-      <Container>
+      <App>
         <HeaderComponent />
-        {children}
-        <FooterComponent />
-      </Container>
+        <Wrapper>
+          <Main>
+            {children}
+          </Main>
+          <FooterComponent />
+        </Wrapper>
+      </App>
     </>
   );
 }

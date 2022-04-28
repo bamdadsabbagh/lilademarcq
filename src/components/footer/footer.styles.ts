@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import {FadeInAnimation} from '../../app/styles/animations';
+import {FOOTER_HEIGHT} from '../../constants';
 
-export const Footer = styled.footer`
+export const Footer = styled.div`
+  height: ${FOOTER_HEIGHT};
+
   display: flex;
   justify-content: center;
-
-  padding: 4em 0;
-  //padding: 5% 0;
+  align-items: center;
 
   font-style: italic;
   font-size: 0.9em;
