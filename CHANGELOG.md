@@ -1,3 +1,11 @@
+# [1.20.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.19.0...v1.20.0) (2022-04-28)
+
+
+### Features
+
+* **Images:** Generate blur base64 placeholders with `plaiceholder` for remote images + Improve carousel ([591c242](https://github.com/bamdadsabbagh/lilademarcq/commit/591c242e0ca787548e37a95bccccdddb10e46093))
+* **Styling:** Streamline styles, breakpoints, grids and components ([ce40616](https://github.com/bamdadsabbagh/lilademarcq/commit/ce406168962ba6b96c80ea5941ece15e51aaedbe))
+
 # [1.19.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.18.0...v1.19.0) (2022-04-28)
 
 
