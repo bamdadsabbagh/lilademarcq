@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.20.0...v1.20.1) (2022-04-28)
+
+
+### Bug Fixes
+
+* Add new subdomain for remote images ([f449db8](https://github.com/bamdadsabbagh/lilademarcq/commit/f449db8bd25823792ea8c0dad465beb7f8a1ee80))
+
 # [1.20.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.19.0...v1.20.0) (2022-04-28)
 
 
