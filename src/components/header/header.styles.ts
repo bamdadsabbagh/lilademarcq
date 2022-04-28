@@ -1,19 +1,33 @@
 import styled from 'styled-components';
+import {HEADER_HEIGHT} from '../../constants';
+import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Header = styled.header`
-  position: sticky;
+  height: ${HEADER_HEIGHT};
+
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 1.5em 1.5em;
-  gap: 1.5em;
 
-  background: ${({theme}) => theme.white};
-  transition: top 500ms ease-in-out;
+  gap: 1.5rem;
 
-  top: -8em;
+  padding: 1.5rem;
+
+  position: sticky;
+  top: -8rem;
 
   z-index: 1000;
+
+  transition: top 500ms ease-in-out;
+
+  ${mediaQueries.below.tablet} {
+    background: transparent;
+  }
+
+  ${mediaQueries.above.tablet} {
+    background: ${({theme}) => theme.white};
+  }
 `;
 
 export const LogoContainer = styled.div`
