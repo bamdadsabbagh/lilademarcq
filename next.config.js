@@ -7,6 +7,7 @@ const configuration = {
   images: {
     domains: [
       'images.ctfassets.net',
+      'downloads.ctfassets.net',
     ],
   },
   webpack: (config) => {
