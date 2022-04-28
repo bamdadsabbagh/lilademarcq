@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import {AlignKeys} from './section-title.component';
+import {AlignKeys} from './title.component';
 import {PADDING} from '../../constants';
 import {fontFarmhouse} from '../../app/styles/fonts';
 

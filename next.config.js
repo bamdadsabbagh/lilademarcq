@@ -1,5 +1,7 @@
 // noinspection JSLastCommaInArrayLiteral,JSLastCommaInObjectLiteral
 
+const {withPlaiceholder} = require('@plaiceholder/next');
+
 const configuration = {
   poweredByHeader: false,
   images: {
@@ -23,4 +25,4 @@ const configuration = {
   },
 };
 
-module.exports = configuration;
+module.exports = withPlaiceholder(configuration);

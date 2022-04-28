@@ -6,7 +6,7 @@ export const Container = styled.div`
 
   font-size: 1.1em;
 
-  ${mediaQueries.below.tablet} {
+  ${mediaQueries.below.mobile} {
     height: 4rem;
   }
 
@@ -16,7 +16,7 @@ export const Container = styled.div`
 `;
 
 export const Nav = styled.nav`
-  ${mediaQueries.below.tablet} {
+  ${mediaQueries.below.mobile} {
     display: none;
   }
 

@@ -2,8 +2,8 @@ import React, {ReactElement} from 'react';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
-  SectionTitleComponent,
-} from '../../components/section-title/section-title.component';
+  TitleComponent,
+} from '../../components/title/title.component';
 import {BubbleComponent} from './components/bubble/bubble.component';
 import {Bubbles, Container, Image} from './values.styles';
 import {LDValues} from '../../utils/fetch-values';
@@ -17,9 +17,9 @@ export function ValuesModule({values}: ValuesModuleProps): ReactElement {
     <>
       <SectionComponent>
         <Container>
-          <SectionTitleComponent align={AlignKeys.right}>
+          <TitleComponent align={AlignKeys.right}>
             Mes Valeurs
-          </SectionTitleComponent>
+          </TitleComponent>
 
           <Bubbles>
             <BubbleComponent
@@ -71,7 +71,7 @@ export function ValuesModule({values}: ValuesModuleProps): ReactElement {
             alt="Workshop"
             layout="fill"
             objectFit="cover"
-            objectPosition="0% 0%"
+            objectPosition="25% 0%"
             priority
           />
         </Container>

@@ -21,7 +21,7 @@ export const Header = styled.header`
 
   transition: top 500ms ease-in-out;
 
-  ${mediaQueries.below.tablet} {
+  ${mediaQueries.below.mobile} {
     background: transparent;
   }
 

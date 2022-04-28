@@ -1,9 +1,6 @@
 import React, {ReactElement} from 'react';
 import {SectionComponent} from '../components/section/section.component';
-import {
-  AlignKeys,
-  SectionTitleComponent,
-} from '../components/section-title/section-title.component';
+import {AlignKeys, TitleComponent} from '../components/title/title.component';
 import {MetaComponent} from '../components/meta/meta.component';
 import {DefaultLayout} from '../layouts/default/default.layout';
 
@@ -13,9 +10,9 @@ export default function NotFound(): ReactElement {
       <MetaComponent description="404" />
       <DefaultLayout customMeta>
         <SectionComponent>
-          <SectionTitleComponent align={AlignKeys.center}>
+          <TitleComponent align={AlignKeys.center}>
             Page non trouvée
-          </SectionTitleComponent>
+          </TitleComponent>
         </SectionComponent>
       </DefaultLayout>
     </>

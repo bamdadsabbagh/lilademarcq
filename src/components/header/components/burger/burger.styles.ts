@@ -100,11 +100,7 @@ const BNavClose = css`
 
 export const BNav = styled.nav<BNavProps>`
   ${mediaQueries.below.mobile} {
-    margin-left: 41px;
-  }
-
-  ${mediaQueries.above.mobile} {
-    margin-left: 35px;
+    margin-left: calc(3rem - 4px);
   }
 
   position: absolute;
@@ -132,9 +128,15 @@ export const BNav = styled.nav<BNavProps>`
   ${({close}) => close && BNavClose};
 `;
 
-export const BNavItem = styled.span`
+interface BNavItem {
+  active: boolean;
+}
+
+export const BNavItem = styled.span<BNavItem>`
   text-transform: uppercase;
   ${simpleTransition('color')};
+
+  color: ${({theme, active}) => active ? theme.salmonDark : theme.black};
 
   &:hover {
     cursor: pointer;

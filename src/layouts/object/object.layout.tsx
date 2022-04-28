@@ -6,9 +6,7 @@ import useMeasure from 'react-use-measure';
 import {LDObject} from '../../utils/fetch-object';
 import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
-import {
-  SectionTitleComponent,
-} from '../../components/section-title/section-title.component';
+import {TitleComponent} from '../../components/title/title.component';
 import {
   Banner,
   BannerImage,
@@ -18,9 +16,10 @@ import {
 } from './object.styles';
 import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
-import {FormComponent} from '../../components/form/form.component';
+import {FormModule} from '../../modules/form/form.module';
 import {CarouselModule} from '../../modules/carousel/carousel.module';
 import {getObjectFullName} from '../../utils/get-object-full-name';
+import {buildImagePlaceholder} from '../../utils/build-image-placeholder';
 
 interface ObjectLayoutProps {
   object: LDObject;
@@ -33,9 +32,10 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
   return (
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>
-        <SectionTitleComponent color={color} paddingLeft>
+
+        <TitleComponent color={color} paddingLeft>
           {getObjectFullName(object)}
-        </SectionTitleComponent>
+        </TitleComponent>
 
         {object.imagesCollection.items.length !== 0 && (
           <div ref={ref}>
@@ -56,7 +56,7 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
               loop
               controls={false}
               volume={0}
-              fallback={<>buildImagePlaceholder(bounds.width, bounds.height)</>}
+              fallback={<>{buildImagePlaceholder(bounds.width, bounds.height)}</>}
             />
           </VimeoContainer>
         )}
@@ -72,11 +72,9 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
         <Banner>
           <BannerImage>
             <Image
-              alt="Loire"
               src={France}
+              alt=""
               placeholder="blur"
-              layout="intrinsic"
-              objectFit="contain"
             />
           </BannerImage>
           <BannerText>
@@ -89,11 +87,9 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
         <Banner>
           <BannerImage>
             <Image
-              alt="Saw"
               src={Saw}
+              alt=""
               placeholder="blur"
-              layout="intrinsic"
-              objectFit="contain"
             />
           </BannerImage>
           <BannerText>
@@ -108,7 +104,7 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
       </SectionComponent>
 
       <SectionComponent backgroundColor={color}>
-        <FormComponent
+        <FormModule
           text={object.formTitle}
           backgroundColor={color}
         />

@@ -8,6 +8,7 @@ export const FOOTER_HEIGHT = '8rem';
 export const REVALIDATE = 60 * 5;
 export const PADDING = 3.5;
 export const FIRST_DRAW_TIMEOUT = 2100;
+export const SECTION_SPACE_AROUND = '2%';
 
 export const META: MetaComponentProps = {
   title: 'Lila Demarcq',

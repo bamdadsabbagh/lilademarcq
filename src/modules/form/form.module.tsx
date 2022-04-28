@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, {ReactElement, useCallback} from 'react';
-import {TriangleComponent} from '../triangle/triangle.component';
+import {TriangleComponent} from '../../components/triangle/triangle.component';
 import {
   Container,
   Form,
@@ -16,9 +16,9 @@ import {
   TitleContainer,
 } from './form.styles';
 import {theme} from '../../app/styles/theme';
-import {useFormComponent} from './hooks/use-form-component';
+import {useFormModule} from './hooks/use-form-module';
 
-interface FormComponentProps {
+interface FormModuleProps {
   text?: string;
   backgroundColor?: string;
 }
@@ -28,10 +28,10 @@ const defaultProps = {
   backgroundColor: theme.green,
 };
 
-export function FormComponent({
+export function FormModule({
   text = defaultProps.text,
   backgroundColor = defaultProps.backgroundColor,
-}: FormComponentProps): ReactElement {
+}: FormModuleProps): ReactElement {
   const {
     form,
     isOpen,
@@ -43,7 +43,7 @@ export function FormComponent({
     toggleSubscribe,
     hoverSubscribe,
     handleSubmit,
-  } = useFormComponent();
+  } = useFormModule();
 
   const cleanSlug = useCallback((s: string) => s.replace('*', ''), []);
 

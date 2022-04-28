@@ -36,7 +36,8 @@ const Content = styled.div<ContentProps>`
   width: 100%;
   height: 100%;
 
-  ${({skipTransition}) => FadeInAnimation(1, skipTransition ? 0 : 1.1)}
+  ${({skipTransition}) => FadeInAnimation(1, skipTransition ? 0 : 1.1)};
+
   &::before, &::after {
     content: '';
     position: absolute;

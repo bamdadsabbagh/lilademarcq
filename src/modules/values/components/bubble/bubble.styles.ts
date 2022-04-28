@@ -35,11 +35,6 @@ export const Container = styled.div<ContainerProps>`
     transform: translate3d(-15%, 0, 0);
   }
 
-  ${mediaQueries.above.mobile} {
-    font-size: 1em;
-    transform: translate3d(-10%, 0, 0);
-  }
-
   ${mediaQueries.above.tablet} {
     font-size: 1.1em;
     transform: translate3d(-5%, 0, 0);
@@ -56,10 +51,6 @@ export const Container = styled.div<ContainerProps>`
 
   ${mediaQueries.above.fullhd} {
     font-size: 1.4em;
-  }
-
-  ${mediaQueries.above.qhd} {
-    font-size: 1.5em;
   }
 `;
 

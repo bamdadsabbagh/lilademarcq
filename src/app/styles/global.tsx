@@ -23,7 +23,7 @@ export const GlobalStyled = createGlobalStyle`
   html {
     overflow-y: scroll;
 
-    ${mediaQueries.above.mobile} {
+    ${mediaQueries.below.mobile} {
       font-size: 13px;
     }
 
@@ -41,10 +41,6 @@ export const GlobalStyled = createGlobalStyle`
 
     ${mediaQueries.above.fullhd} {
       font-size: 17px;
-    }
-
-    ${mediaQueries.above.qhd} {
-      font-size: 18px;
     }
   }
 `;

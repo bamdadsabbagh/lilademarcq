@@ -9,7 +9,7 @@ import {useAtom} from 'jotai';
 import {formAtom} from '../../../atoms/form.atom';
 import {FormInterface} from '../../../utils/fetch-form';
 
-interface UseFormComponent {
+interface UseFormModule {
   form: FormInterface;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<this['isOpen']>>;
@@ -22,7 +22,7 @@ interface UseFormComponent {
   handleSubmit: (e: FormEvent) => void;
 }
 
-export function useFormComponent(): UseFormComponent {
+export function useFormModule(): UseFormModule {
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const [isSubscribe, setIsSubscribe] = useState(false);

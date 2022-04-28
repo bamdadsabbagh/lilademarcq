@@ -5,57 +5,59 @@ import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
-  SectionTitleComponent,
-} from '../../components/section-title/section-title.component';
+  TitleComponent,
+} from '../../components/title/title.component';
 import {
   Award,
   ButtonContainer,
   Container,
+  ImageContainer,
   TextContainer,
 } from './awards.styles';
 import {LDAward} from '../../utils/fetch-awards';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
 
-export interface AwardsModuleProps {
+interface AwardsModuleProps {
   awards: LDAward[];
 }
 
 export function AwardsModule({
   awards,
 }: AwardsModuleProps): ReactElement {
-  const [size] = useState(250);
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const toggleOpen = useCallback(() => setIsOpen((o) => !o), []);
 
   return (
     <SectionComponent backgroundColor={theme.salmonLight}>
-      <SectionTitleComponent align={AlignKeys.left}>
+      <TitleComponent align={AlignKeys.left}>
         Mes distinctions
-      </SectionTitleComponent>
+      </TitleComponent>
 
       <Container
         onClick={toggleOpen}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
+        <span />
         {awards.map((award) => (
-          <Award imageHeight={size} key={award.slug}>
-            <div>
+          <Award key={award.slug} visible={isOpen}>
+            <ImageContainer>
               <Image
                 src={award.image.url}
                 alt={award.slug}
-                layout="fixed"
-                width={size}
-                height={size}
+                layout="responsive"
+                width="100%"
+                height="100%"
               />
-            </div>
+            </ImageContainer>
             <TextContainer visible={isOpen}>
               {documentToReactComponents(award.body.json)}
             </TextContainer>
           </Award>
 
         ))}
+        <span />
       </Container>
 
       <ButtonContainer onClick={toggleOpen}>

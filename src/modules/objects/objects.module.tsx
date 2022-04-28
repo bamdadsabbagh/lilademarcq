@@ -2,25 +2,20 @@ import React, {ReactElement} from 'react';
 import useMeasure from 'react-use-measure';
 import Image from 'next/image';
 import {SectionComponent} from '../../components/section/section.component';
-import {
-  SectionTitleComponent,
-} from '../../components/section-title/section-title.component';
+import {TitleComponent} from '../../components/title/title.component';
 import {LinkComponent} from '../../components/link/link.component';
 import {capitalizeFirstLetter} from '../../utils/capitalize-first-letter';
-import {GridBody, GridContainer, HoverBox, Tile} from './object.styles';
-
-export interface ObjectTile {
-  slug: string;
-  position: number;
-  name: string;
-  description: string;
-  thumbnail: {
-    url: string;
-  };
-}
+import {
+  GridBody,
+  GridContainer,
+  HoverBox,
+  ImageContainer,
+  Tile,
+} from './object.styles';
+import {LDObject} from '../../utils/fetch-object';
 
 interface ObjectsModuleProps {
-  objects: ObjectTile[];
+  objects: LDObject[];
 }
 
 export function ObjectsModule({objects}: ObjectsModuleProps): ReactElement {
@@ -30,21 +25,26 @@ export function ObjectsModule({objects}: ObjectsModuleProps): ReactElement {
   return (
     <>
       <SectionComponent>
-        <SectionTitleComponent>
+        <TitleComponent>
           Objets design
-        </SectionTitleComponent>
+        </TitleComponent>
         <GridContainer ref={gridRef}>
           <GridBody>
             {objects.map((object) => (
               <div key={object.slug}>
                 <LinkComponent href={`/objets/${object.slug}`}>
-                  <Tile ref={tileRef}>
-                    <Image
-                      src={object.thumbnail.url}
-                      width={gridBounds.width * 0.5}
-                      height={gridBounds.width * 0.5}
-                      objectFit="cover"
-                    />
+                  <Tile ref={tileRef} size={gridBounds.width * 0.2}>
+                    <ImageContainer>
+                      <Image
+                        src={object.thumbnail.url}
+                        alt={object.name}
+                        layout="responsive"
+                        width="100%"
+                        height="100%"
+                        placeholder="blur"
+                        blurDataURL={object.thumbnail.url}
+                      />
+                    </ImageContainer>
                     <HoverBox size={tileBounds.width}>
                       <h3>{object.name.toUpperCase()}</h3>
                       <span>{capitalizeFirstLetter(object.description.toLowerCase())}</span>

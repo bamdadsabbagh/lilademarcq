@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontFarmhouse, fontMontserrat} from '../../app/styles/fonts';
+import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Container = styled.div`
   display: flex;
@@ -10,6 +11,10 @@ export const Container = styled.div`
 `;
 
 export const TitleContainer = styled.div`
+  ${mediaQueries.below.mobile} {
+    gap: 0.8em;
+  }
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,8 +31,12 @@ interface FormProps {
 }
 
 export const Title = styled.h3`
-  ${fontFarmhouse};
+  ${mediaQueries.below.mobile} {
+    font-size: 1.8em;
+  }
+
   font-size: 2.4em;
+  ${fontFarmhouse};
 `;
 
 export const FormContainer = styled.div<FormProps>`
