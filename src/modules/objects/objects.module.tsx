@@ -12,19 +12,10 @@ import {
   ImageContainer,
   Tile,
 } from './object.styles';
-
-export interface ObjectTile {
-  slug: string;
-  position: number;
-  name: string;
-  description: string;
-  thumbnail: {
-    url: string;
-  };
-}
+import {LDObject} from '../../utils/fetch-object';
 
 interface ObjectsModuleProps {
-  objects: ObjectTile[];
+  objects: LDObject[];
 }
 
 export function ObjectsModule({objects}: ObjectsModuleProps): ReactElement {
@@ -50,6 +41,8 @@ export function ObjectsModule({objects}: ObjectsModuleProps): ReactElement {
                         layout="responsive"
                         width="100%"
                         height="100%"
+                        placeholder="blur"
+                        blurDataURL={object.thumbnail.url}
                       />
                     </ImageContainer>
                     <HoverBox size={tileBounds.width}>

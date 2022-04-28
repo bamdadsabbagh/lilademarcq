@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved,@typescript-eslint/ban-ts-comment */
 
-import React, {ReactElement, useEffect} from 'react';
+import React, {ReactElement, useCallback, useEffect} from 'react';
 import 'photoswipe/dist/photoswipe.css';
 // @ts-ignore
 import Lightbox from 'photoswipe/lightbox';
@@ -24,6 +24,7 @@ interface GalleryComponentProps {
   index: number;
   badge?: string;
   native?: boolean;
+  onSlideChange: (index: number) => void;
 }
 
 export function GalleryComponent({
@@ -32,19 +33,38 @@ export function GalleryComponent({
   index,
   badge,
   native = false,
+  onSlideChange,
 }: GalleryComponentProps): ReactElement {
+  const handleSlideChange = useCallback((i) => {
+    if (i === index) {
+      return;
+    }
+
+    onSlideChange(i);
+  }, [onSlideChange, index]);
+
   useEffect(() => {
     let lightbox = new Lightbox({
       gallery: '#' + galleryID,
       children: 'a',
       pswpModule: () => import('photoswipe'),
+      preloadFirstSlide: true,
+      loop: true,
+      showHideAnimationType: 'none',
     });
+
     lightbox.init();
+
+    lightbox.on('contentActivate', ({content}) => {
+      handleSlideChange(content.index);
+    });
 
     return () => {
       lightbox.destroy();
       lightbox = null;
     };
+    // we don't want to run this effect every time the index changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [galleryID]);
 
   return (
@@ -86,6 +106,8 @@ export function GalleryComponent({
                   width={image.width}
                   height={image.width * 0.5625}
                   quality={60}
+                  placeholder="blur"
+                  blurDataURL={image.base64}
                 />
               )}
 

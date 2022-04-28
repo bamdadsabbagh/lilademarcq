@@ -6,7 +6,7 @@ interface UseCarouselComponent {
   index: UseIncrements['index'];
   nextIndex: UseIncrements['nextIndex'];
   handleClick: UseIncrements['handleClick'];
-  select: UseIncrements['select'];
+  handleSelect: UseIncrements['handleSelect'];
 }
 
 export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
@@ -14,7 +14,7 @@ export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
     previousIndex,
     index,
     nextIndex,
-    select,
+    handleSelect,
     handleClick,
   } = useIncrements(images.length);
 
@@ -22,7 +22,7 @@ export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
     previousIndex,
     index,
     nextIndex,
-    select,
+    handleSelect,
     handleClick,
   };
 }

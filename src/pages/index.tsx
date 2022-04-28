@@ -3,7 +3,7 @@ import {GetStaticPropsResult} from 'next';
 import {theme} from '../app/styles/theme';
 import {FormModule} from '../modules/form/form.module';
 import {SectionComponent} from '../components/section/section.component';
-import {ObjectsModule, ObjectTile} from '../modules/objects/objects.module';
+import {ObjectsModule} from '../modules/objects/objects.module';
 import {ValuesModule} from '../modules/values/values.module';
 import {AwardsModule} from '../modules/awards/awards.module';
 import {SocialsModule} from '../modules/socials/socials.module';
@@ -19,11 +19,12 @@ import {
   ImageTextComponent,
 } from '../components/image-text/image-text.component';
 import {ContactModule} from '../modules/contact/contact.module';
+import {LDObject} from '../utils/fetch-object';
 
 interface IndexProps {
   about: LDSection;
   awards: LDAward[];
-  objects: ObjectTile[];
+  objects: LDObject[];
   contact: LDSection;
   socials: LDSocial[];
   values: LDValues;

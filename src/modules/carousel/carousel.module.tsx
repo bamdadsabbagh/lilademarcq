@@ -26,7 +26,7 @@ export function CarouselModule({
 }: CarouselComponentProps): ReactElement {
   const {
     index,
-    select,
+    handleSelect,
     handleClick,
   } = useCarouselComponent(images);
 
@@ -44,6 +44,7 @@ export function CarouselModule({
             images={images}
             index={index}
             badge={badge}
+            onSlideChange={handleSelect}
           />
         </GalleryContainer>
 
@@ -53,7 +54,7 @@ export function CarouselModule({
               <Dot
                 key={image.url}
                 active={index === key}
-                onClick={() => select(key)}
+                onClick={() => handleSelect(key)}
               />
             ))}
           </Dots>

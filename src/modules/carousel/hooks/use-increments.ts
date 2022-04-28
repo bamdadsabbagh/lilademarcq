@@ -5,7 +5,7 @@ export interface UseIncrements {
   index: number;
   nextIndex: number;
   handleClick: (e: React.MouseEvent<HTMLDivElement>, i: number) => void;
-  select: (i: number) => void;
+  handleSelect: (i: number) => void;
 }
 
 export function useIncrements(length: number): UseIncrements {
@@ -47,7 +47,7 @@ export function useIncrements(length: number): UseIncrements {
     setNextIndex(index);
   }, [index, length, decrementPreviousIndex]);
 
-  const select = useCallback((i) => {
+  const handleSelect = useCallback((i) => {
     if (i === index) {
       return;
     }
@@ -91,7 +91,7 @@ export function useIncrements(length: number): UseIncrements {
     previousIndex,
     index,
     nextIndex,
-    select,
+    handleSelect,
     handleClick,
   };
 }
