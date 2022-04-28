@@ -48,14 +48,12 @@ export const SlideLeftAnimation = (start = 0.9, finish = 0.4): FlattenSimpleInte
 
 const SlideLeftOutKeyframes = keyframes`
   0% {
-    transform: translateX(0);
     opacity: 1;
-    visibility: visible;
+    transform: translateX(0);
   }
   100% {
     opacity: 0;
     transform: translateX(-10%);
-    visibility: hidden;
   }
 `;
 

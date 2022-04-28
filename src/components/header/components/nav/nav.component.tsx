@@ -1,23 +1,11 @@
-import React, {ReactElement, useState} from 'react';
-import useMeasure from 'react-use-measure';
+import React, {ReactElement} from 'react';
 import {NavItemComponent} from '../nav-item/nav-item.component';
 import {useNavComponent} from './hooks/use-nav-component';
-import {
-  BNav,
-  BNavItem,
-  BurgerContainer,
-  Circle,
-  Container,
-  ExpandableLine,
-  Line,
-  Nav,
-} from './nav.styles';
-import {LinkComponent} from '../../../link/link.component';
+import {Container, Nav} from './nav.styles';
+import {BurgerComponent} from '../burger/burger.component';
 
 export function NavComponent(): ReactElement {
   const {menu, borders} = useNavComponent();
-  const [hover, setHover] = useState(true);
-  const [ref, bounds] = useMeasure();
 
   return (
     <Container>
@@ -42,25 +30,7 @@ export function NavComponent(): ReactElement {
           );
         })}
       </Nav>
-      <BurgerContainer
-        onMouseLeave={() => setHover(false)}
-      >
-        <Circle
-          onMouseEnter={() => setHover(true)}
-          close={!hover}
-        >
-          <ExpandableLine close={!hover} size={bounds.height} />
-          <Line />
-          <Line />
-        </Circle>
-        <BNav ref={ref} close={!hover}>
-          {menu.map((item) => (
-            <LinkComponent href={item.slug} key={item.slug}>
-              <BNavItem>{item.name}</BNavItem>
-            </LinkComponent>
-          ))}
-        </BNav>
-      </BurgerContainer>
+      <BurgerComponent menu={menu} />
     </Container>
   );
 }

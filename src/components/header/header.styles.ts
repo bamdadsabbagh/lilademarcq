@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {HEADER_HEIGHT} from '../../constants';
+import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Header = styled.header`
   height: ${HEADER_HEIGHT};
@@ -18,8 +19,15 @@ export const Header = styled.header`
 
   z-index: 1000;
 
-  background: ${({theme}) => theme.white};
   transition: top 500ms ease-in-out;
+
+  ${mediaQueries.below.tablet} {
+    background: transparent;
+  }
+
+  ${mediaQueries.above.tablet} {
+    background: ${({theme}) => theme.white};
+  }
 `;
 
 export const LogoContainer = styled.div`
