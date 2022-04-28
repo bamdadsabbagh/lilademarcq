@@ -1,3 +1,15 @@
+# [1.19.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.18.0...v1.19.0) (2022-04-28)
+
+
+### Bug Fixes
+
+* **AppLayout:** Simulate grid layout with flex ([43a8a68](https://github.com/bamdadsabbagh/lilademarcq/commit/43a8a682d2a411c93833cbed4ffa37f751e2fb75))
+
+
+### Features
+
+* **Header:** Better burger styling ([173fd90](https://github.com/bamdadsabbagh/lilademarcq/commit/173fd90482f59c2bb20c1a958e33a7644ef3dc9e))
+
 # [1.18.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.17.1...v1.18.0) (2022-04-27)
 
 
