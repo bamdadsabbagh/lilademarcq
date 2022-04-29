@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import {CatalogInterface, fetchCatalog} from '../../utils/fetch-catalog';
 
-export default async function FormHandler(
+export default async function Handler(
   _req: NextApiRequest,
   res: NextApiResponse<CatalogInterface>,
 ): Promise<void> {
