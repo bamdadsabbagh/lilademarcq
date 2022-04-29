@@ -1,8 +1,12 @@
 import React, {ReactElement} from 'react';
+import {useAtom} from 'jotai';
 import {Footer, Span} from './footer.styles';
 import {LinkComponent} from '../link/link.component';
+import {catalogAtom} from '../../atoms/catalog.atom';
 
 export function FooterComponent(): ReactElement {
+  const [catalog] = useAtom(catalogAtom);
+
   return (
     <Footer>
 
@@ -18,7 +22,15 @@ export function FooterComponent(): ReactElement {
         <Span>Mentions Légales</Span>
       </LinkComponent>
 
-      <Span noAfter>Catalogue 2022</Span>
+      {catalog && (
+        <Span
+          hoverable
+          noAfter
+          onClick={() => catalog && window.open(catalog.pdf.url)}
+        >
+          {catalog.name}
+        </Span>
+      )}
     </Footer>
   );
 }
