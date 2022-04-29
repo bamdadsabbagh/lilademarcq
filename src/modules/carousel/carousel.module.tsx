@@ -9,12 +9,12 @@ import {
   PointerLayer,
 } from './carousel.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
-import {LDImage} from '../../utils/fetch-object';
+import {LDBadge, LDImage} from '../../utils/fetch-object';
 import {GalleryComponent} from './components/gallery/gallery.component';
 
 interface CarouselComponentProps {
   images: LDImage[];
-  badge?: string;
+  badge?: LDBadge;
 }
 
 /**

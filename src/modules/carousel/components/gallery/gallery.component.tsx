@@ -5,7 +5,7 @@ import 'photoswipe/dist/photoswipe.css';
 // @ts-ignore
 import Lightbox from 'photoswipe/lightbox';
 import Image from 'next/image';
-import {LDImage} from '../../../../utils/fetch-object';
+import {LDBadge, LDImage} from '../../../../utils/fetch-object';
 import {
   buildNextImageUrl,
   NextImageWidths,
@@ -22,7 +22,7 @@ interface GalleryComponentProps {
   galleryID: string;
   images: LDImage[];
   index: number;
-  badge?: string;
+  badge?: LDBadge;
   native?: boolean;
   onSlideChange: (index: number) => void;
 }
@@ -105,7 +105,6 @@ export function GalleryComponent({
                   objectFit="cover"
                   width={image.width}
                   height={image.width * 0.5625}
-                  quality={60}
                   placeholder="blur"
                   blurDataURL={image.base64}
                 />
@@ -114,12 +113,14 @@ export function GalleryComponent({
               {badge && (
                 <BadgeContainer>
                   <Image
-                    src={badge}
+                    src={badge.url}
                     alt=""
                     layout="fixed"
                     objectFit="cover"
                     width={120}
                     height={120}
+                    placeholder="blur"
+                    blurDataURL={badge.base64}
                   />
                 </BadgeContainer>
               )}

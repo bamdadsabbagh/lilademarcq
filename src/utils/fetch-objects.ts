@@ -1,6 +1,6 @@
-import {getPlaiceholder} from 'plaiceholder';
 import {fetchContentful} from './fetch-contentful';
 import {LDObject, ObjectResponse} from './fetch-object';
+import {IMAGE_SETTINGS} from '../constants';
 
 const queryObjects = `
 query {
@@ -11,7 +11,27 @@ query {
       name
       description
       thumbnail {
-        url
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.quality},
+          width: ${IMAGE_SETTINGS.lowRes},
+        })
+      }
+    }
+  }
+}
+`;
+
+const queryObjectsThumbnails = `
+query {
+  objectCollection {
+    items {
+      thumbnail {
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.thumbQuality},
+          width: ${Math.round(IMAGE_SETTINGS.lowRes * IMAGE_SETTINGS.thumbRatio)},
+        })
       }
     }
   }
@@ -20,14 +40,14 @@ query {
 
 export async function fetchObjects(): Promise<LDObject[]> {
   const response: ObjectResponse = await fetchContentful(queryObjects);
-
+  const thumbnails: ObjectResponse = await fetchContentful(queryObjectsThumbnails);
   const objects = response.objectCollection.items;
-  objects.sort((a, b) => a.position - b.position);
 
-  await Promise.all(objects.map(async (object) => {
-    const {base64} = await getPlaiceholder(object.thumbnail.url);
-    object.thumbnail.base64 = base64;
-  }));
+  objects.forEach((object, i) => {
+    object.thumbnail.base64 = thumbnails.objectCollection.items[i].thumbnail.url;
+  });
+
+  objects.sort((a, b) => a.position - b.position);
 
   return objects;
 }

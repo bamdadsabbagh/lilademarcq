@@ -1,11 +1,12 @@
 import React, {ReactElement, useState} from 'react';
 import {Icon, IconifyIcon} from '@iconify/react';
 import {Back, Container, Front, StyledImage} from './social-button.styles';
+import {LDImage} from '../../../../utils/fetch-object';
 
 interface SocialButtonComponentProps {
   href: string;
   front: IconifyIcon;
-  back: string;
+  back: LDImage;
 }
 
 export function SocialButtonComponent({
@@ -30,10 +31,12 @@ export function SocialButtonComponent({
           </Front>
           <Back visible={isHover}>
             <StyledImage
-              src={back}
+              src={back.url}
               objectFit="cover"
               width="100%"
               height="100%"
+              placeholder="blur"
+              blurDataURL={back.base64}
             />
           </Back>
         </Container>

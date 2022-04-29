@@ -41,7 +41,7 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
           <div ref={ref}>
             <CarouselModule
               images={object.imagesCollection.items}
-              badge={object.badge?.url}
+              badge={object.badge}
             />
           </div>
         )}
