@@ -23,7 +23,11 @@ export const Footer = styled.div`
   ${FadeInAnimation(1, 1.1)};
 `;
 
-export const Span = styled.span<{noAfter?: number;}>`
+interface SpanProps {
+  noAfter?: boolean;
+}
+
+export const Span = styled.span<SpanProps>`
   &:after {
     margin: 0 ${(props) => props.noAfter ? 0 : '0.2em'};
     content: '${(props) => props.noAfter ? '' : '|'}';

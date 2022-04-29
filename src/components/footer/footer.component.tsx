@@ -5,17 +5,20 @@ import {LinkComponent} from '../link/link.component';
 export function FooterComponent(): ReactElement {
   return (
     <Footer>
+
+      <LinkComponent href="/cgv">
+        <Span>CGV</Span>
+      </LinkComponent>
+
+      <LinkComponent href="/politique-de-confidentialite">
+        <Span>Politique de Confidentialité</Span>
+      </LinkComponent>
+
       <LinkComponent href="/mentions-legales">
         <Span>Mentions Légales</Span>
       </LinkComponent>
 
-      <LinkComponent href="/cgv">
-        <Span>Conditions Générales de Vente</Span>
-      </LinkComponent>
-
-      <Span>Catalogue 2022</Span>
-
-      <Span noAfter={1}>Contact</Span>
+      <Span noAfter>Catalogue 2022</Span>
     </Footer>
   );
 }

@@ -4,18 +4,16 @@ import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
 import {SectionLayout} from '../layouts/section/section.layout';
 
-interface CgvProps {
+interface PolitiqueDeConfidentialiteProps {
   section: LDSection;
 }
 
-export default function Cgv({
-  section,
-}: CgvProps): ReactElement {
+export default function PolitiqueDeConfidentialite({section}: PolitiqueDeConfidentialiteProps): ReactElement {
   return <SectionLayout section={section} />;
 }
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<CgvProps>> {
-  const section = await fetchSection('cgv');
+export async function getStaticProps(): Promise<GetStaticPropsResult<PolitiqueDeConfidentialiteProps>> {
+  const section = await fetchSection('privacy-policy');
 
   return {
     props: {
