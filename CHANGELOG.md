@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.21.0...v1.21.1) (2022-04-29)
+
+
+### Bug Fixes
+
+* **Section:** Do not fetch thumbnail if image is not defined ([468d2ea](https://github.com/bamdadsabbagh/lilademarcq/commit/468d2ea811b837c1589c6f1dd9326cec5d77ec41))
+
 # [1.21.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.20.1...v1.21.0) (2022-04-29)
 
 
