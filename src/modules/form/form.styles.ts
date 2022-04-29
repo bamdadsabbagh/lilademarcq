@@ -74,14 +74,21 @@ export const Form = styled.form`
   user-select: none;
 `;
 
-export const Select = styled.select`
+interface SelectProps {
+  backgroundColor: string;
+  color: string;
+}
+
+export const Select = styled.select<SelectProps>`
   width: 100%;
-  height: 100%;
 
   margin-left: 1em;
 
   border: 0;
   border-bottom: 1px solid white;
+
+  color: ${({color}) => color};
+  background: ${({backgroundColor}) => backgroundColor};
 
   ${fontMontserrat};
   font-size: 0.75em;
@@ -106,45 +113,9 @@ export const Label = styled.label<LabelProps>`
   grid-column: ${({column}) => Array.isArray(column) ? column.join(' / ') : column};
 `;
 
-export const Input = styled.input`
-  width: 100%;
-  height: 2em;
-
-  margin-top: 0.1em;
-
-  ${fontMontserrat};
-  font-size: 0.75em;
-  color: white;
-
-  ${simpleTransition('box-shadow, background')};
-  box-shadow: 0 1px 0 0 white;
-
-  &:focus, &:hover {
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.85);
-    background: rgba(0, 0, 0, 0.03);
-  }
-
-  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: white;
-  }
-
-  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: white;
-    opacity: 1;
-  }
-
-  ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: white;
-    opacity: 1;
-  }
-
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: white;
-  }
-`;
-
 interface SubmitProps {
   backgroundColor: string;
+  disabled: boolean;
 }
 
 export const Submit = styled.button<SubmitProps>`
@@ -168,8 +139,15 @@ export const Submit = styled.button<SubmitProps>`
   position: relative;
   ${simpleTransition('color')};
 
+  color: ${(props) => props.disabled && props.backgroundColor};
+
+  &:before {
+    top: 100%;
+  }
+
   &:hover {
-    color: ${({backgroundColor}) => backgroundColor};
+    cursor: ${(props) => props.disabled ? 'default' : 'pointer'};
+    color: ${(props) => !props.disabled && props.backgroundColor};
 
     &:before {
       top: 0;
@@ -182,7 +160,7 @@ export const Submit = styled.button<SubmitProps>`
     background: white;
 
     inset: 0;
-    top: 100%;
+    top: ${({disabled}) => !disabled && '100%'};
 
     z-index: -1;
     ${simpleTransition('top')};
@@ -258,11 +236,12 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
   }
 `;
 
-export const SubscribeText = styled.span`
+interface SubscribeTextProps {
+  disabled: boolean;
+}
+
+export const SubscribeText = styled.span<SubscribeTextProps>`
   margin-left: 3rem;
   font-size: 0.75em;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: ${({disabled}) => disabled ? 'default' : 'pointer'};
 `;

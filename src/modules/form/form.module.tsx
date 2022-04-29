@@ -5,7 +5,6 @@ import {
   Container,
   Form,
   FormContainer,
-  Input,
   Label,
   Select,
   Submit,
@@ -17,6 +16,7 @@ import {
 } from './form.styles';
 import {theme} from '../../app/styles/theme';
 import {useFormModule} from './hooks/use-form-module';
+import {TextInputComponent} from './components/text-input/text-input.component';
 
 interface FormModuleProps {
   text?: string;
@@ -28,12 +28,25 @@ const defaultProps = {
   backgroundColor: theme.green,
 };
 
+enum FormInputKeys {
+  topic = 'topic',
+  name = 'name',
+  firstName = 'firstName',
+  address = 'address',
+  postcode = 'postcode',
+  city = 'city',
+  email = 'email',
+  phone = 'phone',
+}
+
 export function FormModule({
   text = defaultProps.text,
   backgroundColor = defaultProps.backgroundColor,
 }: FormModuleProps): ReactElement {
   const {
     form,
+    wasSubmitted,
+    submitText,
     isOpen,
     setIsOpen,
     isHover,
@@ -70,7 +83,12 @@ export function FormModule({
 
           <Label htmlFor={cleanSlug(form.topicTitle)} row={1} column={[1, 4]}>
             <span>{form.topicTitle}</span>
-            <Select>
+            <Select
+              color={theme.white}
+              backgroundColor={backgroundColor}
+              name={FormInputKeys.topic}
+              disabled={wasSubmitted}
+            >
               {form.topic.map((topic) => (
                 <option key={topic} value={topic}>{topic}</option>
               ))}
@@ -79,7 +97,11 @@ export function FormModule({
 
           <Label htmlFor={cleanSlug(form.name)} row={2} column={1} isColumn>
             <span>{form.name}</span>
-            <Input type="text" />
+            <TextInputComponent
+              name={FormInputKeys.name}
+              required
+              disabled={wasSubmitted}
+            />
           </Label>
 
           <Label
@@ -89,8 +111,10 @@ export function FormModule({
             isColumn
           >
             <span>{form.firstName}</span>
-            <Input
-              type="text"
+            <TextInputComponent
+              name={FormInputKeys.firstName}
+              required
+              disabled={wasSubmitted}
             />
           </Label>
 
@@ -101,9 +125,11 @@ export function FormModule({
             isColumn
           >
             <span>{form.address}</span>
-            <Input
-              type="text"
+            <TextInputComponent
+              name={FormInputKeys.address}
               placeholder={form.road}
+              isTextAndNumber
+              disabled={wasSubmitted}
             />
           </Label>
 
@@ -112,9 +138,11 @@ export function FormModule({
             column={3}
             isColumn
           >
-            <Input
+            <TextInputComponent
+              name={FormInputKeys.postcode}
               placeholder={form.postcode}
-              type="text"
+              isPostcode
+              disabled={wasSubmitted}
             />
           </Label>
 
@@ -123,9 +151,11 @@ export function FormModule({
             column={3}
             isColumn
           >
-            <Input
+            <TextInputComponent
+              name={FormInputKeys.city}
               placeholder={form.city}
-              type="text"
+              required
+              disabled={wasSubmitted}
             />
           </Label>
 
@@ -136,9 +166,12 @@ export function FormModule({
             isColumn
           >
             <span>{form.contact}</span>
-            <Input
+            <TextInputComponent
+              name={FormInputKeys.email}
               placeholder={form.email}
-              type="text"
+              required
+              isEmail
+              disabled={wasSubmitted}
             />
           </Label>
 
@@ -147,9 +180,11 @@ export function FormModule({
             column={2}
             isColumn
           >
-            <Input
+            <TextInputComponent
+              name={FormInputKeys.phone}
               placeholder={form.phone}
-              type="text"
+              isPhone
+              disabled={wasSubmitted}
             />
           </Label>
 
@@ -157,7 +192,7 @@ export function FormModule({
             <SubscribeCheckbox
               backgroundColor={backgroundColor}
               hover={isSubscribeHover}
-              onMouseEnter={() => hoverSubscribe(true)}
+              onMouseEnter={() => !wasSubmitted && hoverSubscribe(true)}
               onMouseLeave={() => hoverSubscribe(false)}
             >
               <input
@@ -165,13 +200,15 @@ export function FormModule({
                 checked={isSubscribe}
                 onClick={() => toggleSubscribe()}
                 readOnly
+                disabled={wasSubmitted}
               />
               <span />
             </SubscribeCheckbox>
             <SubscribeText
-              onClick={() => toggleSubscribe()}
-              onMouseEnter={() => hoverSubscribe(true)}
+              onClick={() => !wasSubmitted && toggleSubscribe()}
+              onMouseEnter={() => !wasSubmitted && hoverSubscribe(true)}
               onMouseLeave={() => hoverSubscribe(false)}
+              disabled={wasSubmitted}
             >{
               form.subscription
             }</SubscribeText>
@@ -180,8 +217,9 @@ export function FormModule({
           <Submit
             backgroundColor={backgroundColor}
             type="submit"
+            disabled={wasSubmitted}
           >
-            {form.submit}
+            {submitText}
           </Submit>
         </Form>
       </FormContainer>
