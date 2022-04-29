@@ -51,22 +51,25 @@ interface ParagraphProps {
 }
 
 export const TextContainer = styled.span<ParagraphProps>`
-  ${mediaQueries.below.mobile} {
-    max-height: ${({visible}) => visible ? '13em' : 0};
-  }
-
-  max-height: ${({visible}) => visible ? '8em' : 0};
-
-  opacity: ${({visible}) => visible ? 1 : 0};
-
-  ${simpleTransition('opacity, max-height', 0.4)};
-
   ${fontSpectral};
   font-size: 1.4em;
-  margin: 0 1rem;
 
   i {
     font-style: italic;
+  }
+
+  ${simpleTransition('opacity, max-height', 0.4)};
+  opacity: ${({visible}) => visible ? 1 : 0};
+
+  max-height: ${({visible}) => visible ? '7em' : 0};
+  margin: 0 1rem;
+
+  ${mediaQueries.above.tablet} {
+    margin: 0 3rem;
+  }
+
+  ${mediaQueries.below.mobile} {
+    max-height: ${({visible}) => visible ? '13em' : 0};
   }
 `;
 
