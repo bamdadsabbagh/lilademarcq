@@ -66,7 +66,7 @@ export const Dots = styled.div`
 
   position: absolute;
 
-  padding: 1.4em 2em;
+  padding: 1.5em 1.6em;
   pointer-events: none;
 `;
 
