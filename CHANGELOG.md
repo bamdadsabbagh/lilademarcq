@@ -1,3 +1,16 @@
+# [1.22.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.21.1...v1.22.0) (2022-04-29)
+
+
+### Features
+
+* Add privacy policy page + Update footer ([360f3ad](https://github.com/bamdadsabbagh/lilademarcq/commit/360f3adc09843cfecab0435688ae173f014a54b3))
+* **Form:** Add form validation and submission ([2a66b4e](https://github.com/bamdadsabbagh/lilademarcq/commit/2a66b4e0b24dcc9efa8253115ca7bb89952280de))
+
+
+### Performance Improvements
+
+* **Images:** Increase slightly quality to 90 ([655644f](https://github.com/bamdadsabbagh/lilademarcq/commit/655644f834edc6c59000d4404ad29b4541167886))
+
 ## [1.21.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.21.0...v1.21.1) (2022-04-29)
 
 
