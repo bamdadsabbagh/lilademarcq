@@ -44,6 +44,8 @@ export default function APropos({about}: AProposProps): ReactElement {
                 layout="responsive"
                 width="100%"
                 height="100%"
+                placeholder="blur"
+                blurDataURL={about.image.base64}
               />
             </ImageContainer>
 

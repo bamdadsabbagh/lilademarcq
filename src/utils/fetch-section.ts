@@ -1,5 +1,6 @@
 import {fetchContentful} from './fetch-contentful';
-import {LDText} from './fetch-object';
+import {LDImage, LDText} from './fetch-object';
+import {IMAGE_SETTINGS} from '../constants';
 
 const querySection = (slug: string) => `
 query {
@@ -8,7 +9,11 @@ query {
       slug
       title
       image {
-        url
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.quality},
+          width: ${IMAGE_SETTINGS.lowRes},
+        })
       }
       body {
         json
@@ -18,12 +23,26 @@ query {
 }
 `;
 
+const querySectionThumbnail = (slug: string) => `
+query {
+  sectionCollection(where: { slug: "${slug}" }, limit: 1) {
+    items {
+      image {
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.thumbQuality},
+          width: ${Math.round(IMAGE_SETTINGS.lowRes * IMAGE_SETTINGS.thumbRatio)},
+        })
+      }
+    }
+  }
+}
+`;
+
 export interface LDSection {
   slug: string;
   title: string;
-  image: {
-    url: string;
-  };
+  image: LDImage;
   body: LDText;
 }
 
@@ -35,5 +54,11 @@ interface SectionResponse {
 
 export async function fetchSection(slug: string): Promise<LDSection> {
   const response: SectionResponse = await fetchContentful(querySection(slug));
-  return response.sectionCollection.items[0];
+  const thumbnail: SectionResponse = await fetchContentful(querySectionThumbnail(slug));
+
+  const section = response.sectionCollection.items[0];
+
+  section.image.base64 = thumbnail.sectionCollection.items[0].image.url;
+
+  return section;
 }

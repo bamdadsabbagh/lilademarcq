@@ -1,10 +1,9 @@
 // noinspection JSLastCommaInArrayLiteral,JSLastCommaInObjectLiteral
 
-const {withPlaiceholder} = require('@plaiceholder/next');
-
 const configuration = {
   poweredByHeader: false,
   images: {
+    formats: ['image/avif', 'image/webp'],
     domains: [
       'images.ctfassets.net',
       'downloads.ctfassets.net',
@@ -26,4 +25,4 @@ const configuration = {
   },
 };
 
-module.exports = withPlaiceholder(configuration);
+module.exports = configuration;

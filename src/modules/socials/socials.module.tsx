@@ -35,9 +35,8 @@ export function SocialsModule({socials}: SocialsModuleProps): ReactElement {
               key={social.slug}
               href={social.link}
               front={getIcon(social.slug)}
-              back={social.image.url}
+              back={social.image}
             />
-
           ))}
         </Container>
       </SectionComponent>

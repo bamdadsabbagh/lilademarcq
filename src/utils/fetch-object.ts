@@ -1,6 +1,6 @@
 import {Document} from '@contentful/rich-text-types';
-import {getPlaiceholder} from 'plaiceholder';
 import {fetchContentful} from './fetch-contentful';
+import {IMAGE_SETTINGS} from '../constants';
 
 const queryObject = (slug: string) => `
 query {
@@ -17,16 +17,28 @@ query {
       formTitle
       vimeo
       thumbnail {
-        url
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.quality},
+          width: ${IMAGE_SETTINGS.lowRes},
+        })
       }
       badge {
-        url
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.quality},
+          width: ${IMAGE_SETTINGS.highRes},
+        })
       }
       imagesCollection {
         items {
           title
           description
-          url
+          url(transform: { 
+            format: WEBP,
+            quality: ${IMAGE_SETTINGS.quality},
+            width: ${IMAGE_SETTINGS.highRes},
+          })
           width
           height
         }
@@ -39,17 +51,54 @@ query {
 }
 `;
 
+const queryObjectThumbnails = (slug: string) => `
+query {
+  objectCollection(where: { slug: "${slug}" }, limit: 1) {
+    items {
+      thumbnail {
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.thumbQuality},
+          width: ${Math.round(IMAGE_SETTINGS.lowRes * IMAGE_SETTINGS.thumbRatio)},
+        })
+      }
+      badge {
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.thumbQuality},
+          width: ${Math.round(IMAGE_SETTINGS.highRes * IMAGE_SETTINGS.thumbRatio)},
+        })
+      }
+      imagesCollection {
+        items {
+          url(transform: { 
+            format: WEBP,
+            quality: ${IMAGE_SETTINGS.thumbQuality},
+            width: ${Math.round(IMAGE_SETTINGS.highRes * IMAGE_SETTINGS.thumbRatio)},
+          })
+        }
+      }
+    }
+  }
+}
+`;
+
 export interface LDImage {
   title: string;
   description: string;
   url: string;
   width: number;
   height: number;
-  base64?: string; // server generated
+  base64: string;
 }
 
 export interface LDText {
   json: Document;
+}
+
+export interface LDBadge {
+  url: string;
+  base64: string;
 }
 
 export interface LDObject {
@@ -66,11 +115,9 @@ export interface LDObject {
   vimeo?: string;
   thumbnail: {
     url: string;
-    base64?: string; // server generated
+    base64: string;
   };
-  badge?: {
-    url: string;
-  };
+  badge?: LDBadge;
   imagesCollection: {
     items: LDImage[];
   };
@@ -85,19 +132,20 @@ export interface ObjectResponse {
 
 export async function fetchObject(slug: string): Promise<LDObject> {
   const response: ObjectResponse = await fetchContentful(queryObject(slug));
-  const objects = response.objectCollection.items;
-  const object = objects[0];
+  const object = response.objectCollection.items[0];
 
-  // thumbnail
-  const {base64: thumbnailBase64} = await getPlaiceholder(object.thumbnail.url);
-  object.thumbnail.base64 = thumbnailBase64;
+  const thumbnailsResponse: ObjectResponse = await fetchContentful(queryObjectThumbnails(slug));
+  const thumbnails = thumbnailsResponse.objectCollection.items[0];
 
-  // images
-  const images = object.imagesCollection.items;
-  await Promise.all(images.map(async (image) => {
-    const {base64} = await getPlaiceholder(image.url);
-    image.base64 = base64;
-  }));
+  object.thumbnail.base64 = thumbnails.thumbnail.url;
+
+  if (object.badge) {
+    object.badge.base64 = thumbnails.badge.url;
+  }
+
+  object.imagesCollection.items.forEach((image, i) => {
+    image.base64 = thumbnails.imagesCollection.items[i].url;
+  });
 
   return object;
 }
