@@ -128,11 +128,11 @@ export const BNav = styled.nav<BNavProps>`
   ${({close}) => close && BNavClose};
 `;
 
-interface BNavItem {
+interface BNavItemProps {
   active: boolean;
 }
 
-export const BNavItem = styled.span<BNavItem>`
+export const BNavItem = styled.span<BNavItemProps>`
   text-transform: uppercase;
   ${simpleTransition('color')};
 
