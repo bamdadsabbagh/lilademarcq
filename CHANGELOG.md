@@ -1,3 +1,16 @@
+# [1.21.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.20.1...v1.21.0) (2022-04-29)
+
+
+### Bug Fixes
+
+* **Awards:** Improve styling ([595ae0d](https://github.com/bamdadsabbagh/lilademarcq/commit/595ae0d4c91c5f2bdf49f82688558eb4dec7254a))
+* **Carousel:** Improve Dots styling ([c3b96a3](https://github.com/bamdadsabbagh/lilademarcq/commit/c3b96a350c99ed21a151be2147ed3f0cf3e76338))
+
+
+### Features
+
+* Get image blur data from remote server instead of local computation + Remove unused packages ([37ab93d](https://github.com/bamdadsabbagh/lilademarcq/commit/37ab93d58dd5c545ecea9d579df041e907a880c8))
+
 ## [1.20.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.20.0...v1.20.1) (2022-04-28)
 
 
