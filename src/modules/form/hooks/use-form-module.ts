@@ -11,6 +11,8 @@ import {FormInterface} from '../../../utils/fetch-form';
 
 interface UseFormModule {
   form: FormInterface;
+  wasSubmitted: boolean;
+  submitText: string;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<this['isOpen']>>;
   isHover: boolean;
@@ -28,6 +30,8 @@ export function useFormModule(): UseFormModule {
   const [isSubscribe, setIsSubscribe] = useState(false);
   const [isSubscribeHover, setIsSubscribeHover] = useState(false);
   const [form] = useAtom(formAtom);
+  const [wasSubmitted, setWasSubmitted] = useState(false);
+  const [submitText, setSubmitText] = useState(form?.submit || 'Envoyer');
 
   const toggleSubscribe = useCallback(() => {
     setIsSubscribe((s) => !s);
@@ -37,12 +41,53 @@ export function useFormModule(): UseFormModule {
     setIsSubscribeHover(enter);
   }, []);
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-  }, []);
+  const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!form?.target) {
+      return;
+    }
+
+    if (wasSubmitted) {
+      return;
+    }
+
+    setWasSubmitted(true);
+    setSubmitText(form.submitLoading);
+
+    const formData = new FormData(event.currentTarget);
+    const fieldValues = Object.fromEntries(formData.entries());
+
+    const payload = {
+      ...fieldValues,
+      subscribe: isSubscribe,
+    };
+
+    const request = await fetch(form.target, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (request.status !== 200) {
+      setWasSubmitted(false);
+      setSubmitText(form.submit);
+      return;
+    }
+
+    setWasSubmitted(true);
+    setSubmitText(form.submitSuccess);
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 850);
+  }, [wasSubmitted, isSubscribe, form]);
 
   return {
     form,
+    wasSubmitted,
+    submitText,
     isOpen,
     setIsOpen,
     isHover,

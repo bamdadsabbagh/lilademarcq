@@ -1,21 +1,36 @@
 import React, {ReactElement} from 'react';
+import {useAtom} from 'jotai';
 import {Footer, Span} from './footer.styles';
 import {LinkComponent} from '../link/link.component';
+import {catalogAtom} from '../../atoms/catalog.atom';
 
 export function FooterComponent(): ReactElement {
+  const [catalog] = useAtom(catalogAtom);
+
   return (
     <Footer>
+
+      <LinkComponent href="/cgv">
+        <Span>CGV</Span>
+      </LinkComponent>
+
+      <LinkComponent href="/politique-de-confidentialite">
+        <Span>Politique de Confidentialité</Span>
+      </LinkComponent>
+
       <LinkComponent href="/mentions-legales">
         <Span>Mentions Légales</Span>
       </LinkComponent>
 
-      <LinkComponent href="/cgv">
-        <Span>Conditions Générales de Vente</Span>
-      </LinkComponent>
-
-      <Span>Catalogue 2022</Span>
-
-      <Span noAfter={1}>Contact</Span>
+      {catalog && (
+        <Span
+          hoverable
+          noAfter
+          onClick={() => catalog && window.open(catalog.pdf.url)}
+        >
+          {catalog.name}
+        </Span>
+      )}
     </Footer>
   );
 }

@@ -4,6 +4,7 @@ const queryForm = `
 query {
   myFormCollection (limit: 1) {
     items {
+      target
       topicTitle
       topic
       name
@@ -17,12 +18,15 @@ query {
       phone
       subscription
       submit
+      submitLoading
+      submitSuccess
     }
   }
 }
 `;
 
 export interface FormInterface {
+  target: string;
   topicTitle: string;
   topic: string[];
   name: string;
@@ -36,6 +40,8 @@ export interface FormInterface {
   phone: string;
   subscription: string;
   submit: string;
+  submitLoading: string;
+  submitSuccess: string;
 }
 
 interface FormResponse {

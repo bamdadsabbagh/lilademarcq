@@ -1,7 +1,7 @@
 import {atom} from 'jotai';
 import {FormInterface} from '../utils/fetch-form';
 
-export const formAtom = atom<FormInterface>(undefined as FormInterface | undefined);
+export const formAtom = atom<FormInterface>(null as FormInterface);
 
 export const setFormAtom = atom(
   null,
