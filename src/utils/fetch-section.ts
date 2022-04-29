@@ -54,11 +54,13 @@ interface SectionResponse {
 
 export async function fetchSection(slug: string): Promise<LDSection> {
   const response: SectionResponse = await fetchContentful(querySection(slug));
-  const thumbnail: SectionResponse = await fetchContentful(querySectionThumbnail(slug));
 
   const section = response.sectionCollection.items[0];
 
-  section.image.base64 = thumbnail.sectionCollection.items[0].image.url;
+  if (section.image) {
+    const thumbnail: SectionResponse = await fetchContentful(querySectionThumbnail(slug));
+    section.image.base64 = thumbnail.sectionCollection.items[0].image.url;
+  }
 
   return section;
 }
