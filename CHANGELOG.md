@@ -1,3 +1,12 @@
+## [1.22.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.1...v1.22.2) (2022-04-30)
+
+
+### Performance Improvements
+
+* Add default menu state to populate afterwards to speed up first draw + Remove image priorities ([2bd8692](https://github.com/bamdadsabbagh/lilademarcq/commit/2bd869236ab9d86301734f7aab295483866b80cc))
+* **APropos:** Remove unnecessary code ([5b06c6b](https://github.com/bamdadsabbagh/lilademarcq/commit/5b06c6bc16d8ffb530c9c91c8bd50a525ae1353a))
+* **ObjectModule:** Use breakpoints to improve rendering ([b69490a](https://github.com/bamdadsabbagh/lilademarcq/commit/b69490a095539aba73bee3688b73f467071a9cb6))
+
 ## [1.22.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.0...v1.22.1) (2022-04-30)
 
 
