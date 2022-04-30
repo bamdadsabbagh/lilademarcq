@@ -1,5 +1,5 @@
-type Endpoint = 'menu' | 'form' | 'form-post' | 'catalog'
+import {ApiEndpointKeys} from '../constants';
 
-export function getApiEndpoint(endpoint: Endpoint): string {
+export function getApiEndpoint(endpoint: ApiEndpointKeys): string {
   return `${window.location.origin}/api/${endpoint}`;
 }

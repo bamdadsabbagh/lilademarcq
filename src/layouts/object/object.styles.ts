@@ -68,19 +68,3 @@ export const BannerText = styled.div`
     margin-left: 1em;
   }
 `;
-
-interface VimeoContainerProps {
-  width: number;
-  height: number;
-}
-
-export const VimeoContainer = styled.div<VimeoContainerProps>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
-
-  margin-top: 2rem;
-`;

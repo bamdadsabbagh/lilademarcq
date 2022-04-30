@@ -20,6 +20,7 @@ import {
 } from '../components/image-text/image-text.component';
 import {ContactModule} from '../modules/contact/contact.module';
 import {LDObject} from '../utils/fetch-object';
+import {fetchForm, FormInterface} from '../utils/fetch-form';
 
 interface IndexProps {
   about: LDSection;
@@ -28,6 +29,7 @@ interface IndexProps {
   contact: LDSection;
   socials: LDSocial[];
   values: LDValues;
+  form: FormInterface;
 }
 
 export default function Index({
@@ -37,6 +39,7 @@ export default function Index({
   contact,
   socials,
   values,
+  form,
 }: IndexProps): ReactElement {
   return (
     <>
@@ -57,7 +60,7 @@ export default function Index({
         <SocialsModule socials={socials} />
 
         <SectionComponent backgroundColor={theme.green}>
-          <FormModule />
+          <FormModule form={form} />
         </SectionComponent>
 
         <ContactModule contact={contact} />
@@ -73,6 +76,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
   const awards = await fetchAwards();
   const socials = await fetchSocials();
   const values = await fetchValues();
+  const form = await fetchForm();
 
   return {
     props: {
@@ -82,6 +86,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
       awards,
       socials,
       values,
+      form,
     },
     revalidate: REVALIDATE,
   };

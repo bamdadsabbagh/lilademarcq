@@ -1,7 +1,6 @@
-import React, {ReactElement, useState} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
-import ReactPlayer from 'react-player/lazy';
 import useMeasure from 'react-use-measure';
 import {LDObject} from '../../utils/fetch-object';
 import {theme} from '../../app/styles/theme';
@@ -12,22 +11,33 @@ import {
   BannerImage,
   BannerText,
   ObjectDescription,
-  VimeoContainer,
 } from './object.styles';
 import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
 import {FormModule} from '../../modules/form/form.module';
 import {CarouselModule} from '../../modules/carousel/carousel.module';
 import {getObjectFullName} from '../../utils/get-object-full-name';
-import {buildSvgPlaceholder} from '../../utils/build-svg-placeholder';
+import {FormInterface} from '../../utils/fetch-form';
+import {VideoComponent} from '../../components/video/video.component';
 
 interface ObjectLayoutProps {
   object: LDObject;
+  form: FormInterface;
 }
 
-export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
+export function ObjectLayout({
+  object,
+  form,
+}: ObjectLayoutProps): ReactElement {
   const [color] = useState(theme[object.color] ?? theme.black);
   const [ref, bounds] = useMeasure();
+  const [video, setVideo] = useState(false);
+
+  useEffect(() => {
+    if (object?.vimeo) {
+      setVideo(true);
+    }
+  }, [object?.vimeo]);
 
   return (
     <>
@@ -46,19 +56,12 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
           </div>
         )}
 
-        {object?.vimeo && (
-          <VimeoContainer width={bounds.width} height={bounds.height}>
-            <ReactPlayer
-              url={object.vimeo}
-              width={bounds.width}
-              height={bounds.height}
-              playing
-              loop
-              controls={false}
-              volume={0}
-              fallback={<>{buildSvgPlaceholder(bounds.width, bounds.height)}</>}
-            />
-          </VimeoContainer>
+        {video && (
+          <VideoComponent
+            url={object.vimeo}
+            width={bounds.width}
+            height={bounds.height}
+          />
         )}
       </SectionComponent>
 
@@ -105,6 +108,7 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
 
       <SectionComponent backgroundColor={color}>
         <FormModule
+          form={form}
           text={object.formTitle}
           backgroundColor={color}
         />
