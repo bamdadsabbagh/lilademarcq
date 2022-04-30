@@ -1,22 +1,28 @@
 import React, {ReactElement} from 'react';
-import {useAtom} from 'jotai';
 import {Section, Wrapper} from './section.styles';
-import {isFirstDrawAtom} from '../../atoms/is-first-draw.atom';
 
 export interface ContentSectionComponentProps {
   children: ReactElement | ReactElement[];
   backgroundColor?: string;
+  isSmallTop?: boolean;
+  isHero?: boolean;
+  minHeight?: string;
 }
 
 export function SectionComponent({
   children,
   backgroundColor,
+  isSmallTop,
+  isHero,
+  minHeight,
 }: ContentSectionComponentProps): ReactElement {
-  const [isFirstDraw] = useAtom(isFirstDrawAtom);
-
   return (
-    <Section backgroundColor={backgroundColor} skipTransition={!isFirstDraw}>
-      <Wrapper>
+    <Section
+      backgroundColor={backgroundColor}
+      isHero={isHero}
+      minHeight={minHeight}
+    >
+      <Wrapper isSmallTop={isSmallTop} isHero={isHero}>
         {children}
       </Wrapper>
     </Section>

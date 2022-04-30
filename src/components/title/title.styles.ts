@@ -10,11 +10,12 @@ interface TitleProps {
 }
 
 const PaddingLeft = css`
-  padding-left: ${PADDING}rem;
+  padding-left: ${PADDING};
 `;
 
 export const Title = styled.h2<TitleProps>`
-  padding-bottom: calc(${PADDING}rem - 0.5rem);
+  //margin-top: -4px;
+  padding-bottom: calc(${PADDING} - 0.5rem);
   ${({paddingLeft}) => paddingLeft && PaddingLeft}
 
   color: ${({color}) => color};

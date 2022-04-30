@@ -15,12 +15,16 @@ import {LDObject} from '../../utils/fetch-object';
 
 interface ObjectsModuleProps {
   objects: LDObject[];
+  noPaddingTop?: boolean;
 }
 
-export function ObjectsModule({objects}: ObjectsModuleProps): ReactElement {
+export function ObjectsModule({
+  objects,
+  noPaddingTop,
+}: ObjectsModuleProps): ReactElement {
   return (
     <>
-      <SectionComponent>
+      <SectionComponent isSmallTop={noPaddingTop}>
 
         <TitleComponent>
           Objets design

@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import NextImage from 'next/image';
 
-export const Container = styled.div`
-  height: 50em;
-`;
-
 export const Image = styled(NextImage)`
   transform: translateY(10em);
 `;
@@ -14,16 +10,12 @@ export const Bubbles = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 
-  width: 100%;
-  height: 100%;
-
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
 
-  padding-top: 4em;
+  padding-top: 3em;
 
-  z-index: 100;
+  z-index: 1;
 
   overflow: hidden;
 `;

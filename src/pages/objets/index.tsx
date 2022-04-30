@@ -18,7 +18,7 @@ export default function Objets({
     <>
       <MetaComponent description="Objets" />
       <DefaultLayout customMeta>
-        <ObjectsModule objects={objects} />
+        <ObjectsModule objects={objects} noPaddingTop />
       </DefaultLayout>
     </>
   );
