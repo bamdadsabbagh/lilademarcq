@@ -1,8 +1,4 @@
 import styled, {css} from 'styled-components';
-import {
-  DelayAnimation,
-  SlideInAnimation,
-} from '../../../../app/styles/animations';
 import {simpleTransition} from '../../../../app/styles/transitions';
 
 const size = '1.3rem';
@@ -40,8 +36,7 @@ export const Container = styled.div<ContainerProps>`
 
   ${simpleTransition('height', 0.3)};
 
-  ${SlideInAnimation(0.9, 0.5)};
-  ${({index}) => DelayAnimation(index)}
+  transform: translate(0);
 
   background: ${({theme}) => theme.white};
 `;
