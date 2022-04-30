@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
@@ -23,6 +23,17 @@ export default function Object({
   object,
   form,
 }: ObjectProps): ReactElement {
+  const [slug, setSlug] = useState(object.slug);
+
+  useEffect(() => {
+    setSlug(object.slug);
+  }, [object.slug]);
+
+  // Purge children when slug changes
+  if (object.slug !== slug) {
+    return <></>;
+  }
+
   return (
     <>
       <MetaComponent
