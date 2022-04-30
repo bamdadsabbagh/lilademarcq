@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect, useState} from 'react';
+import React, {ReactElement} from 'react';
 import {
   GetStaticPathsResult,
   GetStaticPropsContext,
@@ -23,28 +23,15 @@ export default function Object({
   object,
   form,
 }: ObjectProps): ReactElement {
-  const [slug, setSlug] = useState(object.slug);
-
-  useEffect(() => {
-    setSlug(object.slug);
-  }, [object.slug]);
-
   return (
     <>
-      {/* To trigger animation */}
-      {object.slug !== slug ? (
-        <></>
-      ) : (
-        <>
-          <MetaComponent
-            description={getObjectFullName(object)}
-            image={object.thumbnail.url}
-          />
-          <DefaultLayout customMeta>
-            <ObjectLayout object={object} form={form} />
-          </DefaultLayout>
-        </>
-      )}
+      <MetaComponent
+        description={getObjectFullName(object)}
+        image={object.thumbnail.url}
+      />
+      <DefaultLayout customMeta>
+        <ObjectLayout object={object} form={form} />
+      </DefaultLayout>
     </>
   );
 }
