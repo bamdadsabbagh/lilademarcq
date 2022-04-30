@@ -31,9 +31,12 @@ export function ImageTextComponent({
           <ImageContainer>
             <Image
               src={image.url}
+              alt={title}
               layout="responsive"
               width="100%"
               height="100%"
+              placeholder="blur"
+              blurDataURL={image.base64}
             />
           </ImageContainer>
           <Text>

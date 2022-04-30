@@ -1,4 +1,5 @@
 import {fetchContentful} from './fetch-contentful';
+import {getPlaceholder} from './get-placeholder';
 
 const queryValues = `
 query {
@@ -27,6 +28,7 @@ query {
 export interface LDValues {
   image: {
     url: string;
+    base64: string;
   };
   topLeftTitle: string;
   topLeftBody: string;
@@ -50,5 +52,9 @@ interface ValuesResponse {
 
 export async function fetchValues(): Promise<LDValues> {
   const response: ValuesResponse = await fetchContentful(queryValues);
-  return response.valuesCollection.items[0];
+  const values = response.valuesCollection.items[0];
+
+  values.image.base64 = await getPlaceholder(values.image.url);
+
+  return values;
 }

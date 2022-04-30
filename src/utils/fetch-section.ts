@@ -27,7 +27,7 @@ query {
 export interface LDSection {
   slug: string;
   title: string;
-  image: LDImage;
+  image?: LDImage;
   body: LDText;
 }
 

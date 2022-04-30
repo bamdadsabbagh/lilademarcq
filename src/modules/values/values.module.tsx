@@ -72,6 +72,8 @@ export function ValuesModule({values}: ValuesModuleProps): ReactElement {
             layout="fill"
             objectFit="cover"
             objectPosition="25% 0%"
+            placeholder="blur"
+            blurDataURL={values.image.base64}
           />
         </Container>
       </SectionComponent>

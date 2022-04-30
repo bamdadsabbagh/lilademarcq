@@ -1,5 +1,6 @@
 import {fetchContentful} from './fetch-contentful';
 import {LDText} from './fetch-object';
+import {getPlaceholder} from './get-placeholder';
 
 const queryAwards = `
 query {
@@ -23,6 +24,7 @@ export interface LDAward {
   position: number;
   image: {
     url: string;
+    base64: string;
   };
   body: LDText;
 }
@@ -38,6 +40,10 @@ export async function fetchAwards(): Promise<LDAward[]> {
 
   const awards = response.awardCollection.items;
   awards.sort((a, b) => a.position - b.position);
+
+  await Promise.all(awards.map(async (award) => {
+    award.image.base64 = await getPlaceholder(award.image.url);
+  }));
 
   return awards;
 }

@@ -18,9 +18,12 @@ export function ContactModule({contact}: ContactModuleProps): ReactElement {
           <ImageContainer>
             <Image
               src={contact.image.url}
+              alt="Contact"
               layout="responsive"
               width="100%"
               height="100%"
+              placeholder="blur"
+              blurDataURL={contact.image.base64}
             />
           </ImageContainer>
           <TextContainer>
