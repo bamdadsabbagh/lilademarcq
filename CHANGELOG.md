@@ -1,3 +1,21 @@
+## [1.22.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.0...v1.22.1) (2022-04-30)
+
+
+### Bug Fixes
+
+* **API:** Set generic name for API handlers ([65af1f2](https://github.com/bamdadsabbagh/lilademarcq/commit/65af1f2d01a77de8ef75072257f32069c68ca3c6))
+* **Burger:** Remove name collision between interface and object ([0d4b754](https://github.com/bamdadsabbagh/lilademarcq/commit/0d4b754a0978c0fdb208b26b1030fd7ed57d3704))
+* **Images:** Fix badge rendering in GalleryComponent + Use base64 for ObjectsModule + Add better utility function names + Various fixes ([eae5fed](https://github.com/bamdadsabbagh/lilademarcq/commit/eae5fed145dbd0276fe4568605736874343e57ae))
+
+
+### Performance Improvements
+
+* **Images:** Fallback to WEBP format only ([91ae29c](https://github.com/bamdadsabbagh/lilademarcq/commit/91ae29c0a1aa326de507199e8aa5066b06bc36db))
+* **Images:** Increase image resolution but lower q factor ([0d6120a](https://github.com/bamdadsabbagh/lilademarcq/commit/0d6120a2a883cbac6f595672dca67a2212f62de7))
+* **Images:** Use inline base64 string instead of remote thumbnail ([869957c](https://github.com/bamdadsabbagh/lilademarcq/commit/869957c136030f6fefa0454116fa892f41e2f09b))
+* Make form post request on server side + Add utility function to get API endpoints ([b4ada47](https://github.com/bamdadsabbagh/lilademarcq/commit/b4ada47d39133fdec9648122f9d5db5032385377))
+* Remove dead code ([1a0a245](https://github.com/bamdadsabbagh/lilademarcq/commit/1a0a245e37e8cfb849ee2834f917b7981079bffa))
+
 # [1.22.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.21.1...v1.22.0) (2022-04-29)
 
 
