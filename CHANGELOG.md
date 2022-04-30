@@ -1,3 +1,12 @@
+# [1.23.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.5...v1.23.0) (2022-04-30)
+
+
+### Features
+
+* Add favicon ([92f1300](https://github.com/bamdadsabbagh/lilademarcq/commit/92f13006a6aa0c93aa69a0a5db60811142d9b99d))
+* **Images:** Add transitions for all images ([0cc64d1](https://github.com/bamdadsabbagh/lilademarcq/commit/0cc64d1d3dacd4eba7a2f13798d38573ad5e9d1b))
+* Work on HeroComponent + Improve global styling ([dda9b64](https://github.com/bamdadsabbagh/lilademarcq/commit/dda9b648468ac2829b5898c2dc5c108aee65b141))
+
 ## [1.22.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.4...v1.22.5) (2022-04-30)
 
 
