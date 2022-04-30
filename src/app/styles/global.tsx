@@ -6,6 +6,7 @@ import '@fontsource/montserrat/400.css';
 import '@fontsource/spectral/200.css';
 import '@fontsource/spectral/300.css';
 import {mediaQueries} from './breakpoints';
+import {simpleTransition} from './transitions';
 
 const GlobalJSX = () => (
   <style jsx global>{`
@@ -22,6 +23,10 @@ const GlobalJSX = () => (
 export const GlobalStyled = createGlobalStyle`
   html {
     overflow-y: scroll;
+
+    img {
+      ${simpleTransition('', 0.1)};
+    }
 
     ${mediaQueries.below.mobile} {
       font-size: 13px;
