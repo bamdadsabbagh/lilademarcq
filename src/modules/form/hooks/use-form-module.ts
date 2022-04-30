@@ -6,6 +6,7 @@ import {
   useState,
 } from 'react';
 import {FormInterface} from '../../../utils/fetch-form';
+import {getApiEndpoint} from '../../../utils/get-api-endpoint';
 
 interface UseFormModule {
   wasSubmitted: boolean;
@@ -74,7 +75,7 @@ export function useFormModule(form: FormInterface): UseFormModule {
       };
 
       const request = await fetch(
-        form.target,
+        getApiEndpoint('form'),
         {
           method: 'POST',
           headers: {
@@ -84,7 +85,9 @@ export function useFormModule(form: FormInterface): UseFormModule {
         },
       );
 
-      if (request.status === 200 || request.status === 302) {
+      const response = await request.json();
+
+      if (response.ok === true) {
         success();
       } else {
         fail();

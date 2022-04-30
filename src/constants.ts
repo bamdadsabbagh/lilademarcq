@@ -28,7 +28,7 @@ export const MENU = [
   {name: 'livre d\'or', slug: '/livre-d-or'},
 ];
 
-export type ApiEndpointKeys = 'menu' | 'catalog';
+export type ApiEndpointKeys = 'menu' | 'catalog' | 'form';
 
 export const META: MetaComponentProps = {
   title: 'Lila Demarcq',
