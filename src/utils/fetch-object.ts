@@ -1,6 +1,7 @@
 import {Document} from '@contentful/rich-text-types';
 import {fetchContentful} from './fetch-contentful';
 import {IMAGE_SETTINGS} from '../constants';
+import {getPlaceholder} from './get-placeholder';
 
 const queryObject = (slug: string) => `
 query {
@@ -45,38 +46,6 @@ query {
       }
       body {
         json
-      }
-    }
-  }
-}
-`;
-
-const queryObjectThumbnails = (slug: string) => `
-query {
-  objectCollection(where: { slug: "${slug}" }, limit: 1) {
-    items {
-      thumbnail {
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.thumbQuality},
-          width: ${Math.round(IMAGE_SETTINGS.lowRes * IMAGE_SETTINGS.thumbRatio)},
-        })
-      }
-      badge {
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.thumbQuality},
-          width: ${Math.round(IMAGE_SETTINGS.highRes * IMAGE_SETTINGS.thumbRatio)},
-        })
-      }
-      imagesCollection {
-        items {
-          url(transform: { 
-            format: WEBP,
-            quality: ${IMAGE_SETTINGS.thumbQuality},
-            width: ${Math.round(IMAGE_SETTINGS.highRes * IMAGE_SETTINGS.thumbRatio)},
-          })
-        }
       }
     }
   }
@@ -134,18 +103,18 @@ export async function fetchObject(slug: string): Promise<LDObject> {
   const response: ObjectResponse = await fetchContentful(queryObject(slug));
   const object = response.objectCollection.items[0];
 
-  const thumbnailsResponse: ObjectResponse = await fetchContentful(queryObjectThumbnails(slug));
-  const thumbnails = thumbnailsResponse.objectCollection.items[0];
+  // thumbnail
+  object.thumbnail.base64 = await getPlaceholder(object.thumbnail.url);
 
-  object.thumbnail.base64 = thumbnails.thumbnail.url;
-
+  // badge
   if (object.badge) {
-    object.badge.base64 = thumbnails.badge.url;
+    object.badge.base64 = await getPlaceholder(object.badge.url);
   }
 
-  object.imagesCollection.items.forEach((image, i) => {
-    image.base64 = thumbnails.imagesCollection.items[i].url;
-  });
+  // images
+  await Promise.all(object.imagesCollection.items.map(async (image) => {
+    image.base64 = await getPlaceholder(image.url);
+  }));
 
   return object;
 }
