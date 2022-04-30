@@ -26,7 +26,7 @@ export default function APropos({about}: AProposProps): ReactElement {
 
       <DefaultLayout customMeta>
 
-        <SectionComponent>
+        <SectionComponent isSmallTop>
 
           <Container>
 

@@ -4,7 +4,6 @@ import {theme} from '../app/styles/theme';
 import {FormModule} from '../modules/form/form.module';
 import {SectionComponent} from '../components/section/section.component';
 import {ObjectsModule} from '../modules/objects/objects.module';
-import {ValuesModule} from '../modules/values/values.module';
 import {AwardsModule} from '../modules/awards/awards.module';
 import {SocialsModule} from '../modules/socials/socials.module';
 import {fetchObjects} from '../utils/fetch-objects';
@@ -16,11 +15,13 @@ import {REVALIDATE} from '../constants';
 import {MetaComponent} from '../components/meta/meta.component';
 import {DefaultLayout} from '../layouts/default/default.layout';
 import {
-  ImageTextComponent,
-} from '../components/image-text/image-text.component';
+  ImageTextColsComponent,
+} from '../components/image-text-cols/image-text-cols.component';
 import {ContactModule} from '../modules/contact/contact.module';
-import {LDObject} from '../utils/fetch-object';
+import {fetchObject, LDObject} from '../utils/fetch-object';
 import {fetchForm, FormInterface} from '../utils/fetch-form';
+import {HeroComponent} from '../components/hero/hero.component';
+import {ValuesModule} from '../modules/values/values.module';
 
 interface IndexProps {
   about: LDSection;
@@ -30,6 +31,7 @@ interface IndexProps {
   socials: LDSocial[];
   values: LDValues;
   form: FormInterface;
+  object: LDObject;
 }
 
 export default function Index({
@@ -40,14 +42,17 @@ export default function Index({
   socials,
   values,
   form,
+  object,
 }: IndexProps): ReactElement {
   return (
     <>
       <MetaComponent description="Home" />
       <DefaultLayout customMeta>
+        <HeroComponent images={object.imagesCollection.items} />
+
         <ObjectsModule objects={objects} />
 
-        <ImageTextComponent
+        <ImageTextColsComponent
           title={about.title}
           image={about.image}
           body={about.body}
@@ -77,6 +82,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
   const socials = await fetchSocials();
   const values = await fetchValues();
   const form = await fetchForm();
+  const object = await fetchObject('isiqu');
 
   return {
     props: {
@@ -87,6 +93,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
       socials,
       values,
       form,
+      object,
     },
     revalidate: REVALIDATE,
   };

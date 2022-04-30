@@ -41,20 +41,20 @@ export function ObjectLayout({
 
   return (
     <>
-      <SectionComponent backgroundColor={theme.salmonLight}>
+      <SectionComponent
+        backgroundColor={theme.salmonLight}
+      >
 
         <TitleComponent color={color} paddingLeft>
           {getObjectFullName(object)}
         </TitleComponent>
 
-        {object.imagesCollection.items.length !== 0 && (
-          <div ref={ref}>
-            <CarouselModule
-              images={object.imagesCollection.items}
-              badge={object.badge}
-            />
-          </div>
-        )}
+        <div ref={ref}>
+          <CarouselModule
+            images={object.imagesCollection.items}
+            badge={object.badge}
+          />
+        </div>
 
         {video && (
           <VideoComponent
@@ -63,6 +63,7 @@ export function ObjectLayout({
             height={bounds.height}
           />
         )}
+        
       </SectionComponent>
 
       <SectionComponent>

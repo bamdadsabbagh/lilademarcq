@@ -5,19 +5,19 @@ import {SectionComponent} from '../section/section.component';
 import {theme} from '../../app/styles/theme';
 import {AlignKeys, TitleComponent} from '../title/title.component';
 import {LDSection} from '../../utils/fetch-section';
-import {Body, ImageContainer, Text} from './image-text.styles';
+import {Body, ImageContainer, Text} from './image-text-cols.component.styles';
 
-interface ImageTextComponentProps {
+interface ImageTextColsComponentProps {
   title: LDSection['title'];
   image: LDSection['image'];
   body: LDSection['body'];
 }
 
-export function ImageTextComponent({
+export function ImageTextColsComponent({
   title,
   image,
   body,
-}: ImageTextComponentProps): ReactElement {
+}: ImageTextColsComponentProps): ReactElement {
   return (
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>

@@ -1,26 +1,49 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
-import {PADDING} from '../../constants';
+import {MAX_WIDTH, PADDING} from '../../constants';
+import {FullHeight} from '../../app/styles/common';
+
+const PaddingFull = css`
+  padding: ${PADDING} 0;
+`;
+
+const PaddingSmallTop = css`
+  padding: calc(${PADDING} * 0.5) 0 ${PADDING} 0;
+`;
+
+const PositionRelative = css`
+  position: relative;
+`;
 
 interface StyledSectionProps {
   backgroundColor: string;
-  skipTransition: boolean;
+  isHero: boolean;
+  minHeight: string;
 }
 
 export const Section = styled.section<StyledSectionProps>`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   overflow: hidden;
 
   background: ${(props) => props.backgroundColor ? props.backgroundColor : 'none'};
 
-  transform: translate(0);
+  ${({isHero}) => isHero && FullHeight};
+  ${({isHero}) => isHero && PositionRelative};
+
+  min-height: ${({minHeight}) => minHeight};
 `;
 
-export const Wrapper = styled.div`
-  padding: ${PADDING}rem 0;
+interface WrapperProps {
+  isSmallTop: boolean;
+  isHero: boolean;
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+  ${PaddingFull};
+  ${({isSmallTop}) => isSmallTop && PaddingSmallTop};
 
   ${mediaQueries.below.mobile} {
     width: 90vw;
@@ -40,6 +63,6 @@ export const Wrapper = styled.div`
 
   ${mediaQueries.above.fullhd} {
     width: 80vw;
-    max-width: 1200px;
+    max-width: ${MAX_WIDTH};
   }
 `;

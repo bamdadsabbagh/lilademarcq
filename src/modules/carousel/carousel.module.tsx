@@ -1,16 +1,11 @@
 import React, {ReactElement} from 'react';
-import {
-  Caption,
-  Container,
-  Dot,
-  Dots,
-  Features,
-  GalleryContainer,
-  PointerLayer,
-} from './carousel.styles';
+import {Container, GalleryContainer, PointerLayer} from './carousel.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
 import {LDBadge, LDImage} from '../../utils/fetch-object';
 import {GalleryComponent} from './components/gallery/gallery.component';
+import {
+  ImageFeaturesComponent,
+} from '../../components/image-features/image-features.component';
 
 interface CarouselComponentProps {
   images: LDImage[];
@@ -48,23 +43,11 @@ export function CarouselModule({
           />
         </GalleryContainer>
 
-        <Features>
-          <Dots>
-            {images.map((image, key) => (
-              <Dot
-                key={image.url}
-                active={index === key}
-                onClick={() => handleSelect(key)}
-              />
-            ))}
-          </Dots>
-
-          <Caption hide={typeof images[index].description === 'undefined'}>
-            <span>
-              {images[index].description || images[index].title || ''}
-            </span>
-          </Caption>
-        </Features>
+        <ImageFeaturesComponent
+          images={images}
+          currentIndex={index}
+          dotCallback={handleSelect}
+        />
       </Container>
     </>
   );

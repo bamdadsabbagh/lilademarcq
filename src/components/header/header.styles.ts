@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import {HEADER_HEIGHT} from '../../constants';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
+const gap = '1.75rem';
+
 export const Header = styled.header`
   height: ${HEADER_HEIGHT};
 
@@ -10,12 +12,14 @@ export const Header = styled.header`
   align-items: center;
   justify-content: center;
 
-  gap: 1.5rem;
+  gap: ${gap};
 
   padding: 1.5rem;
 
   position: sticky;
-  top: -8rem;
+  //top: -8rem;
+  top: calc(${HEADER_HEIGHT} * -1 + ${gap} * 2);
+  margin-bottom: calc(${gap} / 3);
 
   z-index: 1000;
 
