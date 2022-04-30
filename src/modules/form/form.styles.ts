@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontFarmhouse, fontMontserrat} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
@@ -118,6 +118,11 @@ interface SubmitProps {
   disabled: boolean;
 }
 
+const SubmitSuccess = css<SubmitProps>`
+  color: ${({backgroundColor}) => backgroundColor};
+  background: white;
+`;
+
 export const Submit = styled.button<SubmitProps>`
   grid-row: 6;
   grid-column: 3;
@@ -139,19 +144,20 @@ export const Submit = styled.button<SubmitProps>`
   position: relative;
   ${simpleTransition('color')};
 
-  color: ${(props) => props.disabled && props.backgroundColor};
-
-  &:before {
-    top: 100%;
-  }
+  ${({disabled}) => disabled && SubmitSuccess};
 
   &:hover {
     cursor: ${(props) => props.disabled ? 'default' : 'pointer'};
     color: ${(props) => !props.disabled && props.backgroundColor};
+    z-index: 1;
 
     &:before {
       top: 0;
     }
+  }
+
+  &:before {
+    top: 100%;
   }
 
   &:before {
