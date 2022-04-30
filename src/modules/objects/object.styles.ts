@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
 import {simpleTransition} from '../../app/styles/transitions';
 
-export const GridContainer = styled.ul`
+export const GridContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
