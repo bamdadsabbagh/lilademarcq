@@ -28,11 +28,7 @@ export const GridBody = styled.div`
   }
 `;
 
-interface TileProps {
-  size: number;
-}
-
-export const Tile = styled.div<TileProps>`
+export const Tile = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,11 +50,7 @@ export const ImageContainer = styled.div`
   height: 100%;
 `;
 
-interface HoverBoxProps {
-  size: number;
-}
-
-export const HoverBox = styled.div<HoverBoxProps>`
+export const HoverBox = styled.div`
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: 0;
@@ -67,17 +59,72 @@ export const HoverBox = styled.div<HoverBoxProps>`
   color: white;
   transform: translateY(105%);
   ${simpleTransition('transform', 0.25)};
-  padding: 1.1em;
-
-  font-size: ${({size}) => size * 0.3}%;
 
   > h3 {
     text-transform: uppercase;
-    font-size: 2.5em;
   }
 
   > span {
     font-weight: 300;
-    font-size: 1.667em;
+  }
+
+  ${mediaQueries.below.mobile} {
+    padding: 0.8em 1em;
+
+    > h3 {
+      font-size: 2.1em;
+    }
+
+    > span {
+      font-size: 1.5em;
+    }
+  }
+
+  ${mediaQueries.above.tablet} {
+    padding: 0.5em 0.7em;
+
+    > h3 {
+      font-size: 1.6em;
+    }
+
+    > span {
+      font-size: 1em;
+    }
+  }
+
+  ${mediaQueries.above.desktop} {
+    padding: 0.7em 0.9em;
+
+    > h3 {
+      font-size: 1.8em;
+    }
+
+    > span {
+      font-size: 1.2em;
+    }
+  }
+
+  ${mediaQueries.above.widescreen} {
+    padding: 0.9em 1.1em;
+
+    > h3 {
+      font-size: 2em;
+    }
+
+    > span {
+      font-size: 1.3em;
+    }
+  }
+
+  ${mediaQueries.above.fullhd} {
+    padding: 0.9em 1em;
+
+    > h3 {
+      font-size: 2.05em;
+    }
+
+    > span {
+      font-size: 1.35em;
+    }
   }
 `;
