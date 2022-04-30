@@ -1,3 +1,10 @@
+## [1.22.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.2...v1.22.3) (2022-04-30)
+
+
+### Performance Improvements
+
+* Add image blurs to other components ([98230e4](https://github.com/bamdadsabbagh/lilademarcq/commit/98230e42db86b5dd55d2677ae71b4c061a6f2ea2))
+
 ## [1.22.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.1...v1.22.2) (2022-04-30)
 
 
