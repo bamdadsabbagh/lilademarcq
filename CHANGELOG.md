@@ -1,3 +1,19 @@
+## [1.22.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.3...v1.22.4) (2022-04-30)
+
+
+### Bug Fixes
+
+* Drill props for FormComponent + Prevent `react-player` from rendering on the server side ([dce4f5f](https://github.com/bamdadsabbagh/lilademarcq/commit/dce4f5f8325f9c993bdaa7f3faae7ddd00eb5931))
+* **Logo:** Add aria name ([93bdf7f](https://github.com/bamdadsabbagh/lilademarcq/commit/93bdf7fa457159aa8d8e00de9d572f931f0a7611))
+* **Object:** Make container a div ([7a0e5c7](https://github.com/bamdadsabbagh/lilademarcq/commit/7a0e5c73cf9d01ae42d8b39464ac6fc163170ede))
+
+
+### Performance Improvements
+
+* **Carousel:** Preload adjacent images ([7d6662a](https://github.com/bamdadsabbagh/lilademarcq/commit/7d6662a6b7c5216640747c302229380625b1e61c))
+* **ObjectPage:** Remove now unused `useEffect` ([4f6ad58](https://github.com/bamdadsabbagh/lilademarcq/commit/4f6ad5848549a38c6129cbefcda410b2f53d0031))
+* Remove all fade animations ([d89925d](https://github.com/bamdadsabbagh/lilademarcq/commit/d89925d7654f797b63cf6c62123ae8e0ff1f7c1a))
+
 ## [1.22.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.2...v1.22.3) (2022-04-30)
 
 
