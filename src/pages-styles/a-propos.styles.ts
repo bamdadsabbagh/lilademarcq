@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 import {fontSpectral} from '../app/styles/fonts';
 
-interface ContainerProps {
-  width: number;
-  right: number;
-}
-
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div`
   display: grid;
   justify-content: center;
   align-items: flex-start;
@@ -20,12 +15,7 @@ export const ImageContainer = styled.div`
   width: 90%;
 `;
 
-interface TextContainerProps {
-  width: number;
-  right: number;
-}
-
-export const TextContainer = styled.div<TextContainerProps>`
+export const TextContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -39,7 +29,7 @@ export const TextContainer = styled.div<TextContainerProps>`
   transform: translateY(-2px);
 `;
 
-export const StyledMarkdownContainer = styled.div`
+export const TextWrapper = styled.div`
   h2 {
     font-size: 1.4em;
     margin-bottom: 1.6em;

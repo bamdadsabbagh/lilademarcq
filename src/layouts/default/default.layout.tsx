@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
-import {useAppLayout} from './hooks/use-default-layout';
 import {MetaComponent} from '../../components/meta/meta.component';
+import {useDefaultLayout} from './hooks/use-default-layout';
 
 interface DefaultLayoutProps {
   children: ReactElement | ReactElement[];
@@ -11,12 +11,12 @@ export function DefaultLayout({
   children,
   customMeta = false,
 }: DefaultLayoutProps): ReactElement {
-  const {isReady} = useAppLayout();
+  useDefaultLayout();
 
   return (
     <>
       {!customMeta && <MetaComponent />}
-      {isReady && children}
+      {children}
     </>
   );
 }

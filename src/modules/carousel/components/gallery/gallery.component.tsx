@@ -78,7 +78,6 @@ export function GalleryComponent({
               height={image.width * 0.5625}
               placeholder="blur"
               blurDataURL={image.base64}
-              priority={i === 0}
             />
           </a>
         ))}

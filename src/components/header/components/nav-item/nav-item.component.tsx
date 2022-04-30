@@ -48,17 +48,21 @@ export function NavItemComponent({
             {name}
           </Item>
         </LinkComponent>
-        <Dropdown isOpen={isOpen}>
-          {dropdown && <DropdownSpacer />}
-          {dropdown && dropdown.map((item) => (
-            <LinkComponent href={item.slug} key={item.slug}>
-              <DropdownItem isActive={item.slug === router.asPath}>
-                {item.menuName ?? item.name}
-              </DropdownItem>
-            </LinkComponent>
-          ))}
-          {dropdown && <DropdownSpacer />}
-        </Dropdown>
+
+        {dropdown?.length > 0 && (
+          <Dropdown isOpen={isOpen}>
+            <DropdownSpacer />
+            {dropdown.map((item) => (
+              <LinkComponent href={item.slug} key={item.slug}>
+                <DropdownItem isActive={item.slug === router.asPath}>
+                  {item.menuName ?? item.name}
+                </DropdownItem>
+              </LinkComponent>
+            ))}
+            <DropdownSpacer />
+          </Dropdown>
+        )}
+
       </Container>
     </>
   );

@@ -2,13 +2,12 @@ import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
-import useMeasure from 'react-use-measure';
 import {SectionComponent} from '../components/section/section.component';
 import {
   Container,
   ImageContainer,
-  StyledMarkdownContainer,
   TextContainer,
+  TextWrapper,
 } from '../pages-styles/a-propos.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
@@ -20,8 +19,6 @@ interface AProposProps {
 }
 
 export default function APropos({about}: AProposProps): ReactElement {
-  const [ref, bounds] = useMeasure();
-
   return (
     <>
 
@@ -31,11 +28,7 @@ export default function APropos({about}: AProposProps): ReactElement {
 
         <SectionComponent>
 
-          <Container
-            ref={ref}
-            width={bounds.width}
-            right={bounds.right}
-          >
+          <Container>
 
             <ImageContainer>
               <Image
@@ -49,17 +42,12 @@ export default function APropos({about}: AProposProps): ReactElement {
               />
             </ImageContainer>
 
-            {bounds.width !== 0 && bounds.right !== 0 && (
-              <TextContainer
-                width={bounds.width}
-                right={bounds.right}
-              >
-                <StyledMarkdownContainer>
-                  <h2>{about.title}</h2>
-                  {documentToReactComponents(about.body.json)}
-                </StyledMarkdownContainer>
-              </TextContainer>
-            )}
+            <TextContainer>
+              <TextWrapper>
+                <h2>{about.title}</h2>
+                {documentToReactComponents(about.body.json)}
+              </TextWrapper>
+            </TextContainer>
 
           </Container>
 
