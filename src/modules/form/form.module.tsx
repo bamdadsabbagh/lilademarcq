@@ -17,16 +17,7 @@ import {
 import {theme} from '../../app/styles/theme';
 import {useFormModule} from './hooks/use-form-module';
 import {TextInputComponent} from './components/text-input/text-input.component';
-
-interface FormModuleProps {
-  text?: string;
-  backgroundColor?: string;
-}
-
-const defaultProps = {
-  text: 'Une question ? Ecrivez-moi',
-  backgroundColor: theme.green,
-};
+import {FormInterface} from '../../utils/fetch-form';
 
 enum FormInputKeys {
   topic = 'topic',
@@ -39,12 +30,23 @@ enum FormInputKeys {
   phone = 'phone',
 }
 
+interface FormModuleProps {
+  form: FormInterface;
+  text?: string;
+  backgroundColor?: string;
+}
+
+const defaultProps = {
+  text: 'Une question ? Ecrivez-moi',
+  backgroundColor: theme.green,
+};
+
 export function FormModule({
+  form,
   text = defaultProps.text,
   backgroundColor = defaultProps.backgroundColor,
 }: FormModuleProps): ReactElement {
   const {
-    form,
     wasSubmitted,
     submitText,
     isOpen,
@@ -56,13 +58,9 @@ export function FormModule({
     toggleSubscribe,
     hoverSubscribe,
     handleSubmit,
-  } = useFormModule();
+  } = useFormModule(form);
 
   const cleanSlug = useCallback((s: string) => s.replace('*', ''), []);
-
-  if (!form) {
-    return <></>;
-  }
 
   return (
     <Container>
@@ -82,7 +80,7 @@ export function FormModule({
         <Form onSubmit={handleSubmit}>
 
           <Label htmlFor={cleanSlug(form.topicTitle)} row={1} column={[1, 4]}>
-            <span>{form.topicTitle}</span>
+            {form.topicTitle}
             <Select
               color={theme.white}
               backgroundColor={backgroundColor}
@@ -96,7 +94,7 @@ export function FormModule({
           </Label>
 
           <Label htmlFor={cleanSlug(form.name)} row={2} column={1} isColumn>
-            <span>{form.name}</span>
+            {form.name}
             <TextInputComponent
               name={FormInputKeys.name}
               required
@@ -110,7 +108,7 @@ export function FormModule({
             column={2}
             isColumn
           >
-            <span>{form.firstName}</span>
+            {form.firstName}
             <TextInputComponent
               name={FormInputKeys.firstName}
               required
@@ -124,7 +122,7 @@ export function FormModule({
             column={3}
             isColumn
           >
-            <span>{form.address}</span>
+            {form.address}
             <TextInputComponent
               name={FormInputKeys.address}
               placeholder={form.road}
@@ -165,7 +163,7 @@ export function FormModule({
             column={1}
             isColumn
           >
-            <span>{form.contact}</span>
+            {form.contact}
             <TextInputComponent
               name={FormInputKeys.email}
               placeholder={form.email}

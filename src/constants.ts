@@ -28,9 +28,11 @@ export const MENU = [
   {name: 'livre d\'or', slug: '/livre-d-or'},
 ];
 
+export type ApiEndpointKeys = 'menu' | 'form-post' | 'catalog'
+
 export const META: MetaComponentProps = {
   title: 'Lila Demarcq',
   url: 'https://www.lilademarcq.com/',
   description: 'Artiste, designer et poétesse',
-  image: 'https://upload.wikimedia.org/wikipedia/en/7/7d/DJ_Screw.jpeg',
+  image: '',
 };

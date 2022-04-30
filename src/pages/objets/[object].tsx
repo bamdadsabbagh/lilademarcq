@@ -12,13 +12,16 @@ import {MetaComponent} from '../../components/meta/meta.component';
 import {DefaultLayout} from '../../layouts/default/default.layout';
 import {getObjectFullName} from '../../utils/get-object-full-name';
 import {getRedirectionObject} from '../../utils/get-redirection-object';
+import {fetchForm, FormInterface} from '../../utils/fetch-form';
 
 export interface ObjectProps {
   object: LDObject;
+  form: FormInterface;
 }
 
 export default function Object({
   object,
+  form,
 }: ObjectProps): ReactElement {
   const [slug, setSlug] = useState(object.slug);
 
@@ -28,6 +31,7 @@ export default function Object({
 
   return (
     <>
+      {/* To trigger animation */}
       {object.slug !== slug ? (
         <></>
       ) : (
@@ -37,7 +41,7 @@ export default function Object({
             image={object.thumbnail.url}
           />
           <DefaultLayout customMeta>
-            <ObjectLayout object={object} />
+            <ObjectLayout object={object} form={form} />
           </DefaultLayout>
         </>
       )}
@@ -58,9 +62,12 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
     return getRedirectionObject('/404');
   }
 
+  const form = await fetchForm();
+
   return {
     props: {
       object,
+      form,
     },
     revalidate: REVALIDATE,
   };

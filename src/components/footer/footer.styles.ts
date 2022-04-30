@@ -1,5 +1,4 @@
 import styled, {css} from 'styled-components';
-import {FadeInAnimation} from '../../app/styles/animations';
 import {FOOTER_HEIGHT} from '../../constants';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
@@ -19,8 +18,6 @@ export const Footer = styled.div`
   font-style: italic;
 
   user-select: none;
-
-  ${FadeInAnimation(1, 1.1)};
 `;
 
 interface SpanProps {

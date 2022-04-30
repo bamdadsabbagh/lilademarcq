@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
-import {FadeInAnimation} from '../../app/styles/animations';
 import {PADDING} from '../../constants';
 
 interface StyledSectionProps {
@@ -17,7 +16,7 @@ export const Section = styled.section<StyledSectionProps>`
 
   background: ${(props) => props.backgroundColor ? props.backgroundColor : 'none'};
 
-  ${({skipTransition}) => FadeInAnimation(1, skipTransition ? 0 : 1.1)}
+  transform: translate(0);
 `;
 
 export const Wrapper = styled.div`

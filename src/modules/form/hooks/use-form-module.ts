@@ -5,13 +5,10 @@ import {
   useCallback,
   useState,
 } from 'react';
-import {useAtom} from 'jotai';
-import {formAtom} from '../../../atoms/form.atom';
 import {FormInterface} from '../../../utils/fetch-form';
 import {getApiEndpoint} from '../../../utils/get-api-endpoint';
 
 interface UseFormModule {
-  form: FormInterface;
   wasSubmitted: boolean;
   submitText: string;
   isOpen: boolean;
@@ -25,12 +22,11 @@ interface UseFormModule {
   handleSubmit: (e: FormEvent) => void;
 }
 
-export function useFormModule(): UseFormModule {
+export function useFormModule(form: FormInterface): UseFormModule {
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const [isSubscribe, setIsSubscribe] = useState(false);
   const [isSubscribeHover, setIsSubscribeHover] = useState(false);
-  const [form] = useAtom(formAtom);
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const [submitText, setSubmitText] = useState(form?.submit || 'Envoyer');
 
@@ -87,7 +83,6 @@ export function useFormModule(): UseFormModule {
   }, [wasSubmitted, isSubscribe, form]);
 
   return {
-    form,
     wasSubmitted,
     submitText,
     isOpen,
