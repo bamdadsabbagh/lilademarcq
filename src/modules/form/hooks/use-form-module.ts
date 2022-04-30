@@ -84,12 +84,11 @@ export function useFormModule(form: FormInterface): UseFormModule {
         },
       );
 
-      if (request.status !== 200) {
+      if (request.status === 200 || request.status === 302) {
+        success();
+      } else {
         fail();
-        return;
       }
-
-      success();
     } catch {
       fail();
     }
