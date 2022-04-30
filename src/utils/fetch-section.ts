@@ -1,6 +1,7 @@
 import {fetchContentful} from './fetch-contentful';
 import {LDImage, LDText} from './fetch-object';
 import {IMAGE_SETTINGS} from '../constants';
+import {getPlaceholder} from './get-placeholder';
 
 const querySection = (slug: string) => `
 query {
@@ -17,22 +18,6 @@ query {
       }
       body {
         json
-      }
-    }
-  }
-}
-`;
-
-const querySectionThumbnail = (slug: string) => `
-query {
-  sectionCollection(where: { slug: "${slug}" }, limit: 1) {
-    items {
-      image {
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.thumbQuality},
-          width: ${Math.round(IMAGE_SETTINGS.lowRes * IMAGE_SETTINGS.thumbRatio)},
-        })
       }
     }
   }
@@ -58,8 +43,7 @@ export async function fetchSection(slug: string): Promise<LDSection> {
   const section = response.sectionCollection.items[0];
 
   if (section.image) {
-    const thumbnail: SectionResponse = await fetchContentful(querySectionThumbnail(slug));
-    section.image.base64 = thumbnail.sectionCollection.items[0].image.url;
+    section.image.base64 = await getPlaceholder(section.image.url);
   }
 
   return section;

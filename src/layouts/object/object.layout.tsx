@@ -19,7 +19,7 @@ import Saw from '../../../public/icons/saw.png';
 import {FormModule} from '../../modules/form/form.module';
 import {CarouselModule} from '../../modules/carousel/carousel.module';
 import {getObjectFullName} from '../../utils/get-object-full-name';
-import {buildImagePlaceholder} from '../../utils/build-image-placeholder';
+import {buildSvgPlaceholder} from '../../utils/build-svg-placeholder';
 
 interface ObjectLayoutProps {
   object: LDObject;
@@ -56,7 +56,7 @@ export function ObjectLayout({object}: ObjectLayoutProps): ReactElement {
               loop
               controls={false}
               volume={0}
-              fallback={<>{buildImagePlaceholder(bounds.width, bounds.height)}</>}
+              fallback={<>{buildSvgPlaceholder(bounds.width, bounds.height)}</>}
             />
           </VimeoContainer>
         )}

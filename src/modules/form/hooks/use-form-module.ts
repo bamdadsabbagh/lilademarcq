@@ -8,6 +8,7 @@ import {
 import {useAtom} from 'jotai';
 import {formAtom} from '../../../atoms/form.atom';
 import {FormInterface} from '../../../utils/fetch-form';
+import {getApiEndpoint} from '../../../utils/get-api-endpoint';
 
 interface UseFormModule {
   form: FormInterface;
@@ -44,10 +45,6 @@ export function useFormModule(): UseFormModule {
   const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!form?.target) {
-      return;
-    }
-
     if (wasSubmitted) {
       return;
     }
@@ -63,15 +60,20 @@ export function useFormModule(): UseFormModule {
       subscribe: isSubscribe,
     };
 
-    const request = await fetch(form.target, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const request = await fetch(
+      getApiEndpoint('form-post'),
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       },
-      body: JSON.stringify(payload),
-    });
+    );
 
-    if (request.status !== 200) {
+    const response = await request.json();
+
+    if (response.ok !== true) {
       setWasSubmitted(false);
       setSubmitText(form.submit);
       return;

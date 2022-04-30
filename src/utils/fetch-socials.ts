@@ -1,6 +1,7 @@
 import {fetchContentful} from './fetch-contentful';
 import {IMAGE_SETTINGS} from '../constants';
 import {LDImage} from './fetch-object';
+import {getPlaceholder} from './get-placeholder';
 
 const querySocial = `
 query {
@@ -14,22 +15,6 @@ query {
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
           width: ${IMAGE_SETTINGS.lowRes},
-        })
-      }
-    }
-  }
-}
-`;
-
-const querySocialThumbnail = `
-query {
-  socialCollection {
-    items {
-      image {
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.thumbQuality},
-          width: ${Math.round(IMAGE_SETTINGS.lowRes * IMAGE_SETTINGS.thumbRatio)},
         })
       }
     }
@@ -52,13 +37,12 @@ interface SocialResponse {
 
 export async function fetchSocials(): Promise<LDSocial[]> {
   const response: SocialResponse = await fetchContentful(querySocial);
-  const responseThumbnail: SocialResponse = await fetchContentful(querySocialThumbnail);
 
   const socials = response.socialCollection.items;
 
-  socials.forEach((social, index) => {
-    social.image.base64 = responseThumbnail.socialCollection.items[index].image.url;
-  });
+  await Promise.all(socials.map(async (social) => {
+    social.image.base64 = await getPlaceholder(social.image.url);
+  }));
 
   socials.sort((a, b) => a.position - b.position);
 

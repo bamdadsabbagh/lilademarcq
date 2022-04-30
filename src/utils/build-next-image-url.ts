@@ -1,17 +1,11 @@
-export enum NextImageWidths {
-  l = 1920,
-  xl = 3840,
-}
-
-export function buildNextImageUrl(source: string, width: number, quality: number): string {
-  const host = window.location.origin;
+export function buildNextImageUrl(source: string): string {
   const endpoint = '/_next/image';
 
   const params = new URLSearchParams({
     url: source,
-    w: width.toString(),
-    q: quality.toString(),
+    w: '3840',
+    q: '75',
   });
 
-  return `${host}${endpoint}?${params.toString()}`;
+  return `${endpoint}?${params.toString()}`;
 }

@@ -4,7 +4,6 @@ const queryForm = `
 query {
   myFormCollection (limit: 1) {
     items {
-      target
       topicTitle
       topic
       name
@@ -26,7 +25,6 @@ query {
 `;
 
 export interface FormInterface {
-  target: string;
   topicTitle: string;
   topic: string[];
   name: string;

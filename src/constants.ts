@@ -11,8 +11,8 @@ export const FIRST_DRAW_TIMEOUT = 2100;
 export const SECTION_SPACE_AROUND = '2%';
 
 export const IMAGE_SETTINGS = {
-  quality: 90,
-  highRes: 2208,
+  quality: 60,
+  highRes: 3000,
   lowRes: 736,
   thumbRatio: 0.1,
   thumbQuality: 60,

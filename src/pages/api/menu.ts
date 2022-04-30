@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import {fetchMenu, MenuInterface} from '../../utils/fetch-menu';
 
-export default async function MenuHandler(
+export default async function Handler(
   _req: NextApiRequest,
   res: NextApiResponse<MenuInterface>,
 ): Promise<void> {

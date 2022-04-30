@@ -42,7 +42,7 @@ export function ObjectsModule({objects}: ObjectsModuleProps): ReactElement {
                         width="100%"
                         height="100%"
                         placeholder="blur"
-                        blurDataURL={object.thumbnail.url}
+                        blurDataURL={object.thumbnail.base64}
                       />
                     </ImageContainer>
                     <HoverBox size={tileBounds.width}>
