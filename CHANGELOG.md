@@ -1,3 +1,10 @@
+## [1.22.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.4...v1.22.5) (2022-04-30)
+
+
+### Bug Fixes
+
+* **ObjectPage:** Purge children when slug changes ([e33eace](https://github.com/bamdadsabbagh/lilademarcq/commit/e33eace0fdc4736fd51958fc8c19682bb96a353e))
+
 ## [1.22.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.3...v1.22.4) (2022-04-30)
 
 
