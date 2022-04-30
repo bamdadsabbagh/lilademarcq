@@ -6,24 +6,14 @@ import 'photoswipe/dist/photoswipe.css';
 import Lightbox from 'photoswipe/lightbox';
 import Image from 'next/image';
 import {LDBadge, LDImage} from '../../../../utils/fetch-object';
-import {
-  buildNextImageUrl,
-  NextImageWidths,
-} from '../../../../utils/build-next-image-url';
-import {buildImagePlaceholder} from '../../../../utils/build-image-placeholder';
-import {
-  BadgeContainer,
-  NativeContainer,
-  NativeImage,
-  Placeholder,
-} from './gallery.styles';
+import {buildNextImageUrl} from '../../../../utils/build-next-image-url';
+import {BadgeContainer} from './gallery.styles';
 
 interface GalleryComponentProps {
   galleryID: string;
   images: LDImage[];
   index: number;
   badge?: LDBadge;
-  native?: boolean;
   onSlideChange: (index: number) => void;
 }
 
@@ -32,7 +22,6 @@ export function GalleryComponent({
   images,
   index,
   badge,
-  native = false,
   onSlideChange,
 }: GalleryComponentProps): ReactElement {
   const handleSlideChange = useCallback((i) => {
@@ -69,10 +58,11 @@ export function GalleryComponent({
 
   return (
     <>
-      <span id={galleryID}>
+      <div id={galleryID}>
+
         {images.map((image, i) => (
           <a
-            href={buildNextImageUrl(image.url, NextImageWidths.xl, 95)}
+            href={buildNextImageUrl(image.url)}
             data-pswp-width={image.width}
             data-pswp-height={image.height}
             key={image.url}
@@ -80,54 +70,35 @@ export function GalleryComponent({
             rel="noreferrer"
             style={{display: i !== index ? 'none' : 'flex'}}
           >
-            <>
-
-              {native ? (
-                <NativeContainer>
-                  <NativeImage
-                    src={buildNextImageUrl(image.url, NextImageWidths.xl, 80)}
-                    alt=""
-                    width={image.width}
-                    height={image.width * 0.5625}
-                  />
-                  <Placeholder>
-                    <img
-                      alt=""
-                      aria-hidden
-                      src={buildImagePlaceholder(image.width, image.width * 0.5625)}
-                    />
-                  </Placeholder>
-                </NativeContainer>
-              ) : (
-                <Image
-                  src={image.url}
-                  alt={image.title}
-                  objectFit="cover"
-                  width={image.width}
-                  height={image.width * 0.5625}
-                  placeholder="blur"
-                  blurDataURL={image.base64}
-                />
-              )}
-
-              {badge && (
-                <BadgeContainer>
-                  <Image
-                    src={badge.url}
-                    alt=""
-                    layout="fixed"
-                    objectFit="cover"
-                    width={120}
-                    height={120}
-                    placeholder="blur"
-                    blurDataURL={badge.base64}
-                  />
-                </BadgeContainer>
-              )}
-            </>
+            <Image
+              src={image.url}
+              alt={image.title}
+              objectFit="cover"
+              width={image.width}
+              height={image.width * 0.5625}
+              placeholder="blur"
+              blurDataURL={image.base64}
+              priority={i === 0}
+            />
           </a>
         ))}
-      </span>
+
+        {badge && (
+          <BadgeContainer>
+            <Image
+              src={badge.url}
+              alt=""
+              layout="fixed"
+              objectFit="cover"
+              width={120}
+              height={120}
+              placeholder="blur"
+              blurDataURL={badge.base64}
+            />
+          </BadgeContainer>
+        )}
+
+      </div>
     </>
   );
 }
