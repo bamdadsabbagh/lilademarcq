@@ -72,7 +72,6 @@ export function ValuesModule({values}: ValuesModuleProps): ReactElement {
             layout="fill"
             objectFit="cover"
             objectPosition="25% 0%"
-            priority
           />
         </Container>
       </SectionComponent>

@@ -18,6 +18,16 @@ export const IMAGE_SETTINGS = {
   thumbQuality: 60,
 };
 
+export const MENU = [
+  {name: 'home', slug: '/'},
+  {name: 'à propos', slug: '/a-propos'},
+  {name: 'objets', slug: '/objets', dropdown: []},
+  {name: 'poésie', slug: '/poesie'},
+  {name: 'événements', slug: '/evenements'},
+  {name: 'presse', slug: '/presse'},
+  {name: 'livre d\'or', slug: '/livre-d-or'},
+];
+
 export const META: MetaComponentProps = {
   title: 'Lila Demarcq',
   url: 'https://www.lilademarcq.com/',
