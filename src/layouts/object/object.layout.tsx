@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect, useState} from 'react';
+import React, {ReactElement, useState} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
 import useMeasure from 'react-use-measure';
@@ -31,13 +31,6 @@ export function ObjectLayout({
 }: ObjectLayoutProps): ReactElement {
   const [color] = useState(theme[object.color] ?? theme.black);
   const [ref, bounds] = useMeasure();
-  const [video, setVideo] = useState(false);
-
-  useEffect(() => {
-    if (object?.vimeo) {
-      setVideo(true);
-    }
-  }, [object?.vimeo]);
 
   return (
     <>
@@ -56,14 +49,14 @@ export function ObjectLayout({
           />
         </div>
 
-        {video && (
+        {object?.vimeo && (
           <VideoComponent
             url={object.vimeo}
             width={bounds.width}
             height={bounds.height}
           />
         )}
-        
+
       </SectionComponent>
 
       <SectionComponent>

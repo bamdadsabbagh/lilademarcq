@@ -1,8 +1,10 @@
 import React, {ReactElement} from 'react';
-import ReactPlayer from 'react-player/lazy';
+import dynamic from 'next/dynamic';
 import {Container} from './video.component.styles';
 import {buildSvgPlaceholder} from '../../utils/build-svg-placeholder';
 import {useVideoComponent} from './hooks/use-video-component';
+
+const ReactPlayer = dynamic(() => import('react-player/lazy'), {ssr: false});
 
 interface VideoComponentProps {
   url: string;
@@ -16,7 +18,7 @@ export function VideoComponent({
   height,
 }: VideoComponentProps): ReactElement {
   const {ref, isPlaying} = useVideoComponent();
-  
+
   return (
     <>
       <Container
