@@ -1,3 +1,17 @@
+# [1.26.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.25.1...v1.26.0) (2022-05-01)
+
+
+### Features
+
+* Add arrows and optional center callback to ImagePointer + Add seamless and static modes to TriangleComponent ([2708cf9](https://github.com/bamdadsabbagh/lilademarcq/commit/2708cf91ac2de9a2f29160f5291f468dc81ea7a1))
+* Add basic autoplay to Carousel and Hero + Better usePreloadImages hook ([a000202](https://github.com/bamdadsabbagh/lilademarcq/commit/a0002022058502e8133784c267c74a27c27ec4c5))
+* Add dynamic data to Hero + Improve ImageFeatures, Carousel hooks ([301015a](https://github.com/bamdadsabbagh/lilademarcq/commit/301015a82da72c9a8ba7b91440c205c65b65fb86))
+
+
+### Performance Improvements
+
+* **usePreloadImages:** Move hook ([28ff59d](https://github.com/bamdadsabbagh/lilademarcq/commit/28ff59db2e015e3c6d9bd48c812b43229b06a2f8))
+
 ## [1.25.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.25.0...v1.25.1) (2022-05-01)
 
 
