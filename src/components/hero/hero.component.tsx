@@ -5,6 +5,7 @@ import {LDImage} from '../../utils/fetch-object';
 import {
   ImageFeaturesComponent,
 } from '../image-features/image-features.component';
+import {ImagePointerComponent} from '../image-pointer/image-pointer.component';
 
 interface HeroComponentProps {
   images: LDImage[];
@@ -23,6 +24,8 @@ export function HeroComponent({
           placeholder="blur"
           blurDataURL={images[0].base64}
         />
+
+        <ImagePointerComponent gap={20} onClick={() => undefined} />
 
         <ImageFeaturesComponent
           isReverse

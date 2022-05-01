@@ -1,11 +1,14 @@
 import React, {ReactElement} from 'react';
-import {Container, GalleryContainer, PointerLayer} from './carousel.styles';
+import {Container, GalleryContainer} from './carousel.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
 import {LDBadge, LDImage} from '../../utils/fetch-object';
 import {GalleryComponent} from './components/gallery/gallery.component';
 import {
   ImageFeaturesComponent,
 } from '../../components/image-features/image-features.component';
+import {
+  ImagePointerComponent,
+} from '../../components/image-pointer/image-pointer.component';
 
 interface CarouselComponentProps {
   images: LDImage[];
@@ -28,10 +31,11 @@ export function CarouselModule({
   return (
     <>
       <Container>
-        <PointerLayer
+        <ImagePointerComponent
           onClick={
             (e) => handleClick(e, index)
           }
+          gap={30}
         />
         <GalleryContainer>
           <GalleryComponent
