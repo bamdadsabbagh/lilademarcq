@@ -24,7 +24,7 @@ export const GlobalStyled = createGlobalStyle`
   html {
     overflow-y: scroll;
 
-    img {
+    img:not(.pswp__img) {
       ${simpleTransition('', 0.1)};
     }
 
