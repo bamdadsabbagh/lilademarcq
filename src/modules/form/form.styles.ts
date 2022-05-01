@@ -58,7 +58,7 @@ export const FormContainer = styled.div<FormProps>`
 export const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1.4em 5em 3em 3em 3em 2em;
+  grid-template-rows: 1.4em 5em 3em 3em 3em 2em auto;
   gap: 0 2em;
 
   width: 100%;
@@ -250,4 +250,18 @@ export const SubscribeText = styled.span<SubscribeTextProps>`
   margin-left: 3rem;
   font-size: 0.75em;
   cursor: ${({disabled}) => disabled ? 'default' : 'pointer'};
+`;
+
+export const GoogleContainer = styled.div`
+  grid-row: 7;
+  grid-column: 1 / 4;
+
+  margin-top: 2em;
+
+  ${fontMontserrat};
+  font-size: 0.9rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

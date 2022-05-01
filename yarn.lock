@@ -531,6 +531,11 @@
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.2.tgz#ed4e0ad92306a704f9fb132a0cfcf77486dbe2bc"
   integrity sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==
 
+"@types/grecaptcha@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@types/grecaptcha/-/grecaptcha-3.0.4.tgz#3de601f3b0cd0298faf052dd5bd62aff64c2be2e"
+  integrity sha512-7l1Y8DTGXkx/r4pwU1nMVAR+yD/QC+MCHKXAyEX/7JZhwcN1IED09aZ9vCjjkcGdhSQiu/eJqcXInpl6eEEEwg==
+
 "@types/hoist-non-react-statics@*":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"

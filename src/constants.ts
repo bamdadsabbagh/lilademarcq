@@ -1,6 +1,7 @@
 import {MetaComponentProps} from './components/meta/meta.component';
 
 export const GA_TRACKING_ID = '';
+export const RECAPTCHA_SITE_KEY = '6LcKWLQfAAAAACgMB8kM3DVcmVQhgjrlGMXj6rbP';
 
 export const HEADER_HEIGHT = '12rem';
 export const FOOTER_HEIGHT = '8rem';

@@ -9,7 +9,7 @@ import Document, {
   NextScript,
 } from 'next/document';
 import {ServerStyleSheet} from 'styled-components';
-import {GA_TRACKING_ID} from '../constants';
+import {GA_TRACKING_ID, RECAPTCHA_SITE_KEY} from '../constants';
 
 // noinspection JSUnusedGlobalSymbols
 export default class MyDocument extends Document {
@@ -55,6 +55,12 @@ export default class MyDocument extends Document {
           />
           <script
             dangerouslySetInnerHTML={{'__html': `function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","${GA_TRACKING_ID}",{page_path:window.location.pathname});`}}
+          />
+          {/* reCAPTCHA */}
+          <script
+            src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+            async
+            defer
           />
         </Head>
         <body>

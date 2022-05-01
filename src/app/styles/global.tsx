@@ -28,6 +28,10 @@ export const GlobalStyled = createGlobalStyle`
       ${simpleTransition('', 0.1)};
     }
 
+    .grecaptcha-badge {
+      visibility: hidden;
+    }
+
     ${mediaQueries.below.mobile} {
       font-size: 13px;
     }

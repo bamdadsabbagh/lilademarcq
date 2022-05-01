@@ -7,6 +7,7 @@ import {
 } from 'react';
 import {FormInterface} from '../../../utils/fetch-form';
 import {getApiEndpoint} from '../../../utils/get-api-endpoint';
+import {RECAPTCHA_SITE_KEY} from '../../../constants';
 
 interface UseFormModule {
   wasSubmitted: boolean;
@@ -64,34 +65,42 @@ export function useFormModule(form: FormInterface): UseFormModule {
         return;
       }
 
-      load();
-
       const formData = new FormData(event.currentTarget);
       const fieldValues = Object.fromEntries(formData.entries());
 
-      const payload = {
-        ...fieldValues,
-        subscribe: isSubscribe,
-      };
+      window.grecaptcha.ready(() => {
+        window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {action: 'submit'})
+          .then((token) => {
+            (async () => {
+              load();
 
-      const request = await fetch(
-        getApiEndpoint('form'),
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-        },
-      );
+              const payload = {
+                ...fieldValues,
+                subscribe: isSubscribe,
+                token,
+              };
 
-      const response = await request.json();
+              const request = await fetch(
+                getApiEndpoint('form'),
+                {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(payload),
+                },
+              );
 
-      if (response.ok === true) {
-        success();
-      } else {
-        fail();
-      }
+              const response = await request.json();
+
+              if (response.ok === true) {
+                success();
+              } else {
+                fail();
+              }
+            })();
+          });
+      });
     } catch {
       fail();
     }

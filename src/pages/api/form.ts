@@ -1,6 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import Mailgun from 'mailgun.js';
 import formData from 'form-data';
+import {verifyRecaptchaToken} from '../../utils/verify-recaptcha-token';
 
 interface FormResponse {
   ok: boolean;
@@ -16,6 +17,7 @@ interface FormDataInterface {
   email: string;
   phone?: string;
   subscribe: boolean;
+  token: string;
 }
 
 export default async function Handler(
@@ -42,6 +44,12 @@ export default async function Handler(
     }
 
     const data = req.body as FormDataInterface;
+    const isVerified = await verifyRecaptchaToken(data.token);
+
+    if (!isVerified) {
+      fail();
+      return;
+    }
 
     const html = `
       <h3>Objet</h3>
