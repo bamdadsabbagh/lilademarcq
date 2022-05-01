@@ -32,7 +32,6 @@ export function ImageFeaturesComponent({
 }: ImageFeaturesComponentProps): ReactElement {
   const [isCaptionHovered, setIsCaptionHovered] = useState(false);
   const [caption, setCaption] = useState('');
-  const [isCaptionLink, setIsCaptionLink] = useState(false);
 
   useEffect(() => {
     // images
@@ -43,14 +42,10 @@ export function ImageFeaturesComponent({
 
     // rich images
     if (richImages) {
-      const {longDescription, shortDescription, link} = richImages[index];
+      const {longDescription, shortDescription} = richImages[index];
 
-      if (isCaptionHovered && longDescription && link) {
+      if (isCaptionHovered && longDescription) {
         setCaption(longDescription);
-        setIsCaptionLink(true);
-      } else if (isCaptionHovered && longDescription && !link) {
-        setCaption(longDescription);
-        setIsCaptionLink(false);
       } else {
         setCaption(shortDescription);
       }
@@ -110,7 +105,7 @@ export function ImageFeaturesComponent({
               isReverse={isReverse}
               hide={false}
             >
-              {isCaptionLink ? (
+              {richImages[index]?.link ? (
                 <LinkComponent href={richImages[index].link}>
                   <>
                     {caption}
