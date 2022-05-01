@@ -1,9 +1,8 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import Mailgun from 'mailgun.js';
-import formData from 'form-data';
 import {verifyRecaptchaToken} from '../../utils/verify-recaptcha-token';
 import {buildFormHtml} from '../../utils/build-form-html';
 import {validateForm} from '../../utils/validate-form';
+import {fetchFormTarget} from '../../utils/fetch-form-target';
 
 interface FormResponse {
   ok: boolean;
@@ -36,9 +35,8 @@ export default async function Handler(
 
   try {
     if (
-      !process.env.MAILGUN_API_KEY
-      || !process.env.MAILGUN_DOMAIN_NAME
-      || !process.env.MAILGUN_TARGET
+      !process.env.SENDINBLUE_API_KEY
+      || !process.env.RECAPTCHA_SECRET
       || req.method !== 'POST'
     ) {
       fail();
@@ -46,7 +44,7 @@ export default async function Handler(
     }
 
     const data = req.body as FormDataInterface;
-    const isVerified = await verifyRecaptchaToken(data.token);
+    const isVerified = await verifyRecaptchaToken(data.token, process.env.RECAPTCHA_SECRET);
 
     if (!isVerified) {
       fail();
@@ -59,24 +57,40 @@ export default async function Handler(
       fail();
       return;
     }
-    
-    const html = buildFormHtml(data);
 
-    const mailgun = new Mailgun(formData);
-    const mg = mailgun.client({
-      username: 'api',
-      key: process.env.MAILGUN_API_KEY,
-    });
+    const target = await fetchFormTarget();
 
-    const result = await mg.messages.create(process.env.MAILGUN_DOMAIN_NAME, {
-      from: 'Lila Demarcq <mailgun@lilademarcq.com>',
-      to: [process.env.MAILGUN_TARGET],
-      subject: 'Lilademarcq.com: Formulaire de contact',
-      text: '',
-      html,
-    });
+    if (!target) {
+      fail();
+      return;
+    }
 
-    if (result.status === 200) {
+    const request = await fetch(
+      'https://api.sendinblue.com/v3/smtp/email',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': process.env.SENDINBLUE_API_KEY,
+        },
+        body: JSON.stringify({
+          sender: {
+            name: 'Lila Demarcq',
+            email: 'noreply@lilademarcq.com',
+          },
+          to: [
+            {
+              name: 'Lila Demarcq',
+              email: target,
+            },
+          ],
+          subject: 'Lilademarcq.com: Formulaire de contact',
+          htmlContent: buildFormHtml(data),
+        }),
+      },
+    );
+
+    if (request.status === 201) {
       succeed();
     } else {
       fail();
