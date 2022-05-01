@@ -9,9 +9,7 @@ import {RichImage} from '../../utils/fetch-hero';
 import {useInfiniteArrayIndexes} from '../../hooks/use-infinite-array-indexes';
 import {useInterval} from '../../hooks/use-interval';
 import {CAROUSEL_INTERVAL} from '../../constants';
-import {
-  usePreloadImages,
-} from '../../modules/carousel/hooks/use-preload-images';
+import {usePreloadImages} from '../../hooks/use-preload-images';
 
 interface HeroComponentProps {
   images: RichImage[];

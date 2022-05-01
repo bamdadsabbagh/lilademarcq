@@ -1,6 +1,6 @@
 import {UseHandlers, useHandlers} from './use-handlers';
 import {LDImage} from '../../../utils/fetch-object';
-import {usePreloadImages} from './use-preload-images';
+import {usePreloadImages} from '../../../hooks/use-preload-images';
 import {
   useInfiniteArrayIndexes,
 } from '../../../hooks/use-infinite-array-indexes';

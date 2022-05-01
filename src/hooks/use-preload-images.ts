@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
-import {preloadImage} from '../../../utils/preload-image';
-import {buildNextImageUrl} from '../../../utils/build-next-image-url';
+import {preloadImage} from '../utils/preload-image';
+import {buildNextImageUrl} from '../utils/build-next-image-url';
 
 interface UsePreloadImagesProps {
   currentUrl: string;
