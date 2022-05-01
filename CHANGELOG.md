@@ -1,3 +1,17 @@
+# [1.24.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.23.0...v1.24.0) (2022-05-01)
+
+
+### Bug Fixes
+
+* **Form:** Accept 302 response ([605168c](https://github.com/bamdadsabbagh/lilademarcq/commit/605168c1b339b3e6fc2a6ead93316abb342ba94b))
+
+
+### Features
+
+* **Form:** Add reCAPTCHA v3 verification ([ddc19ff](https://github.com/bamdadsabbagh/lilademarcq/commit/ddc19ff865c49c4896029564f2c3d5c2eca85eeb))
+* **Form:** Submit client side ([7c60b8a](https://github.com/bamdadsabbagh/lilademarcq/commit/7c60b8ad5b7459b499c3d850b0c9acbfdbd5be8f))
+* **Form:** Use mailgun with server request ([5f24ae6](https://github.com/bamdadsabbagh/lilademarcq/commit/5f24ae60952e2f86ce80151d0d38702d68b5c5ca))
+
 # [1.23.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.22.5...v1.23.0) (2022-04-30)
 
 
