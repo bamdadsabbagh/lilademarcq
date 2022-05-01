@@ -37,7 +37,11 @@ export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
     updatePreviousIndex,
   });
 
-  usePreloadImages({images, index, nextIndex, previousIndex});
+  usePreloadImages({
+    currentUrl: images[index].url,
+    nextUrl: images[nextIndex].url,
+    previousUrl: images[previousIndex].url,
+  });
 
   return {
     previousIndex,

@@ -1,31 +1,28 @@
 import {useEffect} from 'react';
 import {preloadImage} from '../../../utils/preload-image';
 import {buildNextImageUrl} from '../../../utils/build-next-image-url';
-import {LDImage} from '../../../utils/fetch-object';
 
 interface UsePreloadImagesProps {
-  images: LDImage[];
-  index: number;
-  nextIndex: number;
-  previousIndex: number;
+  currentUrl: string;
+  nextUrl: string;
+  previousUrl: string;
 }
 
 export function usePreloadImages({
-  images,
-  index,
-  nextIndex,
-  previousIndex,
+  currentUrl,
+  nextUrl,
+  previousUrl,
 }: UsePreloadImagesProps): void {
   useEffect(() => {
     (async () => {
       // wait for current index
-      const isReady = await preloadImage(buildNextImageUrl(images[index].url));
+      const isReady = await preloadImage(buildNextImageUrl(currentUrl));
 
       // load previous and next images
       if (isReady) {
-        await preloadImage(buildNextImageUrl(images[previousIndex].url));
-        await preloadImage(buildNextImageUrl(images[nextIndex].url));
+        await preloadImage(buildNextImageUrl(previousUrl));
+        await preloadImage(buildNextImageUrl(nextUrl));
       }
     })();
-  }, [images, index, previousIndex, nextIndex]);
+  }, [currentUrl, previousUrl, nextUrl]);
 }

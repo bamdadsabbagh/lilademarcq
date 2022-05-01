@@ -7,6 +7,11 @@ import {
 import {ImagePointerComponent} from '../image-pointer/image-pointer.component';
 import {RichImage} from '../../utils/fetch-hero';
 import {useInfiniteArrayIndexes} from '../../hooks/use-infinite-array-indexes';
+import {useInterval} from '../../hooks/use-interval';
+import {CAROUSEL_INTERVAL} from '../../constants';
+import {
+  usePreloadImages,
+} from '../../modules/carousel/hooks/use-preload-images';
 
 interface HeroComponentProps {
   images: RichImage[];
@@ -17,9 +22,19 @@ export function HeroComponent({
 }: HeroComponentProps): ReactElement {
   const {
     index,
+    nextIndex,
+    previousIndex,
     increment,
     decrement,
   } = useInfiniteArrayIndexes(images.length);
+
+  useInterval(increment, CAROUSEL_INTERVAL * 1000);
+
+  usePreloadImages({
+    currentUrl: images[index].image.url,
+    previousUrl: images[previousIndex].image.url,
+    nextUrl: images[nextIndex].image.url,
+  });
 
   return (
     <>
