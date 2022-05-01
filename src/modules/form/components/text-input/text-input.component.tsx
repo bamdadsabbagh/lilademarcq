@@ -1,5 +1,6 @@
 import React, {ReactElement, useState} from 'react';
 import {TextInput} from './text-input.styles';
+import {FormRegex} from '../../../../utils/validate-form';
 
 interface TextInputComponentProps {
   name: string;
@@ -28,15 +29,15 @@ export function TextInputComponent({
 
   const [pattern] = useState(() => {
     if (isEmail) {
-      return '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+      return FormRegex.email;
     } else if (isPostcode) {
-      return '^[A-Z0-9]{5}$';
+      return FormRegex.postcode;
     } else if (isPhone) {
-      return '^[0-9+]+$';
+      return FormRegex.phone;
     } else if (isTextAndNumber) {
-      return '^[A-Za-zÀ-Ÿ0-9 .-]+$';
+      return FormRegex.textAndNumbers;
     } else {
-      return '^[A-Za-zÀ-Ÿ .-]+$';
+      return FormRegex.string;
     }
   });
 

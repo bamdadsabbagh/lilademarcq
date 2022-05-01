@@ -2,12 +2,14 @@ import {NextApiRequest, NextApiResponse} from 'next';
 import Mailgun from 'mailgun.js';
 import formData from 'form-data';
 import {verifyRecaptchaToken} from '../../utils/verify-recaptcha-token';
+import {buildFormHtml} from '../../utils/build-form-html';
+import {validateForm} from '../../utils/validate-form';
 
 interface FormResponse {
   ok: boolean;
 }
 
-interface FormDataInterface {
+export interface FormDataInterface {
   topic: string;
   name: string;
   firstName: string;
@@ -24,7 +26,7 @@ export default async function Handler(
   req: NextApiRequest,
   res: NextApiResponse<FormResponse>,
 ): Promise<void> {
-  const success = () => {
+  const succeed = () => {
     res.status(200).json({ok: true});
   };
 
@@ -51,40 +53,14 @@ export default async function Handler(
       return;
     }
 
-    const html = `
-      <h3>Objet</h3>
-      <p>${data.topic}</p>
-      
-      <h3>Abonnement newsletter</h3>
-      <p>${data.subscribe ? 'Oui' : 'Non'}</p>
+    const isValid = await validateForm(data);
 
-      <h3>Nom</h3>
-      <p>${data.name}</p>
-
-      <h3>Prénom</h3>
-      <p>${data.firstName}</p>
-      
-      ${data?.address && (`
-        <h3>Adresse</h3>
-        <p>${data.address}</p>
-      `)}
-      
-      ${data?.postcode && (`
-        <h3>Code postal</h3>
-        <p>${data.postcode}</p>
-      `)}
-      
-      <h3>Ville</h3>
-      <p>${data.city}</p>
-      
-      <h3>Email</h3>
-      <p>${data.email}</p>
-      
-      ${data?.phone && (`
-        <h3>Téléphone</h3>
-        <p>${data.phone}</p>
-      `)}
-    `;
+    if (!isValid) {
+      fail();
+      return;
+    }
+    
+    const html = buildFormHtml(data);
 
     const mailgun = new Mailgun(formData);
     const mg = mailgun.client({
@@ -101,7 +77,7 @@ export default async function Handler(
     });
 
     if (result.status === 200) {
-      success();
+      succeed();
     } else {
       fail();
     }
