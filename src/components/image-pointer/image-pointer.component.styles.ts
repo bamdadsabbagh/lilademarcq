@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components';
+import {simpleTransition} from '../../app/styles/transitions';
 
 interface PointerLayerProps {
   gap: number;
@@ -42,11 +43,27 @@ export const LayerCenter = styled.div`
   }
 `;
 
-export const LayerSide = styled.div`
+const LayerSide = styled.div`
   width: 100%;
   height: 100%;
 
+  display: flex;
+  padding: 2em;
+
+  opacity: 0;
+
+  ${simpleTransition('opacity')};
+
   &:hover {
     cursor: pointer;
+    opacity: 1;
   }
+`;
+
+export const LayerLeft = styled(LayerSide)`
+  justify-content: flex-start;
+`;
+
+export const LayerRight = styled(LayerSide)`
+  justify-content: flex-end;
 `;

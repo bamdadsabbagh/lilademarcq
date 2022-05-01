@@ -9,6 +9,8 @@ import {
 import {
   ImagePointerComponent,
 } from '../../components/image-pointer/image-pointer.component';
+import {useInterval} from '../../hooks/use-interval';
+import {CAROUSEL_INTERVAL} from '../../constants';
 
 interface CarouselComponentProps {
   images: LDImage[];
@@ -29,6 +31,8 @@ export function CarouselModule({
     increment,
     decrement,
   } = useCarouselComponent(images);
+
+  useInterval(increment, CAROUSEL_INTERVAL * 1000);
 
   return (
     <>
@@ -51,7 +55,7 @@ export function CarouselModule({
 
         <ImageFeaturesComponent
           images={images}
-          currentIndex={index}
+          index={index}
           dotCallback={handleSelect}
         />
       </Container>

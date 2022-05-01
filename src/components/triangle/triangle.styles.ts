@@ -5,21 +5,31 @@ import {mediaQueries} from '../../app/styles/breakpoints';
 
 interface ContainerProps {
   isHover?: boolean;
+  noWiggle?: boolean;
 }
+
+const ContainerAnimation = css<ContainerProps>`
+  ${simpleTransition('transform', 0.1)};
+  ${({isHover}) => WiggleAnimation(isHover ? 1.3 : 0)};
+
+  &:hover {
+    ${simpleTransition('transform', 0.1)};
+    ${WiggleAnimation(1.3)}
+  }
+`;
 
 export const Container = styled.span<ContainerProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
-  ${simpleTransition('transform', 0.1)};
-  ${({isHover}) => WiggleAnimation(isHover ? 1.3 : 0)};
+  pointer-events: none;
 
   &:hover {
     cursor: pointer;
-    ${simpleTransition('transform', 0.1)};
-    ${WiggleAnimation(1.3)}
   }
+
+  ${({noWiggle}) => !noWiggle && ContainerAnimation};
 `;
 
 interface TriangleProps {

@@ -1,16 +1,20 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {
   Caption,
+  CaptionBody,
   Dot,
   Dots,
   Features,
   Footer,
 } from './image-features.component.styles';
 import {LDImage} from '../../utils/fetch-object';
+import {RichImage} from '../../utils/fetch-hero';
+import {LinkComponent} from '../link/link.component';
 
 interface ImageFeaturesComponentProps {
-  images: LDImage[];
-  currentIndex: number;
+  images?: LDImage[];
+  richImages?: RichImage[];
+  index: number;
   dotCallback: (index: number) => void;
   isReverse?: boolean;
   hasFooter?: boolean;
@@ -19,12 +23,40 @@ interface ImageFeaturesComponentProps {
 
 export function ImageFeaturesComponent({
   images,
-  currentIndex,
+  richImages,
+  index,
   dotCallback,
   isReverse,
   hasFooter,
   isBig,
 }: ImageFeaturesComponentProps): ReactElement {
+  const [isCaptionHovered, setIsCaptionHovered] = useState(false);
+  const [caption, setCaption] = useState('');
+  const [isCaptionLink, setIsCaptionLink] = useState(false);
+
+  useEffect(() => {
+    // images
+    if (images) {
+      setCaption(images[index].description || images[index].title || '');
+      return;
+    }
+
+    // rich images
+    if (richImages) {
+      const {longDescription, shortDescription, link} = richImages[index];
+
+      if (isCaptionHovered && longDescription && link) {
+        setCaption(longDescription);
+        setIsCaptionLink(true);
+      } else if (isCaptionHovered && longDescription && !link) {
+        setCaption(longDescription);
+        setIsCaptionLink(false);
+      } else {
+        setCaption(shortDescription);
+      }
+    }
+  }, [index, images, richImages, isCaptionHovered]);
+
   return (
     <>
       <Features
@@ -34,24 +66,64 @@ export function ImageFeaturesComponent({
           isReverse={isReverse}
           hasFooter={hasFooter}
         >
-          {images.map((image, key) => (
+          {images && images.map((image, key) => (
             <Dot
               key={image.url}
-              active={currentIndex === key}
+              active={index === key}
+              onClick={() => dotCallback(key)}
+            />
+          ))}
+
+          {richImages && richImages.map((richImage, key) => (
+            <Dot
+              key={richImage.image.url}
+              active={index === key}
               onClick={() => dotCallback(key)}
             />
           ))}
         </Dots>
 
-        <Caption
-          hide={typeof images[currentIndex].description === 'undefined'}
-          isReverse={isReverse}
-          hasFooter={hasFooter}
-        >
-          <span>
-            {images[currentIndex].description || images[currentIndex].title || ''}
-          </span>
-        </Caption>
+        {images && (
+          <Caption
+            hide={typeof images[index].description === 'undefined'}
+            isReverse={isReverse}
+            hasFooter={hasFooter}
+          >
+            <CaptionBody
+              isReverse={isReverse}
+              hide={typeof images[index].description === 'undefined'}
+            >
+              {caption}
+            </CaptionBody>
+          </Caption>
+        )}
+
+        {richImages && (
+          <Caption
+            hide={false}
+            isReverse={isReverse}
+            hasFooter={hasFooter}
+            onMouseEnter={() => setIsCaptionHovered(true)}
+            onMouseLeave={() => setIsCaptionHovered(false)}
+          >
+            <CaptionBody
+              isReverse={isReverse}
+              hide={false}
+            >
+              {isCaptionLink ? (
+                <LinkComponent href={richImages[index].link}>
+                  <>
+                    {caption}
+                  </>
+                </LinkComponent>
+              ) : (
+                <>
+                  {caption}
+                </>
+              )}
+            </CaptionBody>
+          </Caption>
+        )}
 
         {hasFooter && <Footer />}
       </Features>

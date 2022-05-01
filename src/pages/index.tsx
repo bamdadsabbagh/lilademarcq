@@ -18,10 +18,11 @@ import {
   ImageTextColsComponent,
 } from '../components/image-text-cols/image-text-cols.component';
 import {ContactModule} from '../modules/contact/contact.module';
-import {fetchObject, LDObject} from '../utils/fetch-object';
+import {LDObject} from '../utils/fetch-object';
 import {fetchForm, FormInterface} from '../utils/fetch-form';
 import {HeroComponent} from '../components/hero/hero.component';
 import {ValuesModule} from '../modules/values/values.module';
+import {fetchHero, RichImage} from '../utils/fetch-hero';
 
 interface IndexProps {
   about: LDSection;
@@ -31,7 +32,7 @@ interface IndexProps {
   socials: LDSocial[];
   values: LDValues;
   form: FormInterface;
-  object: LDObject;
+  hero: RichImage[];
 }
 
 export default function Index({
@@ -42,13 +43,14 @@ export default function Index({
   socials,
   values,
   form,
-  object,
+  hero,
 }: IndexProps): ReactElement {
   return (
     <>
       <MetaComponent description="Home" />
+
       <DefaultLayout customMeta>
-        <HeroComponent images={object.imagesCollection.items} />
+        <HeroComponent images={hero} />
 
         <ObjectsModule objects={objects} />
 
@@ -82,7 +84,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
   const socials = await fetchSocials();
   const values = await fetchValues();
   const form = await fetchForm();
-  const object = await fetchObject('isiqu');
+  const hero = await fetchHero();
 
   return {
     props: {
@@ -93,7 +95,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
       socials,
       values,
       form,
-      object,
+      hero,
     },
     revalidate: REVALIDATE,
   };

@@ -10,6 +10,7 @@ interface TriangleComponentProps {
   isRight?: boolean;
   isLeft?: boolean;
   isHover?: boolean;
+  noWiggle?: boolean;
 }
 
 const defaultProps = {
@@ -25,11 +26,13 @@ export function TriangleComponent({
   isRight,
   isLeft,
   isHover,
+  noWiggle,
 }: TriangleComponentProps): ReactElement {
   return (
     <Container
       isHover={isHover}
       onClick={onClick}
+      noWiggle={noWiggle}
     >
       <Triangle
         color={color}

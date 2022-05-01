@@ -1,15 +1,17 @@
 import React, {ReactElement} from 'react';
 import {
   LayerCenter,
+  LayerLeft,
+  LayerRight,
   Layers,
-  LayerSide,
 } from './image-pointer.component.styles';
 import {useImagePointerComponent} from './hooks/use-image-pointer-component';
+import {TriangleComponent} from '../triangle/triangle.component';
 
 export interface ImagePointerComponentProps {
   gap: number;
   onClickLeft: () => void;
-  onClickCenter: (layerElement: HTMLDivElement) => void;
+  onClickCenter?: (layerElement: HTMLDivElement) => void;
   onClickRight: () => void;
   debug?: boolean;
 }
@@ -34,9 +36,13 @@ export function ImagePointerComponent({
         onClick={handleClick}
         debug={debug}
       >
-        <LayerSide />
-        <LayerCenter />
-        <LayerSide />
+        <LayerLeft>
+          <TriangleComponent isLeft noWiggle />
+        </LayerLeft>
+        {onClickCenter ? <LayerCenter /> : <span />}
+        <LayerRight>
+          <TriangleComponent isRight noWiggle />
+        </LayerRight>
       </Layers>
     </>
   );

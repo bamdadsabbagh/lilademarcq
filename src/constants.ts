@@ -11,6 +11,8 @@ export const REVALIDATE = 60 * 5;
 export const PADDING = '3.5rem';
 export const SECTION_SPACE_AROUND = '2%';
 
+export const CAROUSEL_INTERVAL = 10; // seconds
+
 export const IMAGE_SETTINGS = {
   quality: 60,
   highRes: 3000,
