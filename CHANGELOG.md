@@ -1,3 +1,10 @@
+## [1.26.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.0...v1.26.1) (2022-05-01)
+
+
+### Bug Fixes
+
+* **ImageFeatures:** Check for link existence just before rendering ([2b8484f](https://github.com/bamdadsabbagh/lilademarcq/commit/2b8484f13d4890c23bfbaf6266abe93ba4fdabc7))
+
 # [1.26.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.25.1...v1.26.0) (2022-05-01)
 
 
