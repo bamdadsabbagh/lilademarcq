@@ -5,6 +5,7 @@ import {
   Container,
   Form,
   FormContainer,
+  GoogleContainer,
   Label,
   Select,
   Submit,
@@ -219,6 +220,19 @@ export function FormModule({
           >
             {submitText}
           </Submit>
+
+          <GoogleContainer>
+            This site is protected by reCAPTCHA and the
+            Google&nbsp;
+            <a href="https://policies.google.com/privacy">Privacy
+              Policy
+            </a>
+            &nbsp;and&nbsp;
+            <a href="https://policies.google.com/terms">Terms of
+              Service
+            </a>
+            &nbsp;apply.
+          </GoogleContainer>
         </Form>
       </FormContainer>
     </Container>

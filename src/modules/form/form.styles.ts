@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontFarmhouse, fontMontserrat} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
@@ -58,7 +58,7 @@ export const FormContainer = styled.div<FormProps>`
 export const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1.4em 5em 3em 3em 3em 2em;
+  grid-template-rows: 1.4em 5em 3em 3em 3em 2em auto;
   gap: 0 2em;
 
   width: 100%;
@@ -118,6 +118,11 @@ interface SubmitProps {
   disabled: boolean;
 }
 
+const SubmitSuccess = css<SubmitProps>`
+  color: ${({backgroundColor}) => backgroundColor};
+  background: white;
+`;
+
 export const Submit = styled.button<SubmitProps>`
   grid-row: 6;
   grid-column: 3;
@@ -139,19 +144,20 @@ export const Submit = styled.button<SubmitProps>`
   position: relative;
   ${simpleTransition('color')};
 
-  color: ${(props) => props.disabled && props.backgroundColor};
-
-  &:before {
-    top: 100%;
-  }
+  ${({disabled}) => disabled && SubmitSuccess};
 
   &:hover {
     cursor: ${(props) => props.disabled ? 'default' : 'pointer'};
     color: ${(props) => !props.disabled && props.backgroundColor};
+    z-index: 1;
 
     &:before {
       top: 0;
     }
+  }
+
+  &:before {
+    top: 100%;
   }
 
   &:before {
@@ -244,4 +250,18 @@ export const SubscribeText = styled.span<SubscribeTextProps>`
   margin-left: 3rem;
   font-size: 0.75em;
   cursor: ${({disabled}) => disabled ? 'default' : 'pointer'};
+`;
+
+export const GoogleContainer = styled.div`
+  grid-row: 7;
+  grid-column: 1 / 4;
+
+  margin-top: 2em;
+
+  ${fontMontserrat};
+  font-size: 0.9rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
