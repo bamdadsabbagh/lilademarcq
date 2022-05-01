@@ -1,11 +1,13 @@
-import React, {useCallback, useState} from 'react';
+import {useCallback, useState} from 'react';
 
 export interface UseIncrements {
   previousIndex: number;
   index: number;
   nextIndex: number;
-  handleClick: (e: React.MouseEvent<HTMLDivElement>, i: number) => void;
   handleSelect: (i: number) => void;
+  increment: () => void;
+  decrement: () => void;
+  openTarget: (layer: HTMLDivElement) => void;
 }
 
 export function useIncrements(length: number): UseIncrements {
@@ -57,41 +59,18 @@ export function useIncrements(length: number): UseIncrements {
     incrementNextIndex(i);
   }, [index, incrementNextIndex, decrementPreviousIndex]);
 
-  const handleClick = useCallback((
-    e: React.MouseEvent<HTMLDivElement>,
-    i: number,
-  ) => {
-    const target = e.target as HTMLDivElement;
-    const x = e.nativeEvent.offsetX;
-    const width = target.clientWidth;
-
-    const gap = 0.3;
-    const percent = x / width;
-
-    // center
-    if (percent >= gap && percent <= 1 - gap) {
-      const anchor = target.nextElementSibling.firstElementChild.children[i] as HTMLAnchorElement;
-      anchor.click();
-      return;
-    }
-
-    // left
-    if (percent < gap) {
-      decrement();
-      return;
-    }
-
-    // right
-    if (percent > 1 - gap) {
-      increment();
-    }
-  }, [decrement, increment]);
+  const openTarget = useCallback((parent: HTMLDivElement) => {
+    const anchor = parent.nextElementSibling.firstElementChild.children[index] as HTMLAnchorElement;
+    anchor.click();
+  }, [index]);
 
   return {
     previousIndex,
     index,
     nextIndex,
     handleSelect,
-    handleClick,
+    increment,
+    decrement,
+    openTarget,
   };
 }

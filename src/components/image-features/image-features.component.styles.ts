@@ -22,18 +22,8 @@ const MarginBottom = css`
   margin-bottom: ${footerHeight};
 `;
 
-const DefaultCaption = css`
-  span {
-    padding: 0 1.5em;
-  }
-`;
-
-const BigCaption = css`
-  font-size: 2em;
-
-  span {
-    padding: 1.5em 3em;
-  }
+const BigFeatures = css`
+  font-size: 1.4em;
 `;
 
 interface FeaturesProps {
@@ -48,6 +38,8 @@ export const Features = styled.div<FeaturesProps>`
 
   width: 100%;
   height: 100%;
+
+  ${({isBig}) => isBig && BigFeatures}
 `;
 
 interface DotsProps {
@@ -99,7 +91,6 @@ interface CaptionProps {
   hide: boolean;
   isReverse: boolean;
   hasFooter: boolean;
-  isBig: boolean;
 }
 
 export const Caption = styled.div<CaptionProps>`
@@ -114,8 +105,6 @@ export const Caption = styled.div<CaptionProps>`
 
   overflow: hidden;
 
-  ${({isBig}) => isBig ? BigCaption : DefaultCaption};
-
   span {
     user-select: none;
     z-index: 3;
@@ -125,6 +114,7 @@ export const Caption = styled.div<CaptionProps>`
     align-items: center;
 
     height: 2.5em;
+    padding: 0 1.5em;
 
     ${({isReverse}) => isReverse ? BorderRadiusRight : BorderRadiusLeft};
 

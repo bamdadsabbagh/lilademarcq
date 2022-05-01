@@ -47,7 +47,6 @@ export function ImageFeaturesComponent({
           hide={typeof images[currentIndex].description === 'undefined'}
           isReverse={isReverse}
           hasFooter={hasFooter}
-          isBig={isBig}
         >
           <span>
             {images[currentIndex].description || images[currentIndex].title || ''}

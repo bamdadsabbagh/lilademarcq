@@ -1,13 +1,14 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import Mailgun from 'mailgun.js';
-import formData from 'form-data';
 import {verifyRecaptchaToken} from '../../utils/verify-recaptcha-token';
+import {buildFormHtml} from '../../utils/build-form-html';
+import {validateForm} from '../../utils/validate-form';
+import {fetchFormTarget} from '../../utils/fetch-form-target';
 
 interface FormResponse {
   ok: boolean;
 }
 
-interface FormDataInterface {
+export interface FormDataInterface {
   topic: string;
   name: string;
   firstName: string;
@@ -24,7 +25,7 @@ export default async function Handler(
   req: NextApiRequest,
   res: NextApiResponse<FormResponse>,
 ): Promise<void> {
-  const success = () => {
+  const succeed = () => {
     res.status(200).json({ok: true});
   };
 
@@ -34,9 +35,8 @@ export default async function Handler(
 
   try {
     if (
-      !process.env.MAILGUN_API_KEY
-      || !process.env.MAILGUN_DOMAIN_NAME
-      || !process.env.MAILGUN_TARGET
+      !process.env.SENDINBLUE_API_KEY
+      || !process.env.RECAPTCHA_SECRET
       || req.method !== 'POST'
     ) {
       fail();
@@ -44,64 +44,54 @@ export default async function Handler(
     }
 
     const data = req.body as FormDataInterface;
-    const isVerified = await verifyRecaptchaToken(data.token);
+    const isVerified = await verifyRecaptchaToken(data.token, process.env.RECAPTCHA_SECRET);
 
     if (!isVerified) {
       fail();
       return;
     }
 
-    const html = `
-      <h3>Objet</h3>
-      <p>${data.topic}</p>
-      
-      <h3>Abonnement newsletter</h3>
-      <p>${data.subscribe ? 'Oui' : 'Non'}</p>
+    const isValid = await validateForm(data);
 
-      <h3>Nom</h3>
-      <p>${data.name}</p>
+    if (!isValid) {
+      fail();
+      return;
+    }
 
-      <h3>Prénom</h3>
-      <p>${data.firstName}</p>
-      
-      ${data?.address && (`
-        <h3>Adresse</h3>
-        <p>${data.address}</p>
-      `)}
-      
-      ${data?.postcode && (`
-        <h3>Code postal</h3>
-        <p>${data.postcode}</p>
-      `)}
-      
-      <h3>Ville</h3>
-      <p>${data.city}</p>
-      
-      <h3>Email</h3>
-      <p>${data.email}</p>
-      
-      ${data?.phone && (`
-        <h3>Téléphone</h3>
-        <p>${data.phone}</p>
-      `)}
-    `;
+    const target = await fetchFormTarget();
 
-    const mailgun = new Mailgun(formData);
-    const mg = mailgun.client({
-      username: 'api',
-      key: process.env.MAILGUN_API_KEY,
-    });
+    if (!target) {
+      fail();
+      return;
+    }
 
-    const result = await mg.messages.create(process.env.MAILGUN_DOMAIN_NAME, {
-      from: 'Lila Demarcq <mailgun@lilademarcq.com>',
-      to: [process.env.MAILGUN_TARGET],
-      subject: 'Lilademarcq.com: Formulaire de contact',
-      text: '',
-      html,
-    });
+    const request = await fetch(
+      'https://api.sendinblue.com/v3/smtp/email',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': process.env.SENDINBLUE_API_KEY,
+        },
+        body: JSON.stringify({
+          sender: {
+            name: 'Lila Demarcq',
+            email: 'noreply@lilademarcq.com',
+          },
+          to: [
+            {
+              name: 'Lila Demarcq',
+              email: target,
+            },
+          ],
+          subject: 'Lilademarcq.com: Formulaire de contact',
+          htmlContent: buildFormHtml(data),
+        }),
+      },
+    );
 
-    if (result.status === 200) {
-      success();
+    if (request.status === 201) {
+      succeed();
     } else {
       fail();
     }
