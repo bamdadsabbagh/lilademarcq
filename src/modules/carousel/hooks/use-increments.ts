@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import {useCallback, useState} from 'react';
 
 export interface UseIncrements {
   previousIndex: number;
@@ -7,7 +7,7 @@ export interface UseIncrements {
   handleSelect: (i: number) => void;
   increment: () => void;
   decrement: () => void;
-  openTarget: (e: React.MouseEvent<HTMLDivElement>) => void;
+  openTarget: (layer: HTMLDivElement) => void;
 }
 
 export function useIncrements(length: number): UseIncrements {
@@ -59,9 +59,8 @@ export function useIncrements(length: number): UseIncrements {
     incrementNextIndex(i);
   }, [index, incrementNextIndex, decrementPreviousIndex]);
 
-  const openTarget = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLDivElement;
-    const anchor = target.nextElementSibling.firstElementChild.children[index] as HTMLAnchorElement;
+  const openTarget = useCallback((parent: HTMLDivElement) => {
+    const anchor = parent.nextElementSibling.firstElementChild.children[index] as HTMLAnchorElement;
     anchor.click();
   }, [index]);
 

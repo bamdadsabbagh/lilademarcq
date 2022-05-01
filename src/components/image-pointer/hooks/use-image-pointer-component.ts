@@ -2,42 +2,40 @@ import React, {useCallback} from 'react';
 import {ImagePointerComponentProps} from '../image-pointer.component';
 
 interface UseImagePointerComponent {
-  handleClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  handleClick: (layerElement: React.MouseEvent<HTMLDivElement>) => void;
 }
 
+type UseImagePointerComponentProps = Omit<ImagePointerComponentProps, 'gap'>
+
 export function useImagePointerComponent({
-  gap,
   onClickLeft,
   onClickCenter,
   onClickRight,
-}: ImagePointerComponentProps): UseImagePointerComponent {
+}: UseImagePointerComponentProps): UseImagePointerComponent {
   const handleClick = useCallback((
     e: React.MouseEvent<HTMLDivElement>,
   ) => {
     const target = e.target as HTMLDivElement;
-    const x = e.nativeEvent.offsetX;
-    const width = target.clientWidth;
-
-    const g = gap / 100;
-    const percent = x / width;
+    const parent = target.parentElement as HTMLDivElement;
+    const children = Array.from(parent.children);
 
     // center
-    if (percent >= g && percent <= 1 - g) {
-      onClickCenter(e);
+    if (children.indexOf(target) === 1) {
+      onClickCenter(parent);
       return;
     }
 
     // left
-    if (percent < g) {
+    if (children.indexOf(target) === 0) {
       onClickLeft();
       return;
     }
 
     // right
-    if (percent > 1 - g) {
+    if (children.indexOf(target) === 2) {
       onClickRight();
     }
-  }, [gap, onClickCenter, onClickLeft, onClickRight]);
+  }, [onClickCenter, onClickLeft, onClickRight]);
 
   return {
     handleClick,

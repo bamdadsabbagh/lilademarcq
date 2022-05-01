@@ -1,11 +1,15 @@
 import React, {ReactElement} from 'react';
-import {PointerLayer} from './image-pointer.component.styles';
+import {
+  LayerCenter,
+  Layers,
+  LayerSide,
+} from './image-pointer.component.styles';
 import {useImagePointerComponent} from './hooks/use-image-pointer-component';
 
 export interface ImagePointerComponentProps {
   gap: number;
   onClickLeft: () => void;
-  onClickCenter: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onClickCenter: (layerElement: HTMLDivElement) => void;
   onClickRight: () => void;
   debug?: boolean;
 }
@@ -18,7 +22,6 @@ export function ImagePointerComponent({
   debug,
 }: ImagePointerComponentProps): ReactElement {
   const {handleClick} = useImagePointerComponent({
-    gap,
     onClickCenter,
     onClickLeft,
     onClickRight,
@@ -26,11 +29,15 @@ export function ImagePointerComponent({
 
   return (
     <>
-      <PointerLayer
+      <Layers
         gap={gap}
         onClick={handleClick}
         debug={debug}
-      />
+      >
+        <LayerSide />
+        <LayerCenter />
+        <LayerSide />
+      </Layers>
     </>
   );
 }

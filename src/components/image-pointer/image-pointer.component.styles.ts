@@ -6,42 +6,47 @@ interface PointerLayerProps {
 }
 
 const PointerLayerDebug = css`
-  background: blue;
-
-  &:before {
-    background: red;
+  & :nth-child(1) {
+    background: rgba(255, 0, 0, 0.5);
   }
 
-  &:after {
-    background: green;
+  & :nth-child(2) {
+    background: rgba(0, 255, 0, 0.5);
+  }
+
+  & :nth-child(3) {
+    background: rgba(0, 0, 255, 0.5);
   }
 `;
 
-export const PointerLayer = styled.div<PointerLayerProps>`
+export const Layers = styled.div<PointerLayerProps>`
   position: absolute;
-  display: flex;
 
   width: 100%;
   height: 100%;
 
   z-index: 1;
 
-  // right
-  cursor: pointer;
-
-  // left
-  &:before {
-    content: '';
-    width: ${({gap}) => gap}%;
-    cursor: pointer;
-  }
-
-  // center
-  &:after {
-    content: '';
-    width: ${({gap}) => 100 - gap * 2}%;
-    cursor: zoom-in;
-  }
+  display: grid;
+  grid-template-columns: ${({gap}) => gap}% 1fr ${({gap}) => gap}%;
 
   ${({debug}) => debug && PointerLayerDebug};
+`;
+
+export const LayerCenter = styled.div`
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    cursor: zoom-in;
+  }
+`;
+
+export const LayerSide = styled.div`
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
