@@ -1,3 +1,25 @@
+# [1.25.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.24.0...v1.25.0) (2022-05-01)
+
+
+### Bug Fixes
+
+* **ImageFeatures:** Make global font bigger on `isBig` prop ([71c3b0b](https://github.com/bamdadsabbagh/lilademarcq/commit/71c3b0bde36d5a252efb5e707ffc8cdc7755a40a))
+* **Styles:** Remove header bottom margin ([3def9ce](https://github.com/bamdadsabbagh/lilademarcq/commit/3def9ce421149aeb0b142f0384a58e9865abf518))
+
+
+### Features
+
+* **Form:** Add validation and builder utility functions ([8ea0bdd](https://github.com/bamdadsabbagh/lilademarcq/commit/8ea0bddbb1548d3e4f67d837a7515014f45727db))
+* **Form:** Replace mailgun with sendinblue + Add dynamic target from back office ([d3d1697](https://github.com/bamdadsabbagh/lilademarcq/commit/d3d1697f79507d0c4b4490060194df36f8fe39f5))
+* **ImagePointer:** Add hook to manage clicks within the component ([46083cb](https://github.com/bamdadsabbagh/lilademarcq/commit/46083cbcdc7f3c8a0ee621faa837ad795a0c9fe5))
+* **ImagePointer:** Extract to new component for further re-use ([2d6c63e](https://github.com/bamdadsabbagh/lilademarcq/commit/2d6c63ecb3c242f4b9c093068519b4f12b049ba2))
+* **ImagePointer:** Use divs instead of pseudo-elements ([768cd3e](https://github.com/bamdadsabbagh/lilademarcq/commit/768cd3e7b0e742795b15550c3837db701f18d688))
+
+
+### Performance Improvements
+
+* **Video:** Use dynamic import to prevent `react-player` SSR ([7a79214](https://github.com/bamdadsabbagh/lilademarcq/commit/7a79214f4e017130d5557610f7a0e01d9f0e4e1b))
+
 # [1.24.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.23.0...v1.24.0) (2022-05-01)
 
 
