@@ -21,7 +21,9 @@ export function useImagePointerComponent({
 
     // center
     if (children.indexOf(target) === 1) {
-      onClickCenter(parent);
+      if (onClickCenter) {
+        onClickCenter(parent);
+      }
       return;
     }
 

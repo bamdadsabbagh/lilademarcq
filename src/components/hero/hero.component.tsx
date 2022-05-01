@@ -27,7 +27,6 @@ export function HeroComponent({
 
         <ImagePointerComponent
           gap={20}
-          onClickCenter={() => console.log('center')}
           onClickLeft={() => console.log('left')}
           onClickRight={() => console.log('right')}
         />
