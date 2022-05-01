@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.25.0...v1.25.1) (2022-05-01)
+
+
+### Bug Fixes
+
+* Ignore photoswipe images for transitions ([8287bdb](https://github.com/bamdadsabbagh/lilademarcq/commit/8287bdbe34151fccbca6002b0341d366e6cf1e40))
+
 # [1.25.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.24.0...v1.25.0) (2022-05-01)
 
 
