@@ -1,12 +1,17 @@
 import {fetchContentful} from './fetch-contentful';
 import {getPlaceholder} from './get-placeholder';
+import {IMAGE_SETTINGS} from '../constants';
 
 const queryValues = `
 query {
   valuesCollection {
     items {
       image {
-        url
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.quality},
+          width: ${IMAGE_SETTINGS.highRes},
+        })
       }
       topLeftTitle
       topLeftBody

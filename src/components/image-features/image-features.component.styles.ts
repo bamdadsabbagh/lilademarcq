@@ -104,28 +104,33 @@ export const Caption = styled.div<CaptionProps>`
   padding: 1em 0;
 
   overflow: hidden;
+`;
 
-  span {
-    user-select: none;
-    z-index: 3;
+interface CaptionBodyProps {
+  isReverse: boolean;
+  hide: boolean;
+}
 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+export const CaptionBody = styled.div<CaptionBodyProps>`
+  user-select: none;
+  z-index: 3;
 
-    height: 2.5em;
-    padding: 0 1.5em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
-    ${({isReverse}) => isReverse ? BorderRadiusRight : BorderRadiusLeft};
+  height: 2.5em;
+  padding: 0 1.5em;
 
-    background: rgba(255, 255, 255, 0.8);
+  ${({isReverse}) => isReverse ? BorderRadiusRight : BorderRadiusLeft};
 
-    transform: translateX(${({hide}) => hide ? 120 : 0}%);
-    ${simpleTransition('transform', 0.3)};
+  background: rgba(255, 255, 255, 0.8);
 
-    ${fontMontserrat};
-    font-size: 0.8em;
-  }
+  transform: translateX(${({hide}) => hide ? 120 : 0}%);
+  ${simpleTransition('transform', 0.3)};
+
+  ${fontMontserrat};
+  font-size: 0.8em;
 `;
 
 export const Footer = styled.div`

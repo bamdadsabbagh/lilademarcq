@@ -51,7 +51,7 @@ export function CarouselModule({
 
         <ImageFeaturesComponent
           images={images}
-          currentIndex={index}
+          index={index}
           dotCallback={handleSelect}
         />
       </Container>
