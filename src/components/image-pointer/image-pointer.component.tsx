@@ -1,22 +1,34 @@
 import React, {ReactElement} from 'react';
 import {PointerLayer} from './image-pointer.component.styles';
+import {useImagePointerComponent} from './hooks/use-image-pointer-component';
 
-interface ImagePointerEventsComponentProps {
+export interface ImagePointerComponentProps {
   gap: number;
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onClickLeft: () => void;
+  onClickCenter: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onClickRight: () => void;
   debug?: boolean;
 }
 
 export function ImagePointerComponent({
   gap,
-  onClick,
+  onClickLeft,
+  onClickCenter,
+  onClickRight,
   debug,
-}: ImagePointerEventsComponentProps): ReactElement {
+}: ImagePointerComponentProps): ReactElement {
+  const {handleClick} = useImagePointerComponent({
+    gap,
+    onClickCenter,
+    onClickLeft,
+    onClickRight,
+  });
+
   return (
     <>
       <PointerLayer
         gap={gap}
-        onClick={onClick}
+        onClick={handleClick}
         debug={debug}
       />
     </>

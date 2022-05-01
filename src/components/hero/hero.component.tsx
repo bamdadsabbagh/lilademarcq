@@ -25,7 +25,12 @@ export function HeroComponent({
           blurDataURL={images[0].base64}
         />
 
-        <ImagePointerComponent gap={20} onClick={() => undefined} />
+        <ImagePointerComponent
+          gap={20}
+          onClickCenter={() => console.log('center')}
+          onClickLeft={() => console.log('left')}
+          onClickRight={() => console.log('right')}
+        />
 
         <ImageFeaturesComponent
           isReverse

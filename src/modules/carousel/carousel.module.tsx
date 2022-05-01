@@ -25,16 +25,18 @@ export function CarouselModule({
   const {
     index,
     handleSelect,
-    handleClick,
+    openTarget,
+    increment,
+    decrement,
   } = useCarouselComponent(images);
 
   return (
     <>
       <Container>
         <ImagePointerComponent
-          onClick={
-            (e) => handleClick(e, index)
-          }
+          onClickCenter={openTarget}
+          onClickLeft={decrement}
+          onClickRight={increment}
           gap={30}
         />
         <GalleryContainer>

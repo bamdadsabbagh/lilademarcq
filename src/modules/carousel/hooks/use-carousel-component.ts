@@ -8,8 +8,10 @@ interface UseCarouselComponent {
   previousIndex: UseIncrements['previousIndex'];
   index: UseIncrements['index'];
   nextIndex: UseIncrements['nextIndex'];
-  handleClick: UseIncrements['handleClick'];
   handleSelect: UseIncrements['handleSelect'];
+  openTarget: UseIncrements['openTarget'];
+  increment: UseIncrements['increment'];
+  decrement: UseIncrements['decrement'];
 }
 
 export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
@@ -18,7 +20,9 @@ export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
     index,
     nextIndex,
     handleSelect,
-    handleClick,
+    openTarget,
+    increment,
+    decrement,
   } = useIncrements(images.length);
 
   useEffect(() => {
@@ -36,6 +40,8 @@ export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
     index,
     nextIndex,
     handleSelect,
-    handleClick,
+    openTarget,
+    increment,
+    decrement,
   };
 }
