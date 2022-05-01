@@ -19,6 +19,7 @@ import {theme} from '../../app/styles/theme';
 import {useFormModule} from './hooks/use-form-module';
 import {TextInputComponent} from './components/text-input/text-input.component';
 import {FormInterface} from '../../utils/fetch-form';
+import {LinkComponent} from '../../components/link/link.component';
 
 enum FormInputKeys {
   topic = 'topic',
@@ -224,13 +225,13 @@ export function FormModule({
           <GoogleContainer>
             This site is protected by reCAPTCHA and the
             Google&nbsp;
-            <a href="https://policies.google.com/privacy">Privacy
+            <LinkComponent href="https://policies.google.com/privacy">Privacy
               Policy
-            </a>
+            </LinkComponent>
             &nbsp;and&nbsp;
-            <a href="https://policies.google.com/terms">Terms of
+            <LinkComponent href="https://policies.google.com/terms">Terms of
               Service
-            </a>
+            </LinkComponent>
             &nbsp;apply.
           </GoogleContainer>
         </Form>

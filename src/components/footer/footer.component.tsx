@@ -19,16 +19,16 @@ export function FooterComponent(): ReactElement {
       </LinkComponent>
 
       <LinkComponent href="/mentions-legales">
-        <Span>Mentions Légales</Span>
+        <Span noAfter={catalog === null}>
+          Mentions Légales
+        </Span>
       </LinkComponent>
 
       {catalog && (
-        <Span
-          hoverable
-          noAfter
-          onClick={() => catalog && window.open(catalog.pdf.url)}
-        >
-          {catalog.name}
+        <Span noAfter>
+          <LinkComponent href={catalog.pdf.url}>
+            {catalog.name}
+          </LinkComponent>
         </Span>
       )}
     </Footer>
