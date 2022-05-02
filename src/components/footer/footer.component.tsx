@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {useAtom} from 'jotai';
-import {Footer, Span} from './footer.styles';
+import {Footer, Span} from './footer.component.styles';
 import {LinkComponent} from '../link/link.component';
 import {catalogAtom} from '../../atoms/catalog.atom';
 

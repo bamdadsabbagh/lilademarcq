@@ -7,7 +7,7 @@ import Lightbox from 'photoswipe/lightbox';
 import Image from 'next/image';
 import {LDBadge, LDImage} from '../../../../utils/fetch-object';
 import {buildNextImageUrl} from '../../../../utils/build-next-image-url';
-import {BadgeContainer} from './gallery.styles';
+import {BadgeContainer} from './gallery.component.styles';
 
 interface GalleryComponentProps {
   galleryID: string;

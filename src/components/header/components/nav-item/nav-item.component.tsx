@@ -9,7 +9,7 @@ import {
   DropdownItem,
   DropdownSpacer,
   Item,
-} from './nav-item.styles';
+} from './nav-item.component.styles';
 import {MenuDropdownInterface} from '../../../../utils/fetch-menu';
 
 interface DropdownProps {

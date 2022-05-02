@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {LinkComponent} from '../../../link/link.component';
-import {Logo} from './logo.styles';
+import {Logo} from './logo.component.styles';
 
 export function LogoComponent(): ReactElement {
   return (

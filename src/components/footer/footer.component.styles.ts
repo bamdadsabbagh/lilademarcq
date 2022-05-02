@@ -3,21 +3,25 @@ import {FOOTER_HEIGHT} from '../../constants';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Footer = styled.div`
-  ${mediaQueries.below.mobile} {
-    height: calc(${FOOTER_HEIGHT} * 0.7);
-    font-size: 0.6em;
+  flex-direction: column;
+
+  span:after {
+    display: none;
   }
 
-  height: ${FOOTER_HEIGHT};
-  font-size: 0.9em;
+  ${mediaQueries.above.mobile} {
+    height: calc(${FOOTER_HEIGHT} - 1rem);
+    font-size: 0.9em;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 
-  font-style: italic;
+    font-style: italic;
 
-  user-select: none;
+    user-select: none;
+  }
 `;
 
 interface SpanProps {

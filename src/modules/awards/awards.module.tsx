@@ -13,7 +13,7 @@ import {
   Container,
   ImageContainer,
   TextContainer,
-} from './awards.styles';
+} from './awards.module.styles';
 import {LDAward} from '../../utils/fetch-awards';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
 

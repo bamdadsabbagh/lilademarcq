@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {Container, GalleryContainer} from './carousel.styles';
+import {Container, GalleryContainer} from './carousel.module.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
 import {LDBadge, LDImage} from '../../utils/fetch-object';
 import {GalleryComponent} from './components/gallery/gallery.component';

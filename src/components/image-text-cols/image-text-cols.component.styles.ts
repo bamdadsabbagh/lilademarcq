@@ -8,14 +8,14 @@ const BodyMobile = css`
 `;
 
 export const Body = styled.div`
-  display: grid;
-  grid-template-columns: ${SECTION_SPACE_AROUND} repeat(2, 1fr) ${SECTION_SPACE_AROUND};
-  align-items: flex-start;
-  gap: 3rem;
+  ${BodyMobile};
+  padding: 0 ${SECTION_SPACE_AROUND};
 
-  ${mediaQueries.below.mobile} {
-    ${BodyMobile};
-    padding: 0 ${SECTION_SPACE_AROUND};
+  ${mediaQueries.above.tablet} {
+    display: grid;
+    grid-template-columns: ${SECTION_SPACE_AROUND} repeat(2, 1fr) ${SECTION_SPACE_AROUND};
+    align-items: flex-start;
+    gap: 3rem;
   }
 `;
 
@@ -35,7 +35,16 @@ export const Text = styled.div`
   }
 `;
 
-const ImageContainerMobile = css`
+const ImageContainerBig = css`
+  img {
+    border-radius: 0;
+  }
+
+  width: 100%;
+  margin-right: 0;
+`;
+
+export const ImageContainer = styled.div`
   img {
     border-radius: 50%;
   }
@@ -43,12 +52,8 @@ const ImageContainerMobile = css`
   float: left;
   width: 8rem;
   margin-right: 1rem;
-`;
 
-export const ImageContainer = styled.div`
-  ${mediaQueries.below.mobile} {
-    ${ImageContainerMobile};
+  ${mediaQueries.above.tablet} {
+    ${ImageContainerBig};
   }
-
-  display: block;
 `;

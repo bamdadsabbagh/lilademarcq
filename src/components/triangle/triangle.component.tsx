@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import {theme} from '../../app/styles/theme';
-import {Container, Triangle} from './triangle.styles';
+import {Container, Triangle} from './triangle.component.styles';
 
 interface TriangleComponentProps {
   color?: string;

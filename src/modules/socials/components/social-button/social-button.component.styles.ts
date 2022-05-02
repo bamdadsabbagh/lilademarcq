@@ -30,14 +30,6 @@ const FaceOff = css`
 `;
 
 const Face = css<Props>`
-  ${mediaQueries.below.mobile} {
-    height: ${size * responsiveRatio}rem;
-    width: ${size * responsiveRatio}rem;
-  }
-
-  height: ${size}rem;
-  width: ${size}rem;
-
   grid-column: 1;
   grid-row: 1;
 
@@ -46,18 +38,26 @@ const Face = css<Props>`
   align-items: center;
 
   ${simpleTransition('transform, opacity')};
+
+  height: ${size * responsiveRatio}rem;
+  width: ${size * responsiveRatio}rem;
+
+  ${mediaQueries.above.mobile} {
+    height: ${size}rem;
+    width: ${size}rem;
+  }
 `;
 
 export const Front = styled.div<Props>`
-  ${mediaQueries.below.mobile} {
-    font-size: ${size * responsiveRatio}rem;
-  }
-
-  font-size: ${size}rem;
-
   color: ${({theme}) => theme.salmon};
   ${Face};
   ${({visible}) => visible ? FaceOn : FaceOff};
+
+  font-size: ${size * responsiveRatio}em;
+
+  ${mediaQueries.above.mobile} {
+    font-size: ${size}rem;
+  }
 `;
 
 export const Back = styled.div<Props>`

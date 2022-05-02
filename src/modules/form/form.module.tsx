@@ -14,10 +14,10 @@ import {
   SubscribeText,
   Title,
   TitleContainer,
-} from './form.styles';
+} from './form.module.styles';
 import {theme} from '../../app/styles/theme';
 import {useFormModule} from './hooks/use-form-module';
-import {TextInputComponent} from './components/text-input/text-input.component';
+import {InputComponent} from './components/input/input.component';
 import {FormInterface} from '../../utils/fetch-form';
 import {LinkComponent} from '../../components/link/link.component';
 
@@ -97,7 +97,7 @@ export function FormModule({
 
           <Label htmlFor={cleanSlug(form.name)} row={2} column={1} isColumn>
             {form.name}
-            <TextInputComponent
+            <InputComponent
               name={FormInputKeys.name}
               required
               disabled={wasSubmitted}
@@ -111,7 +111,7 @@ export function FormModule({
             isColumn
           >
             {form.firstName}
-            <TextInputComponent
+            <InputComponent
               name={FormInputKeys.firstName}
               required
               disabled={wasSubmitted}
@@ -125,7 +125,7 @@ export function FormModule({
             isColumn
           >
             {form.address}
-            <TextInputComponent
+            <InputComponent
               name={FormInputKeys.address}
               placeholder={form.road}
               isTextAndNumber
@@ -138,7 +138,7 @@ export function FormModule({
             column={3}
             isColumn
           >
-            <TextInputComponent
+            <InputComponent
               name={FormInputKeys.postcode}
               placeholder={form.postcode}
               isPostcode
@@ -151,7 +151,7 @@ export function FormModule({
             column={3}
             isColumn
           >
-            <TextInputComponent
+            <InputComponent
               name={FormInputKeys.city}
               placeholder={form.city}
               required
@@ -166,7 +166,7 @@ export function FormModule({
             isColumn
           >
             {form.contact}
-            <TextInputComponent
+            <InputComponent
               name={FormInputKeys.email}
               placeholder={form.email}
               required
@@ -180,7 +180,7 @@ export function FormModule({
             column={2}
             isColumn
           >
-            <TextInputComponent
+            <InputComponent
               name={FormInputKeys.phone}
               placeholder={form.phone}
               isPhone

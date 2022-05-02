@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {Header, LogoContainer} from './header.styles';
+import {Header, LogoContainer} from './header.component.styles';
 import {NavComponent} from './components/nav/nav.component';
 import {LogoComponent} from './components/logo/logo.component';
 

@@ -4,7 +4,11 @@ import Image from 'next/image';
 import {LDSection} from '../../utils/fetch-section';
 import {SectionComponent} from '../../components/section/section.component';
 import {theme} from '../../app/styles/theme';
-import {Container, ImageContainer, TextContainer} from './contact.styles';
+import {
+  Container,
+  ImageContainer,
+  TextContainer,
+} from './contact.module.styles';
 
 interface ContactModuleProps {
   contact: LDSection;

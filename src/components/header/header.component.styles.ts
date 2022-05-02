@@ -24,10 +24,7 @@ export const Header = styled.header`
   z-index: 1000;
 
   transition: top 500ms ease-in-out;
-
-  ${mediaQueries.below.mobile} {
-    background: transparent;
-  }
+  background: transparent;
 
   ${mediaQueries.above.tablet} {
     background: ${({theme}) => theme.white};

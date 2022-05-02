@@ -32,13 +32,7 @@ export const GlobalStyled = createGlobalStyle`
       visibility: hidden;
     }
 
-    ${mediaQueries.below.mobile} {
-      font-size: 13px;
-    }
-
-    ${mediaQueries.above.tablet} {
-      font-size: 14px;
-    }
+    font-size: 14px;
 
     ${mediaQueries.above.desktop} {
       font-size: 15px;

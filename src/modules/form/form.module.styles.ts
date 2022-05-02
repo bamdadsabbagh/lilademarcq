@@ -11,19 +11,19 @@ export const Container = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  ${mediaQueries.below.mobile} {
-    gap: 0.8em;
-  }
-
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5em;
+  gap: 0.8em;
 
   color: ${(props) => props.theme.white};
 
   cursor: pointer;
   user-select: none;
+
+  ${mediaQueries.above.mobile} {
+    gap: 1.5em;
+  }
 `;
 
 interface FormProps {
@@ -31,12 +31,12 @@ interface FormProps {
 }
 
 export const Title = styled.h3`
-  ${mediaQueries.below.mobile} {
-    font-size: 1.8em;
-  }
-
-  font-size: 2.4em;
   ${fontFarmhouse};
+  font-size: 1.8em;
+
+  ${mediaQueries.above.mobile} {
+    font-size: 2.4em;
+  }
 `;
 
 export const FormContainer = styled.div<FormProps>`

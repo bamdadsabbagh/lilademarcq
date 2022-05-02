@@ -6,11 +6,11 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 3rem 0;
-  gap: 4rem;
+  gap: 3rem;
+  padding: 1rem 0;
 
-  ${mediaQueries.below.mobile} {
-    gap: 3rem;
-    padding: 1rem 0;
+  ${mediaQueries.above.mobile} {
+    gap: 4rem;
+    padding: 3rem 0;
   }
 `;

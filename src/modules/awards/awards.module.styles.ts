@@ -33,17 +33,17 @@ export const Award = styled.div<AwardProps>`
 `;
 
 export const ImageContainer = styled.div`
-  ${mediaQueries.below.mobile} {
-    width: 9em;
-    height: 9em;
-  }
-
-  width: 12em;
-  height: 12em;
-
   display: block;
 
   margin: 0 auto;
+
+  width: 9em;
+  height: 9em;
+
+  ${mediaQueries.above.mobile} {
+    width: 12em;
+    height: 12em;
+  }
 `;
 
 interface ParagraphProps {
@@ -52,7 +52,7 @@ interface ParagraphProps {
 
 export const TextContainer = styled.span<ParagraphProps>`
   ${fontSpectral};
-  font-size: 1.4em;
+  font-size: 1.3em;
 
   i {
     font-style: italic;
@@ -61,15 +61,16 @@ export const TextContainer = styled.span<ParagraphProps>`
   ${simpleTransition('opacity, max-height', 0.4)};
   opacity: ${({visible}) => visible ? 1 : 0};
 
-  max-height: ${({visible}) => visible ? '7em' : 0};
-  margin: 0 1rem;
+  max-height: ${({visible}) => visible ? '9em' : 0};
+  margin: 0 1em;
 
-  ${mediaQueries.above.tablet} {
-    margin: 0 3rem;
+  ${mediaQueries.above.mobile} {
+    font-size: 1.4em;
+    margin: 0 1.4em;
   }
 
-  ${mediaQueries.below.mobile} {
-    max-height: ${({visible}) => visible ? '13em' : 0};
+  ${mediaQueries.above.tablet} {
+    margin: 0 3em;
   }
 `;
 

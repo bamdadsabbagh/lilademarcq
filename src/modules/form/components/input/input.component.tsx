@@ -1,5 +1,5 @@
 import React, {ReactElement, useState} from 'react';
-import {TextInput} from './text-input.styles';
+import {TextInput} from './input.component.styles';
 import {FormRegex} from '../../../../utils/validate-form';
 
 interface TextInputComponentProps {
@@ -14,7 +14,7 @@ interface TextInputComponentProps {
   isTextAndNumber?: boolean;
 }
 
-export function TextInputComponent({
+export function InputComponent({
   name,
   disabled,
   defaultValue,
