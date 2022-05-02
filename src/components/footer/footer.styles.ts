@@ -22,7 +22,6 @@ export const Footer = styled.div`
 
 interface SpanProps {
   noAfter?: boolean;
-  hoverable?: boolean;
 }
 
 const SpanAfter = css`
@@ -32,11 +31,6 @@ const SpanAfter = css`
   }
 `;
 
-const SpanHover = css`
-  cursor: pointer;
-`;
-
 export const Span = styled.span<SpanProps>`
   ${({noAfter}) => !noAfter && SpanAfter};
-  ${({hoverable}) => hoverable && SpanHover};
 `;

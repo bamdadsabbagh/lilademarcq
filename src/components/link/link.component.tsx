@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 interface LinkComponentProps {
   href: string;
-  children: ReactElement;
+  children: ReactElement | string;
 }
 
 export function LinkComponent({
@@ -12,12 +12,18 @@ export function LinkComponent({
 }: LinkComponentProps): ReactElement {
   return (
     <>
-      <Link href={href}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a>
+      {href.startsWith('/') ? (
+        <Link href={href}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a>
+            {children}
+          </a>
+        </Link>
+      ) : (
+        <a href={href} target="_blank" rel="noreferrer">
           {children}
         </a>
-      </Link>
+      )}
     </>
   );
 }
