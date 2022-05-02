@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components';
 import {AlignKeys} from './title.component';
 import {PADDING} from '../../constants';
 import {fontFarmhouse} from '../../app/styles/fonts';
+import {mediaQueries} from '../../app/styles/breakpoints';
 
 interface TitleProps {
   align: AlignKeys;
@@ -21,7 +22,11 @@ export const Title = styled.h2<TitleProps>`
   color: ${({color}) => color};
 
   ${fontFarmhouse};
-  font-size: 3em;
+  font-size: 2.5em;
 
   text-align: ${({align}) => align};
+
+  ${mediaQueries.above.mobile} {
+    font-size: 3em;
+  }
 `;
