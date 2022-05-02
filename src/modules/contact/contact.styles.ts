@@ -6,10 +6,10 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 1rem;
 
-  ${mediaQueries.below.mobile} {
-    gap: 1rem;
+  ${mediaQueries.above.mobile} {
+    gap: 2rem;
   }
 
   ${mediaQueries.above.tablet} {
@@ -33,11 +33,6 @@ export const ImageContainer = styled.div`
 `;
 
 export const TextContainer = styled.div`
-  ${mediaQueries.below.mobile} {
-    font-size: 1.3em;
-  }
-
-  font-size: 1.4em;
   font-weight: 300;
 
   p {
@@ -47,5 +42,11 @@ export const TextContainer = styled.div`
   hr {
     border: 0;
     height: 0.5em;
+  }
+
+  font-size: 1.3em;
+
+  ${mediaQueries.above.mobile} {
+    font-size: 1.4em;
   }
 `;

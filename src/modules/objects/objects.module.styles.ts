@@ -11,9 +11,11 @@ export const GridContainer = styled.div`
 export const GridBody = styled.div`
   display: grid;
   width: 100%;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
 
-  ${mediaQueries.below.mobile} {
-    grid-template-columns: 1fr 1fr;
+  ${mediaQueries.above.mobile} {
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
@@ -57,22 +59,24 @@ export const HoverBox = styled.div`
   width: 100%;
   height: 50%;
   color: white;
-  transform: translateY(105%);
   ${simpleTransition('transform', 0.25)};
+  //transform: translateY(105%);
+
+  padding: 0.8em 1em;
 
   > h3 {
     text-transform: uppercase;
+    font-size: 3.7em;
   }
 
   > span {
     font-weight: 300;
+    font-size: 2em;
   }
 
-  ${mediaQueries.below.mobile} {
-    padding: 0.8em 1em;
-
+  ${mediaQueries.above.mobile} {
     > h3 {
-      font-size: 2.1em;
+      font-size: 2em;
     }
 
     > span {

@@ -28,16 +28,16 @@ export const Container = styled.div<ContainerProps>`
   color: white;
 
   overflow: hidden;
-  font-size: 1.1em;
+  font-size: 1em;
+  transform: translateX(-15%);
 
-  ${mediaQueries.below.mobile} {
-    font-size: 1em;
-    transform: translate3d(-15%, 0, 0);
+  ${mediaQueries.above.mobile} {
+    transform: translateX(-20%);
   }
 
   ${mediaQueries.above.tablet} {
     font-size: 1.1em;
-    transform: translate3d(-5%, 0, 0);
+    transform: translateX(-5%);
   }
 
   ${mediaQueries.above.desktop} {
@@ -46,7 +46,7 @@ export const Container = styled.div<ContainerProps>`
 
   ${mediaQueries.above.widescreen} {
     font-size: 1.3em;
-    transform: translate3d(-5%, -15%, 0);
+    transform: translateX(-5%);
   }
 
   ${mediaQueries.above.fullhd} {

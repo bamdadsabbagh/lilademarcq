@@ -6,22 +6,20 @@ export const Container = styled.div`
 
   font-size: 1.1em;
 
-  ${mediaQueries.below.mobile} {
-    height: 4rem;
-  }
+  height: 4em;
 
   ${mediaQueries.above.tablet} {
-    height: 1rem;
+    height: 0.5em;
   }
 `;
 
 export const Nav = styled.nav`
-  ${mediaQueries.below.mobile} {
-    display: none;
-  }
+  display: none;
 
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 5em 7em 6.5em 6em 9em 6em 8em;
-  //grid-template-columns: 80px 112px 96px 96px 144px 96px 128px;
+  ${mediaQueries.above.tablet} {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 5em 7em 6.5em 6em 9em 6em 8em;
+    //grid-template-columns: 80px 112px 96px 96px 144px 96px 128px;
+  }
 `;

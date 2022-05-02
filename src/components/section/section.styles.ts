@@ -45,21 +45,7 @@ export const Wrapper = styled.div<WrapperProps>`
   ${PaddingFull};
   ${({isSmallTop}) => isSmallTop && PaddingSmallTop};
 
-  ${mediaQueries.below.mobile} {
-    width: 90vw;
-  }
-
-  ${mediaQueries.above.tablet} {
-    width: 90vw;
-  }
-
-  ${mediaQueries.above.desktop} {
-    width: 90vw;
-  }
-
-  ${mediaQueries.above.widescreen} {
-    width: 90vw;
-  }
+  width: 90vw;
 
   ${mediaQueries.above.fullhd} {
     width: 80vw;

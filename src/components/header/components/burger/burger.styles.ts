@@ -99,9 +99,7 @@ const BNavClose = css`
 `;
 
 export const BNav = styled.nav<BNavProps>`
-  ${mediaQueries.below.mobile} {
-    margin-left: calc(3rem - 4px);
-  }
+  margin-left: calc(3rem - 4px);
 
   position: absolute;
   pointer-events: ${({close}) => close ? 'none' : 'auto'};

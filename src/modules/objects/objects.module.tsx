@@ -10,7 +10,7 @@ import {
   HoverBox,
   ImageContainer,
   Tile,
-} from './object.styles';
+} from './objects.module.styles';
 import {LDObject} from '../../utils/fetch-object';
 
 interface ObjectsModuleProps {
