@@ -1,3 +1,10 @@
+## [1.26.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.1...v1.26.2) (2022-05-02)
+
+
+### Performance Improvements
+
+* Use LinkComponent for external URLs ([95e5ea0](https://github.com/bamdadsabbagh/lilademarcq/commit/95e5ea04037482c827a1f500dae6d1105e1fc282))
+
 ## [1.26.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.0...v1.26.1) (2022-05-01)
 
 
