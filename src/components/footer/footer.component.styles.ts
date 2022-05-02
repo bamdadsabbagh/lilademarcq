@@ -3,24 +3,28 @@ import {FOOTER_HEIGHT} from '../../constants';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Footer = styled.div`
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(${FOOTER_HEIGHT} - 1rem);
+  font-size: 0.9em;
+
+  font-style: italic;
+
+  user-select: none;
 
   span:after {
     display: none;
   }
 
   ${mediaQueries.above.mobile} {
-    height: calc(${FOOTER_HEIGHT} - 1rem);
-    font-size: 0.9em;
+    flex-direction: row;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-    font-style: italic;
-
-    user-select: none;
+    span:after {
+      display: inline-block;
+    }
   }
 `;
 
