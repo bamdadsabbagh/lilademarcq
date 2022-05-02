@@ -1,3 +1,16 @@
+## [1.26.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.3...v1.26.4) (2022-05-02)
+
+
+### Bug Fixes
+
+* **ContactModule:** Add better mobile styling ([1e89c0e](https://github.com/bamdadsabbagh/lilademarcq/commit/1e89c0eb791e46aabc4c4d1f80f3e59cecd6462d))
+* **ContactModule:** Add fixed gap ([6451897](https://github.com/bamdadsabbagh/lilademarcq/commit/6451897a82b0382440c8f84756431c183a5709b8))
+* **Footer:** Rectify responsive styles ([457831e](https://github.com/bamdadsabbagh/lilademarcq/commit/457831e32067c016d95bf02b5af0e996710e9dcd))
+* **ImageTextCols:** Add better mobile styling ([cb7fe50](https://github.com/bamdadsabbagh/lilademarcq/commit/cb7fe50f49588821588bc47f7494ecba9a9ac7cd))
+* **SocialsModule:** Add better gap styling and scaling ([0ece93f](https://github.com/bamdadsabbagh/lilademarcq/commit/0ece93fc687f20430700f7e1dcdf9fc3ee7369c2))
+* **Title:** Add better mobile styling ([1715460](https://github.com/bamdadsabbagh/lilademarcq/commit/1715460279601cc649f14554b4d35d439edaef2a))
+* **ValuesModule:** Add better responsive styling ([70ded9a](https://github.com/bamdadsabbagh/lilademarcq/commit/70ded9ac41427a8e5eb69581567496ed92314ef6))
+
 ## [1.26.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.2...v1.26.3) (2022-05-02)
 
 
