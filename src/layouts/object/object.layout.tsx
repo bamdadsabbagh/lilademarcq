@@ -11,7 +11,7 @@ import {
   BannerImage,
   BannerText,
   ObjectDescription,
-} from './object.styles';
+} from './object.layout.styles';
 import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
 import {FormModule} from '../../modules/form/form.module';

@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {NavItemComponent} from '../nav-item/nav-item.component';
 import {useNavComponent} from './hooks/use-nav-component';
-import {Container, Nav} from './nav.styles';
+import {Container, Nav} from './nav.component.styles';
 import {BurgerComponent} from '../burger/burger.component';
 
 export function NavComponent(): ReactElement {

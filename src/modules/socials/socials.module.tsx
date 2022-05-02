@@ -9,7 +9,7 @@ import {
   SocialButtonComponent,
 } from './components/social-button/social-button.component';
 import {LDSocial} from '../../utils/fetch-socials';
-import {Container} from './socials.styles';
+import {Container} from './socials.module.styles';
 
 interface SocialsModuleProps {
   socials: LDSocial[];

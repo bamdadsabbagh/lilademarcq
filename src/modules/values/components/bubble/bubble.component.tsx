@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {Body, Container, Title} from './bubble.styles';
+import {Body, Container, Title} from './bubble.component.styles';
 
 interface BubbleComponentProps {
   title?: string;

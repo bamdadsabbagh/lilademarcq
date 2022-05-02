@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import HeaderComponent from '../../components/header/header.component';
 import {FooterComponent} from '../../components/footer/footer.component';
-import {App, Main, Wrapper} from './app.styles';
+import {App, Main, Wrapper} from './app.layout.styles';
 
 interface AppLayoutProps {
   children: ReactElement[] | ReactElement;

@@ -5,7 +5,7 @@ import {
   TitleComponent,
 } from '../../components/title/title.component';
 import {BubbleComponent} from './components/bubble/bubble.component';
-import {Bubbles, Image} from './values.styles';
+import {Bubbles, Image} from './values.module.styles';
 import {LDValues} from '../../utils/fetch-values';
 
 interface ValuesModuleProps {

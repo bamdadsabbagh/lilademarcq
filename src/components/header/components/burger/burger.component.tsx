@@ -8,7 +8,7 @@ import {
   Circle,
   ExpandableLine,
   Line,
-} from './burger.styles';
+} from './burger.component.styles';
 import {LinkComponent} from '../../../link/link.component';
 import {MenuInterface} from '../../../../utils/fetch-menu';
 

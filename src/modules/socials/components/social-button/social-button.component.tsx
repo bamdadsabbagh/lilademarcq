@@ -1,6 +1,11 @@
 import React, {ReactElement, useState} from 'react';
 import {Icon, IconifyIcon} from '@iconify/react';
-import {Back, Container, Front, StyledImage} from './social-button.styles';
+import {
+  Back,
+  Container,
+  Front,
+  StyledImage,
+} from './social-button.component.styles';
 import {LDImage} from '../../../../utils/fetch-object';
 
 interface SocialButtonComponentProps {

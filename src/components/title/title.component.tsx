@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {Title} from './title.styles';
+import {Title} from './title.component.styles';
 import {theme} from '../../app/styles/theme';
 
 export enum AlignKeys {
