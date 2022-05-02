@@ -1,4 +1,4 @@
-import React, {ReactElement, useState} from 'react';
+import React, {ReactElement, useCallback, useState} from 'react';
 import useMeasure from 'react-use-measure';
 import {useRouter} from 'next/router';
 import {
@@ -21,6 +21,7 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
   const [isHover, setIsHover] = useState(false);
   const [ref, bounds] = useMeasure();
   const router = useRouter();
+  const getCurrentRoute = useCallback(() => menu.find((item) => item.slug === router.asPath)?.name, [menu, router]);
 
   return (
     <>
@@ -34,9 +35,11 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
           <Line />
           <Line />
         </Circle>
-        <BNavTitle active={!isHover}>
-          {menu.find((item) => item.slug === router.asPath).name}
-        </BNavTitle>
+        {getCurrentRoute() && (
+          <BNavTitle active={!isHover}>
+            {getCurrentRoute()}
+          </BNavTitle>
+        )}
         <BNav
           ref={ref}
           close={!isHover}
