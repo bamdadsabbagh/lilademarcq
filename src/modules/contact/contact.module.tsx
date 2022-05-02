@@ -9,6 +9,7 @@ import {
   ImageContainer,
   TextContainer,
 } from './contact.module.styles';
+import {IMAGE_SETTINGS} from '../../constants';
 
 interface ContactModuleProps {
   contact: LDSection;
@@ -23,9 +24,8 @@ export function ContactModule({contact}: ContactModuleProps): ReactElement {
             <Image
               src={contact.image.url}
               alt="Contact"
-              layout="responsive"
-              width="100%"
-              height="100%"
+              width={IMAGE_SETTINGS.lowRes}
+              height={IMAGE_SETTINGS.lowRes}
               placeholder="blur"
               blurDataURL={contact.image.base64}
             />
