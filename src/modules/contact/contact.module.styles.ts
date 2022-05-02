@@ -6,22 +6,10 @@ export const Container = styled.div`
   grid-template-columns: 40% 1fr;
   justify-content: center;
   align-items: flex-start;
-  gap: 2em;
+  gap: 3em;
 
   ${mediaQueries.above.mobile} {
     grid-template-columns: 1fr 1fr;
-  }
-
-  ${mediaQueries.above.tablet} {
-    gap: 3em;
-  }
-
-  ${mediaQueries.above.desktop} {
-    gap: 4em;
-  }
-
-  ${mediaQueries.above.widescreen} {
-    gap: 5em;
   }
 `;
 
