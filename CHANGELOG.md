@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.27.0...v1.27.1) (2022-05-02)
+
+
+### Bug Fixes
+
+* **Burger:** Check for current route before render ([cb3f0ed](https://github.com/bamdadsabbagh/lilademarcq/commit/cb3f0ed882a2b7acd285d4e97a6cd1584a0eb823))
+
 # [1.27.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.4...v1.27.0) (2022-05-02)
 
 
