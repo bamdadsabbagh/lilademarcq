@@ -54,7 +54,7 @@ export function ValuesModule({values}: ValuesModuleProps): ReactElement {
             text={values.bottomCenterBody ?? ''}
             size={16}
             x={15}
-            y={35}
+            y={30}
           />
           <BubbleComponent
             title={values.bottomRightTitle ?? ''}
