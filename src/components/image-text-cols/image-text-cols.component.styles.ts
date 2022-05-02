@@ -50,8 +50,9 @@ export const ImageContainer = styled.div`
   }
 
   float: left;
-  width: 8rem;
-  margin-right: 1rem;
+  width: 8em;
+  margin-right: 1.5em;
+  transform: translateY(0.5em);
 
   ${mediaQueries.above.tablet} {
     ${ImageContainerBig};
