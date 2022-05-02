@@ -60,7 +60,7 @@ export const HoverBox = styled.div`
   height: 50%;
   color: white;
   ${simpleTransition('transform', 0.25)};
-  //transform: translateY(105%);
+  transform: translateY(105%);
 
   padding: 0.8em 1em;
 
