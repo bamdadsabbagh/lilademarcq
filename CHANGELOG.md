@@ -1,3 +1,11 @@
+# [1.27.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.4...v1.27.0) (2022-05-02)
+
+
+### Features
+
+* **Burger:** Add current route name ([9260b69](https://github.com/bamdadsabbagh/lilademarcq/commit/9260b69929d016b38901875b4bdcf3a54040a044))
+* **Styles:** Add mobile styling for home page + Add various improvements ([6c5cbd0](https://github.com/bamdadsabbagh/lilademarcq/commit/6c5cbd02974f8ddfdaf3eb3eb5e54ee102b2e083))
+
 ## [1.26.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.3...v1.26.4) (2022-05-02)
 
 
