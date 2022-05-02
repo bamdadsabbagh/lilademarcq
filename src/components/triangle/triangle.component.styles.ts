@@ -83,7 +83,7 @@ export const Triangle = styled.div<TriangleProps>`
 
   ${simpleTransition('transform', 0.1)};
 
-  ${TriangleTransform(0.67)};
+  ${TriangleTransform(0.5)};
 
   ${mediaQueries.above.mobile} {
     ${TriangleTransform(1)};

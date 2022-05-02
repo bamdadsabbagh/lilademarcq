@@ -4,6 +4,7 @@ import {useRouter} from 'next/router';
 import {
   BNav,
   BNavItem,
+  BNavTitle,
   BurgerContainer,
   Circle,
   ExpandableLine,
@@ -17,25 +18,28 @@ interface BurgerComponentProps {
 }
 
 export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
-  const [hover, setHover] = useState(false);
+  const [isHover, setIsHover] = useState(false);
   const [ref, bounds] = useMeasure();
   const router = useRouter();
 
   return (
     <>
       <BurgerContainer
-        onClick={() => setHover((h) => !h)}
+        onClick={() => setIsHover((h) => !h)}
       >
         <Circle
-          close={!hover}
+          close={!isHover}
         >
-          <ExpandableLine close={!hover} size={bounds.height} />
+          <ExpandableLine close={!isHover} size={bounds.height} />
           <Line />
           <Line />
         </Circle>
+        <BNavTitle active={!isHover}>
+          {menu.find((item) => item.slug === router.asPath).name}
+        </BNavTitle>
         <BNav
           ref={ref}
-          close={!hover}
+          close={!isHover}
         >
           {menu.map((item) => (
             <LinkComponent href={item.slug} key={item.slug}>

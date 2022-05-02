@@ -15,18 +15,20 @@ const PaddingLeft = css`
 `;
 
 export const Title = styled.h2<TitleProps>`
-  //margin-top: -4px;
   padding-bottom: calc(${PADDING} - 0.5rem);
-  ${({paddingLeft}) => paddingLeft && PaddingLeft}
-
   color: ${({color}) => color};
-
-  ${fontFarmhouse};
-  font-size: 2.5em;
-
   text-align: ${({align}) => align};
 
+  ${fontFarmhouse};
+  //font-size: 2.35em;
+  font-size: 2.3em;
+
   ${mediaQueries.above.mobile} {
-    font-size: 3em;
+    ${({paddingLeft}) => paddingLeft && PaddingLeft}
+    font-size: 2.4em;
+  }
+
+  ${mediaQueries.above.tablet} {
+    font-size: 2.6em;
   }
 `;

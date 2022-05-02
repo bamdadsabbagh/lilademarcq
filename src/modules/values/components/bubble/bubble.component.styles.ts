@@ -29,7 +29,7 @@ export const Container = styled.div<ContainerProps>`
 
   overflow: hidden;
   font-size: 1em;
-  transform: translateX(-15%);
+  transform: translate3d(-20%, 5%, 0);
 
   ${mediaQueries.above.mobile} {
     transform: translateX(-20%);

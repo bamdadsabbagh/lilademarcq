@@ -141,3 +141,28 @@ export const BNavItem = styled.span<BNavItemProps>`
     color: ${({theme}) => theme.salmon}
   }
 `;
+
+interface BNavTitleProps {
+  active: boolean;
+}
+
+export const BNavTitle = styled.span<BNavTitleProps>`
+  position: absolute;
+  z-index: 2;
+
+  width: 15em;
+  height: 4rem;
+
+  left: 5.5rem;
+
+  text-transform: uppercase;
+  pointer-events: none;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  opacity: ${({active}) => active ? 1 : 0};
+  ${simpleTransition('opacity')};
+  transition-delay: ${({active}) => active ? 0.67 : 0}s;
+`;

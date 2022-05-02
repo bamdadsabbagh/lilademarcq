@@ -1,16 +1,15 @@
 import React, {ReactElement} from 'react';
-import {Container, GalleryContainer} from './carousel.module.styles';
+import {Container, GalleryContainer} from './carousel.component.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
 import {LDBadge, LDImage} from '../../utils/fetch-object';
 import {GalleryComponent} from './components/gallery/gallery.component';
 import {
   ImageFeaturesComponent,
-} from '../../components/image-features/image-features.component';
-import {
-  ImagePointerComponent,
-} from '../../components/image-pointer/image-pointer.component';
+} from '../image-features/image-features.component';
+import {ImagePointerComponent} from '../image-pointer/image-pointer.component';
 import {useInterval} from '../../hooks/use-interval';
 import {CAROUSEL_INTERVAL} from '../../constants';
+import {useSwipeGesture} from '../../hooks/use-swipe-gesture';
 
 interface CarouselComponentProps {
   images: LDImage[];
@@ -20,7 +19,7 @@ interface CarouselComponentProps {
 /**
  * @see https://codesandbox.io/s/embla-carousel-arrows-dots-react-z5fbs?file=/src/css/embla.css
  */
-export function CarouselModule({
+export function CarouselComponent({
   images,
   badge,
 }: CarouselComponentProps): ReactElement {
@@ -34,9 +33,14 @@ export function CarouselModule({
 
   useInterval(increment, CAROUSEL_INTERVAL * 1000);
 
+  const {ref} = useSwipeGesture({
+    onSwipeLeft: decrement,
+    onSwipeRight: increment,
+  });
+
   return (
     <>
-      <Container>
+      <Container ref={ref}>
         <ImagePointerComponent
           onClickCenter={openTarget}
           onClickLeft={decrement}

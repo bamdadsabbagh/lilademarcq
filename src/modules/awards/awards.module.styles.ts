@@ -61,7 +61,7 @@ export const TextContainer = styled.span<ParagraphProps>`
   ${simpleTransition('opacity, max-height', 0.4)};
   opacity: ${({visible}) => visible ? 1 : 0};
 
-  max-height: ${({visible}) => visible ? '9em' : 0};
+  max-height: ${({visible}) => visible ? '14em' : 0};
   margin: 0 1em;
 
   ${mediaQueries.above.mobile} {
