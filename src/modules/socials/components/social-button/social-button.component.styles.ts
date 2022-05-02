@@ -20,7 +20,7 @@ const FaceOn = css`
 `;
 
 const BackOn = css`
-  transform: scale(1.4);
+  transform: scale(1.6);
   opacity: 1;
 `;
 

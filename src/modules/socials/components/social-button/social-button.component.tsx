@@ -7,6 +7,7 @@ import {
   StyledImage,
 } from './social-button.component.styles';
 import {LDImage} from '../../../../utils/fetch-object';
+import {IMAGE_SETTINGS} from '../../../../constants';
 
 interface SocialButtonComponentProps {
   href: string;
@@ -38,8 +39,8 @@ export function SocialButtonComponent({
             <StyledImage
               src={back.url}
               objectFit="cover"
-              width="100%"
-              height="100%"
+              width={IMAGE_SETTINGS.lowRes}
+              height={IMAGE_SETTINGS.lowRes}
               placeholder="blur"
               blurDataURL={back.base64}
             />

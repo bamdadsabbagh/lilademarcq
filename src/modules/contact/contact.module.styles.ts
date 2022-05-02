@@ -3,33 +3,31 @@ import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 40% 1fr;
   justify-content: center;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 3em;
 
   ${mediaQueries.above.mobile} {
-    gap: 2rem;
-  }
-
-  ${mediaQueries.above.tablet} {
-    gap: 3rem;
-  }
-
-  ${mediaQueries.above.desktop} {
-    gap: 4rem;
-  }
-
-  ${mediaQueries.above.widescreen} {
-    gap: 5rem;
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
 export const ImageContainer = styled.div`
+  display: flex;
   justify-self: flex-end;
-  max-width: 20rem;
+
   width: 100%;
   height: 100%;
+
+  max-width: 20rem;
+
+  img {
+    object-fit: cover;
+    min-width: 10em;
+    min-height: 20em;
+    object-position: 55% 0;
+  }
 `;
 
 export const TextContainer = styled.div`

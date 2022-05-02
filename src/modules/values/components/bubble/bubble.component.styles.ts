@@ -37,7 +37,7 @@ export const Container = styled.div<ContainerProps>`
 
   ${mediaQueries.above.tablet} {
     font-size: 1.1em;
-    transform: translateX(-5%);
+    transform: translate3d(-15%, 0, 0);
   }
 
   ${mediaQueries.above.desktop} {
@@ -46,7 +46,7 @@ export const Container = styled.div<ContainerProps>`
 
   ${mediaQueries.above.widescreen} {
     font-size: 1.3em;
-    transform: translateX(-5%);
+    transform: translate3d(-5%, -10%, 0);
   }
 
   ${mediaQueries.above.fullhd} {
