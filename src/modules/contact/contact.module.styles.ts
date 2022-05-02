@@ -3,13 +3,13 @@ import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 40% 1fr;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: flex-start;
-  gap: 3em;
+  gap: 1em;
 
   ${mediaQueries.above.mobile} {
-    grid-template-columns: 1fr 1fr;
+    gap: 2em;
   }
 `;
 

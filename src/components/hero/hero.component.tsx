@@ -10,6 +10,7 @@ import {useInfiniteArrayIndexes} from '../../hooks/use-infinite-array-indexes';
 import {useInterval} from '../../hooks/use-interval';
 import {CAROUSEL_INTERVAL} from '../../constants';
 import {usePreloadImages} from '../../hooks/use-preload-images';
+import {useSwipeGesture} from '../../hooks/use-swipe-gesture';
 
 interface HeroComponentProps {
   images: RichImage[];
@@ -34,9 +35,14 @@ export function HeroComponent({
     nextUrl: images[nextIndex].image.url,
   });
 
+  const {ref} = useSwipeGesture({
+    onSwipeLeft: decrement,
+    onSwipeRight: increment,
+  });
+
   return (
     <>
-      <Container>
+      <Container ref={ref}>
         <Image
           src={images[index].image.url}
           objectFit="cover"

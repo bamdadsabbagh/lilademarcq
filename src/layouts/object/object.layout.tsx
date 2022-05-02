@@ -15,7 +15,7 @@ import {
 import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
 import {FormModule} from '../../modules/form/form.module';
-import {CarouselModule} from '../../modules/carousel/carousel.module';
+import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {getObjectFullName} from '../../utils/get-object-full-name';
 import {FormInterface} from '../../utils/fetch-form';
 import {VideoComponent} from '../../components/video/video.component';
@@ -43,7 +43,7 @@ export function ObjectLayout({
         </TitleComponent>
 
         <div ref={ref}>
-          <CarouselModule
+          <CarouselComponent
             images={object.imagesCollection.items}
             badge={object.badge}
           />

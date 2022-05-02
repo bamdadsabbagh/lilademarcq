@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
+import {mediaQueries} from '../../app/styles/breakpoints';
 
 interface PointerLayerProps {
   gap: number;
@@ -28,10 +29,14 @@ export const Layers = styled.div<PointerLayerProps>`
 
   z-index: 1;
 
-  display: grid;
-  grid-template-columns: ${({gap}) => gap}% 1fr ${({gap}) => gap}%;
-
   ${({debug}) => debug && PointerLayerDebug};
+
+  display: none;
+
+  ${mediaQueries.above.mobile} {
+    display: grid;
+    grid-template-columns: ${({gap}) => gap}% 1fr ${({gap}) => gap}%;
+  }
 `;
 
 export const LayerCenter = styled.div`

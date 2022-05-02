@@ -13,6 +13,8 @@ export const SECTION_SPACE_AROUND = '2%';
 
 export const CAROUSEL_INTERVAL = 10; // seconds
 
+export type ApiEndpointKeys = 'menu' | 'catalog' | 'form';
+
 export const IMAGE_SETTINGS = {
   quality: 60,
   highRes: 3000,
@@ -30,8 +32,6 @@ export const MENU = [
   {name: 'presse', slug: '/presse'},
   {name: 'livre d\'or', slug: '/livre-d-or'},
 ];
-
-export type ApiEndpointKeys = 'menu' | 'catalog' | 'form';
 
 export const META: MetaComponentProps = {
   title: 'Lila Demarcq',

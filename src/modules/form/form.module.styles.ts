@@ -14,7 +14,7 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.8em;
+  gap: 0.4em;
 
   color: ${(props) => props.theme.white};
 
@@ -32,7 +32,7 @@ interface FormProps {
 
 export const Title = styled.h3`
   ${fontFarmhouse};
-  font-size: 1.8em;
+  font-size: 1.6em;
 
   ${mediaQueries.above.mobile} {
     font-size: 2.4em;

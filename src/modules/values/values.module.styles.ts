@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import NextImage from 'next/image';
+import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Image = styled(NextImage)`
   transform: translateY(10em);
@@ -17,5 +18,24 @@ export const Bubbles = styled.div`
 
   z-index: 1;
 
-  overflow: hidden;
+  transform: translate3d(15%, 7%, 0) scale(1.05);
+
+  & > :nth-child(2),
+  & > :nth-child(3),
+  & > :nth-child(5),
+  & > :nth-child(6) {
+    visibility: hidden;
+  }
+
+  ${mediaQueries.above.mobile} {
+    overflow: hidden;
+    transform: none;
+
+    & > :nth-child(2),
+    & > :nth-child(3),
+    & > :nth-child(5),
+    & > :nth-child(6) {
+      visibility: visible;
+    }
+  }
 `;
