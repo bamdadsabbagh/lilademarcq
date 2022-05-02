@@ -1,3 +1,12 @@
+## [1.26.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.2...v1.26.3) (2022-05-02)
+
+
+### Bug Fixes
+
+* **ObjectsModule:** Hide hover boxes by default ([56ac22c](https://github.com/bamdadsabbagh/lilademarcq/commit/56ac22cdb72a8ce99ca46593c8c6b4a2f75632c2))
+* Rename style sheets correctly ([6441287](https://github.com/bamdadsabbagh/lilademarcq/commit/6441287c8669784c4b4dc5526196180fe83e3844))
+* **Styles:** Rewrite with mobile first design ([7854142](https://github.com/bamdadsabbagh/lilademarcq/commit/78541424ddce89e2049c831f96619740afe1081f))
+
 ## [1.26.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.26.1...v1.26.2) (2022-05-02)
 
 
