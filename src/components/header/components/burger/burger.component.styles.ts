@@ -169,7 +169,7 @@ export const BNavTitle = styled.span<BNavTitleProps>`
   left: 72px;
 
   text-transform: uppercase;
-  pointer-events: auto;
+  pointer-events: ${({active}) => active ? 'auto' : 'none'};
 
   display: flex;
   justify-content: flex-start;
