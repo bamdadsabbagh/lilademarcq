@@ -8,10 +8,10 @@ import {
 import {theme} from '../../app/styles/theme';
 import {Body, TextContainer, TriangleContainer} from './poetry.layout.styles';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
-import {LDSection} from '../../utils/fetch-section';
+import {PoetryInterface} from '../../utils/fetch-poetry';
 
 interface PoetryLayoutProps {
-  poetry: LDSection;
+  poetry: PoetryInterface;
 }
 
 export function PoetryLayout({poetry}: PoetryLayoutProps): ReactElement {
