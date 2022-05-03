@@ -102,7 +102,7 @@ export const Select = styled.select<SelectProps>`
   font-size: 0.75em;
 `;
 
-export const Label = styled.label`
+const Label = styled.label`
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
