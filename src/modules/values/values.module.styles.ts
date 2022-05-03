@@ -3,7 +3,15 @@ import NextImage from 'next/image';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const Image = styled(NextImage)`
-  transform: translateY(10em);
+  transform: translateY(7em);
+
+  ${mediaQueries.above.mobile} {
+    transform: translateY(9em);
+  }
+
+  ${mediaQueries.above.tablet} {
+    transform: translateY(10em);
+  }
 `;
 
 export const Bubbles = styled.div`

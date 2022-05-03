@@ -15,7 +15,8 @@ const PaddingLeft = css`
 `;
 
 export const Title = styled.h2<TitleProps>`
-  padding-bottom: calc(${PADDING} * 0.7 - 0.5rem);
+  padding-bottom: calc(${PADDING} * 0.7 - 0.4rem);
+
   color: ${({color}) => color};
   text-align: ${({align}) => align};
 
@@ -25,6 +26,8 @@ export const Title = styled.h2<TitleProps>`
   padding-left: 1rem;
 
   ${mediaQueries.above.mobile} {
+    padding-bottom: ${PADDING};
+
     ${({paddingLeft}) => paddingLeft && PaddingLeft}
     font-size: 2.4em;
   }
