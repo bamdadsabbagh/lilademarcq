@@ -3,6 +3,8 @@ import {HEADER_HEIGHT} from '../../constants';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const headerGap = '1.75rem';
+export const headerGapMobile = '2em';
+export const marginBottomMobile = '3em';
 
 export const Header = styled.header`
   height: ${HEADER_HEIGHT};
@@ -12,22 +14,22 @@ export const Header = styled.header`
   align-items: center;
   justify-content: center;
 
-  gap: ${headerGap};
-
   padding: 1.5rem;
 
   position: sticky;
   //top: -8rem;
   top: calc(${HEADER_HEIGHT} * -1 + ${headerGap} * 2);
-  margin-bottom: calc(${headerGap} / 3);
 
   z-index: 1000;
 
   transition: top 500ms ease-in-out;
-  background: transparent;
+  gap: ${headerGapMobile};
+  margin-bottom: ${marginBottomMobile};
 
   ${mediaQueries.above.tablet} {
     background: ${({theme}) => theme.white};
+    gap: ${headerGap};
+    margin-bottom: calc(${headerGap} / 3);
   }
 `;
 

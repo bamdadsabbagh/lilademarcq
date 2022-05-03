@@ -62,7 +62,7 @@ export const TextContainer = styled.span<ParagraphProps>`
   opacity: ${({visible}) => visible ? 1 : 0};
 
   max-height: ${({visible}) => visible ? '14em' : 0};
-  margin: 0 1em;
+  margin: 0 24px;
 
   ${mediaQueries.above.mobile} {
     font-size: 1.4em;

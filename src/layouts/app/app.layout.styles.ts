@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {fontMontserrat} from '../../app/styles/fonts';
-import {FOOTER_HEIGHT, HEADER_HEIGHT} from '../../constants';
+import {MainHeight, MainHeightMobile} from '../../app/styles/common';
+import {mediaQueries} from '../../app/styles/breakpoints';
 
 export const App = styled.div`
   ${fontMontserrat};
@@ -14,5 +15,9 @@ export const Wrapper = styled.div`
 `;
 
 export const Main = styled.main`
-  min-height: calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT});
+  ${MainHeightMobile};
+
+  ${mediaQueries.above.mobile} {
+    ${MainHeight};
+  }
 `;

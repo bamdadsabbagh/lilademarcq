@@ -42,10 +42,13 @@ interface WrapperProps {
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  ${PaddingFull};
-  ${({isSmallTop}) => isSmallTop && PaddingSmallTop};
-
+  padding: calc(${PADDING} * 0.7) 0;
   width: 90vw;
+
+  ${mediaQueries.above.mobile} {
+    ${PaddingFull};
+    ${({isSmallTop}) => isSmallTop && PaddingSmallTop};
+  }
 
   ${mediaQueries.above.fullhd} {
     width: 80vw;

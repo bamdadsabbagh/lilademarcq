@@ -86,6 +86,10 @@ export const Triangle = styled.div<TriangleProps>`
   ${TriangleTransform(0.5)};
 
   ${mediaQueries.above.mobile} {
-    ${TriangleTransform(1)};
+    ${TriangleTransform(0.6)};
+  }
+
+  ${mediaQueries.above.tablet} {
+    ${TriangleTransform(0.7)};
   }
 `;

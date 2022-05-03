@@ -8,9 +8,14 @@ export const Container = styled.div`
   display: flex;
   user-select: none;
 
-  height: 25em;
+  height: 18em;
+  max-height: 500px;
 
   ${mediaQueries.above.mobile} {
     ${FullHeight};
+  }
+
+  ${mediaQueries.above.desktop} {
+    max-height: none;
   }
 `;

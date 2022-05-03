@@ -2,6 +2,8 @@ import {css} from 'styled-components';
 
 export const fontFarmhouse = css`
   font-family: Farmhouse, serif;
+  font-weight: 600;
+  letter-spacing: 1pt;
 `;
 
 export const fontMontserrat = css`

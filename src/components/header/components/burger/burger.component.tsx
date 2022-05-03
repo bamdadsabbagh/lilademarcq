@@ -1,6 +1,4 @@
-import React, {ReactElement, useCallback, useState} from 'react';
-import useMeasure from 'react-use-measure';
-import {useRouter} from 'next/router';
+import React, {ReactElement} from 'react';
 import {
   BNav,
   BNavItem,
@@ -12,37 +10,49 @@ import {
 } from './burger.component.styles';
 import {LinkComponent} from '../../../link/link.component';
 import {MenuInterface} from '../../../../utils/fetch-menu';
+import {useBurgerComponent} from './hooks/use-burger-component';
 
 interface BurgerComponentProps {
   menu: MenuInterface;
 }
 
 export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
-  const [isHover, setIsHover] = useState(false);
-  const [ref, bounds] = useMeasure();
-  const router = useRouter();
-  const getCurrentRoute = useCallback(() => menu.find((item) => item.slug === router.asPath)?.name, [menu, router]);
+  const {
+    router,
+    isHover,
+    setIsHover,
+    isScrollTop,
+    getCurrentRoute,
+    containerRef,
+    ref,
+    height,
+  } = useBurgerComponent(menu);
 
   return (
     <>
       <BurgerContainer
-        onClick={() => setIsHover((h) => !h)}
+        ref={containerRef}
       >
         <Circle
           close={!isHover}
+          onClick={() => setIsHover((h) => !h)}
         >
-          <ExpandableLine close={!isHover} size={bounds.height} />
+          <ExpandableLine close={!isHover} size={height} />
           <Line />
           <Line />
         </Circle>
         {getCurrentRoute() && (
-          <BNavTitle active={!isHover}>
+          <BNavTitle
+            active={!isHover && isScrollTop}
+            onClick={() => setIsHover((h) => !h)}
+          >
             {getCurrentRoute()}
           </BNavTitle>
         )}
         <BNav
           ref={ref}
           close={!isHover}
+          onClick={() => setIsHover((h) => !h)}
         >
           {menu.map((item) => (
             <LinkComponent href={item.slug} key={item.slug}>

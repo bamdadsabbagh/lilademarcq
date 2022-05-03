@@ -6,6 +6,7 @@ import {
   SlideLeftOutAnimation,
 } from '../../../../app/styles/animations';
 
+const size = '4rem';
 const lineSize = 22;
 const t = 0.3;
 
@@ -25,6 +26,15 @@ export const BurgerContainer = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  font-size: 1.5em;
+  height: ${size};
+  min-width: 80%;
+  overflow-x: clip;
+
+  z-index: -2;
+  isolation: isolate;
+  pointer-events: none;
 `;
 
 interface BurgerProps {
@@ -36,11 +46,37 @@ const CircleClose = css`
   transform: rotate3d(0, 0, 1, -90deg);
 `;
 
-export const Circle = styled.div<BurgerProps>`
+interface BNavTitleProps {
+  active: boolean;
+}
+
+export const BNavTitle = styled.span<BNavTitleProps>`
+  position: absolute;
   z-index: 1;
 
-  width: 4rem;
-  height: 4rem;
+  width: auto;
+  height: ${size};
+
+  left: 51pt;
+
+  text-transform: uppercase;
+  pointer-events: ${({active}) => active ? 'auto' : 'none'};
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  opacity: ${({active}) => active ? 1 : 0};
+  ${simpleTransition('opacity')};
+  transition-delay: ${({active}) => active ? 0.67 : 0}s;
+`;
+
+export const Circle = styled.div<BurgerProps>`
+  z-index: 3;
+  pointer-events: auto;
+
+  width: ${size};
+  height: ${size};
 
   position: absolute;
 
@@ -114,16 +150,18 @@ export const BNav = styled.nav<BNavProps>`
 
   border-radius: 10px;
 
-  padding: 1.2em 2.3em;
+  padding: 12pt 1.3em;
 
   height: fit-content;
 
-  z-index: -1;
+  z-index: 1;
 
   ${SlideLeftAnimation(t * 2, t)};
   animation-delay: ${({close}) => getTime(close).menu}s;
 
   ${({close}) => close && BNavClose};
+
+  top: -1px;
 `;
 
 interface BNavItemProps {
@@ -140,29 +178,4 @@ export const BNavItem = styled.span<BNavItemProps>`
     cursor: pointer;
     color: ${({theme}) => theme.salmon}
   }
-`;
-
-interface BNavTitleProps {
-  active: boolean;
-}
-
-export const BNavTitle = styled.span<BNavTitleProps>`
-  position: absolute;
-  z-index: 2;
-
-  width: 15em;
-  height: 4rem;
-
-  left: 5.5rem;
-
-  text-transform: uppercase;
-  pointer-events: none;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  opacity: ${({active}) => active ? 1 : 0};
-  ${simpleTransition('opacity')};
-  transition-delay: ${({active}) => active ? 0.67 : 0}s;
 `;

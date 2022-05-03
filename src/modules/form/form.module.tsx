@@ -6,11 +6,18 @@ import {
   Form,
   FormContainer,
   GoogleContainer,
-  Label,
+  LabelAddress,
+  LabelCity,
+  LabelContact,
+  LabelFirstName,
+  LabelName,
+  LabelPhone,
+  LabelPostcode,
+  LabelTopic,
   Select,
   Submit,
-  Subscribe,
   SubscribeCheckbox,
+  SubscribeContainer,
   SubscribeText,
   Title,
   TitleContainer,
@@ -81,49 +88,42 @@ export function FormModule({
       <FormContainer visible={isOpen}>
         <Form onSubmit={handleSubmit}>
 
-          <Label htmlFor={cleanSlug(form.topicTitle)} row={1} column={[1, 4]}>
+          <LabelTopic htmlFor={cleanSlug(form.topicTitle)}>
             {form.topicTitle}
             <Select
               color={theme.white}
               backgroundColor={backgroundColor}
               name={FormInputKeys.topic}
               disabled={wasSubmitted}
+              defaultValue=""
+              required
             >
+              <option value="" disabled />
               {form.topic.map((topic) => (
                 <option key={topic} value={topic}>{topic}</option>
               ))}
             </Select>
-          </Label>
+          </LabelTopic>
 
-          <Label htmlFor={cleanSlug(form.name)} row={2} column={1} isColumn>
+          <LabelName htmlFor={cleanSlug(form.name)}>
             {form.name}
             <InputComponent
               name={FormInputKeys.name}
               required
               disabled={wasSubmitted}
             />
-          </Label>
+          </LabelName>
 
-          <Label
-            htmlFor={cleanSlug(form.firstName)}
-            row={2}
-            column={2}
-            isColumn
-          >
+          <LabelFirstName htmlFor={cleanSlug(form.firstName)}>
             {form.firstName}
             <InputComponent
               name={FormInputKeys.firstName}
               required
               disabled={wasSubmitted}
             />
-          </Label>
+          </LabelFirstName>
 
-          <Label
-            htmlFor={cleanSlug(form.address)}
-            row={2}
-            column={3}
-            isColumn
-          >
+          <LabelAddress htmlFor={cleanSlug(form.address)}>
             {form.address}
             <InputComponent
               name={FormInputKeys.address}
@@ -131,40 +131,27 @@ export function FormModule({
               isTextAndNumber
               disabled={wasSubmitted}
             />
-          </Label>
+          </LabelAddress>
 
-          <Label
-            row={3}
-            column={3}
-            isColumn
-          >
+          <LabelPostcode>
             <InputComponent
               name={FormInputKeys.postcode}
               placeholder={form.postcode}
               isPostcode
               disabled={wasSubmitted}
             />
-          </Label>
+          </LabelPostcode>
 
-          <Label
-            row={4}
-            column={3}
-            isColumn
-          >
+          <LabelCity>
             <InputComponent
               name={FormInputKeys.city}
               placeholder={form.city}
               required
               disabled={wasSubmitted}
             />
-          </Label>
+          </LabelCity>
 
-          <Label
-            htmlFor={cleanSlug(form.contact)}
-            row={4}
-            column={1}
-            isColumn
-          >
+          <LabelContact htmlFor={cleanSlug(form.contact)}>
             {form.contact}
             <InputComponent
               name={FormInputKeys.email}
@@ -173,22 +160,18 @@ export function FormModule({
               isEmail
               disabled={wasSubmitted}
             />
-          </Label>
+          </LabelContact>
 
-          <Label
-            row={4}
-            column={2}
-            isColumn
-          >
+          <LabelPhone>
             <InputComponent
               name={FormInputKeys.phone}
               placeholder={form.phone}
               isPhone
               disabled={wasSubmitted}
             />
-          </Label>
+          </LabelPhone>
 
-          <Subscribe>
+          <SubscribeContainer>
             <SubscribeCheckbox
               backgroundColor={backgroundColor}
               hover={isSubscribeHover}
@@ -212,7 +195,7 @@ export function FormModule({
             >{
               form.subscription
             }</SubscribeText>
-          </Subscribe>
+          </SubscribeContainer>
 
           <Submit
             backgroundColor={backgroundColor}
