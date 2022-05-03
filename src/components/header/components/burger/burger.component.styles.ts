@@ -27,7 +27,7 @@ export const BurgerContainer = styled.div`
     cursor: pointer;
   }
 
-  font-size: 1.7em;
+  font-size: 1.5em;
   height: ${size};
   min-width: 80%;
   overflow-x: clip;
@@ -44,6 +44,31 @@ interface BurgerProps {
 const CircleClose = css`
   cursor: pointer;
   transform: rotate3d(0, 0, 1, -90deg);
+`;
+
+interface BNavTitleProps {
+  active: boolean;
+}
+
+export const BNavTitle = styled.span<BNavTitleProps>`
+  position: absolute;
+  z-index: 1;
+
+  width: auto;
+  height: ${size};
+
+  left: 51pt;
+
+  text-transform: uppercase;
+  pointer-events: ${({active}) => active ? 'auto' : 'none'};
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  opacity: ${({active}) => active ? 1 : 0};
+  ${simpleTransition('opacity')};
+  transition-delay: ${({active}) => active ? 0.67 : 0}s;
 `;
 
 export const Circle = styled.div<BurgerProps>`
@@ -125,7 +150,7 @@ export const BNav = styled.nav<BNavProps>`
 
   border-radius: 10px;
 
-  padding: 0.5em 1.3em;
+  padding: 12pt 1.3em;
 
   height: fit-content;
 
@@ -153,29 +178,4 @@ export const BNavItem = styled.span<BNavItemProps>`
     cursor: pointer;
     color: ${({theme}) => theme.salmon}
   }
-`;
-
-interface BNavTitleProps {
-  active: boolean;
-}
-
-export const BNavTitle = styled.span<BNavTitleProps>`
-  position: absolute;
-  z-index: 1;
-
-  width: auto;
-  height: ${size};
-
-  left: 72px;
-
-  text-transform: uppercase;
-  pointer-events: ${({active}) => active ? 'auto' : 'none'};
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  opacity: ${({active}) => active ? 1 : 0};
-  ${simpleTransition('opacity')};
-  transition-delay: ${({active}) => active ? 0.67 : 0}s;
 `;
