@@ -6,6 +6,7 @@ import {
   SlideLeftOutAnimation,
 } from '../../../../app/styles/animations';
 
+const size = '4rem';
 const lineSize = 22;
 const t = 0.3;
 
@@ -25,6 +26,13 @@ export const BurgerContainer = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  font-size: 1.7em;
+  height: ${size};
+  min-width: 80%;
+  overflow-x: clip;
+
+  z-index: -2;
 `;
 
 interface BurgerProps {
@@ -39,8 +47,8 @@ const CircleClose = css`
 export const Circle = styled.div<BurgerProps>`
   z-index: 1;
 
-  width: 4rem;
-  height: 4rem;
+  width: ${size};
+  height: ${size};
 
   position: absolute;
 
@@ -114,7 +122,7 @@ export const BNav = styled.nav<BNavProps>`
 
   border-radius: 10px;
 
-  padding: 1.2em 2.3em;
+  padding: 0.5em 1.3em;
 
   height: fit-content;
 
@@ -124,6 +132,8 @@ export const BNav = styled.nav<BNavProps>`
   animation-delay: ${({close}) => getTime(close).menu}s;
 
   ${({close}) => close && BNavClose};
+
+  top: -1px;
 `;
 
 interface BNavItemProps {
@@ -150,10 +160,10 @@ export const BNavTitle = styled.span<BNavTitleProps>`
   position: absolute;
   z-index: 2;
 
-  width: 15em;
-  height: 4rem;
+  width: 200px;
+  height: ${size};
 
-  left: 5.5rem;
+  left: 72px;
 
   text-transform: uppercase;
   pointer-events: none;
