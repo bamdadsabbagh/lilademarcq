@@ -13,7 +13,7 @@ export const Body = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  gap: 1em;
 `;
 
 interface TextContainerProps {
@@ -45,7 +45,7 @@ export const TextContainer = styled.div<TextContainerProps>`
 `;
 
 export const TriangleContainer = styled.div`
-  margin-bottom: -2em;
+  margin-bottom: -1.5em;
 
   ${mediaQueries.above.tablet} {
     display: none;

@@ -35,8 +35,8 @@ export function PoetryLayout({poetry}: PoetryLayoutProps): ReactElement {
           <TriangleContainer>
             <TriangleComponent
               isHover={isHover}
-              isBottom={isExpanded}
-              isTop={!isExpanded}
+              isBottom={!isExpanded}
+              isTop={isExpanded}
               color={theme.black}
             />
           </TriangleContainer>
