@@ -33,6 +33,8 @@ export const BurgerContainer = styled.div`
   overflow-x: clip;
 
   z-index: -2;
+  isolation: isolate;
+  pointer-events: none;
 `;
 
 interface BurgerProps {
@@ -45,7 +47,8 @@ const CircleClose = css`
 `;
 
 export const Circle = styled.div<BurgerProps>`
-  z-index: 1;
+  z-index: 3;
+  pointer-events: auto;
 
   width: ${size};
   height: ${size};
@@ -126,7 +129,7 @@ export const BNav = styled.nav<BNavProps>`
 
   height: fit-content;
 
-  z-index: -1;
+  z-index: 1;
 
   ${SlideLeftAnimation(t * 2, t)};
   animation-delay: ${({close}) => getTime(close).menu}s;
@@ -158,15 +161,15 @@ interface BNavTitleProps {
 
 export const BNavTitle = styled.span<BNavTitleProps>`
   position: absolute;
-  z-index: 2;
+  z-index: 1;
 
-  width: 200px;
+  width: auto;
   height: ${size};
 
   left: 72px;
 
   text-transform: uppercase;
-  pointer-events: none;
+  pointer-events: auto;
 
   display: flex;
   justify-content: flex-start;

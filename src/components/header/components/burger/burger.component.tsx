@@ -31,24 +31,28 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
   return (
     <>
       <BurgerContainer
-        onClick={() => setIsHover((h) => !h)}
         ref={containerRef}
       >
         <Circle
           close={!isHover}
+          onClick={() => setIsHover((h) => !h)}
         >
           <ExpandableLine close={!isHover} size={height} />
           <Line />
           <Line />
         </Circle>
         {getCurrentRoute() && (
-          <BNavTitle active={!isHover && isScrollTop}>
+          <BNavTitle
+            active={!isHover && isScrollTop}
+            onClick={() => setIsHover((h) => !h)}
+          >
             {getCurrentRoute()}
           </BNavTitle>
         )}
         <BNav
           ref={ref}
           close={!isHover}
+          onClick={() => setIsHover((h) => !h)}
         >
           {menu.map((item) => (
             <LinkComponent href={item.slug} key={item.slug}>

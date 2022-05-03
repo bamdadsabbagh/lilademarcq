@@ -24,7 +24,7 @@ interface UseBurgerComponent {
 
 export function useBurgerComponent(menu: MenuInterface): UseBurgerComponent {
   const [isHover, setIsHover] = useState(false);
-  const [ref, bounds] = useMeasure();
+  const [ref, {height}] = useMeasure();
   const router = useRouter();
   const getCurrentRoute = useCallback(() => menu.find((item) => item.slug === router.asPath)?.name, [menu, router]);
   const [isScrollTop, setIsScrollTop] = useState(true);
@@ -47,9 +47,13 @@ export function useBurgerComponent(menu: MenuInterface): UseBurgerComponent {
   // handle click outside the container
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (isHover === false) {
+        return;
+      }
+
       setIsHover(false);
     }
-  }, [containerRef]);
+  }, [containerRef, isHover]);
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
@@ -63,7 +67,7 @@ export function useBurgerComponent(menu: MenuInterface): UseBurgerComponent {
     getCurrentRoute,
     containerRef,
     ref,
-    height: bounds.height,
+    height,
     router,
   };
 }
