@@ -2,7 +2,7 @@ import styled, {css} from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontMontserrat} from '../../app/styles/fonts';
 
-const footerHeight = '1.5rem';
+const footerHeight = '0.8em';
 
 const PositionRight = css`
   right: 0;
@@ -19,11 +19,11 @@ const BorderRadiusLeft = css`
 `;
 
 const MarginBottom = css`
-  margin-bottom: ${footerHeight};
+  margin-bottom: 0.5em;
 `;
 
 const BigFeatures = css`
-  font-size: 1.4em;
+  font-size: 1.2em;
 `;
 
 interface FeaturesProps {
