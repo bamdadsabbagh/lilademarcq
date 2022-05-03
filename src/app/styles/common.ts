@@ -6,7 +6,7 @@ import {
 } from '../../components/header/header.component.styles';
 
 export const MainHeight = css`
-  min-height: calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT});
+  min-height: calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT} - ${headerGap} - 4px);
 `;
 
 export const MainHeightMobile = css`
