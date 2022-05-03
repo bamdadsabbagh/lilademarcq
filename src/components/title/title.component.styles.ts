@@ -15,13 +15,14 @@ const PaddingLeft = css`
 `;
 
 export const Title = styled.h2<TitleProps>`
-  padding-bottom: calc(${PADDING} - 0.5rem);
+  padding-bottom: calc(${PADDING} * 0.7 - 0.5rem);
   color: ${({color}) => color};
   text-align: ${({align}) => align};
 
   ${fontFarmhouse};
   //font-size: 2.35em;
   font-size: 2.3em;
+  padding-left: 1rem;
 
   ${mediaQueries.above.mobile} {
     ${({paddingLeft}) => paddingLeft && PaddingLeft}
