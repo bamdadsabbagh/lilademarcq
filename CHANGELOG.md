@@ -1,3 +1,31 @@
+# [1.28.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.27.1...v1.28.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* **Burger:** Set correct pointer events and layer z-indexes ([527b954](https://github.com/bamdadsabbagh/lilademarcq/commit/527b9543658f991fd9d601fb473c79a1e70d821f))
+* **Burger:** Set no pointer events when static title is hidden ([ec5b060](https://github.com/bamdadsabbagh/lilademarcq/commit/ec5b0608f6a3c0adb1342a9b6db0df6a67052d57))
+* **Gallery:** Add better badge styling ([4694aae](https://github.com/bamdadsabbagh/lilademarcq/commit/4694aaeded030c60d73e29ea51439c5dc6153204))
+* **Hero:** Add better mobile styling ([1a2349b](https://github.com/bamdadsabbagh/lilademarcq/commit/1a2349beabcd7f66f4b7a4f6218a7416f1504bae))
+* Set better gap and spacings for PoetryLayout and ValuesModule ([b5a40fb](https://github.com/bamdadsabbagh/lilademarcq/commit/b5a40fbbd7788f1e9a05ec256933c5383e812642))
+* **Styles:** Set correct MainHeight ([47b25d8](https://github.com/bamdadsabbagh/lilademarcq/commit/47b25d82f67ba7c57996f91f08748d1a639f6922))
+
+
+### Features
+
+* Add first block of poetry page + Improve title styling + Misc ([2e96773](https://github.com/bamdadsabbagh/lilademarcq/commit/2e96773f1dadd2de84db99c7e3ef0b25da395a57))
+* **Form:** Add mobile styling + Various ([727e5f4](https://github.com/bamdadsabbagh/lilademarcq/commit/727e5f4aea6c3dde5abb4e21ecd6307171f615e6))
+* **Header:** Improve burger click events and styling ([18c75af](https://github.com/bamdadsabbagh/lilademarcq/commit/18c75af5074e066049581b524cdae01ef8160ceb))
+* **Poetry:** Fetch new dedicated content type ([97a4341](https://github.com/bamdadsabbagh/lilademarcq/commit/97a4341bd7f7a2e9491b1c0fb8e4b446d902dc5d))
+
+
+### Performance Improvements
+
+* **Burger:** Reduce font size ([29f3bb9](https://github.com/bamdadsabbagh/lilademarcq/commit/29f3bb90ab9fd9f1f688ded7279cd9e1127d52f1))
+* **Form:** Remove unused export ([6318f09](https://github.com/bamdadsabbagh/lilademarcq/commit/6318f095e7543de55e9b539237b3a74bdfb2c9fe))
+* **Poetry:** Improve layout spacing ([f0f4910](https://github.com/bamdadsabbagh/lilademarcq/commit/f0f49104cddfdaf401dd3840cb0597405a5a4979))
+* Tune global styling, margins ([0520644](https://github.com/bamdadsabbagh/lilademarcq/commit/0520644cd99f1972adf0a342ddc9f7e31cf5757d))
+
 ## [1.27.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.27.0...v1.27.1) (2022-05-02)
 
 
