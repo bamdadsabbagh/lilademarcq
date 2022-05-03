@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontFarmhouse, fontMontserrat} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
+import {TextWidthMobile} from '../../app/styles/common';
 
 export const Container = styled.div`
   display: flex;
@@ -35,6 +36,18 @@ export const Title = styled.h3`
   font-size: 1.6em;
 
   ${mediaQueries.above.mobile} {
+    font-size: 1.8em;
+  }
+
+  ${mediaQueries.above.tablet} {
+    font-size: 2em;
+  }
+
+  ${mediaQueries.above.desktop} {
+    font-size: 2.2em;
+  }
+
+  ${mediaQueries.above.widescreen} {
     font-size: 2.4em;
   }
 `;
@@ -58,13 +71,14 @@ export const FormContainer = styled.div<FormProps>`
 export const Form = styled.form`
   display: grid;
 
-  width: 100%;
+  ${TextWidthMobile};
   max-width: 60rem;
 
   color: ${({theme}) => theme.white};
   user-select: none;
 
   ${fontFarmhouse};
+  font-weight: 400;
   font-size: 1.3em;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;

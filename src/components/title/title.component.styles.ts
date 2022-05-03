@@ -22,17 +22,20 @@ export const Title = styled.h2<TitleProps>`
 
   ${fontFarmhouse};
   //font-size: 2.35em;
-  font-size: 2.3em;
-  padding-left: 1rem;
+  //font-size: 2.3em;
+  //padding-left: 1rem;
+
+  font-size: 1.6em;
+  padding-left: 1pt;
 
   ${mediaQueries.above.mobile} {
-    padding-bottom: ${PADDING};
+    padding-bottom: calc(${PADDING} * 0.8);
 
     ${({paddingLeft}) => paddingLeft && PaddingLeft}
-    font-size: 2.4em;
+    font-size: 1.8em;
   }
 
   ${mediaQueries.above.tablet} {
-    font-size: 2.6em;
+    font-size: 2.4em;
   }
 `;
