@@ -21,7 +21,7 @@ interface TextContainerProps {
 }
 
 export const TextContainer = styled.div<TextContainerProps>`
-  margin-top: -1em;
+  margin-top: calc(-1em - 4px);
   max-height: ${({isExpanded}) => isExpanded ? '20em' : '5em'};
   ${simpleTransition('max-height', 0.4)};
   overflow: hidden;
