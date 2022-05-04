@@ -11,6 +11,7 @@ import {CarouselComponentProps, CarouselImage} from '../carousel.component';
 
 interface UseCarouselComponent {
   viewportRef: React.Ref<HTMLDivElement>;
+  index: number;
   handleClick: () => void;
   getMediaByIndex: (index: number) => CarouselImage;
   slidesInView: number[];
@@ -44,6 +45,7 @@ export function useCarouselComponent({
   const [slidesInView, setSlidesInView] = useState([]);
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [index, setIndex] = useState(0);
 
   const scrollPrev = useCallback(() => {
     if (!embla) {
@@ -61,8 +63,6 @@ export function useCarouselComponent({
     autoplay.current.reset();
   }, [embla]);
 
-  const getCurrentIndex = useCallback(() => embla.slidesInView(true)[0], [embla]);
-
   const [isScrolling, setIsScrolling] = useState(false);
 
   const onScroll = useCallback(() => {
@@ -79,6 +79,7 @@ export function useCarouselComponent({
     }
     setPrevBtnEnabled(embla.canScrollPrev());
     setNextBtnEnabled(embla.canScrollNext());
+    setIndex(embla.slidesInView(true)[0]);
   }, [embla]);
 
   const findSlidesInView = useCallback(() => {
@@ -171,11 +172,12 @@ export function useCarouselComponent({
     }
 
     // @ts-expect-error TS2339
-    lightbox.loadAndOpen(getCurrentIndex());
-  }, [getCurrentIndex, isScrolling, lightbox]);
+    lightbox.loadAndOpen(index);
+  }, [index, isScrolling, lightbox]);
 
   return {
     viewportRef,
+    index,
     prevBtnEnabled,
     nextBtnEnabled,
     scrollPrev,

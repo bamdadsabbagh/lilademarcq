@@ -42,6 +42,7 @@ export function CarouselComponent({
 }: CarouselComponentProps): ReactElement {
   const {
     viewportRef,
+    index,
     prevBtnEnabled,
     nextBtnEnabled,
     scrollPrev,
@@ -103,7 +104,7 @@ export function CarouselComponent({
         <CarouselFeaturesComponent
           hasFooter={isFooter}
           captions={slides.map((image) => image.alt)}
-          index={0}
+          index={index}
         />
       </Features>
 

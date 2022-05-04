@@ -18,28 +18,28 @@ export function CarouselFeaturesComponent({
   index,
   captions,
 }: CarouselFeaturesComponentProps): ReactElement {
+  const [savedIndex, setSavedIndex] = useState(-1);
   const [loading, setLoading] = useState(true);
-  const [caption, setCaption] = useState('');
 
   useEffect(() => {
+    if (index === savedIndex) {
+      return;
+    }
+
+    setSavedIndex(index);
     setLoading(true);
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setLoading(false);
-      setCaption(captions[index]);
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [index, captions]);
+    }, 1000);
+  }, [index, savedIndex]);
 
   return (
     <>
       <Features>
         <Caption hasFooter={hasFooter}>
           <CaptionBody active={!loading}>
-            {caption}
+            {captions[index]}
           </CaptionBody>
         </Caption>
 
