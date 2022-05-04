@@ -22,15 +22,7 @@ const MarginBottom = css`
   margin-bottom: 0.5em;
 `;
 
-const BigFeatures = css`
-  font-size: 1.2em;
-`;
-
-interface FeaturesProps {
-  isBig: boolean;
-}
-
-export const Features = styled.div<FeaturesProps>`
+export const Features = styled.div`
   display: flex;
   align-items: flex-end;
 
@@ -39,66 +31,20 @@ export const Features = styled.div<FeaturesProps>`
   width: 100%;
   height: 100%;
 
-  ${({isBig}) => isBig && BigFeatures}
-`;
-
-interface DotsProps {
-  isReverse: boolean;
-  hasFooter: boolean;
-}
-
-export const Dots = styled.div<DotsProps>`
-  display: flex;
-  gap: 0.3em;
-
-  position: absolute;
-  ${({isReverse}) => isReverse && PositionRight};
-
-  padding: 1.5em 1.6em;
   pointer-events: none;
-
-  ${({hasFooter}) => hasFooter && MarginBottom};
-`;
-
-interface DotProps {
-  active: boolean;
-}
-
-export const Dot = styled.span<DotProps>`
-  display: block;
-
-  width: 0.8em;
-  height: 0.8em;
-
-  border-radius: 100%;
-
-  background: ${(props) => props.active ? props.theme.antracite : props.theme.white};
-  opacity: 0.9;
-
-  ${simpleTransition('background')};
-
-  pointer-events: fill;
-
-  z-index: 2;
-
-  &:hover {
-    cursor: pointer;
-    background: red;
-  }
 `;
 
 interface CaptionProps {
-  hide: boolean;
-  isReverse: boolean;
   hasFooter: boolean;
+  isReverse?: boolean;
 }
 
 export const Caption = styled.div<CaptionProps>`
   display: flex;
 
   position: absolute;
-  ${({isReverse}) => !isReverse && PositionRight};
   ${({hasFooter}) => hasFooter && MarginBottom};
+  ${({isReverse}) => !isReverse && PositionRight};
 
   width: fit-content;
   padding: 1em 0;
@@ -107,8 +53,8 @@ export const Caption = styled.div<CaptionProps>`
 `;
 
 interface CaptionBodyProps {
-  isReverse: boolean;
-  hide: boolean;
+  active: boolean;
+  isReverse?: boolean;
 }
 
 export const CaptionBody = styled.div<CaptionBodyProps>`
@@ -126,7 +72,7 @@ export const CaptionBody = styled.div<CaptionBodyProps>`
 
   background: rgba(255, 255, 255, 0.8);
 
-  transform: translateX(${({hide}) => hide ? 120 : 0}%);
+  transform: translateX(${({active}) => active ? 0 : 120}%);
   ${simpleTransition('transform', 0.3)};
 
   ${fontMontserrat};

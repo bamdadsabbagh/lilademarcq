@@ -11,6 +11,8 @@ query {
       position
       link
       image {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},

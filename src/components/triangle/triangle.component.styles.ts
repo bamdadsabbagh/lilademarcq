@@ -90,6 +90,6 @@ export const Triangle = styled.div<TriangleProps>`
   }
 
   ${mediaQueries.above.tablet} {
-    ${TriangleTransform(0.7)};
+    ${TriangleTransform(0.667)};
   }
 `;

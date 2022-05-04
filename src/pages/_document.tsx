@@ -29,8 +29,7 @@ export default class MyDocument extends Document {
 
       return {
         ...initialProps,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+        // @ts-expect-error TS2322
         styles: (
           <>
             {initialProps.styles}

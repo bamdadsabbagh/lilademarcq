@@ -12,6 +12,8 @@ query {
           longDescription
           link
           image {
+            width
+            height
             url(transform: { 
               format: WEBP,
               quality: ${IMAGE_SETTINGS.quality},
@@ -32,6 +34,8 @@ export interface RichImage {
   image: {
     url: string;
     base64: string;
+    width: number;
+    height: number;
   };
 }
 

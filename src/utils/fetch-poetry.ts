@@ -12,6 +12,8 @@ query {
         json
       }
       illustration {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
@@ -19,6 +21,8 @@ query {
         })
       }
       poem {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},

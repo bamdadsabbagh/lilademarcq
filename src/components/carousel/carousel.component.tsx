@@ -1,68 +1,126 @@
 import React, {ReactElement} from 'react';
-import {Container, GalleryContainer} from './carousel.component.styles';
-import {useCarouselComponent} from './hooks/use-carousel-component';
-import {LDBadge, LDImage} from '../../utils/fetch-object';
-import {GalleryComponent} from './components/gallery/gallery.component';
+import Image from 'next/image';
 import {
-  ImageFeaturesComponent,
-} from '../image-features/image-features.component';
-import {ImagePointerComponent} from '../image-pointer/image-pointer.component';
-import {useInterval} from '../../hooks/use-interval';
-import {CAROUSEL_INTERVAL} from '../../constants';
-import {useSwipeGesture} from '../../hooks/use-swipe-gesture';
+  Badge,
+  Embla,
+  EmblaButtonNext,
+  EmblaButtonPrev,
+  EmblaContainer,
+  EmblaSlide,
+  EmblaSlideInner,
+  EmblaViewport,
+  Features,
+} from './carousel.component.styles';
+import {useCarouselComponent} from './hooks/use-carousel-component';
+import {
+  CarouselFeaturesComponent,
+} from '../carousel-features/carousel-features.component';
+import {LDBadge} from '../../utils/fetch-object';
 
-interface CarouselComponentProps {
-  images: LDImage[];
+export interface CarouselImage {
+  src: string;
+  alt: string;
+  base64: string;
+  width: number;
+  height: number;
+}
+
+export interface CarouselComponentProps {
+  slides: CarouselImage[];
+  height?: number;
+  isLightbox?: boolean;
+  isFooter?: boolean;
   badge?: LDBadge;
 }
 
-/**
- * @see https://codesandbox.io/s/embla-carousel-arrows-dots-react-z5fbs?file=/src/css/embla.css
- */
 export function CarouselComponent({
-  images,
+  slides,
+  height,
+  isLightbox = false,
+  isFooter = false,
   badge,
 }: CarouselComponentProps): ReactElement {
   const {
-    index,
-    handleSelect,
-    openTarget,
-    increment,
-    decrement,
-  } = useCarouselComponent(images);
-
-  useInterval(increment, CAROUSEL_INTERVAL * 1000);
-
-  const {ref} = useSwipeGesture({
-    onSwipeLeft: decrement,
-    onSwipeRight: increment,
-  });
-
+    viewportRef,
+    prevBtnEnabled,
+    nextBtnEnabled,
+    scrollPrev,
+    scrollNext,
+    handleClick,
+    getMediaByIndex,
+    slidesInView,
+  } = useCarouselComponent({slides, isLightbox});
   return (
-    <>
-      <Container ref={ref}>
-        <ImagePointerComponent
-          onClickCenter={openTarget}
-          onClickLeft={decrement}
-          onClickRight={increment}
-          gap={30}
-        />
-        <GalleryContainer>
-          <GalleryComponent
-            galleryID="carousel"
-            images={images}
-            index={index}
-            badge={badge}
-            onSlideChange={handleSelect}
-          />
-        </GalleryContainer>
+    <Embla height={height}>
+      <EmblaViewport
+        ref={viewportRef}
+        onClick={handleClick}
+      >
+        <EmblaContainer>
+          {slides.map((_, index) => {
+            const image = getMediaByIndex(index);
+            const inView = slidesInView.indexOf(index) > -1;
 
-        <ImageFeaturesComponent
-          images={images}
-          index={index}
-          dotCallback={handleSelect}
+            return (
+              <EmblaSlide key={image.src} hasLoaded={inView}>
+                <EmblaSlideInner hasLoaded={inView}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    objectFit="cover"
+                    width={image.width}
+                    height={image.width * 0.5625}
+                    placeholder="blur"
+                    blurDataURL={image.base64}
+                    priority={inView}
+                  />
+                </EmblaSlideInner>
+              </EmblaSlide>
+            );
+          })}
+        </EmblaContainer>
+      </EmblaViewport>
+
+      <EmblaButtonPrev
+        onClick={scrollPrev}
+        disabled={!prevBtnEnabled}
+      >
+        <svg viewBox="137.718 -1.001 366.563 644">
+          <path d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z" />
+        </svg>
+      </EmblaButtonPrev>
+
+      <EmblaButtonNext
+        onClick={scrollNext}
+        disabled={!nextBtnEnabled}
+      >
+        <svg viewBox="0 0 238.003 238.003">
+          <path d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z" />
+        </svg>
+      </EmblaButtonNext>
+
+      <Features>
+        <CarouselFeaturesComponent
+          hasFooter={isFooter}
+          captions={slides.map((image) => image.alt)}
+          index={0}
         />
-      </Container>
-    </>
+      </Features>
+
+      {badge && (
+        <Badge>
+          <Image
+            src={badge.url}
+            alt=""
+            layout="fixed"
+            objectFit="cover"
+            width={120}
+            height={120}
+            placeholder="blur"
+            blurDataURL={badge.base64}
+          />
+        </Badge>
+      )}
+    </Embla>
   );
 }

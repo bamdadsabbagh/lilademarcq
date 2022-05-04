@@ -10,6 +10,8 @@ query {
       slug
       title
       image {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
