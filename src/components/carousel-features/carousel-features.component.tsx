@@ -20,6 +20,7 @@ export function CarouselFeaturesComponent({
 }: CarouselFeaturesComponentProps): ReactElement {
   const [savedIndex, setSavedIndex] = useState(-1);
   const [loading, setLoading] = useState(true);
+  const [caption, setCaption] = useState('');
 
   useEffect(() => {
     if (index === savedIndex) {
@@ -36,20 +37,21 @@ export function CarouselFeaturesComponent({
     }
 
     const timer = setTimeout(() => {
+      setCaption(captions[index]);
       setLoading(false);
-    }, 1000);
+    }, 800);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [loading]);
+  }, [loading, index, captions]);
 
   return (
     <>
       <Features>
         <Caption hasFooter={hasFooter}>
           <CaptionBody active={!loading}>
-            {captions[index]}
+            {caption}
           </CaptionBody>
         </Caption>
 
