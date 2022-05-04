@@ -143,15 +143,8 @@ export function useCarouselComponent({
       autoplay.current.stop();
     });
 
-    lightbox.on('contentActivate', ({content}) => {
-      if (!embla) {
-        return;
-      }
-
-      embla.scrollTo(content.index);
-    });
-
-    lightbox.on('destroy', () => {
+    lightbox.on('close', () => {
+      embla.scrollTo(lightbox.pswp.currSlide.index);
       autoplay.current.play();
     });
 
