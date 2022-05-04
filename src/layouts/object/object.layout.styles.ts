@@ -36,22 +36,36 @@ export const ObjectDescription = styled.div`
   }
 `;
 
-export const Banner = styled.div`
-  align-items: center;
+export const Banners = styled.div`
+  display: grid;
   gap: 1em;
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  transform: translateX(-2em);
+  grid-template-rows: repeat(2, 1fr);
 
-  ${mediaQueries.above.mobile} {
-    gap: 2em;
+  ${mediaQueries.above.tablet} {
+    grid-template-rows: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+  }
+`;
+
+export const BannerItem = styled.div`
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+
+  grid-template-columns: repeat(2, auto);
+
+  ${mediaQueries.above.tablet} {
+    grid-template-columns: auto 1fr;
   }
 `;
 
 export const BannerImage = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BannerText = styled.div`
@@ -61,16 +75,20 @@ export const BannerText = styled.div`
   align-items: flex-start;
 
   ${fontMontserrat};
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 300;
 
-  b {
+  ${mediaQueries.above.mobile} {
+    font-size: 1.2em;
+  }
+
+  & > b {
     max-width: 20rem;
     font-weight: 400;
     margin-right: 0.3em;
   }
 
-  span {
+  & > small {
     font-size: 1em;
     margin-left: 1em;
   }
