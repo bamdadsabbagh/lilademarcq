@@ -158,6 +158,7 @@ export const GridTileHoverBoxFull = styled(GridTileHoverBoxHalf)`
   transform: translateY(105%);
 
   padding: 0.5em 0.6em;
+  text-align: left;
 
   display: grid;
   grid-template-rows: auto 1fr auto;
