@@ -8,10 +8,15 @@ interface TitleProps {
   align: AlignKeys;
   color: string;
   paddingLeft: boolean;
+  noPaddingBottom: boolean;
 }
 
 const PaddingLeft = css`
   padding-left: ${PADDING};
+`;
+
+const PaddingBottomNull = css`
+  padding-bottom: 0 !important;
 `;
 
 export const Title = styled.h2<TitleProps>`
@@ -38,4 +43,6 @@ export const Title = styled.h2<TitleProps>`
   ${mediaQueries.above.tablet} {
     font-size: 2.4em;
   }
+
+  ${({noPaddingBottom}) => noPaddingBottom && PaddingBottomNull};
 `;

@@ -24,6 +24,7 @@ import {ValuesModule} from '../modules/values/values.module';
 import {fetchHero, RichImage} from '../utils/fetch-hero';
 import {FooterComponent} from '../components/footer/footer.component';
 import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
+import {CarouselComponent} from '../components/carousel/carousel.component';
 
 interface IndexProps {
   about: LDSection;
@@ -53,7 +54,18 @@ export default function Index({
       <MetaComponent description="Home" />
 
       <DefaultLayout customMeta>
-        <HeroComponent images={hero} />
+        <HeroComponent>
+          <CarouselComponent
+            isFooter
+            slides={hero.map((image) => ({
+              src: image.image.url,
+              alt: image.shortDescription,
+              width: image.image.width,
+              height: image.image.height,
+              base64: image.image.base64,
+            }))}
+          />
+        </HeroComponent>
 
         <ObjectsModule objects={objects} />
 
@@ -73,7 +85,7 @@ export default function Index({
 
         <ContactModule contact={contact} />
       </DefaultLayout>
-      
+
       <FooterComponent catalog={catalog} socials={socials} />
     </>
   );
