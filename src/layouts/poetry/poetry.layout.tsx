@@ -1,4 +1,5 @@
 import React, {ReactElement, useState} from 'react';
+import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {SectionComponent} from '../../components/section/section.component';
 import {
@@ -8,10 +9,7 @@ import {
 import {theme} from '../../app/styles/theme';
 import {
   Body,
-  Illustration,
-  IllustrationWrapper,
   Pictures,
-  Poem,
   TextContainer,
   TriangleContainer,
 } from './poetry.layout.styles';
@@ -50,16 +48,27 @@ export function PoetryLayout({poetry}: PoetryLayoutProps): ReactElement {
           </TriangleContainer>
         </Body>
       </SectionComponent>
+
       <SectionComponent backgroundColor={theme.white}>
         <Pictures>
-          <Illustration>
-            <IllustrationWrapper>
-              <img src={poetry.illustration.url} alt="" />
-            </IllustrationWrapper>
-          </Illustration>
-          <Poem>
-            <img src={poetry.poem.url} alt="" />
-          </Poem>
+          <Image
+            src={poetry.illustration.url}
+            alt=""
+            placeholder="blur"
+            layout="responsive"
+            width={poetry.illustration.width}
+            height={poetry.illustration.height}
+            blurDataURL={poetry.illustration.base64}
+          />
+          <Image
+            src={poetry.poem.url}
+            alt=""
+            placeholder="blur"
+            layout="responsive"
+            width={poetry.poem.width}
+            height={poetry.poem.height}
+            blurDataURL={poetry.poem.base64}
+          />
         </Pictures>
       </SectionComponent>
     </>
