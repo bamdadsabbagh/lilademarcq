@@ -17,7 +17,7 @@ query {
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.lowRes},
+          width: ${IMAGE_SETTINGS.highRes},
         })
       }
       poem {
@@ -26,7 +26,7 @@ query {
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.lowRes},
+          width: ${IMAGE_SETTINGS.highRes},
         })
       }
     }
