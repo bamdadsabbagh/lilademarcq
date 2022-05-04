@@ -13,12 +13,14 @@ export interface ContentTitleComponentProps {
   align?: AlignKeys;
   color?: string;
   paddingLeft?: boolean;
+  noPaddingBottom?: boolean;
 }
 
 const defaultProps = {
   align: AlignKeys.left,
   color: theme.salmon,
   paddingLeft: false,
+  noPaddingBottom: false,
 };
 
 export function TitleComponent({
@@ -26,9 +28,15 @@ export function TitleComponent({
   align = defaultProps.align,
   color = defaultProps.color,
   paddingLeft = defaultProps.paddingLeft,
+  noPaddingBottom = defaultProps.noPaddingBottom,
 }: ContentTitleComponentProps): ReactElement {
   return (
-    <Title align={align} color={color} paddingLeft={paddingLeft}>
+    <Title
+      align={align}
+      color={color}
+      paddingLeft={paddingLeft}
+      noPaddingBottom={noPaddingBottom}
+    >
       {children}
     </Title>
   );
