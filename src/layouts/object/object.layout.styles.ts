@@ -53,9 +53,13 @@ export const BannerItem = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
-  gap: 1em;
+  gap: 2em;
 
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: 40% 60%;
+
+  & :nth-child(1) {
+    justify-self: flex-end;
+  }
 
   ${mediaQueries.above.tablet} {
     grid-template-columns: auto 1fr;
