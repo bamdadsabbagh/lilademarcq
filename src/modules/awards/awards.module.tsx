@@ -30,7 +30,7 @@ export function AwardsModule({
 
   return (
     <SectionComponent backgroundColor={theme.salmonLight}>
-      <TitleComponent align={AlignKeys.left}>
+      <TitleComponent align={AlignKeys.center}>
         Mes distinctions
       </TitleComponent>
 
