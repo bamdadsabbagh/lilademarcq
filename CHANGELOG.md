@@ -1,3 +1,10 @@
+## [1.31.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.31.0...v1.31.1) (2022-05-04)
+
+
+### Bug Fixes
+
+* **Grid:** Text align ([6f5122d](https://github.com/bamdadsabbagh/lilademarcq/commit/6f5122db91e22ab3c2cdc1f7088f425b94784f34))
+
 # [1.31.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.30.0...v1.31.0) (2022-05-04)
 
 
