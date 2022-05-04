@@ -1,3 +1,18 @@
+# [1.31.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.30.0...v1.31.0) (2022-05-04)
+
+
+### Bug Fixes
+
+* **ObjectLayout:** Add better mobile 1 col styling for banner ([cda2dc3](https://github.com/bamdadsabbagh/lilademarcq/commit/cda2dc380e6bc608cd9ddedaaeb15f30d381c246))
+* **Poetry:** Fetch high resolution assets from back office ([f9ffb92](https://github.com/bamdadsabbagh/lilademarcq/commit/f9ffb923b6e518561753a2cdf88915f0d8062a3c))
+* **PoetryLayout:** Set illustrations to 1 col for tablets and mobiles ([cdc3578](https://github.com/bamdadsabbagh/lilademarcq/commit/cdc3578fe7c7ebe4333ea712583e8fa33c232b0e))
+* **Poetry:** Set identical containers for illustrations ([4af4911](https://github.com/bamdadsabbagh/lilademarcq/commit/4af4911ec424a20e155226bf9bc33f31ca75b525))
+
+
+### Features
+
+* **Events:** Add new events page + Improve reused code ([344ae3e](https://github.com/bamdadsabbagh/lilademarcq/commit/344ae3e8c893c5f75e2f248194df35659bdd70da))
+
 # [1.30.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.29.0...v1.30.0) (2022-05-04)
 
 
