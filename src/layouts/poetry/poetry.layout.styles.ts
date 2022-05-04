@@ -51,3 +51,43 @@ export const TriangleContainer = styled.div`
     display: none;
   }
 `;
+
+export const Pictures = styled.div`
+  display: grid;
+  grid-template-columns: 42% 58%;
+
+  background: yellow;
+
+  height: 80vh;
+  width: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const Illustration = styled.div`
+  width: 100%;
+  background: red;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+export const Poem = styled.div`
+  background: blue;
+
+  img {
+
+  }
+`;
+
+export const IllustrationWrapper = styled.div`
+  background: green;
+  width: 80%;
+  max-width: 400px;
+  height: 100%;
+`;
