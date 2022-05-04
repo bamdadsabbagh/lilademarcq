@@ -16,10 +16,20 @@ export const Embla = styled.div<EmblaProps>`
   height: ${({height}) => height ? `${height}px` : 'auto'};
 `;
 
-export const EmblaViewport = styled.div`
+interface EmblaViewportProps {
+  isCursor: boolean;
+}
+
+const EmblaViewportCursor = css`
+  cursor: pointer;
+`;
+
+export const EmblaViewport = styled.div<EmblaViewportProps>`
   overflow: hidden;
   width: 100%;
   height: 100%;
+
+  ${({isCursor}) => isCursor && EmblaViewportCursor};
 `;
 
 export const EmblaContainer = styled.div`

@@ -56,9 +56,6 @@ export const Pictures = styled.div`
   display: grid;
   grid-template-columns: 42% 58%;
 
-  background: yellow;
-
-  height: 80vh;
   width: 100%;
   position: relative;
 
@@ -71,18 +68,13 @@ export const Pictures = styled.div`
 
 export const Illustration = styled.div`
   width: 100%;
-  background: red;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 `;
 
 export const Poem = styled.div`
-  background: blue;
-
-  img {
-
-  }
+  //
 `;
 
 export const IllustrationWrapper = styled.div`

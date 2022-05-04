@@ -13,12 +13,21 @@ import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
 import {MetaComponent} from '../components/meta/meta.component';
 import {DefaultLayout} from '../layouts/default/default.layout';
+import {FooterComponent} from '../components/footer/footer.component';
+import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
+import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 
 interface AProposProps {
   about: LDSection;
+  catalog: CatalogInterface;
+  socials: LDSocial[];
 }
 
-export default function APropos({about}: AProposProps): ReactElement {
+export default function APropos({
+  about,
+  catalog,
+  socials,
+}: AProposProps): ReactElement {
   return (
     <>
 
@@ -54,16 +63,22 @@ export default function APropos({about}: AProposProps): ReactElement {
         </SectionComponent>
 
       </DefaultLayout>
+
+      <FooterComponent catalog={catalog} socials={socials} />
     </>
   );
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<AProposProps>> {
   const about = await fetchSection('about');
+  const catalog = await fetchCatalog();
+  const socials = await fetchSocials();
 
   return {
     props: {
       about,
+      catalog,
+      socials,
     },
     revalidate: REVALIDATE,
   };

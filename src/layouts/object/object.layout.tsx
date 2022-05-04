@@ -7,18 +7,19 @@ import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
 import {TitleComponent} from '../../components/title/title.component';
 import {
-  Banner,
   BannerImage,
+  BannerItem,
+  Banners,
   BannerText,
   ObjectDescription,
 } from './object.layout.styles';
-import France from '../../../public/icons/france.png';
-import Saw from '../../../public/icons/saw.png';
 import {FormModule} from '../../modules/form/form.module';
 import {getObjectFullName} from '../../utils/get-object-full-name';
 import {FormInterface} from '../../utils/fetch-form';
 import {VideoComponent} from '../../components/video/video.component';
 import {CarouselComponent} from '../../components/carousel/carousel.component';
+import France from '../../../public/icons/france.png';
+import Saw from '../../../public/icons/saw.png';
 
 interface ObjectLayoutProps {
   object: LDObject;
@@ -74,38 +75,35 @@ export function ObjectLayout({
       </SectionComponent>
 
       <SectionComponent backgroundColor={theme.salmonLight}>
-        <Banner>
-          <BannerImage>
-            <Image
-              src={France}
-              alt=""
-              placeholder="blur"
-            />
-          </BannerImage>
-          <BannerText>
-            <b>{object.madeIn}</b>
-          </BannerText>
-        </Banner>
-      </SectionComponent>
-
-      <SectionComponent backgroundColor={theme.white}>
-        <Banner>
-          <BannerImage>
-            <Image
-              src={Saw}
-              alt=""
-              placeholder="blur"
-            />
-          </BannerImage>
-          <BannerText>
-            <b>
-              {object.structure}
-            </b>
-            <span>
-              {object.structureDetails.toLowerCase()}
-            </span>
-          </BannerText>
-        </Banner>
+        <Banners>
+          <BannerItem>
+            <BannerImage>
+              <Image
+                src={France}
+                alt=""
+                placeholder="blur"
+              />
+            </BannerImage>
+            <BannerText>
+              {object.madeIn}
+            </BannerText>
+          </BannerItem>
+          <BannerItem>
+            <BannerImage>
+              <Image
+                src={Saw}
+                alt=""
+                placeholder="blur"
+              />
+            </BannerImage>
+            <BannerText>
+              <b>{object.structure}</b>
+              <small>
+                {object.structureDetails.toLowerCase()}
+              </small>
+            </BannerText>
+          </BannerItem>
+        </Banners>
       </SectionComponent>
 
       <SectionComponent backgroundColor={color}>

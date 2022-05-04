@@ -1,16 +1,16 @@
 import {css} from 'styled-components';
-import {FOOTER_HEIGHT, HEADER_HEIGHT, PADDING} from '../../constants';
+import {HEADER_HEIGHT, PADDING} from '../../constants';
 import {
   headerGap,
   headerGapMobile,
 } from '../../components/header/header.component.styles';
 
 export const MainHeight = css`
-  min-height: calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT} - ${headerGap} - 4px);
+  min-height: calc(100vh - ${HEADER_HEIGHT} - ${headerGap} - 4px);
 `;
 
 export const MainHeightMobile = css`
-  min-height: calc(100vh - ${HEADER_HEIGHT} - ${FOOTER_HEIGHT} - ${headerGapMobile});
+  min-height: calc(100vh - ${HEADER_HEIGHT} - ${headerGapMobile});
 `;
 
 export const FullHeight = css`

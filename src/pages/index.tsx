@@ -5,7 +5,6 @@ import {FormModule} from '../modules/form/form.module';
 import {SectionComponent} from '../components/section/section.component';
 import {ObjectsModule} from '../modules/objects/objects.module';
 import {AwardsModule} from '../modules/awards/awards.module';
-import {SocialsModule} from '../modules/socials/socials.module';
 import {fetchObjects} from '../utils/fetch-objects';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {fetchAwards, LDAward} from '../utils/fetch-awards';
@@ -23,6 +22,8 @@ import {fetchForm, FormInterface} from '../utils/fetch-form';
 import {HeroComponent} from '../components/hero/hero.component';
 import {ValuesModule} from '../modules/values/values.module';
 import {fetchHero, RichImage} from '../utils/fetch-hero';
+import {FooterComponent} from '../components/footer/footer.component';
+import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
 
 interface IndexProps {
   about: LDSection;
@@ -33,6 +34,7 @@ interface IndexProps {
   values: LDValues;
   form: FormInterface;
   hero: RichImage[];
+  catalog: CatalogInterface;
 }
 
 export default function Index({
@@ -44,6 +46,7 @@ export default function Index({
   values,
   form,
   hero,
+  catalog,
 }: IndexProps): ReactElement {
   return (
     <>
@@ -64,14 +67,14 @@ export default function Index({
 
         <AwardsModule awards={awards} />
 
-        <SocialsModule socials={socials} />
-
         <SectionComponent backgroundColor={theme.green}>
           <FormModule form={form} />
         </SectionComponent>
 
         <ContactModule contact={contact} />
       </DefaultLayout>
+      
+      <FooterComponent catalog={catalog} socials={socials} />
     </>
   );
 }
@@ -85,6 +88,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
   const values = await fetchValues();
   const form = await fetchForm();
   const hero = await fetchHero();
+  const catalog = await fetchCatalog();
 
   return {
     props: {
@@ -96,6 +100,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
       values,
       form,
       hero,
+      catalog,
     },
     revalidate: REVALIDATE,
   };

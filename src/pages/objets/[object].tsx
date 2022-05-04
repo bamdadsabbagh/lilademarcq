@@ -13,15 +13,22 @@ import {DefaultLayout} from '../../layouts/default/default.layout';
 import {getObjectFullName} from '../../utils/get-object-full-name';
 import {getRedirectionObject} from '../../utils/get-redirection-object';
 import {fetchForm, FormInterface} from '../../utils/fetch-form';
+import {CatalogInterface, fetchCatalog} from '../../utils/fetch-catalog';
+import {fetchSocials, LDSocial} from '../../utils/fetch-socials';
+import {FooterComponent} from '../../components/footer/footer.component';
 
 export interface ObjectProps {
   object: LDObject;
   form: FormInterface;
+  catalog: CatalogInterface;
+  socials: LDSocial[];
 }
 
 export default function Object({
   object,
   form,
+  catalog,
+  socials,
 }: ObjectProps): ReactElement {
   const [slug, setSlug] = useState(object.slug);
 
@@ -40,9 +47,12 @@ export default function Object({
         description={getObjectFullName(object)}
         image={object.thumbnail.url}
       />
+
       <DefaultLayout customMeta>
         <ObjectLayout object={object} form={form} />
       </DefaultLayout>
+
+      <FooterComponent catalog={catalog} socials={socials} />
     </>
   );
 }
@@ -61,11 +71,15 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
   }
 
   const form = await fetchForm();
+  const catalog = await fetchCatalog();
+  const socials = await fetchSocials();
 
   return {
     props: {
       object,
       form,
+      catalog,
+      socials,
     },
     revalidate: REVALIDATE,
   };
