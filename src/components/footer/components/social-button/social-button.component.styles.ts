@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {simpleTransition} from '../../../../app/styles/transitions';
 import {mediaQueries} from '../../../../app/styles/breakpoints';
 
-const size = 7;
+const size = 4;
 const responsiveRatio = 0.6;
 
 interface Props {
@@ -20,7 +20,7 @@ const FaceOn = css`
 `;
 
 const BackOn = css`
-  transform: scale(1.6);
+  transform: scale(1.4);
   opacity: 1;
 `;
 
