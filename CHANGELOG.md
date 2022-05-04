@@ -1,3 +1,18 @@
+# [1.29.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.28.0...v1.29.0) (2022-05-04)
+
+
+### Bug Fixes
+
+* **AwardsModule:** Center title ([c79b99b](https://github.com/bamdadsabbagh/lilademarcq/commit/c79b99bf79b167eb4e64a267c5699b4ab61ef7c9))
+* **Carousel:** Fix description caption ([bc68f79](https://github.com/bamdadsabbagh/lilademarcq/commit/bc68f790c26aec298614777a58a182ef11a190d3))
+* **Poetry:** Add placeholders in fetch query ([77fceeb](https://github.com/bamdadsabbagh/lilademarcq/commit/77fceebea9605ce66ea60de5f9b17c1d540a32e3))
+
+
+### Features
+
+* **Carousel:** Rewrite with Embla + Improve various elements and stylings ([bf6d673](https://github.com/bamdadsabbagh/lilademarcq/commit/bf6d6733c9a8152655f5ec8672606a5ab0cb3f15))
+* **Poetry:** Working on image layouts ([cc5dd81](https://github.com/bamdadsabbagh/lilademarcq/commit/cc5dd815c73f6c5f373e76320e86bb25e23f0e95))
+
 # [1.28.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.27.1...v1.28.0) (2022-05-03)
 
 
