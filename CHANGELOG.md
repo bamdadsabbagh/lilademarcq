@@ -1,3 +1,26 @@
+# [1.30.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.29.0...v1.30.0) (2022-05-04)
+
+
+### Bug Fixes
+
+* **AwardsModule:** Set max width ([e16c53b](https://github.com/bamdadsabbagh/lilademarcq/commit/e16c53b846e60465ea2900de30bdd689644a3c6f))
+* **Carousel:** Change caption content after disappearance + Improve delay ([abfcab8](https://github.com/bamdadsabbagh/lilademarcq/commit/abfcab8dbc502f572a170a0c38579e14e66baee6))
+* **Logo:** Set correct logo ([7f18354](https://github.com/bamdadsabbagh/lilademarcq/commit/7f183545fa6bfde9e8b784d252668ddd698aec6a))
+
+
+### Features
+
+* **Carousel:** Replace active sync between carousel and lightbox with sync on lightbox close only ([b2e7893](https://github.com/bamdadsabbagh/lilademarcq/commit/b2e7893a2ab104bbad422db316f7aafd32f92977))
+* **Footer:** Move social buttons to footer ([050add2](https://github.com/bamdadsabbagh/lilademarcq/commit/050add2e16d0660c1662d4cbd6bb7113aef8d2e8))
+* **ObjectLayout:** Merge banners ([eed1f42](https://github.com/bamdadsabbagh/lilademarcq/commit/eed1f42f5549f7ee8cf9f25533e7a9fbbef8a3ea))
+
+
+### Performance Improvements
+
+* **Carousel:** Add cursor pointer style on hover when zoomable + Improve features effects ([11d05ae](https://github.com/bamdadsabbagh/lilademarcq/commit/11d05ae092bbbff85b1325e85599f2fc49e73aab))
+* **NPM:** Update packages to latest ([f37b587](https://github.com/bamdadsabbagh/lilademarcq/commit/f37b58771f406afd21196345f734ba5a37b06fae))
+* **Poetry:** Remove background colors and fixed height ([51fcec5](https://github.com/bamdadsabbagh/lilademarcq/commit/51fcec599c6b42e0d89677f0463165aaa5a09c8f))
+
 # [1.29.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.28.0...v1.29.0) (2022-05-04)
 
 
