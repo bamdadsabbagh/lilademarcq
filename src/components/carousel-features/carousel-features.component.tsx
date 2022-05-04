@@ -28,11 +28,21 @@ export function CarouselFeaturesComponent({
 
     setSavedIndex(index);
     setLoading(true);
+  }, [index, savedIndex]);
 
-    setTimeout(() => {
+  useEffect(() => {
+    if (!loading) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
-  }, [index, savedIndex]);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [loading]);
 
   return (
     <>

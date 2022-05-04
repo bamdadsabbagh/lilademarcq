@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import 'photoswipe/dist/photoswipe.css';
@@ -12,6 +12,7 @@ import {CarouselComponentProps, CarouselImage} from '../carousel.component';
 interface UseCarouselComponent {
   viewportRef: React.Ref<HTMLDivElement>;
   index: number;
+  canZoom: boolean;
   handleClick: () => void;
   getMediaByIndex: (index: number) => CarouselImage;
   slidesInView: number[];
@@ -162,22 +163,21 @@ export function useCarouselComponent({
     };
   }, [isLightbox, slides, embla]);
 
-  const handleClick = useCallback(() => {
-    if (isScrolling) {
-      return;
-    }
+  const canZoom = useMemo(() => !isScrolling && typeof lightbox !== 'undefined', [isScrolling, lightbox]);
 
-    if (!lightbox) {
+  const handleClick = useCallback(() => {
+    if (!canZoom) {
       return;
     }
 
     // @ts-expect-error TS2339
     lightbox.loadAndOpen(index);
-  }, [index, isScrolling, lightbox]);
+  }, [canZoom, index, lightbox]);
 
   return {
     viewportRef,
     index,
+    canZoom,
     prevBtnEnabled,
     nextBtnEnabled,
     scrollPrev,

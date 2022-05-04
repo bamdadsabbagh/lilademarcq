@@ -43,6 +43,7 @@ export function CarouselComponent({
   const {
     viewportRef,
     index,
+    canZoom,
     prevBtnEnabled,
     nextBtnEnabled,
     scrollPrev,
@@ -56,6 +57,7 @@ export function CarouselComponent({
       <EmblaViewport
         ref={viewportRef}
         onClick={handleClick}
+        isCursor={canZoom}
       >
         <EmblaContainer>
           {slides.map((_, index) => {
