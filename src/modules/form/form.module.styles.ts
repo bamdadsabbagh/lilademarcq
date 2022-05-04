@@ -23,7 +23,7 @@ export const TitleContainer = styled.div`
   user-select: none;
 
   ${mediaQueries.above.mobile} {
-    gap: 1.5em;
+    gap: 1.1em;
   }
 `;
 

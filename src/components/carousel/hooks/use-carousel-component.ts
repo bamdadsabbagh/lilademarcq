@@ -1,55 +1,189 @@
-import {UseHandlers, useHandlers} from './use-handlers';
-import {LDImage} from '../../../utils/fetch-object';
-import {usePreloadImages} from '../../../hooks/use-preload-images';
-import {
-  useInfiniteArrayIndexes,
-} from '../../../hooks/use-infinite-array-indexes';
+/* eslint-disable import/no-unresolved */
+
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import 'photoswipe/dist/photoswipe.css';
+// @ts-expect-error: TS2307
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import {CAROUSEL_INTERVAL} from '../../../constants';
+import {CarouselComponentProps, CarouselImage} from '../carousel.component';
 
 interface UseCarouselComponent {
+  viewportRef: React.Ref<HTMLDivElement>;
   index: number;
-  previousIndex: number;
-  nextIndex: number;
-  increment: () => void;
-  decrement: () => void;
-  handleSelect: UseHandlers['handleSelect'];
-  openTarget: UseHandlers['openTarget'];
+  handleClick: () => void;
+  getMediaByIndex: (index: number) => CarouselImage;
+  slidesInView: number[];
+  prevBtnEnabled: boolean;
+  nextBtnEnabled: boolean;
+  scrollPrev: () => void;
+  scrollNext: () => void;
 }
 
-export function useCarouselComponent(images: LDImage[]): UseCarouselComponent {
-  const {
-    previousIndex,
-    index,
-    setIndex,
-    nextIndex,
-    increment,
-    decrement,
-    updatePreviousIndex,
-    updateNextIndex,
-  } = useInfiniteArrayIndexes(images.length);
+export function useCarouselComponent({
+  slides,
+  isLightbox,
+}: CarouselComponentProps): UseCarouselComponent {
+  const autoplay = useRef(
+    Autoplay(
+      {
+        delay: CAROUSEL_INTERVAL * 1000,
+        stopOnInteraction: false,
+      },
+      (emblaRoot) => emblaRoot.parentElement,
+    ),
+  );
 
-  const {
-    handleSelect,
-    openTarget,
-  } = useHandlers({
-    index,
-    setIndex,
-    updateNextIndex,
-    updatePreviousIndex,
-  });
+  const getMediaByIndex = useCallback((index: number) => slides[index % slides.length], [slides]);
 
-  usePreloadImages({
-    currentUrl: images[index].url,
-    nextUrl: images[nextIndex].url,
-    previousUrl: images[previousIndex].url,
-  });
+  const [viewportRef, embla] = useEmblaCarousel({
+    skipSnaps: false,
+    loop: true,
+  }, [autoplay.current]);
+
+  const [slidesInView, setSlidesInView] = useState([]);
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => {
+    if (!embla) {
+      return;
+    }
+    embla.scrollPrev();
+    autoplay.current.reset();
+  }, [embla]);
+
+  const scrollNext = useCallback(() => {
+    if (!embla) {
+      return;
+    }
+    embla.scrollNext();
+    autoplay.current.reset();
+  }, [embla]);
+
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const onScroll = useCallback(() => {
+    setIsScrolling(true);
+  }, []);
+
+  const onSettle = useCallback(() => {
+    setIsScrolling(false);
+  }, []);
+
+  const onSelect = useCallback(() => {
+    if (!embla) {
+      return;
+    }
+    setPrevBtnEnabled(embla.canScrollPrev());
+    setNextBtnEnabled(embla.canScrollNext());
+    setIndex(embla.slidesInView(true)[0]);
+  }, [embla]);
+
+  const findSlidesInView = useCallback(() => {
+    if (!embla) {
+      return;
+    }
+
+    setSlidesInView((slidesInView) => {
+      if (slidesInView.length === embla.slideNodes().length) {
+        embla.off('select', findSlidesInView);
+      }
+      const inView = embla
+        .slidesInView(true)
+        .filter((index) => slidesInView.indexOf(index) === -1);
+      return slidesInView.concat(inView);
+    });
+  }, [embla, setSlidesInView]);
+
+  useEffect(() => {
+    if (!embla) {
+      return;
+    }
+
+    onSelect();
+    findSlidesInView();
+
+    embla.on('select', onSelect);
+    embla.on('select', findSlidesInView);
+    embla.on('scroll', onScroll);
+    embla.on('settle', onSettle);
+
+    return () => {
+      embla.off('select', onSelect);
+      embla.off('select', findSlidesInView);
+      embla.off('scroll', onScroll);
+      embla.off('settle', onSettle);
+    };
+  }, [embla, onSelect, findSlidesInView, onScroll, onSettle]);
+
+  const [lightbox, setLightbox] = useState();
+
+  useEffect(() => {
+    if (!isLightbox) {
+      return;
+    }
+
+    const lightbox = new PhotoSwipeLightbox({
+      dataSource: slides.map((image) => ({
+        src: image.src,
+        width: image.width,
+        height: image.height,
+      })),
+      showHideAnimationType: 'none',
+      pswpModule: () => import('photoswipe'),
+    });
+
+    lightbox.init();
+
+    lightbox.on('beforeOpen', () => {
+      autoplay.current.stop();
+    });
+
+    lightbox.on('contentActivate', ({content}) => {
+      if (!embla) {
+        return;
+      }
+
+      embla.scrollTo(content.index);
+    });
+
+    lightbox.on('destroy', () => {
+      autoplay.current.play();
+    });
+
+    setLightbox(lightbox);
+
+    return () => {
+      lightbox.destroy();
+      setLightbox(null);
+    };
+  }, [isLightbox, slides, embla]);
+
+  const handleClick = useCallback(() => {
+    if (isScrolling) {
+      return;
+    }
+
+    if (!lightbox) {
+      return;
+    }
+
+    // @ts-expect-error TS2339
+    lightbox.loadAndOpen(index);
+  }, [index, isScrolling, lightbox]);
 
   return {
-    previousIndex,
+    viewportRef,
     index,
-    nextIndex,
-    handleSelect,
-    openTarget,
-    increment,
-    decrement,
+    prevBtnEnabled,
+    nextBtnEnabled,
+    scrollPrev,
+    scrollNext,
+    handleClick,
+    getMediaByIndex,
+    slidesInView,
   };
 }

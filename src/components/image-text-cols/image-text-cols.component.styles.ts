@@ -21,7 +21,7 @@ export const Body = styled.div`
 
 export const Text = styled.div`
   ${fontSpectral};
-  font-weight: 200;
+  font-weight: 300;
   font-size: 1.2em;
   line-height: 1.3em;
 

@@ -7,6 +7,8 @@ query {
   valuesCollection {
     items {
       image {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},

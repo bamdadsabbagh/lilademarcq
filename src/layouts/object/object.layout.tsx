@@ -15,10 +15,10 @@ import {
 import France from '../../../public/icons/france.png';
 import Saw from '../../../public/icons/saw.png';
 import {FormModule} from '../../modules/form/form.module';
-import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {getObjectFullName} from '../../utils/get-object-full-name';
 import {FormInterface} from '../../utils/fetch-form';
 import {VideoComponent} from '../../components/video/video.component';
+import {CarouselComponent} from '../../components/carousel/carousel.component';
 
 interface ObjectLayoutProps {
   object: LDObject;
@@ -44,8 +44,16 @@ export function ObjectLayout({
 
         <div ref={ref}>
           <CarouselComponent
-            images={object.imagesCollection.items}
+            isLightbox
+            height={bounds.width * 0.5625}
             badge={object.badge}
+            slides={object.imagesCollection.items.map((image) => ({
+              src: image.url,
+              base64: image.base64,
+              alt: image.description,
+              width: image.width,
+              height: image.height,
+            }))}
           />
         </div>
 

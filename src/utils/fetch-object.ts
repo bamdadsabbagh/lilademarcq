@@ -18,6 +18,8 @@ query {
       formTitle
       vimeo
       thumbnail {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
@@ -25,6 +27,8 @@ query {
         })
       }
       badge {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
@@ -35,13 +39,13 @@ query {
         items {
           title
           description
+          width
+          height
           url(transform: { 
             format: WEBP,
             quality: ${IMAGE_SETTINGS.quality},
             width: ${IMAGE_SETTINGS.highRes},
           })
-          width
-          height
         }
       }
       body {

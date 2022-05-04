@@ -6,7 +6,15 @@ import {
   TitleComponent,
 } from '../../components/title/title.component';
 import {theme} from '../../app/styles/theme';
-import {Body, TextContainer, TriangleContainer} from './poetry.layout.styles';
+import {
+  Body,
+  Illustration,
+  IllustrationWrapper,
+  Pictures,
+  Poem,
+  TextContainer,
+  TriangleContainer,
+} from './poetry.layout.styles';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
 import {PoetryInterface} from '../../utils/fetch-poetry';
 
@@ -41,6 +49,18 @@ export function PoetryLayout({poetry}: PoetryLayoutProps): ReactElement {
             />
           </TriangleContainer>
         </Body>
+      </SectionComponent>
+      <SectionComponent backgroundColor={theme.white}>
+        <Pictures>
+          <Illustration>
+            <IllustrationWrapper>
+              <img src={poetry.illustration.url} alt="" />
+            </IllustrationWrapper>
+          </Illustration>
+          <Poem>
+            <img src={poetry.poem.url} alt="" />
+          </Poem>
+        </Pictures>
       </SectionComponent>
     </>
   );

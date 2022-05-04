@@ -1,6 +1,7 @@
 import {fetchContentful} from './fetch-contentful';
 import {IMAGE_SETTINGS} from '../constants';
 import {LDImage, LDText} from './fetch-object';
+import {getPlaceholder} from './get-placeholder';
 
 const queryPoetry = `
 query {
@@ -11,6 +12,8 @@ query {
         json
       }
       illustration {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
@@ -18,6 +21,8 @@ query {
         })
       }
       poem {
+        width
+        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
@@ -44,5 +49,10 @@ interface PoetryResponse {
 
 export async function fetchPoetry(): Promise<PoetryInterface> {
   const response: PoetryResponse = await fetchContentful(queryPoetry);
-  return response.myPoetryCollection.items[0];
+  const poetry = response.myPoetryCollection.items[0];
+
+  poetry.illustration.base64 = await getPlaceholder(poetry.illustration.url);
+  poetry.poem.base64 = await getPlaceholder(poetry.poem.url);
+
+  return poetry;
 }

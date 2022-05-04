@@ -10,6 +10,8 @@ query {
       position
       image {
         url
+        width
+        height
       }
       body {
         json
