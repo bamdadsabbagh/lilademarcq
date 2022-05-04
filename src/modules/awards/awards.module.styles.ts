@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import {fontSpectral} from '../../app/styles/fonts';
-import {SECTION_SPACE_AROUND} from '../../constants';
 import {simpleTransition} from '../../app/styles/transitions';
 import {mediaQueries} from '../../app/styles/breakpoints';
+import {MAX_WIDTH} from '../../constants';
 
 export const Container = styled.div`
-  //display: grid;
-    //grid-template-columns: ${SECTION_SPACE_AROUND} 1fr 1fr ${SECTION_SPACE_AROUND};
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -26,6 +24,7 @@ interface AwardProps {
 
 export const Award = styled.div<AwardProps>`
   width: 100%;
+  max-width: calc(${MAX_WIDTH} * 0.4);
   text-align: center;
 
   display: grid;
