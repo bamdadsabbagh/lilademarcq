@@ -1,7 +1,7 @@
 import React, {ReactElement, useRef} from 'react';
 import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
-import {LDMyQuotes} from '../../utils/fetch-quotes';
+import {LDMyContact} from '../../utils/fetch-contact';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
@@ -23,15 +23,15 @@ import {ContactModule} from '../../modules/contact/contact.module';
 import {LDSection} from '../../utils/fetch-section';
 
 interface ContactLayoutProps {
-  myQuotes: LDMyQuotes;
+  myContact: LDMyContact;
   form: FormInterface;
-  contact: LDSection;
+  contactSection: LDSection;
 }
 
 export function ContactLayout({
-  myQuotes,
+  myContact,
   form,
-  contact,
+  contactSection,
 }: ContactLayoutProps): ReactElement {
   const quoteSize = useRef(100);
 
@@ -39,7 +39,7 @@ export function ContactLayout({
     <>
       <SectionComponent>
         <TitleComponent align={AlignKeys.center} noPaddingBottom>
-          {myQuotes.title}
+          {myContact.title}
         </TitleComponent>
       </SectionComponent>
 
@@ -48,7 +48,7 @@ export function ContactLayout({
         fullWidthMobile
       >
         <Quotes>
-          {myQuotes.quotesCollection.items.map((quote, key) => {
+          {myContact.quotesCollection.items.map((quote, key) => {
             const index = key;
             const color = key % 2 ? theme.white : theme.salmonLight;
 
@@ -83,9 +83,9 @@ export function ContactLayout({
         </Quotes>
       </SectionComponent>
 
-      <FormModule form={form} />
+      <FormModule form={form} text={myContact.formTitle} />
 
-      <ContactModule contact={contact} />
+      <ContactModule contact={contactSection} />
     </>
   );
 }
