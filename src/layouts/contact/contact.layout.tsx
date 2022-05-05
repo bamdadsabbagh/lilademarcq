@@ -11,24 +11,28 @@ import {theme} from '../../app/styles/theme';
 import {uncapitalizeFirstLetter} from '../../utils/uncapitalize-first-letter';
 import {
   Author,
-  Banner,
-  BannerImage,
-  BannerText,
   Body,
   Quote,
   QuoteClose,
   QuoteOpen,
   Quotes,
-} from './quotes.layout.styles';
-import {LinkComponent} from '../../components/link/link.component';
+} from './contact.layout.styles';
+import {FormModule} from '../../modules/form/form.module';
+import {FormInterface} from '../../utils/fetch-form';
+import {ContactModule} from '../../modules/contact/contact.module';
+import {LDSection} from '../../utils/fetch-section';
 
-interface QuotesLayoutProps {
+interface ContactLayoutProps {
   myQuotes: LDMyQuotes;
+  form: FormInterface;
+  contact: LDSection;
 }
 
-export function QuotesLayout({
+export function ContactLayout({
   myQuotes,
-}: QuotesLayoutProps): ReactElement {
+  form,
+  contact,
+}: ContactLayoutProps): ReactElement {
   const quoteSize = useRef(100);
 
   return (
@@ -79,30 +83,9 @@ export function QuotesLayout({
         </Quotes>
       </SectionComponent>
 
-      <SectionComponent backgroundColor={theme.green}>
-        <TitleComponent
-          color={theme.white}
-          align={AlignKeys.center}
-          noPaddingBottom
-        >
-          <Banner>
-            <BannerImage>
-              <Image
-                src={myQuotes.bannerImage.url}
-                width={myQuotes.bannerImage.width}
-                height={myQuotes.bannerImage.height}
-                blurDataURL={myQuotes.bannerImage.base64}
-                placeholder="blur"
-              />
-            </BannerImage>
-            <LinkComponent href={myQuotes.bannerLink}>
-              <BannerText>
-                {myQuotes.bannerText}
-              </BannerText>
-            </LinkComponent>
-          </Banner>
-        </TitleComponent>
-      </SectionComponent>
+      <FormModule form={form} />
+
+      <ContactModule contact={contact} />
     </>
   );
 }

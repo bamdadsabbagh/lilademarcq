@@ -1,8 +1,6 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {theme} from '../app/styles/theme';
 import {FormModule} from '../modules/form/form.module';
-import {SectionComponent} from '../components/section/section.component';
 import {ObjectsModule} from '../modules/objects/objects.module';
 import {AwardsModule} from '../modules/awards/awards.module';
 import {fetchObjects} from '../utils/fetch-objects';
@@ -79,9 +77,7 @@ export default function Index({
 
         <AwardsModule awards={awards} />
 
-        <SectionComponent backgroundColor={theme.green}>
-          <FormModule form={form} />
-        </SectionComponent>
+        <FormModule form={form} />
 
         <ContactModule contact={contact} />
       </DefaultLayout>

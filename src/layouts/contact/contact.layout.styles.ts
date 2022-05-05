@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {fontSpectral} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
-import {PulseAnimation} from '../../app/styles/animations';
 
 export const Quotes = styled.div`
   display: block;
@@ -85,32 +84,4 @@ export const Author = styled.h3`
   font-weight: 300;
   text-align: right;
   padding-right: 1pt;
-`;
-
-export const Banner = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-  padding: 0 1em;
-`;
-
-export const BannerImage = styled.div`
-  width: 8em;
-
-  ${mediaQueries.above.mobile} {
-    width: 12em;
-  }
-`;
-
-export const BannerText = styled.div`
-  width: 100%;
-
-  ${PulseAnimation};
-
-  font-size: 0.6em;
-
-  ${mediaQueries.above.mobile} {
-    font-size: 0.8em;
-  }
 `;

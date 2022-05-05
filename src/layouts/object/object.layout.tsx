@@ -106,13 +106,11 @@ export function ObjectLayout({
         </Banners>
       </SectionComponent>
 
-      <SectionComponent backgroundColor={color}>
-        <FormModule
-          form={form}
-          text={object.formTitle}
-          backgroundColor={color}
-        />
-      </SectionComponent>
+      <FormModule
+        form={form}
+        text={object.formTitle}
+        backgroundColor={color}
+      />
     </>
   );
 }
