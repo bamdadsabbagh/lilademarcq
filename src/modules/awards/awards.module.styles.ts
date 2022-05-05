@@ -49,7 +49,7 @@ interface ParagraphProps {
   visible: boolean;
 }
 
-export const TextContainer = styled.span<ParagraphProps>`
+export const TextContainer = styled.div<ParagraphProps>`
   ${fontSpectral};
   font-size: 1.3em;
 
