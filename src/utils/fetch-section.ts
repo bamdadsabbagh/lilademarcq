@@ -44,7 +44,7 @@ type SectionSlug =
   | 'about'
   | 'cgv'
   | 'privacy-policy'
-  | 'mentiones-legales'
+  | 'mentions-legales'
 
 export async function fetchSection(slug: SectionSlug): Promise<LDSection> {
   const response: SectionResponse = await fetchContentful(querySection(slug));
