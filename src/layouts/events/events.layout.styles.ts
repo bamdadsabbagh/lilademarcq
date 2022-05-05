@@ -9,6 +9,7 @@ export const ImageWrapper = styled.div<ImageProps>`
   height: 100%;
 
   display: flex;
+  justify-content: center;
 
   img:hover {
     transform: scale(1.05);
