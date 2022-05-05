@@ -2,7 +2,7 @@ import React, {ReactElement} from 'react';
 import {Section, Wrapper} from './section.component.styles';
 
 export interface ContentSectionComponentProps {
-  children: ReactElement | ReactElement[];
+  children?: ReactElement | ReactElement[];
   backgroundColor?: string;
   isSmallTop?: boolean;
   isHero?: boolean;
