@@ -1,3 +1,27 @@
+# [1.32.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.31.1...v1.32.0) (2022-05-05)
+
+
+### Bug Fixes
+
+* **AwardsModule:** Set contentful rich text container to div ([d4b0002](https://github.com/bamdadsabbagh/lilademarcq/commit/d4b0002205d29130b00c44515869b3dc9c6e0fb5))
+* Fix typo ([27ed0f4](https://github.com/bamdadsabbagh/lilademarcq/commit/27ed0f4dc918fb0e1e1ddb72a2772e6fbe8a6906))
+* **Poetry:** Set grid to auto height for desktops + Fetch descriptions from back office ([99b3340](https://github.com/bamdadsabbagh/lilademarcq/commit/99b33406fce44fad0b492584589008078ff11612))
+
+
+### Features
+
+* Add new quotes page with mobile view only at the moment ([e2562ec](https://github.com/bamdadsabbagh/lilademarcq/commit/e2562ecce00f3420d88d9b04fce402de833d5b56))
+* Add press page with new PressLayout + Improve GridComponent + Improve lightbox image sources ([7ad3747](https://github.com/bamdadsabbagh/lilademarcq/commit/7ad3747dd798e32e955b480a60eddcfc97b86b5d))
+* **Poetry:** Add show more button for headline event + Extract lightbox code to custom hook ([a24a5dd](https://github.com/bamdadsabbagh/lilademarcq/commit/a24a5ddce544b6929b98eefd31539d79ca20edf6))
+* **Quotes:** Add banner ([af07792](https://github.com/bamdadsabbagh/lilademarcq/commit/af077922794e98d3cb7887e1cb7717c635486a67))
+* **Quotes:** Add banner image and flexbox ([6fbe322](https://github.com/bamdadsabbagh/lilademarcq/commit/6fbe3226f2528309e9d7c7bcb547fe10828a08df))
+* **Quotes:** Add desktop view + Improve SectionComponent ([7d44dbc](https://github.com/bamdadsabbagh/lilademarcq/commit/7d44dbcc70d3b6968decb9412b7d3595335ac892))
+
+
+### Performance Improvements
+
+* Improve fetch queries (image quality and size) ([154ae2b](https://github.com/bamdadsabbagh/lilademarcq/commit/154ae2b6079f1fea9eca016aacae0e9c503e2d17))
+
 ## [1.31.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.31.0...v1.31.1) (2022-05-04)
 
 
