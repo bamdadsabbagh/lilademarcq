@@ -7,6 +7,7 @@ export interface ContentSectionComponentProps {
   isSmallTop?: boolean;
   isHero?: boolean;
   minHeight?: string;
+  fullWidthMobile?: boolean;
 }
 
 export function SectionComponent({
@@ -15,6 +16,7 @@ export function SectionComponent({
   isSmallTop,
   isHero,
   minHeight,
+  fullWidthMobile,
 }: ContentSectionComponentProps): ReactElement {
   return (
     <Section
@@ -22,7 +24,11 @@ export function SectionComponent({
       isHero={isHero}
       minHeight={minHeight}
     >
-      <Wrapper isSmallTop={isSmallTop} isHero={isHero}>
+      <Wrapper
+        isSmallTop={isSmallTop}
+        isHero={isHero}
+        fullWidthMobile={fullWidthMobile}
+      >
         {children}
       </Wrapper>
     </Section>

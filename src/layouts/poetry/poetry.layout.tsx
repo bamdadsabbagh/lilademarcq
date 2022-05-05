@@ -53,21 +53,21 @@ export function PoetryLayout({poetry}: PoetryLayoutProps): ReactElement {
         <Pictures>
           <Image
             src={poetry.illustration.url}
-            alt=""
-            placeholder="blur"
-            layout="responsive"
+            alt={poetry.illustration.description}
             width={poetry.illustration.width}
             height={poetry.illustration.height}
             blurDataURL={poetry.illustration.base64}
+            placeholder="blur"
+            layout="responsive"
           />
           <Image
             src={poetry.poem.url}
-            alt=""
-            placeholder="blur"
-            layout="responsive"
+            alt={poetry.poem.description}
             width={poetry.poem.width}
             height={poetry.poem.height}
             blurDataURL={poetry.poem.base64}
+            placeholder="blur"
+            layout="responsive"
           />
         </Pictures>
       </SectionComponent>

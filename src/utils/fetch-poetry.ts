@@ -12,6 +12,8 @@ query {
         json
       }
       illustration {
+        title
+        description
         width
         height
         url(transform: { 
@@ -21,6 +23,8 @@ query {
         })
       }
       poem {
+        title
+        description
         width
         height
         url(transform: { 

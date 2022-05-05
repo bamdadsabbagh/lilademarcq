@@ -104,3 +104,18 @@ const WiggleKeyframes = keyframes`
 export const WiggleAnimation = (start = 1.3): FlattenSimpleInterpolation => css`
   animation: ${WiggleKeyframes} calc(${start}s * ${tf}) ease infinite;
 `;
+
+const PulseKeyframes = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+export const PulseAnimation = css`
+  animation: ${PulseKeyframes} calc(${1.3}s * ${tf}) ease infinite
+`;

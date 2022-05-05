@@ -54,7 +54,7 @@ export const TriangleContainer = styled.div`
 
 export const Pictures = styled.div`
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
 
   ${mediaQueries.above.tablet} {
     grid-template-columns: repeat(2, 1fr);

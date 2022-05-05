@@ -52,6 +52,7 @@ export function CarouselComponent({
     getMediaByIndex,
     slidesInView,
   } = useCarouselComponent({slides, isLightbox});
+
   return (
     <Embla height={height}>
       <EmblaViewport

@@ -39,14 +39,20 @@ export const Section = styled.section<StyledSectionProps>`
 interface WrapperProps {
   isSmallTop: boolean;
   isHero: boolean;
+  fullWidthMobile: boolean;
 }
+
+const WrapperNoPadding = css`
+  padding: 0;
+`;
 
 export const Wrapper = styled.div<WrapperProps>`
   padding: calc(${PADDING} * 0.7) 0;
-  width: 90vw;
+  width: ${({fullWidthMobile}) => fullWidthMobile ? 100 : 90}vw;
+  ${({fullWidthMobile}) => fullWidthMobile && WrapperNoPadding};
 
   ${mediaQueries.above.mobile} {
-    ${PaddingFull};
+    ${({fullWidthMobile}) => !fullWidthMobile && PaddingFull};
     ${({isSmallTop}) => isSmallTop && PaddingSmallTop};
   }
 
