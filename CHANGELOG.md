@@ -1,3 +1,28 @@
+# [1.33.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.32.1...v1.33.0) (2022-05-05)
+
+
+### Bug Fixes
+
+* **CarouselFeatures:** Hide caption if string is empty ([bd77af7](https://github.com/bamdadsabbagh/lilademarcq/commit/bd77af78b28111865cffecdfd83010491abc7ea4))
+* **Events:** Disallow headline event click if no URL is set ([cf71877](https://github.com/bamdadsabbagh/lilademarcq/commit/cf718774d3449c1c321ace40eab3a52019c92fff))
+* **Events:** Display past events all the time ([ceba601](https://github.com/bamdadsabbagh/lilademarcq/commit/ceba60190dc76aa7f789f93931147d333196ac6a))
+* **Events:** Justify headline image to center ([ea3178c](https://github.com/bamdadsabbagh/lilademarcq/commit/ea3178c4489fd21f92c471e6e5db938a9883d3ed))
+* **Events:** Remove headline title and headline text ([33d7996](https://github.com/bamdadsabbagh/lilademarcq/commit/33d79960d2c432513e27e01e85f0c74b494784b5))
+* **Grid:** Add cover object fit for tile images ([35d474d](https://github.com/bamdadsabbagh/lilademarcq/commit/35d474d5ac48601241427ab6397ef9f3ddc04725))
+* **MyObjects:** Update props typings + Fix menu query + ([0846367](https://github.com/bamdadsabbagh/lilademarcq/commit/08463679ad4f27fef8d57f6127e89886a85c3795))
+* Prefer `just-shuffle` instead of hande made pseudo RNG ([39e1e6d](https://github.com/bamdadsabbagh/lilademarcq/commit/39e1e6dab75420be7adb5eaccf6c65cd877c8715))
+* **Quotes:** Pick 4 random quotes to feed the view ([3e5f913](https://github.com/bamdadsabbagh/lilademarcq/commit/3e5f9132766876b09bdb3659c718089e90792d54))
+* **Values:** Reduce bubble font size + Hide both most right bubbles for tablets ([35a5b80](https://github.com/bamdadsabbagh/lilademarcq/commit/35a5b808b2c79b2e3b5ab80596febd8e0028e280))
+* **Values:** Remove redundant code ([fdd84e9](https://github.com/bamdadsabbagh/lilademarcq/commit/fdd84e9d1315a05d80f4f8851d5aeb7ee1254b7f))
+
+
+### Features
+
+* Add hide option for arrows in CarouselComponent + Update/remove dead API query fields ([c8df9e4](https://github.com/bamdadsabbagh/lilademarcq/commit/c8df9e43313d8d058f016d11f49850b6c78ee73b))
+* **Contact:** Rename `livre d'or` page to `contact` + Set final layout + Update navigation menu + Various improvements ([413535d](https://github.com/bamdadsabbagh/lilademarcq/commit/413535d9065d7c9d38d956b74cf24a22cd80f769))
+* **Contact:** Update query fields and content types ([66e89e8](https://github.com/bamdadsabbagh/lilademarcq/commit/66e89e87b0c3de1145a92ca3f128f521155d56af))
+* Update graphql queries to latest `Object` and `MyObjects` content types ([41da764](https://github.com/bamdadsabbagh/lilademarcq/commit/41da764e15ee0a3a735296fc97b332517774ece2))
+
 ## [1.32.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.32.0...v1.32.1) (2022-05-05)
 
 
