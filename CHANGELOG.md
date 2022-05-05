@@ -1,3 +1,10 @@
+## [1.32.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.32.0...v1.32.1) (2022-05-05)
+
+
+### Bug Fixes
+
+* Add revalidation rules for newest pages ([fdc3369](https://github.com/bamdadsabbagh/lilademarcq/commit/fdc3369385cb8a665093c7846704c38cd47c7bd1))
+
 # [1.32.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.31.1...v1.32.0) (2022-05-05)
 
 
