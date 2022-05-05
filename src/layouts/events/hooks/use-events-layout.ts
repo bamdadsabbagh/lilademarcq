@@ -11,8 +11,7 @@ interface UseEventsLayout {
 }
 
 export function useEventsLayout(events: LDMyEvents): UseEventsLayout {
-  const hasHeadline = useMemo(() => typeof events?.headlineEvent?.banner?.url !== 'undefined'
-    && typeof events?.headlineTitle !== 'undefined', [events]);
+  const hasHeadline = useMemo(() => typeof events?.headlineEvent?.banner?.url !== 'undefined', [events]);
   const hasHeadlineLink = useMemo(() => events.headlineEvent.eventLink !== null, [events?.headlineEvent?.eventLink]);
   const hasPastEvents = useMemo(() => events.pastEventsCollection.items.length > 0, [events.pastEventsCollection.items]);
 

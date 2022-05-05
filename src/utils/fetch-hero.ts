@@ -1,25 +1,22 @@
 import {fetchContentful} from './fetch-contentful';
 import {IMAGE_SETTINGS} from '../constants';
 import {getPlaceholder} from './get-placeholder';
+import {LDImage} from './fetch-object';
 
 const queryHero = `
 query {
   myHeroCollection (limit: 1) {
     items {
-      richImagesCollection {
+      imagesCollection {
         items {
-          shortDescription
-          longDescription
-          link
-          image {
-            width
-            height
-            url(transform: { 
-              format: WEBP,
-              quality: ${IMAGE_SETTINGS.quality},
-              width: ${IMAGE_SETTINGS.highRes},
-            })
-          }
+          description
+          width
+          height
+          url(transform: { 
+            format: WEBP,
+            quality: ${IMAGE_SETTINGS.quality},
+            width: ${IMAGE_SETTINGS.highRes},
+          })
         }
       }
     }
@@ -27,35 +24,23 @@ query {
 }
 `;
 
-export interface RichImage {
-  shortDescription: string;
-  longDescription?: string;
-  link?: string;
-  image: {
-    url: string;
-    base64: string;
-    width: number;
-    height: number;
-  };
-}
-
 interface HeroResponse {
   myHeroCollection: {
     items: Array<{
-      richImagesCollection: {
-        items: RichImage[];
+      imagesCollection: {
+        items: LDImage[];
       };
     }>;
   };
 }
 
-export async function fetchHero(): Promise<RichImage[]> {
+export async function fetchHero(): Promise<LDImage[]> {
   const response: HeroResponse = await fetchContentful(queryHero);
-  const slides = response.myHeroCollection.items[0].richImagesCollection.items;
+  const images = response.myHeroCollection.items[0].imagesCollection.items;
 
-  await Promise.all(slides.map(async (slide) => {
-    slide.image.base64 = await getPlaceholder(slide.image.url);
+  await Promise.all(images.map(async (image) => {
+    image.base64 = await getPlaceholder(image.url);
   }));
 
-  return slides;
+  return images;
 }
