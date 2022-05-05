@@ -1,3 +1,4 @@
+import shuffle from 'just-shuffle';
 import {LDText} from './fetch-object';
 import {fetchContentful} from './fetch-contentful';
 
@@ -45,8 +46,7 @@ export async function fetchContact(): Promise<LDMyContact> {
   const response: ContactResponse = await fetchContentful(queryContact);
   const myQuotes = response.myQuotesCollection.items[0];
 
-  myQuotes.quotesCollection.items = myQuotes.quotesCollection.items
-    .sort(() => 0.5 - Math.random())
+  myQuotes.quotesCollection.items = shuffle(myQuotes.quotesCollection.items)
     .slice(0, 4);
 
   return myQuotes;
