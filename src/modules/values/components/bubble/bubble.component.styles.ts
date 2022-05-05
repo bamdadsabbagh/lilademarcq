@@ -57,6 +57,7 @@ export const Container = styled.div<ContainerProps>`
 const TileBody = css`
   width: 80%;
   padding: 0 1.2em;
+  font-size: 0.9em;
 `;
 
 export const Title = styled.span`

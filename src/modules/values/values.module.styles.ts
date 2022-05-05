@@ -40,6 +40,16 @@ export const Bubbles = styled.div`
     transform: none;
 
     & > :nth-child(2),
+    & > :nth-child(5) {
+      visibility: visible;
+    }
+  }
+
+  ${mediaQueries.above.tablet} {
+    overflow: hidden;
+    transform: none;
+
+    & > :nth-child(2),
     & > :nth-child(3),
     & > :nth-child(5),
     & > :nth-child(6) {
