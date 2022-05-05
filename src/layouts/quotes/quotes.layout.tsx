@@ -11,6 +11,9 @@ import {theme} from '../../app/styles/theme';
 import {uncapitalizeFirstLetter} from '../../utils/uncapitalize-first-letter';
 import {
   Author,
+  Banner,
+  BannerImage,
+  BannerText,
   Body,
   Quote,
   QuoteClose,
@@ -73,7 +76,20 @@ export function QuotesLayout({
           align={AlignKeys.center}
           noPaddingBottom
         >
-          {myQuotes.bannerText}
+          <Banner>
+            <BannerImage>
+              <Image
+                src={myQuotes.bannerImage.url}
+                width={myQuotes.bannerImage.width}
+                height={myQuotes.bannerImage.height}
+                blurDataURL={myQuotes.bannerImage.base64}
+                placeholder="blur"
+              />
+            </BannerImage>
+            <BannerText>
+              {myQuotes.bannerText}
+            </BannerText>
+          </Banner>
         </TitleComponent>
       </SectionComponent>
     </>
