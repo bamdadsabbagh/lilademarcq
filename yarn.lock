@@ -2266,6 +2266,11 @@ json5@^2.1.2, json5@^2.2.1:
     array-includes "^3.1.4"
     object.assign "^4.1.2"
 
+just-shuffle@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/just-shuffle/-/just-shuffle-4.0.1.tgz#239006f5abf4774498d46cd27746aa34f7e48ca4"
+  integrity sha512-zi6tkAMmnrMc39Tmxma7uEJ4c/NmzreJYHNqpZZ5CR8DluhfarzSmAZ/Tr3HjCYJrXajX6L+rEmC2Z/Fq3uuyg==
+
 language-subtag-registry@~0.3.2:
   version "0.3.21"
   resolved "https://registry.yarnpkg.com/language-subtag-registry/-/language-subtag-registry-0.3.21.tgz#04ac218bea46f04cb039084602c6da9e788dd45a"

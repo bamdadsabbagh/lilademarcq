@@ -46,6 +46,8 @@ export function ObjectLayout({
         <div ref={ref}>
           <CarouselComponent
             isLightbox
+            hasCaptions
+            hasArrows
             height={bounds.width * 0.5625}
             badge={object.badge}
             slides={object.imagesCollection.items.map((image) => ({
@@ -106,13 +108,11 @@ export function ObjectLayout({
         </Banners>
       </SectionComponent>
 
-      <SectionComponent backgroundColor={color}>
-        <FormModule
-          form={form}
-          text={object.formTitle}
-          backgroundColor={color}
-        />
-      </SectionComponent>
+      <FormModule
+        form={form}
+        text={object.formTitle}
+        backgroundColor={color}
+      />
     </>
   );
 }

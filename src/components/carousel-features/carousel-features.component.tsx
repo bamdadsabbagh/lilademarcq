@@ -50,7 +50,7 @@ export function CarouselFeaturesComponent({
     <>
       <Features>
         <Caption hasFooter={hasFooter}>
-          <CaptionBody active={!loading}>
+          <CaptionBody active={!loading && caption?.length > 0}>
             {caption}
           </CaptionBody>
         </Caption>

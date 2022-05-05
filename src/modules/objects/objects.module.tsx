@@ -2,11 +2,11 @@ import React, {ReactElement} from 'react';
 import {SectionComponent} from '../../components/section/section.component';
 import {TitleComponent} from '../../components/title/title.component';
 import {capitalizeFirstLetter} from '../../utils/capitalize-first-letter';
-import {LDObject} from '../../utils/fetch-object';
 import {GridComponent} from '../../components/grid/grid.component';
+import {LDMyObject} from '../../utils/fetch-my-objects';
 
 interface ObjectsModuleProps {
-  objects: LDObject[];
+  objects: LDMyObject[];
   noPaddingTop?: boolean;
 }
 

@@ -1,11 +1,9 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {theme} from '../app/styles/theme';
 import {FormModule} from '../modules/form/form.module';
-import {SectionComponent} from '../components/section/section.component';
 import {ObjectsModule} from '../modules/objects/objects.module';
 import {AwardsModule} from '../modules/awards/awards.module';
-import {fetchObjects} from '../utils/fetch-objects';
+import {fetchMyObjects, LDMyObject} from '../utils/fetch-my-objects';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {fetchAwards, LDAward} from '../utils/fetch-awards';
 import {fetchValues, LDValues} from '../utils/fetch-values';
@@ -17,11 +15,11 @@ import {
   ImageTextColsComponent,
 } from '../components/image-text-cols/image-text-cols.component';
 import {ContactModule} from '../modules/contact/contact.module';
-import {LDObject} from '../utils/fetch-object';
+import {LDImage} from '../utils/fetch-object';
 import {fetchForm, FormInterface} from '../utils/fetch-form';
 import {HeroComponent} from '../components/hero/hero.component';
 import {ValuesModule} from '../modules/values/values.module';
-import {fetchHero, RichImage} from '../utils/fetch-hero';
+import {fetchHero} from '../utils/fetch-hero';
 import {FooterComponent} from '../components/footer/footer.component';
 import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
 import {CarouselComponent} from '../components/carousel/carousel.component';
@@ -29,12 +27,12 @@ import {CarouselComponent} from '../components/carousel/carousel.component';
 interface IndexProps {
   about: LDSection;
   awards: LDAward[];
-  objects: LDObject[];
+  objects: LDMyObject[];
   contact: LDSection;
   socials: LDSocial[];
   values: LDValues;
   form: FormInterface;
-  hero: RichImage[];
+  hero: LDImage[];
   catalog: CatalogInterface;
 }
 
@@ -58,11 +56,11 @@ export default function Index({
           <CarouselComponent
             isFooter
             slides={hero.map((image) => ({
-              src: image.image.url,
-              alt: image.shortDescription,
-              width: image.image.width,
-              height: image.image.height,
-              base64: image.image.base64,
+              src: image.url,
+              alt: image.description,
+              width: image.width,
+              height: image.height,
+              base64: image.base64,
             }))}
           />
         </HeroComponent>
@@ -79,9 +77,7 @@ export default function Index({
 
         <AwardsModule awards={awards} />
 
-        <SectionComponent backgroundColor={theme.green}>
-          <FormModule form={form} />
-        </SectionComponent>
+        <FormModule form={form} />
 
         <ContactModule contact={contact} />
       </DefaultLayout>
@@ -92,7 +88,7 @@ export default function Index({
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>> {
-  const objects = await fetchObjects();
+  const objects = await fetchMyObjects();
   const about = await fetchSection('about');
   const contact = await fetchSection('contact');
   const awards = await fetchAwards();

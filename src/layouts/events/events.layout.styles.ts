@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {PulseAnimation} from '../../app/styles/animations';
 
 interface ImageProps {
   hasLink: boolean;
@@ -10,6 +9,7 @@ export const ImageWrapper = styled.div<ImageProps>`
   height: 100%;
 
   display: flex;
+  justify-content: center;
 
   img:hover {
     transform: scale(1.05);
@@ -23,8 +23,4 @@ export const WaitingBody = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2em;
-`;
-
-export const LinkContainer = styled.div`
-  ${PulseAnimation};
 `;

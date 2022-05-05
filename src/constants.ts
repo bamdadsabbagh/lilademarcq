@@ -30,7 +30,7 @@ export const MENU = [
   {name: 'poésie', slug: '/poesie'},
   {name: 'événements', slug: '/evenements'},
   {name: 'presse', slug: '/presse'},
-  {name: 'livre d\'or', slug: '/livre-d-or'},
+  {name: 'contact', slug: '/contact'},
 ];
 
 export const META: MetaComponentProps = {

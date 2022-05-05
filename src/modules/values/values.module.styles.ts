@@ -40,8 +40,13 @@ export const Bubbles = styled.div`
     transform: none;
 
     & > :nth-child(2),
+    & > :nth-child(5) {
+      visibility: visible;
+    }
+  }
+
+  ${mediaQueries.above.tablet} {
     & > :nth-child(3),
-    & > :nth-child(5),
     & > :nth-child(6) {
       visibility: visible;
     }

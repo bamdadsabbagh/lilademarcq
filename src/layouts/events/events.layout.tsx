@@ -9,7 +9,7 @@ import {
 } from '../../components/title/title.component';
 import {theme} from '../../app/styles/theme';
 import {GridComponent} from '../../components/grid/grid.component';
-import {ImageWrapper, LinkContainer, WaitingBody} from './events.layout.styles';
+import {ImageWrapper, WaitingBody} from './events.layout.styles';
 import {useEventsLayout} from './hooks/use-events-layout';
 
 interface EventsLayoutProps {
@@ -52,12 +52,6 @@ export function EventsLayout({
 
       {hasHeadline && (
         <>
-          <SectionComponent>
-            <TitleComponent align={AlignKeys.center} noPaddingBottom>
-              {events.headlineTitle.toUpperCase()}
-            </TitleComponent>
-          </SectionComponent>
-
           <HeroComponent>
             <ImageWrapper
               hasLink={hasHeadlineLink}
@@ -78,44 +72,29 @@ export function EventsLayout({
             </ImageWrapper>
           </HeroComponent>
 
-          <SectionComponent>
-            <TitleComponent
-              noPaddingBottom
-              align={AlignKeys.center}
-              color={theme.black}
-            >
-              <LinkContainer>
-                <button
-                  type="button"
-                  onClick={() => handleClick(events.headlineEvent)}
-                >
-                  {events.headlineButtonText}
-                </button>
-              </LinkContainer>
-            </TitleComponent>
-          </SectionComponent>
-
-          {hasPastEvents && (
-            <SectionComponent backgroundColor={theme.salmonLight}>
-              <TitleComponent align={AlignKeys.right}>
-                {events.pastEventsTitle}
-              </TitleComponent>
-
-              <GridComponent
-                tiles={events.pastEventsCollection.items.map((event) => ({
-                  image: {
-                    src: event.thumbnail.url,
-                    blur: event.thumbnail.base64,
-                  },
-                  onClick: () => handleClick(event),
-                  h3: event.eventName,
-                  span: event.title,
-                  h4: event.eventLocation,
-                }))}
-              />
-            </SectionComponent>
-          )}
+          <SectionComponent />
         </>
+      )}
+
+      {hasPastEvents && (
+        <SectionComponent backgroundColor={theme.salmonLight}>
+          <TitleComponent align={AlignKeys.right}>
+            {events.pastEventsTitle}
+          </TitleComponent>
+
+          <GridComponent
+            tiles={events.pastEventsCollection.items.map((event) => ({
+              image: {
+                src: event.thumbnail.url,
+                blur: event.thumbnail.base64,
+              },
+              onClick: () => handleClick(event),
+              h3: event.eventName,
+              span: event.title,
+              h4: event.eventLocation,
+            }))}
+          />
+        </SectionComponent>
       )}
     </>
   );
