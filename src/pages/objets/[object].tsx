@@ -4,7 +4,7 @@ import {
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next';
-import {fetchObjects} from '../../utils/fetch-objects';
+import {fetchMyObjects} from '../../utils/fetch-my-objects';
 import {fetchObject, LDObject} from '../../utils/fetch-object';
 import {REVALIDATE} from '../../constants';
 import {ObjectLayout} from '../../layouts/object/object.layout';
@@ -86,7 +86,7 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const objects = await fetchObjects();
+  const objects = await fetchMyObjects();
 
   const paths = objects.map((object) => ({
     params: {

@@ -1,19 +1,6 @@
-import {ObjectResponse} from './fetch-object';
 import {fetchContentful} from './fetch-contentful';
 import {MENU} from '../constants';
-
-const queryObjects = `
-query {
-  objectCollection {
-    items {
-      slug
-      position
-      name
-      menuName
-    }
-  }
-}
-`;
+import {MyObjectsResponse, queryMyObjects} from './fetch-my-objects';
 
 export interface MenuDropdownInterface {
   slug: string;
@@ -31,14 +18,11 @@ interface MenuItem {
 export type MenuInterface = MenuItem[]
 
 export async function fetchMenu(): Promise<MenuInterface> {
-  const response = await fetchContentful<ObjectResponse>(queryObjects);
+  const response = await fetchContentful<MyObjectsResponse>(queryMyObjects);
 
   const menu = MENU;
   const objectMenu = menu.find((item) => item.slug === '/objets');
-  const objectsDropdown = response.objectCollection.items;
-
-  // sort
-  objectsDropdown.sort((a, b) => a.position - b.position);
+  const objectsDropdown = response.myObjectsCollection.items[0].objectsCollection.items;
 
   // append base route
   objectsDropdown.forEach((item) => {

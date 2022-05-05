@@ -3,7 +3,7 @@ import {GetStaticPropsResult} from 'next';
 import {FormModule} from '../modules/form/form.module';
 import {ObjectsModule} from '../modules/objects/objects.module';
 import {AwardsModule} from '../modules/awards/awards.module';
-import {fetchObjects} from '../utils/fetch-objects';
+import {fetchMyObjects, LDMyObject} from '../utils/fetch-my-objects';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {fetchAwards, LDAward} from '../utils/fetch-awards';
 import {fetchValues, LDValues} from '../utils/fetch-values';
@@ -15,7 +15,7 @@ import {
   ImageTextColsComponent,
 } from '../components/image-text-cols/image-text-cols.component';
 import {ContactModule} from '../modules/contact/contact.module';
-import {LDImage, LDObject} from '../utils/fetch-object';
+import {LDImage} from '../utils/fetch-object';
 import {fetchForm, FormInterface} from '../utils/fetch-form';
 import {HeroComponent} from '../components/hero/hero.component';
 import {ValuesModule} from '../modules/values/values.module';
@@ -27,7 +27,7 @@ import {CarouselComponent} from '../components/carousel/carousel.component';
 interface IndexProps {
   about: LDSection;
   awards: LDAward[];
-  objects: LDObject[];
+  objects: LDMyObject[];
   contact: LDSection;
   socials: LDSocial[];
   values: LDValues;
@@ -88,7 +88,7 @@ export default function Index({
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>> {
-  const objects = await fetchObjects();
+  const objects = await fetchMyObjects();
   const about = await fetchSection('about');
   const contact = await fetchSection('contact');
   const awards = await fetchAwards();

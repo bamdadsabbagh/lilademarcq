@@ -19,7 +19,7 @@ query {
 }
 `;
 
-const queryNewObjects = `
+export const queryMyObjects = `
 query {
   myObjectsCollection {
     items {
@@ -28,6 +28,7 @@ query {
           slug
           name
           description
+          menuName
         }
       }
     }
@@ -46,14 +47,14 @@ interface ObjectThumbnailResponse {
   };
 }
 
-interface LDMyObject {
+export interface LDMyObject {
   slug: string;
   name: string;
   description: string;
   thumbnail: LDImage;
 }
 
-interface MyObjectsResponse {
+export interface MyObjectsResponse {
   myObjectsCollection: {
     items: Array<{
       objectsCollection: {
@@ -63,8 +64,8 @@ interface MyObjectsResponse {
   };
 }
 
-export async function fetchObjects(): Promise<LDMyObject[]> {
-  const response: MyObjectsResponse = await fetchContentful(queryNewObjects);
+export async function fetchMyObjects(): Promise<LDMyObject[]> {
+  const response: MyObjectsResponse = await fetchContentful(queryMyObjects);
   const objects = response.myObjectsCollection.items[0].objectsCollection.items;
 
   await Promise.all(objects.map(async (object) => {

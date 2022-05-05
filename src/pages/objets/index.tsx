@@ -1,8 +1,7 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
 import {ObjectsModule} from '../../modules/objects/objects.module';
-import {fetchObjects} from '../../utils/fetch-objects';
-import {LDObject} from '../../utils/fetch-object';
+import {fetchMyObjects, LDMyObject} from '../../utils/fetch-my-objects';
 import {REVALIDATE} from '../../constants';
 import {MetaComponent} from '../../components/meta/meta.component';
 import {DefaultLayout} from '../../layouts/default/default.layout';
@@ -11,7 +10,7 @@ import {fetchSocials, LDSocial} from '../../utils/fetch-socials';
 import {FooterComponent} from '../../components/footer/footer.component';
 
 interface ObjetsProps {
-  objects: LDObject[];
+  objects: LDMyObject[];
   catalog: CatalogInterface;
   socials: LDSocial[];
 }
@@ -35,7 +34,7 @@ export default function Objets({
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<ObjetsProps>> {
-  const objects = await fetchObjects();
+  const objects = await fetchMyObjects();
   const catalog = await fetchCatalog();
   const socials = await fetchSocials();
 
