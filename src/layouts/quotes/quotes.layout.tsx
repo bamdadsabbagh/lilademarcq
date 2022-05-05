@@ -66,6 +66,16 @@ export function QuotesLayout({
           </Quote>
         );
       })}
+
+      <SectionComponent backgroundColor={theme.green}>
+        <TitleComponent
+          color={theme.white}
+          align={AlignKeys.center}
+          noPaddingBottom
+        >
+          {myQuotes.bannerText}
+        </TitleComponent>
+      </SectionComponent>
     </>
   );
 }
