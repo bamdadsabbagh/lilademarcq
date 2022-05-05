@@ -94,28 +94,28 @@ export function EventsLayout({
               </LinkContainer>
             </TitleComponent>
           </SectionComponent>
-
-          {hasPastEvents && (
-            <SectionComponent backgroundColor={theme.salmonLight}>
-              <TitleComponent align={AlignKeys.right}>
-                {events.pastEventsTitle}
-              </TitleComponent>
-
-              <GridComponent
-                tiles={events.pastEventsCollection.items.map((event) => ({
-                  image: {
-                    src: event.thumbnail.url,
-                    blur: event.thumbnail.base64,
-                  },
-                  onClick: () => handleClick(event),
-                  h3: event.eventName,
-                  span: event.title,
-                  h4: event.eventLocation,
-                }))}
-              />
-            </SectionComponent>
-          )}
         </>
+      )}
+
+      {hasPastEvents && (
+        <SectionComponent backgroundColor={theme.salmonLight}>
+          <TitleComponent align={AlignKeys.right}>
+            {events.pastEventsTitle}
+          </TitleComponent>
+
+          <GridComponent
+            tiles={events.pastEventsCollection.items.map((event) => ({
+              image: {
+                src: event.thumbnail.url,
+                blur: event.thumbnail.base64,
+              },
+              onClick: () => handleClick(event),
+              h3: event.eventName,
+              span: event.title,
+              h4: event.eventLocation,
+            }))}
+          />
+        </SectionComponent>
       )}
     </>
   );
