@@ -54,6 +54,7 @@ export function GridComponent({
                     layout="responsive"
                     width="100%"
                     height="100%"
+                    objectFit="cover"
                   />
                 </GridImage>
                 <HoverBoxComponent tile={tile} />
@@ -76,6 +77,7 @@ export function GridComponent({
                     layout="responsive"
                     width="100%"
                     height="100%"
+                    objectFit="cover"
                   />
                 </GridImage>
                 <HoverBoxComponent tile={tile} />
