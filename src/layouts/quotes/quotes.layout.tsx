@@ -18,7 +18,9 @@ import {
   Quote,
   QuoteClose,
   QuoteOpen,
+  Quotes,
 } from './quotes.layout.styles';
+import {LinkComponent} from '../../components/link/link.component';
 
 interface QuotesLayoutProps {
   myQuotes: LDMyQuotes;
@@ -37,38 +39,45 @@ export function QuotesLayout({
         </TitleComponent>
       </SectionComponent>
 
-      {myQuotes.quotesCollection.items.map((quote, key) => {
-        const index = key;
-        const color = key % 2 ? theme.white : theme.salmonLight;
+      <SectionComponent
+        backgroundColor={theme.salmonLight}
+        fullWidthMobile
+      >
+        <Quotes>
+          {myQuotes.quotesCollection.items.map((quote, key) => {
+            const index = key;
+            const color = key % 2 ? theme.white : theme.salmonLight;
 
-        return (
-          <Quote key={index} backgroundColor={color}>
-            <QuoteOpen>
-              <Image
-                src="/icons/quote-open.svg"
-                height={quoteSize.current}
-                width={quoteSize.current}
-              />
-            </QuoteOpen>
+            return (
+              <Quote key={index} backgroundColor={color}>
+                <QuoteOpen>
+                  <Image
+                    src="/icons/quote-open.svg"
+                    height={quoteSize.current}
+                    width={quoteSize.current}
+                  />
+                </QuoteOpen>
 
-            <Body>
-              {documentToReactComponents(quote.body.json)}
-            </Body>
+                <Body>
+                  {documentToReactComponents(quote.body.json)}
+                </Body>
 
-            <Author>
-              {`${quote.author}, ${uncapitalizeFirstLetter(quote.job)}`}
-            </Author>
+                <Author>
+                  {`${quote.author}, ${uncapitalizeFirstLetter(quote.job)}`}
+                </Author>
 
-            <QuoteClose>
-              <Image
-                src="/icons/quote-close.svg"
-                height={quoteSize.current}
-                width={quoteSize.current}
-              />
-            </QuoteClose>
-          </Quote>
-        );
-      })}
+                <QuoteClose>
+                  <Image
+                    src="/icons/quote-close.svg"
+                    height={quoteSize.current}
+                    width={quoteSize.current}
+                  />
+                </QuoteClose>
+              </Quote>
+            );
+          })}
+        </Quotes>
+      </SectionComponent>
 
       <SectionComponent backgroundColor={theme.green}>
         <TitleComponent
@@ -86,9 +95,11 @@ export function QuotesLayout({
                 placeholder="blur"
               />
             </BannerImage>
-            <BannerText>
-              {myQuotes.bannerText}
-            </BannerText>
+            <LinkComponent href={myQuotes.bannerLink}>
+              <BannerText>
+                {myQuotes.bannerText}
+              </BannerText>
+            </LinkComponent>
           </Banner>
         </TitleComponent>
       </SectionComponent>

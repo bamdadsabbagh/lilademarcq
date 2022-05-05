@@ -11,6 +11,7 @@ interface LDQuote {
 export interface LDMyQuotes {
   title: string;
   bannerText: string;
+  bannerLink: string;
   bannerImage: {
     url: string;
     width: number;
@@ -28,6 +29,7 @@ query {
     items {
       title
       bannerText
+      bannerLink
       bannerImage {
         url
         width
