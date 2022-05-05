@@ -66,5 +66,9 @@ export async function fetchQuotes(): Promise<LDMyQuotes> {
 
   myQuotes.bannerImage.base64 = await getPlaceholder(myQuotes.bannerImage.url);
 
+  myQuotes.quotesCollection.items = myQuotes.quotesCollection.items
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 4);
+
   return myQuotes;
 }
