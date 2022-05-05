@@ -5,6 +5,7 @@ import {FooterComponent} from '../components/footer/footer.component';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 import {fetchPress, LDMyPress} from '../utils/fetch-press';
 import {PressLayout} from '../layouts/press/press.layout';
+import {REVALIDATE} from '../constants';
 
 interface Props {
   catalog: CatalogInterface;
@@ -36,5 +37,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
       socials,
       press,
     },
+    revalidate: REVALIDATE,
   };
 }

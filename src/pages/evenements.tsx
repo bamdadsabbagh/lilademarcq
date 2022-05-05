@@ -5,6 +5,7 @@ import {FooterComponent} from '../components/footer/footer.component';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 import {fetchEvents, LDMyEvents} from '../utils/fetch-events';
 import {EventsLayout} from '../layouts/events/events.layout';
+import {REVALIDATE} from '../constants';
 
 interface Props {
   catalog: CatalogInterface;
@@ -36,5 +37,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
       socials,
       events,
     },
+    revalidate: REVALIDATE,
   };
 }

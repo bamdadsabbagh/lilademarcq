@@ -5,6 +5,7 @@ import {fetchPoetry, PoetryInterface} from '../utils/fetch-poetry';
 import {FooterComponent} from '../components/footer/footer.component';
 import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
+import {REVALIDATE} from '../constants';
 
 interface PoesieProps {
   poetry: PoetryInterface;
@@ -36,5 +37,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<PoesieProps
       catalog,
       socials,
     },
+    revalidate: REVALIDATE,
   };
 }
