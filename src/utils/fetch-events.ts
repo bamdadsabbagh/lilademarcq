@@ -50,11 +50,12 @@ query {
         width
         height
       }
-      title
-      pastEventsTitle
+      headlineTitle
+      headlineButtonText
       headlineEvent {
         ...EventParts
       }
+      pastEventsTitle
       pastEventsCollection {
         items {
           ...EventParts
@@ -102,7 +103,8 @@ export interface LDMyEvents {
     height: number;
     base64: string;
   };
-  title?: string;
+  headlineTitle?: string;
+  headlineButtonText?: string;
   headlineEvent?: LDEvent;
   pastEventsTitle?: string;
   pastEventsCollection?: {

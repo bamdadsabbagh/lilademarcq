@@ -9,7 +9,7 @@ export enum AlignKeys {
 }
 
 export interface ContentTitleComponentProps {
-  children: string;
+  children: string | ReactElement;
   align?: AlignKeys;
   color?: string;
   paddingLeft?: boolean;

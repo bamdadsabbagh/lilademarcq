@@ -1,18 +1,6 @@
-/* eslint-disable import/no-unresolved */
-
-import React, {
-  ReactElement,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-// @ts-expect-error: TS2307
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
-import 'photoswipe/dist/photoswipe.css';
-import styled from 'styled-components';
+import React, {ReactElement} from 'react';
 import Image from 'next/image';
-import {LDEvent, LDMyEvents} from '../../utils/fetch-events';
+import {LDMyEvents} from '../../utils/fetch-events';
 import {HeroComponent} from '../../components/hero/hero.component';
 import {SectionComponent} from '../../components/section/section.component';
 import {
@@ -28,30 +16,8 @@ import {
 import {
   GridTileHoverBoxFull,
 } from '../../components/grid/grid.component.styles';
-
-interface ImageProps {
-  hasLink: boolean;
-}
-
-const ImageWrapper = styled.div<ImageProps>`
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-
-  img:hover {
-    transform: scale(1.05);
-    cursor: ${({hasLink}) => (hasLink ? 'pointer' : 'default')};
-  }
-`;
-
-const WaitingBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2em;
-`;
+import {ImageWrapper, LinkContainer, WaitingBody} from './events.layout.styles';
+import {useEventsLayout} from './hooks/use-events-layout';
 
 interface EventsLayoutProps {
   events: LDMyEvents;
@@ -60,39 +26,12 @@ interface EventsLayoutProps {
 export function EventsLayout({
   events,
 }: EventsLayoutProps): ReactElement {
-  const hasHeadline = useMemo(() => typeof events?.headlineEvent?.banner?.url !== 'undefined'
-    && typeof events?.headlineEvent?.title !== 'undefined', [events?.headlineEvent]);
-  const hasHeadlineLink = useMemo(() => typeof events?.headlineEvent?.eventLink !== 'undefined', [events?.headlineEvent?.eventLink]);
-  const hasPastEvents = useMemo(() => events.pastEventsCollection.items.length > 0, [events.pastEventsCollection.items]);
-
-  const [lightboxData, setLightboxData] = useState([]);
-
-  useEffect(() => {
-    const l = new PhotoSwipeLightbox({
-      dataSource: lightboxData,
-      showHideAnimationType: 'none',
-      pswpModule: () => import('photoswipe'),
-    });
-
-    if (lightboxData.length === 0) {
-      return;
-    }
-
-    l.init();
-    l.loadAndOpen();
-
-    return () => {
-      l.destroy();
-    };
-  }, [lightboxData]);
-
-  const handleClick = useCallback((event: LDEvent) => {
-    setLightboxData(event.picturesCollection.items.map((e) => ({
-      src: e.url,
-      width: e.width,
-      height: e.height,
-    })));
-  }, []);
+  const {
+    hasHeadline,
+    hasHeadlineLink,
+    hasPastEvents,
+    handleClick,
+  } = useEventsLayout(events);
 
   return (
     <>
@@ -122,7 +61,7 @@ export function EventsLayout({
         <>
           <SectionComponent>
             <TitleComponent align={AlignKeys.center} noPaddingBottom>
-              {events.title.toUpperCase()}
+              {events.headlineTitle.toUpperCase()}
             </TitleComponent>
           </SectionComponent>
 
@@ -138,12 +77,30 @@ export function EventsLayout({
               <Image
                 src={events.headlineEvent.banner.url}
                 blurDataURL={events.headlineEvent.banner.base64}
-                objectFit="cover"
                 width={events.headlineEvent.banner.width}
                 height={events.headlineEvent.banner.width * 0.5625}
+                objectFit="cover"
+                placeholder="blur"
               />
             </ImageWrapper>
           </HeroComponent>
+
+          <SectionComponent>
+            <TitleComponent
+              noPaddingBottom
+              align={AlignKeys.center}
+              color={theme.black}
+            >
+              <LinkContainer>
+                <button
+                  type="button"
+                  onClick={() => handleClick(events.headlineEvent)}
+                >
+                  {events.headlineButtonText}
+                </button>
+              </LinkContainer>
+            </TitleComponent>
+          </SectionComponent>
 
           {hasPastEvents && (
             <SectionComponent backgroundColor={theme.salmonLight}>
