@@ -8,6 +8,7 @@ import 'photoswipe/dist/photoswipe.css';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import {CAROUSEL_INTERVAL} from '../../../constants';
 import {CarouselComponentProps, CarouselImage} from '../carousel.component';
+import {buildNextImageUrl} from '../../../utils/build-next-image-url';
 
 interface UseCarouselComponent {
   viewportRef: React.Ref<HTMLDivElement>;
@@ -129,7 +130,7 @@ export function useCarouselComponent({
 
     const lightbox = new PhotoSwipeLightbox({
       dataSource: slides.map((image) => ({
-        src: image.src,
+        src: buildNextImageUrl(image.src),
         width: image.width,
         height: image.height,
       })),

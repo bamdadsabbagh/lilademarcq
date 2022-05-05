@@ -9,13 +9,6 @@ import {
 } from '../../components/title/title.component';
 import {theme} from '../../app/styles/theme';
 import {GridComponent} from '../../components/grid/grid.component';
-import {
-  ImageContainer,
-  Tile,
-} from '../../modules/objects/objects.module.styles';
-import {
-  GridTileHoverBoxFull,
-} from '../../components/grid/grid.component.styles';
 import {ImageWrapper, LinkContainer, WaitingBody} from './events.layout.styles';
 import {useEventsLayout} from './hooks/use-events-layout';
 
@@ -108,34 +101,18 @@ export function EventsLayout({
                 {events.pastEventsTitle}
               </TitleComponent>
 
-              <GridComponent>
-                {events.pastEventsCollection.items.map((event) => (
-                  <button
-                    type="button"
-                    key={event.slug}
-                    onClick={() => handleClick(event)}
-                  >
-                    <Tile>
-                      <ImageContainer>
-                        <Image
-                          src={event.thumbnail.url}
-                          alt={event.title}
-                          blurDataURL={event.thumbnail.base64}
-                          placeholder="blur"
-                          layout="responsive"
-                          width="100%"
-                          height="100%"
-                        />
-                      </ImageContainer>
-                      <GridTileHoverBoxFull>
-                        <h3>{event.eventName}</h3>
-                        <span>{event.title}</span>
-                        <h4>{event.eventLocation}</h4>
-                      </GridTileHoverBoxFull>
-                    </Tile>
-                  </button>
-                ))}
-              </GridComponent>
+              <GridComponent
+                tiles={events.pastEventsCollection.items.map((event) => ({
+                  image: {
+                    src: event.thumbnail.url,
+                    blur: event.thumbnail.base64,
+                  },
+                  onClick: () => handleClick(event),
+                  h3: event.eventName,
+                  span: event.title,
+                  h4: event.eventLocation,
+                }))}
+              />
             </SectionComponent>
           )}
         </>

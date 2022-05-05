@@ -335,7 +335,7 @@ export const Submit = styled.button<SubmitProps>`
 
   font-weight: 600;
 
-  border: 2px solid white;
+  border: 2px solid ${({theme}) => theme.white};
   border-radius: 10px;
 
   text-transform: uppercase;
@@ -376,6 +376,7 @@ export const Submit = styled.button<SubmitProps>`
 
     inset: 0;
     top: ${({disabled}) => !disabled && '100%'};
+    border-radius: 5px;
 
     z-index: -1;
     ${simpleTransition('top')};

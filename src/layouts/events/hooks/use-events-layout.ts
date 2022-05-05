@@ -1,6 +1,7 @@
 import {useCallback, useMemo, useState} from 'react';
 import {LDEvent, LDMyEvents} from '../../../utils/fetch-events';
 import {useLightbox} from '../../../hooks/use-lightbox';
+import {buildNextImageUrl} from '../../../utils/build-next-image-url';
 
 interface UseEventsLayout {
   hasHeadline: boolean;
@@ -20,8 +21,9 @@ export function useEventsLayout(events: LDMyEvents): UseEventsLayout {
   useLightbox(lightboxData);
 
   const handleClick = useCallback((event: LDEvent) => {
-    setLightboxData(event.picturesCollection.items.map((e) => ({
-      src: e.url,
+    const pictures = event.picturesCollection.items;
+    setLightboxData(pictures.map((e) => ({
+      src: buildNextImageUrl(e.url),
       width: e.width,
       height: e.height,
     })));
