@@ -8,7 +8,6 @@ query {
   objectCollection(where: { slug: "${slug}" }, limit: 1) {
     items {
       slug
-      position
       color
       name
       description
@@ -76,7 +75,6 @@ export interface LDBadge {
 
 export interface LDObject {
   slug: string;
-  position: number;
   color: string;
   name: string;
   menuName?: string;

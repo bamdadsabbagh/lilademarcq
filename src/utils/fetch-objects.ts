@@ -1,19 +1,13 @@
 import {fetchContentful} from './fetch-contentful';
-import {LDObject, ObjectResponse} from './fetch-object';
 import {IMAGE_SETTINGS} from '../constants';
 import {getPlaceholder} from './get-placeholder';
+import {LDImage} from './fetch-object';
 
-const queryObjects = `
+const queryObjectThumbnail = (slug: string) => `
 query {
-  objectCollection {
+  objectCollection (where: {slug: "${slug}"}, limit: 1) {
     items {
-      slug
-      position
-      name
-      description
       thumbnail {
-        width
-        height
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
@@ -25,15 +19,62 @@ query {
 }
 `;
 
-export async function fetchObjects(): Promise<LDObject[]> {
-  const response: ObjectResponse = await fetchContentful(queryObjects);
-  const objects = response.objectCollection.items;
+const queryNewObjects = `
+query {
+  myObjectsCollection {
+    items {
+      objectsCollection {
+        items {
+          slug
+          name
+          description
+        }
+      }
+    }
+  }
+}
+`;
+
+interface ObjectThumbnailResponse {
+  objectCollection: {
+    items: Array<{
+      thumbnail: {
+        url: string;
+        base64: string;
+      };
+    }>;
+  };
+}
+
+interface LDMyObject {
+  slug: string;
+  name: string;
+  description: string;
+  thumbnail: LDImage;
+}
+
+interface MyObjectsResponse {
+  myObjectsCollection: {
+    items: Array<{
+      objectsCollection: {
+        items: LDMyObject[];
+      };
+    }>;
+  };
+}
+
+export async function fetchObjects(): Promise<LDMyObject[]> {
+  const response: MyObjectsResponse = await fetchContentful(queryNewObjects);
+  const objects = response.myObjectsCollection.items[0].objectsCollection.items;
 
   await Promise.all(objects.map(async (object) => {
-    object.thumbnail.base64 = await getPlaceholder(object.thumbnail.url);
-  }));
+    const thumbnailResponse: ObjectThumbnailResponse = await fetchContentful(queryObjectThumbnail(object.slug));
+    const thumbnail = thumbnailResponse.objectCollection.items[0].thumbnail;
 
-  objects.sort((a, b) => a.position - b.position);
+    object.thumbnail = {} as LDImage;
+    object.thumbnail.url = thumbnail.url;
+    object.thumbnail.base64 = await getPlaceholder(thumbnail.url);
+  }));
 
   return objects;
 }
