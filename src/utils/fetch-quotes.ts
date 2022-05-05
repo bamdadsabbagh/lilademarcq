@@ -1,6 +1,7 @@
 import {LDText} from './fetch-object';
 import {fetchContentful} from './fetch-contentful';
 import {getPlaceholder} from './get-placeholder';
+import {IMAGE_SETTINGS} from '../constants';
 
 interface LDQuote {
   author: string;
@@ -31,7 +32,11 @@ query {
       bannerText
       bannerLink
       bannerImage {
-        url
+        url(transform: { 
+          format: WEBP,
+          quality: ${IMAGE_SETTINGS.quality},
+          width: ${IMAGE_SETTINGS.highRes},
+        })
         width
         height
       }

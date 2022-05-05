@@ -1,5 +1,6 @@
 import {fetchContentful} from './fetch-contentful';
 import {getPlaceholder} from './get-placeholder';
+import {IMAGE_SETTINGS} from '../constants';
 
 export interface LDPress {
   title: string;
@@ -51,13 +52,21 @@ fragment PressParts on Press {
   category
   description
   thumbnail {
-    url
+    url(transform: { 
+      format: WEBP,
+      quality: ${IMAGE_SETTINGS.quality},
+      width: ${IMAGE_SETTINGS.lowRes},
+    })
     width
     height
   }
   imagesCollection {
     items {
-      url
+      url(transform: { 
+        format: WEBP,
+        quality: ${IMAGE_SETTINGS.quality},
+        width: ${IMAGE_SETTINGS.highRes},
+      })
       width
       height
     }

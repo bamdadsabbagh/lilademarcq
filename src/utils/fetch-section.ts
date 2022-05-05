@@ -15,7 +15,7 @@ query {
         url(transform: { 
           format: WEBP,
           quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.lowRes},
+          width: ${IMAGE_SETTINGS.highRes},
         })
       }
       body {
@@ -39,7 +39,14 @@ interface SectionResponse {
   };
 }
 
-export async function fetchSection(slug: string): Promise<LDSection> {
+type SectionSlug =
+  'contact'
+  | 'about'
+  | 'cgv'
+  | 'privacy-policy'
+  | 'mentiones-legales'
+
+export async function fetchSection(slug: SectionSlug): Promise<LDSection> {
   const response: SectionResponse = await fetchContentful(querySection(slug));
 
   const section = response.sectionCollection.items[0];
