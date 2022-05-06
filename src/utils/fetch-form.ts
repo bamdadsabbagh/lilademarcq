@@ -6,6 +6,7 @@ query {
     items {
       topicTitle
       topic
+      messageTitle
       name
       firstName
       address
@@ -27,6 +28,7 @@ query {
 export interface FormInterface {
   topicTitle: string;
   topic: string[];
+  messageTitle: string;
   name: string;
   firstName: string;
   address: string;

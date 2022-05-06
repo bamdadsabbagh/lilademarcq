@@ -10,6 +10,7 @@ import {
   LabelCity,
   LabelContact,
   LabelFirstName,
+  LabelMessage,
   LabelName,
   LabelPhone,
   LabelPostcode,
@@ -19,6 +20,7 @@ import {
   SubscribeCheckbox,
   SubscribeContainer,
   SubscribeText,
+  TextArea,
   Title,
   TitleContainer,
 } from './form.module.styles';
@@ -31,6 +33,7 @@ import {SectionComponent} from '../../components/section/section.component';
 
 enum FormInputKeys {
   topic = 'topic',
+  message = 'message',
   name = 'name',
   firstName = 'firstName',
   address = 'address',
@@ -106,6 +109,15 @@ export function FormModule({
                 ))}
               </Select>
             </LabelTopic>
+
+            <LabelMessage htmlFor={cleanSlug(form.messageTitle)}>
+              {form.messageTitle}
+              <TextArea
+                name={FormInputKeys.message}
+                maxLength={500}
+                disabled={wasSubmitted}
+              />
+            </LabelMessage>
 
             <LabelName htmlFor={cleanSlug(form.name)}>
               {form.name}

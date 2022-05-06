@@ -5,6 +5,11 @@ export function buildFormHtml(form: FormDataInterface): string {
       <h3>Objet</h3>
       <p>${form.topic}</p>
       
+      ${form?.message && (`
+        <h3>Message</h3>
+        <p>${form.message}</p>
+      `)}
+      
       <h3>Abonnement newsletter</h3>
       <p>${form.subscribe ? 'Oui' : 'Non'}</p>
 
