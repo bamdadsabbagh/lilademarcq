@@ -1,3 +1,10 @@
+## [1.35.9](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.8...v1.35.9) (2022-05-06)
+
+
+### Bug Fixes
+
+* **SEO:** Add `twitter:image` ([4f88353](https://github.com/bamdadsabbagh/lilademarcq/commit/4f8835385ecb7a1762245e03b3213fe402b75b7a))
+
 ## [1.35.8](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.7...v1.35.8) (2022-05-06)
 
 
