@@ -1,3 +1,10 @@
+## [1.35.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.1...v1.35.2) (2022-05-06)
+
+
+### Bug Fixes
+
+* Various fixes and improvements ([91dbd92](https://github.com/bamdadsabbagh/lilademarcq/commit/91dbd9209f0d09b36c3362f7dd58965d2b2bd2a7))
+
 ## [1.35.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.0...v1.35.1) (2022-05-06)
 
 
