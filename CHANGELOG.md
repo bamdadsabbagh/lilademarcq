@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.34.2...v1.35.0) (2022-05-06)
+
+
+### Features
+
+* Add Google Analytics ([83d9c25](https://github.com/bamdadsabbagh/lilademarcq/commit/83d9c2577f18203c1420d846acc64862e8b10a87))
+
 ## [1.34.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.34.1...v1.34.2) (2022-05-06)
 
 
