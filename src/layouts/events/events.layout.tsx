@@ -45,6 +45,7 @@ export function EventsLayout({
                 objectFit="cover"
                 width={events.waitingImage.width}
                 height={events.waitingImage.height}
+                placeholder="blur"
               />
             </WaitingBody>
           </SectionComponent>
