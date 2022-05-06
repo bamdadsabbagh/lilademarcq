@@ -279,7 +279,7 @@ interface SubscribeCheckboxProps {
   hover: boolean;
 }
 
-export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
+export const SubscribeWrapper = styled.label<SubscribeCheckboxProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,6 +290,9 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
   position: relative;
   user-select: none;
 
+`;
+
+export const SubscribeCheckbox = styled.span<SubscribeCheckboxProps>`
   transform: scale(0.6);
 
   ${mediaQueries.above.tablet} {
@@ -297,7 +300,6 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
   }
 
   input {
-    position: absolute;
     opacity: 0;
   }
 
@@ -318,17 +320,15 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
     background: white;
   }
 
-  span:after {
-    content: '';
-    position: absolute;
-    display: none;
-  }
-
   input:checked ~ span:after {
     display: block;
   }
 
   span:after {
+    content: '';
+    position: absolute;
+    display: none;
+
     left: 6px;
     top: 2px;
     width: 9px;
@@ -343,14 +343,14 @@ interface SubscribeTextProps {
   disabled: boolean;
 }
 
-export const SubscribeText = styled.span<SubscribeTextProps>`
+export const SubscribeLabel = styled.label<SubscribeTextProps>`
   cursor: ${({disabled}) => disabled ? 'default' : 'pointer'};
 
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   font-size: 0.667em;
 
   ${mediaQueries.above.tablet} {
-    margin-left: 3rem;
+    margin-left: 2rem;
     font-size: 0.75em;
   }
 `;

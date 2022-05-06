@@ -19,7 +19,8 @@ import {
   Submit,
   SubscribeCheckbox,
   SubscribeContainer,
-  SubscribeText,
+  SubscribeLabel,
+  SubscribeWrapper,
   TextArea,
   Title,
   TitleContainer,
@@ -41,6 +42,7 @@ enum FormInputKeys {
   city = 'city',
   email = 'email',
   phone = 'phone',
+  subscribe = 'subscribe',
 }
 
 interface FormModuleProps {
@@ -186,29 +188,34 @@ export function FormModule({
             </LabelPhone>
 
             <SubscribeContainer>
-              <SubscribeCheckbox
+              <SubscribeWrapper
                 backgroundColor={backgroundColor}
                 hover={isSubscribeHover}
                 onMouseEnter={() => !wasSubmitted && hoverSubscribe(true)}
                 onMouseLeave={() => hoverSubscribe(false)}
               >
-                <input
-                  type="checkbox"
-                  checked={isSubscribe}
-                  onClick={() => toggleSubscribe()}
-                  readOnly
+                <SubscribeCheckbox
+                  backgroundColor={backgroundColor}
+                  hover={isSubscribeHover}
+                >
+                  <input
+                    name={FormInputKeys.subscribe}
+                    type="checkbox"
+                    checked={isSubscribe}
+                    onClick={() => toggleSubscribe()}
+                    readOnly
+                    disabled={wasSubmitted}
+                  />
+                  <span />
+                </SubscribeCheckbox>
+                <SubscribeLabel
+                  htmlFor={FormInputKeys.subscribe}
+                  onClick={() => !wasSubmitted && toggleSubscribe()}
                   disabled={wasSubmitted}
-                />
-                <span />
-              </SubscribeCheckbox>
-              <SubscribeText
-                onClick={() => !wasSubmitted && toggleSubscribe()}
-                onMouseEnter={() => !wasSubmitted && hoverSubscribe(true)}
-                onMouseLeave={() => hoverSubscribe(false)}
-                disabled={wasSubmitted}
-              >{
-                form.subscription
-              }</SubscribeText>
+                >
+                  {form.subscription}
+                </SubscribeLabel>
+              </SubscribeWrapper>
             </SubscribeContainer>
 
             <Submit
