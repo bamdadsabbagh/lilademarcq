@@ -27,6 +27,13 @@ export function useCarouselComponent({
   slides,
   isLightbox,
 }: CarouselComponentProps): UseCarouselComponent {
+  const [slidesInView, setSlidesInView] = useState([]);
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [lightbox, setLightbox] = useState();
+
   const autoplay = useRef(
     Autoplay(
       {
@@ -37,17 +44,12 @@ export function useCarouselComponent({
     ),
   );
 
-  const getMediaByIndex = useCallback((index: number) => slides[index % slides.length], [slides]);
+  const getMediaByIndex = useCallback((i: number) => slides[i % slides.length], [slides]);
 
   const [viewportRef, embla] = useEmblaCarousel({
     skipSnaps: false,
     loop: true,
   }, [autoplay.current]);
-
-  const [slidesInView, setSlidesInView] = useState([]);
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [index, setIndex] = useState(0);
 
   const scrollPrev = useCallback(() => {
     if (!embla) {
@@ -64,8 +66,6 @@ export function useCarouselComponent({
     embla.scrollNext();
     autoplay.current.reset();
   }, [embla]);
-
-  const [isScrolling, setIsScrolling] = useState(false);
 
   const onScroll = useCallback(() => {
     setIsScrolling(true);
@@ -89,14 +89,14 @@ export function useCarouselComponent({
       return;
     }
 
-    setSlidesInView((slidesInView) => {
-      if (slidesInView.length === embla.slideNodes().length) {
+    setSlidesInView((sIV) => {
+      if (sIV.length === embla.slideNodes().length) {
         embla.off('select', findSlidesInView);
       }
       const inView = embla
         .slidesInView(true)
-        .filter((index) => slidesInView.indexOf(index) === -1);
-      return slidesInView.concat(inView);
+        .filter((i) => sIV.indexOf(i) === -1);
+      return sIV.concat(inView);
     });
   }, [embla, setSlidesInView]);
 
@@ -121,14 +121,12 @@ export function useCarouselComponent({
     };
   }, [embla, onSelect, findSlidesInView, onScroll, onSettle]);
 
-  const [lightbox, setLightbox] = useState();
-
   useEffect(() => {
     if (!isLightbox) {
       return;
     }
 
-    const lightbox = new PhotoSwipeLightbox({
+    const l = new PhotoSwipeLightbox({
       dataSource: slides.map((image) => ({
         src: buildNextImageUrl(image.src),
         width: image.width,
@@ -138,21 +136,21 @@ export function useCarouselComponent({
       pswpModule: () => import('photoswipe'),
     });
 
-    lightbox.init();
+    l.init();
 
-    lightbox.on('beforeOpen', () => {
+    l.on('beforeOpen', () => {
       autoplay.current.stop();
     });
 
-    lightbox.on('close', () => {
-      embla.scrollTo(lightbox.pswp.currSlide.index);
+    l.on('close', () => {
+      embla.scrollTo(l.pswp.currSlide.index);
       autoplay.current.play();
     });
 
-    setLightbox(lightbox);
+    setLightbox(l);
 
     return () => {
-      lightbox.destroy();
+      l.destroy();
       setLightbox(null);
     };
   }, [isLightbox, slides, embla]);

@@ -65,9 +65,9 @@ export function CarouselComponent({
         isCursor={canZoom}
       >
         <EmblaContainer>
-          {slides.map((_, index) => {
-            const image = getMediaByIndex(index);
-            const inView = slidesInView.indexOf(index) > -1;
+          {slides.map((_, key) => {
+            const image = getMediaByIndex(key);
+            const inView = slidesInView.indexOf(key) > -1;
 
             return (
               <EmblaSlide key={image.src} hasLoaded={inView}>

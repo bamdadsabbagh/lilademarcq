@@ -34,6 +34,16 @@ export function PressLayout({
     })));
   }, []);
 
+  const adaptPressToTile = useCallback((press: LDPress) => ({
+    image: {
+      src: press.thumbnail.url,
+      blur: press.thumbnail.base64,
+    },
+    onClick: () => handleClick(press),
+    h3: press.title,
+    span: press.description,
+  }), [handleClick]);
+
   return (
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>
@@ -56,15 +66,7 @@ export function PressLayout({
           </TitleComponent>
           <GridComponent
             isFull
-            tiles={myPress.paperNewsCollection.items.map((press) => ({
-              image: {
-                src: press.thumbnail.url,
-                blur: press.thumbnail.base64,
-              },
-              onClick: () => handleClick(press),
-              h3: press.title,
-              span: press.description,
-            }))}
+            tiles={myPress.paperNewsCollection.items.map(adaptPressToTile)}
           />
         </SectionComponent>
       )}
@@ -76,15 +78,7 @@ export function PressLayout({
           </TitleComponent>
           <GridComponent
             isFull
-            tiles={myPress.digitalNewsCollection.items.map((press) => ({
-              image: {
-                src: press.thumbnail.url,
-                blur: press.thumbnail.base64,
-              },
-              onClick: () => handleClick(press),
-              h3: press.title,
-              span: press.description,
-            }))}
+            tiles={myPress.digitalNewsCollection.items.map(adaptPressToTile)}
           />
         </SectionComponent>
       )}

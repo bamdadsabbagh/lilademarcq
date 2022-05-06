@@ -7,7 +7,7 @@ import {
   SlideLeftOpenAnimation,
 } from '../../../../app/styles/animations';
 
-const size = '4rem';
+const burgerSize = '4rem';
 const lineSize = 22;
 const t = 0.3;
 
@@ -29,7 +29,7 @@ export const BurgerContainer = styled.div`
   }
 
   font-size: 1.5em;
-  height: ${size};
+  height: ${burgerSize};
   min-width: 80%;
   overflow-x: clip;
 
@@ -56,7 +56,7 @@ export const BNavTitle = styled.span<BNavTitleProps>`
   z-index: 1;
 
   width: auto;
-  height: ${size};
+  height: ${burgerSize};
 
   left: 51pt;
 
@@ -76,8 +76,8 @@ export const Circle = styled.div<BurgerProps>`
   z-index: 3;
   pointer-events: auto;
 
-  width: ${size};
-  height: ${size};
+  width: ${burgerSize};
+  height: ${burgerSize};
 
   position: absolute;
 
