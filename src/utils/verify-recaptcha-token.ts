@@ -12,7 +12,7 @@ export async function verifyRecaptchaToken(token: string, secret: string): Promi
     );
 
     const response = await request.json();
-    return response.success;
+    return response.success && response.score > 0.5;
   } catch {
     return false;
   }
