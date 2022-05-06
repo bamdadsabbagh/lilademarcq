@@ -1,3 +1,11 @@
+## [1.35.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.3...v1.35.4) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Events:** Use optional chaining for incoming data ([4ee540f](https://github.com/bamdadsabbagh/lilademarcq/commit/4ee540fa65ac81e1f94662cdd6a776816317f75f))
+* **Press:** Use full hoverbox sizes ([5c172b2](https://github.com/bamdadsabbagh/lilademarcq/commit/5c172b25104721dae5816f4a77b34c11aea3453f))
+
 ## [1.35.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.2...v1.35.3) (2022-05-06)
 
 
