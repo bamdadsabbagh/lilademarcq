@@ -28,6 +28,10 @@ export function SeoComponent({
       {image && (
         <NextSeo
           openGraph={{images: [{url: `${image}`}]}}
+          additionalMetaTags={[{
+            name: 'twitter:image',
+            content: image,
+          }]}
         />
       )}
     </>
