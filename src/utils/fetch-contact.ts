@@ -18,7 +18,7 @@ export interface LDMyContact {
 
 const queryContact = `
 query {
-  myQuotesCollection (limit: 1) {
+  myContactCollection (limit: 1) {
     items {
       title
       formTitle
@@ -37,14 +37,14 @@ query {
 `;
 
 interface ContactResponse {
-  myQuotesCollection: {
+  myContactCollection: {
     items: LDMyContact[];
   };
 }
 
 export async function fetchContact(): Promise<LDMyContact> {
   const response: ContactResponse = await fetchContentful(queryContact);
-  const myQuotes = response.myQuotesCollection.items[0];
+  const myQuotes = response.myContactCollection.items[0];
 
   myQuotes.quotesCollection.items = shuffle(myQuotes.quotesCollection.items)
     .slice(0, 4);
