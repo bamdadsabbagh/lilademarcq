@@ -1,3 +1,11 @@
+## [1.35.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.4...v1.35.5) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Events:** Add blur to waiting image ([a0cd8b8](https://github.com/bamdadsabbagh/lilademarcq/commit/a0cd8b8452abac5ec05f145e8d33e551fa80c170))
+* **Events:** Add full hover boxes to past events ([2812314](https://github.com/bamdadsabbagh/lilademarcq/commit/28123149e8ae6446adc5b8a9b8c4c86fde3ce746))
+
 ## [1.35.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.3...v1.35.4) (2022-05-06)
 
 
