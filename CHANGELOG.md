@@ -1,3 +1,10 @@
+## [1.35.8](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.7...v1.35.8) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Header:** Fix code smells ([a52da8e](https://github.com/bamdadsabbagh/lilademarcq/commit/a52da8ec8083feb7b1743ebd96b1e868c0cd6da8))
+
 ## [1.35.7](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.6...v1.35.7) (2022-05-06)
 
 
