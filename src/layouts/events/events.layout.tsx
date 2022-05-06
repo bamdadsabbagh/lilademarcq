@@ -40,6 +40,7 @@ export function EventsLayout({
               </span>
               <Image
                 src={events.waitingImage.url}
+                alt={events.waitingTitle}
                 blurDataURL={events.waitingImage.base64}
                 objectFit="cover"
                 width={events.waitingImage.width}
@@ -63,6 +64,7 @@ export function EventsLayout({
             >
               <Image
                 src={events.headlineEvent.banner.url}
+                alt={events.headlineEvent.title}
                 blurDataURL={events.headlineEvent.banner.base64}
                 width={events.headlineEvent.banner.width}
                 height={events.headlineEvent.banner.width * 0.5625}
