@@ -1,3 +1,10 @@
+## [1.35.6](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.5...v1.35.6) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Nav:** Try to prevent border overlapping ([0d6fe1a](https://github.com/bamdadsabbagh/lilademarcq/commit/0d6fe1ad3a4f4281dcd618d7873eac0e2e947a95))
+
 ## [1.35.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.4...v1.35.5) (2022-05-06)
 
 
