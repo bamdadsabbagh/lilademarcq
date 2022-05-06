@@ -1,3 +1,10 @@
+## [1.34.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.34.0...v1.34.1) (2022-05-06)
+
+
+### Bug Fixes
+
+* **SEO:** Make all SEO queried fields optional + Add SEO data to home page ([7c1f56b](https://github.com/bamdadsabbagh/lilademarcq/commit/7c1f56b03e7e6a3c9d04867977dfaed989377932))
+
 # [1.34.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.33.1...v1.34.0) (2022-05-06)
 
 
