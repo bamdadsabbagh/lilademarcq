@@ -1,3 +1,10 @@
+## [1.34.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.34.1...v1.34.2) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Events:** Add alt description to headline event image ([1f4f9bf](https://github.com/bamdadsabbagh/lilademarcq/commit/1f4f9bf7955492794e31cd6d8cb13c6a35e5315c))
+
 ## [1.34.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.34.0...v1.34.1) (2022-05-06)
 
 
