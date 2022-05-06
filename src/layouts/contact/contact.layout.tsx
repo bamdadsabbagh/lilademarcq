@@ -1,7 +1,7 @@
 import React, {ReactElement, useRef} from 'react';
 import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
-import {LDMyContact} from '../../utils/fetch-contact';
+import {LDMyContact} from '../../utils/fetch-my-contact';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,

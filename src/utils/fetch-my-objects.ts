@@ -1,18 +1,15 @@
 import {fetchContentful} from './fetch-contentful';
-import {IMAGE_SETTINGS} from '../constants';
 import {getPlaceholder} from './get-placeholder';
 import {LDImage} from './fetch-object';
+import {queryImageUrl} from './query-image-url';
+import {querySeo} from './query-seo';
 
 const queryObjectThumbnail = (slug: string) => `
 query {
   objectCollection (where: {slug: "${slug}"}, limit: 1) {
     items {
       thumbnail {
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.lowRes},
-        })
+        ${queryImageUrl(false)}
       }
     }
   }
@@ -23,6 +20,7 @@ export const queryMyObjects = `
 query {
   myObjectsCollection {
     items {
+      ${querySeo}
       objectsCollection {
         items {
           slug
@@ -47,26 +45,30 @@ interface ObjectThumbnailResponse {
   };
 }
 
-export interface LDMyObject {
-  slug: string;
-  name: string;
-  description: string;
-  thumbnail: LDImage;
+export interface LDMyObjects {
+  seoTitle: string;
+  seoDescription: string;
+  seoImage?: LDImage;
+  objectsCollection: {
+    items: {
+      slug: string;
+      name: string;
+      description: string;
+      thumbnail: LDImage;
+    }[];
+  };
 }
 
 export interface MyObjectsResponse {
   myObjectsCollection: {
-    items: Array<{
-      objectsCollection: {
-        items: LDMyObject[];
-      };
-    }>;
+    items: LDMyObjects;
   };
 }
 
-export async function fetchMyObjects(): Promise<LDMyObject[]> {
+export async function fetchMyObjects(): Promise<LDMyObjects> {
   const response: MyObjectsResponse = await fetchContentful(queryMyObjects);
-  const objects = response.myObjectsCollection.items[0].objectsCollection.items;
+  const myObjects = response.myObjectsCollection.items[0];
+  const objects = myObjects.objectsCollection.items;
 
   await Promise.all(objects.map(async (object) => {
     const thumbnailResponse: ObjectThumbnailResponse = await fetchContentful(queryObjectThumbnail(object.slug));
@@ -77,5 +79,5 @@ export async function fetchMyObjects(): Promise<LDMyObject[]> {
     object.thumbnail.base64 = await getPlaceholder(thumbnail.url);
   }));
 
-  return objects;
+  return myObjects;
 }

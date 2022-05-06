@@ -30,6 +30,7 @@
     "jotai": "^1.6.5",
     "just-shuffle": "^4.0.1",
     "next": "^12.1.6",
+    "next-seo": "^5.4.0",
     "photoswipe": "^5.2.4",
     "plaiceholder": "^2.3.0",
     "react": "^18.1.0",

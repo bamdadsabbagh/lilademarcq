@@ -1,6 +1,8 @@
 import {fetchContentful} from './fetch-contentful';
 import {getPlaceholder} from './get-placeholder';
-import {IMAGE_SETTINGS} from '../constants';
+import {LDImage} from './fetch-object';
+import {queryImageUrl} from './query-image-url';
+import {querySeo} from './query-seo';
 
 export interface LDPress {
   title: string;
@@ -22,6 +24,9 @@ export interface LDPress {
 }
 
 interface LDMyPressHeadline {
+  seoTitle: string;
+  seoDescription: string;
+  seoImage?: LDImage;
   headlineTitle: string;
   headlineBody?: string;
   headlineReleaseText: string;
@@ -52,21 +57,13 @@ fragment PressParts on Press {
   category
   description
   thumbnail {
-    url(transform: { 
-      format: WEBP,
-      quality: ${IMAGE_SETTINGS.quality},
-      width: ${IMAGE_SETTINGS.lowRes},
-    })
+    ${queryImageUrl(false)}
     width
     height
   }
   imagesCollection {
     items {
-      url(transform: { 
-        format: WEBP,
-        quality: ${IMAGE_SETTINGS.quality},
-        width: ${IMAGE_SETTINGS.highRes},
-      })
+      ${queryImageUrl()}
       width
       height
     }
@@ -84,6 +81,7 @@ const queryPressHeadline = `
 query {
   myPressCollection(limit: 1) {
     items {
+      ${querySeo}
       headlineTitle
       headlineBody
       headlineReleaseText
@@ -137,7 +135,7 @@ query {
 }
 `;
 
-export async function fetchPress(): Promise<LDMyPress> {
+export async function fetchMyPress(): Promise<LDMyPress> {
   const pressResponse: PressHeadlineResponse = await fetchContentful(queryPressHeadline);
   const press = pressResponse.myPressCollection.items[0];
 

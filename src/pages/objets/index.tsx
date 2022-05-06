@@ -1,31 +1,36 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
 import {ObjectsModule} from '../../modules/objects/objects.module';
-import {fetchMyObjects, LDMyObject} from '../../utils/fetch-my-objects';
+import {fetchMyObjects, LDMyObjects} from '../../utils/fetch-my-objects';
 import {REVALIDATE} from '../../constants';
-import {MetaComponent} from '../../components/meta/meta.component';
 import {DefaultLayout} from '../../layouts/default/default.layout';
-import {CatalogInterface, fetchCatalog} from '../../utils/fetch-catalog';
+import {fetchCatalog, LDCatalog} from '../../utils/fetch-catalog';
 import {fetchSocials, LDSocial} from '../../utils/fetch-socials';
 import {FooterComponent} from '../../components/footer/footer.component';
+import {SeoComponent} from '../../components/seo/seo.component';
 
 interface ObjetsProps {
-  objects: LDMyObject[];
-  catalog: CatalogInterface;
+  myObjects: LDMyObjects;
+  catalog: LDCatalog;
   socials: LDSocial[];
 }
 
 export default function Objets({
-  objects,
+  myObjects,
   catalog,
   socials,
 }: ObjetsProps): ReactElement {
   return (
     <>
-      <MetaComponent description="Objets" />
+      <SeoComponent
+        canonical="objets"
+        title={myObjects.seoTitle}
+        description={myObjects.seoDescription}
+        image={myObjects.seoImage?.url}
+      />
 
-      <DefaultLayout customMeta>
-        <ObjectsModule objects={objects} noPaddingTop />
+      <DefaultLayout>
+        <ObjectsModule myObjects={myObjects} noPaddingTop />
       </DefaultLayout>
 
       <FooterComponent catalog={catalog} socials={socials} />
@@ -34,13 +39,13 @@ export default function Objets({
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<ObjetsProps>> {
-  const objects = await fetchMyObjects();
+  const myObjects = await fetchMyObjects();
   const catalog = await fetchCatalog();
   const socials = await fetchSocials();
 
   return {
     props: {
-      objects,
+      myObjects,
       catalog,
       socials,
     },

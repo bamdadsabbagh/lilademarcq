@@ -3,23 +3,48 @@ import {GetStaticPropsResult} from 'next';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
 import {SectionLayout} from '../layouts/section/section.layout';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
+import {fetchSocials, LDSocial} from '../utils/fetch-socials';
+import {FooterComponent} from '../components/footer/footer.component';
+import {SeoComponent} from '../components/seo/seo.component';
 
 interface CgvProps {
-  section: LDSection;
+  cgvSection: LDSection;
+  catalog: LDCatalog;
+  socials: LDSocial[];
 }
 
 export default function Cgv({
-  section,
+  cgvSection,
+  catalog,
+  socials,
 }: CgvProps): ReactElement {
-  return <SectionLayout section={section} />;
+  return (
+    <>
+      <SeoComponent
+        canonical="cgv"
+        title={cgvSection.seoTitle}
+        description={cgvSection.seoDescription}
+        image={cgvSection.seoImage?.url}
+      />
+
+      <SectionLayout section={cgvSection} />
+
+      <FooterComponent catalog={catalog} socials={socials} />
+    </>
+  );
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<CgvProps>> {
-  const section = await fetchSection('cgv');
+  const cgvSection = await fetchSection('cgv');
+  const catalog = await fetchCatalog();
+  const socials = await fetchSocials();
 
   return {
     props: {
-      section,
+      cgvSection,
+      catalog,
+      socials,
     },
     revalidate: REVALIDATE,
   };

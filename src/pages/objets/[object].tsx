@@ -8,19 +8,18 @@ import {fetchMyObjects} from '../../utils/fetch-my-objects';
 import {fetchObject, LDObject} from '../../utils/fetch-object';
 import {REVALIDATE} from '../../constants';
 import {ObjectLayout} from '../../layouts/object/object.layout';
-import {MetaComponent} from '../../components/meta/meta.component';
 import {DefaultLayout} from '../../layouts/default/default.layout';
-import {getObjectFullName} from '../../utils/get-object-full-name';
 import {getRedirectionObject} from '../../utils/get-redirection-object';
 import {fetchForm, FormInterface} from '../../utils/fetch-form';
-import {CatalogInterface, fetchCatalog} from '../../utils/fetch-catalog';
+import {fetchCatalog, LDCatalog} from '../../utils/fetch-catalog';
 import {fetchSocials, LDSocial} from '../../utils/fetch-socials';
 import {FooterComponent} from '../../components/footer/footer.component';
+import {SeoComponent} from '../../components/seo/seo.component';
 
 export interface ObjectProps {
   object: LDObject;
   form: FormInterface;
-  catalog: CatalogInterface;
+  catalog: LDCatalog;
   socials: LDSocial[];
 }
 
@@ -43,12 +42,14 @@ export default function Object({
 
   return (
     <>
-      <MetaComponent
-        description={getObjectFullName(object)}
-        image={object.thumbnail.url}
+      <SeoComponent
+        canonical={`objets/${object.slug}`}
+        title={object.seoTitle}
+        description={object.seoDescription}
+        image={object.seoImage?.url}
       />
 
-      <DefaultLayout customMeta>
+      <DefaultLayout>
         <ObjectLayout object={object} form={form} />
       </DefaultLayout>
 
@@ -86,9 +87,9 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const objects = await fetchMyObjects();
+  const myObjects = await fetchMyObjects();
 
-  const paths = objects.map((object) => ({
+  const paths = myObjects.objectsCollection.items.map((object) => ({
     params: {
       object: object.slug,
     },

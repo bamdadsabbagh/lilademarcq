@@ -1,6 +1,7 @@
 import shuffle from 'just-shuffle';
-import {LDText} from './fetch-object';
+import {LDImage, LDText} from './fetch-object';
 import {fetchContentful} from './fetch-contentful';
+import {querySeo} from './query-seo';
 
 interface LDQuote {
   author: string;
@@ -9,6 +10,9 @@ interface LDQuote {
 }
 
 export interface LDMyContact {
+  seoTitle: string;
+  seoDescription: string;
+  seoImage?: LDImage;
   title: string;
   formTitle: string;
   quotesCollection: {
@@ -20,6 +24,7 @@ const queryContact = `
 query {
   myContactCollection (limit: 1) {
     items {
+      ${querySeo}
       title
       formTitle
       quotesCollection {
@@ -42,7 +47,7 @@ interface ContactResponse {
   };
 }
 
-export async function fetchContact(): Promise<LDMyContact> {
+export async function fetchMyContact(): Promise<LDMyContact> {
   const response: ContactResponse = await fetchContentful(queryContact);
   const myQuotes = response.myContactCollection.items[0];
 

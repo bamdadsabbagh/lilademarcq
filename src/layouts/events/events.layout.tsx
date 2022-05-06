@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import Image from 'next/image';
-import {LDMyEvents} from '../../utils/fetch-events';
+import {LDMyEvents} from '../../utils/fetch-my-events';
 import {HeroComponent} from '../../components/hero/hero.component';
 import {SectionComponent} from '../../components/section/section.component';
 import {

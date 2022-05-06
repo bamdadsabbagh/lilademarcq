@@ -1,22 +1,20 @@
 import {fetchContentful} from './fetch-contentful';
 import {LDImage, LDText} from './fetch-object';
-import {IMAGE_SETTINGS} from '../constants';
 import {getPlaceholder} from './get-placeholder';
+import {queryImageUrl} from './query-image-url';
+import {querySeo} from './query-seo';
 
 const querySection = (slug: string) => `
 query {
   sectionCollection(where: { slug: "${slug}" }, limit: 1) {
     items {
+      ${querySeo}
       slug
       title
       image {
         width
         height
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.highRes},
-        })
+        ${queryImageUrl()}
       }
       body {
         json
@@ -27,6 +25,9 @@ query {
 `;
 
 export interface LDSection {
+  seoTitle: string;
+  seoDescription: string;
+  seoImage?: LDImage;
   slug: string;
   title: string;
   image?: LDImage;
