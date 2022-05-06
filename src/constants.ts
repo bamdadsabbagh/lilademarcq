@@ -1,6 +1,6 @@
 import {DefaultSeoProps} from 'next-seo';
 
-export const GA_TRACKING_ID = '';
+export const GA_TRACKING_ID = 'G-1G14PS0HS7';
 export const RECAPTCHA_SITE_KEY = '6LcKWLQfAAAAACgMB8kM3DVcmVQhgjrlGMXj6rbP';
 
 export const HEADER_HEIGHT = '12rem';
