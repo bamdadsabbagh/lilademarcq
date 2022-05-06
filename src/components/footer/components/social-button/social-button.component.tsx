@@ -11,12 +11,14 @@ import {IMAGE_SETTINGS} from '../../../../constants';
 
 interface SocialButtonComponentProps {
   href: string;
+  alt: string;
   front: IconifyIcon;
   back: LDImage;
 }
 
 export function SocialButtonComponent({
   href,
+  alt,
   front,
   back,
 }: SocialButtonComponentProps): ReactElement {
@@ -26,6 +28,7 @@ export function SocialButtonComponent({
     <>
       <a
         href={href}
+        aria-label={alt}
         target="_blank"
         rel="noreferrer"
         onMouseEnter={() => setIsHover(true)}
@@ -38,6 +41,7 @@ export function SocialButtonComponent({
           <Back visible={isHover}>
             <StyledImage
               src={back.url}
+              alt={alt}
               objectFit="cover"
               width={IMAGE_SETTINGS.lowRes}
               height={IMAGE_SETTINGS.lowRes}

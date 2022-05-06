@@ -39,6 +39,7 @@ export function FooterComponent({
           <SocialButtonComponent
             key={social.slug}
             href={social.link}
+            alt={social.slug}
             front={getSocialIcon(social.slug)}
             back={social.image}
           />
