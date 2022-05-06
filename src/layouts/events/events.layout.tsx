@@ -89,6 +89,7 @@ export function EventsLayout({
           </TitleComponent>
 
           <GridComponent
+            isFull
             tiles={events.pastEventsCollection.items.map((event) => ({
               image: {
                 src: event.thumbnail.url,
