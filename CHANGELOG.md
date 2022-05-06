@@ -1,3 +1,24 @@
+# [1.34.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.33.1...v1.34.0) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Contact:** Add empty alts for quote images ([a0fd059](https://github.com/bamdadsabbagh/lilademarcq/commit/a0fd059061e06a58575d08c2385a9a80253ef0c6))
+* **Footer:** Improve social links accessibility ([5324569](https://github.com/bamdadsabbagh/lilademarcq/commit/5324569aae38b83fd13e3c65139c361f1ec0c8f4))
+* **Form:** Improve subscribe checkbox accessibility ([6e824d3](https://github.com/bamdadsabbagh/lilademarcq/commit/6e824d3a8b56e4219683852728b0d6100dc4f5bb))
+* **Form:** Use captcha score ([0715427](https://github.com/bamdadsabbagh/lilademarcq/commit/071542711f5dd76036957dd7431ec96ff1c16a46))
+
+
+### Features
+
+* Add SEO component with dynamic data for all pages ([9e8f7d1](https://github.com/bamdadsabbagh/lilademarcq/commit/9e8f7d1b926f146ef25c6e9d71e4feb6c88a85fd))
+* **Form:** Add new textarea for user message ([9ae1632](https://github.com/bamdadsabbagh/lilademarcq/commit/9ae1632a8a58b1fa16bdfe376270c091438c5e8e))
+
+
+### Performance Improvements
+
+* Better code re-use ([7b994a0](https://github.com/bamdadsabbagh/lilademarcq/commit/7b994a0acdba83db5f9b5c1075cbf0371d448212))
+
 ## [1.33.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.33.0...v1.33.1) (2022-05-06)
 
 
