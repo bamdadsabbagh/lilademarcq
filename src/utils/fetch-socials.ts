@@ -1,7 +1,7 @@
 import {fetchContentful} from './fetch-contentful';
-import {IMAGE_SETTINGS} from '../constants';
 import {LDImage} from './fetch-object';
 import {getPlaceholder} from './get-placeholder';
+import {queryImageUrl} from './query-image-url';
 
 const querySocial = `
 query {
@@ -13,11 +13,7 @@ query {
       image {
         width
         height
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.lowRes},
-        })
+        ${queryImageUrl(false)}
       }
     }
   }

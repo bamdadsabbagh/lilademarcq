@@ -1,6 +1,6 @@
 import {fetchContentful} from './fetch-contentful';
 import {getPlaceholder} from './get-placeholder';
-import {IMAGE_SETTINGS} from '../constants';
+import {queryImageUrl} from './query-image-url';
 
 const queryValues = `
 query {
@@ -9,11 +9,7 @@ query {
       image {
         width
         height
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.highRes},
-        })
+        ${queryImageUrl()}
       }
       topLeftTitle
       topLeftBody
