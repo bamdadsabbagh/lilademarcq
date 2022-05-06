@@ -2,7 +2,7 @@ import styled, {css} from 'styled-components';
 import {simpleTransition} from '../../../../app/styles/transitions';
 import {mediaQueries} from '../../../../app/styles/breakpoints';
 
-const GridTileHoverBox = styled.div`
+const HoverBox = styled.div`
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
   bottom: 0;
@@ -26,7 +26,7 @@ const HoverBoxHalfSizes = (
   }
 `;
 
-export const GridTileHoverBoxHalf = styled(GridTileHoverBox)`
+export const HoverBoxHalf = styled(HoverBox)`
   padding: 0.4em 0.5em;
 
   > h3 {
@@ -83,7 +83,7 @@ const HoverBoxFullSizes = (
   }
 `;
 
-export const GridTileHoverBoxFull = styled(GridTileHoverBoxHalf)`
+export const HoverBoxFull = styled(HoverBoxHalf)`
   height: 100%;
   transform: translateY(105%);
 
