@@ -1,6 +1,6 @@
 import {
   Dispatch,
-  Ref,
+  RefObject,
   SetStateAction,
   useCallback,
   useEffect,
@@ -17,9 +17,11 @@ interface UseBurgerComponent {
   setIsHover: Dispatch<SetStateAction<boolean>>;
   isScrollTop: boolean;
   getCurrentRoute: () => string;
-  containerRef: Ref<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement>;
   ref: (element: HTMLOrSVGElement) => void;
   height: number;
+  firstRender: boolean;
+  setFirstRender: Dispatch<SetStateAction<boolean>>;
 }
 
 export function useBurgerComponent(menu: MenuInterface): UseBurgerComponent {
@@ -60,6 +62,23 @@ export function useBurgerComponent(menu: MenuInterface): UseBurgerComponent {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [handleClickOutside]);
 
+  const [firstRender, setFirstRender] = useState(true);
+
+  useEffect(() => {
+    const listener = () => {
+      const style = window.getComputedStyle(containerRef.current);
+      if (style.display === 'none') {
+        setFirstRender(true);
+      }
+    };
+
+    window.addEventListener('resize', listener);
+
+    return () => {
+      window.removeEventListener('resize', listener);
+    };
+  }, [containerRef]);
+
   return {
     isHover,
     setIsHover,
@@ -69,5 +88,7 @@ export function useBurgerComponent(menu: MenuInterface): UseBurgerComponent {
     ref,
     height,
     router,
+    firstRender,
+    setFirstRender,
   };
 }

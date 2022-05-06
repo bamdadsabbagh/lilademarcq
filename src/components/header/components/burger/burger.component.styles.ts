@@ -1,9 +1,10 @@
 import styled, {css} from 'styled-components';
+import {Dispatch, SetStateAction} from 'react';
 import {mediaQueries} from '../../../../app/styles/breakpoints';
 import {simpleTransition} from '../../../../app/styles/transitions';
 import {
-  SlideLeftAnimation,
-  SlideLeftOutAnimation,
+  SlideLeftCloseAnimation,
+  SlideLeftOpenAnimation,
 } from '../../../../app/styles/animations';
 
 const size = '4rem';
@@ -127,18 +128,29 @@ export const ExpandableLine = styled(Line)<ExpandableLineProps>`
 `;
 
 interface BNavProps {
-  close: boolean;
+  open: boolean;
+  firstRender: boolean;
+  setFirstRender: Dispatch<SetStateAction<boolean>>;
 }
 
+const BNavOpen = css<BNavProps>`
+  ${SlideLeftOpenAnimation(t * 2, t)};
+  animation-delay: ${({open}) => getTime(open).menu}s;
+`;
+
 const BNavClose = css`
-  ${SlideLeftOutAnimation(t * 2, t * 0.3)};
+  ${SlideLeftCloseAnimation(t * 2, t * 0.3)};
+`;
+
+const BNavFirstRender = css`
+  opacity: 0;
 `;
 
 export const BNav = styled.nav<BNavProps>`
   margin-left: calc(3rem - 4px);
 
   position: absolute;
-  pointer-events: ${({close}) => close ? 'none' : 'auto'};
+  pointer-events: ${({open}) => !open ? 'none' : 'auto'};
 
   background: ${({theme}) => theme.white};
 
@@ -156,10 +168,20 @@ export const BNav = styled.nav<BNavProps>`
 
   z-index: 1;
 
-  ${SlideLeftAnimation(t * 2, t)};
-  animation-delay: ${({close}) => getTime(close).menu}s;
+  ${({open, firstRender, setFirstRender}) => {
+    if (!open && firstRender) {
+      return BNavFirstRender;
+    }
 
-  ${({close}) => close && BNavClose};
+    if (open) {
+      if (firstRender) {
+        setFirstRender(false);
+      }
+      return BNavOpen;
+    } else {
+      return BNavClose;
+    }
+  }};
 
   top: -1px;
 `;

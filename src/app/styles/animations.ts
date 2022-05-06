@@ -1,36 +1,7 @@
 import {css, FlattenSimpleInterpolation, keyframes} from 'styled-components';
-import {tf, to} from './timers';
+import {tf} from './timers';
 
-export const SoftSlideInKeyframes = keyframes`
-  0% {
-    transform: translateY(-1%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-`;
-
-const SlideInKeyframes = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(-10%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-export const SlideInAnimation = (start = 0.9, finish = 0.4): FlattenSimpleInterpolation => css`
-  animation: ${SlideInKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
-  opacity: 0;
-`;
-
-export const DelayAnimation = (i: number): FlattenSimpleInterpolation => css`
-  animation-delay: calc((0.7s + ${to}s * ${i}) * ${tf});
-`;
-
-const SlideLeftKeyframes = keyframes`
+const SlideLeftOpenKeyframes = keyframes`
   0% {
     opacity: 0;
     transform: translateX(-10%);
@@ -41,12 +12,11 @@ const SlideLeftKeyframes = keyframes`
   }
 `;
 
-export const SlideLeftAnimation = (start = 0.9, finish = 0.4): FlattenSimpleInterpolation => css`
-  animation: ${SlideLeftKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
-  opacity: 0;
+export const SlideLeftOpenAnimation = (start = 0.9, finish = 0.4): FlattenSimpleInterpolation => css`
+  animation: ${SlideLeftOpenKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
 `;
 
-const SlideLeftOutKeyframes = keyframes`
+const SlideLeftCloseKeyframes = keyframes`
   0% {
     opacity: 1;
     transform: translateX(0);
@@ -57,36 +27,8 @@ const SlideLeftOutKeyframes = keyframes`
   }
 `;
 
-export const SlideLeftOutAnimation = (start = 0.9, finish = 0.4): FlattenSimpleInterpolation => css`
-  animation: ${SlideLeftOutKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
-  opacity: 1;
-`;
-
-const FadeInKeyframes = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(1%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-`;
-
-export const FadeInAnimation = (start = 1, finish = 1.1): FlattenSimpleInterpolation => css`
-  animation: ${FadeInKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
-  opacity: 0;
-`;
-
-export const NavSpacerAnimationKeyframes = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(-10%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0.1em);
-  }
+export const SlideLeftCloseAnimation = (start = 0.9, finish = 0.4): FlattenSimpleInterpolation => css`
+  animation: ${SlideLeftCloseKeyframes} calc(${start}s * ${tf}) forwards calc(${finish}s * ${tf});
 `;
 
 const WiggleKeyframes = keyframes`
@@ -103,19 +45,4 @@ const WiggleKeyframes = keyframes`
 
 export const WiggleAnimation = (start = 1.3): FlattenSimpleInterpolation => css`
   animation: ${WiggleKeyframes} calc(${start}s * ${tf}) ease infinite;
-`;
-
-const PulseKeyframes = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.08);
-  }
-  100% {
-    transform: scale(1);
-  }
-`;
-export const PulseAnimation = css`
-  animation: ${PulseKeyframes} calc(${1.3}s * ${tf}) ease infinite
 `;
