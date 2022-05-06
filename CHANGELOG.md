@@ -1,3 +1,10 @@
+## [1.35.7](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.6...v1.35.7) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Header:** Set no margin bottom for tablets and above ([7efc5a4](https://github.com/bamdadsabbagh/lilademarcq/commit/7efc5a4da539640b393d0e01097aa3a2a77b478d))
+
 ## [1.35.6](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.5...v1.35.6) (2022-05-06)
 
 
