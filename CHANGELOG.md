@@ -1,3 +1,10 @@
+## [1.33.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.33.0...v1.33.1) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Contact:** Use new API collection ([b61aead](https://github.com/bamdadsabbagh/lilademarcq/commit/b61aead65a3e79402d149b0a96dd7818db93f2a6))
+
 # [1.33.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.32.1...v1.33.0) (2022-05-05)
 
 
