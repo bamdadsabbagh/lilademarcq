@@ -57,6 +57,7 @@ export function ContactLayout({
                 <QuoteOpen>
                   <Image
                     src="/icons/quote-open.svg"
+                    alt=""
                     height={quoteSize.current}
                     width={quoteSize.current}
                   />
@@ -73,6 +74,7 @@ export function ContactLayout({
                 <QuoteClose>
                   <Image
                     src="/icons/quote-close.svg"
+                    alt=""
                     height={quoteSize.current}
                     width={quoteSize.current}
                   />
