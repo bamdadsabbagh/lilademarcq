@@ -29,7 +29,7 @@ export const Header = styled.header`
   ${mediaQueries.above.tablet} {
     background: ${({theme}) => theme.white};
     gap: ${headerGap};
-    margin-bottom: calc(${headerGap} / 3);
+    margin-bottom: 0;
   }
 `;
 
