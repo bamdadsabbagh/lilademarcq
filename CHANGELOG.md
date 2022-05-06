@@ -1,3 +1,10 @@
+## [1.35.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.0...v1.35.1) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Burger:** Hide navigation menu on first render + Clean unused animations ([bab1d43](https://github.com/bamdadsabbagh/lilademarcq/commit/bab1d4393ff9b979b4a2c687d5dbc3e793cacb42))
+
 # [1.35.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.34.2...v1.35.0) (2022-05-06)
 
 
