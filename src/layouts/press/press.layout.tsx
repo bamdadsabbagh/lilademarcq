@@ -55,6 +55,7 @@ export function PressLayout({
             {myPress.paperTitle}
           </TitleComponent>
           <GridComponent
+            isFull
             tiles={myPress.paperNewsCollection.items.map((press) => ({
               image: {
                 src: press.thumbnail.url,
@@ -74,6 +75,7 @@ export function PressLayout({
             {myPress.digitalTitle}
           </TitleComponent>
           <GridComponent
+            isFull
             tiles={myPress.digitalNewsCollection.items.map((press) => ({
               image: {
                 src: press.thumbnail.url,

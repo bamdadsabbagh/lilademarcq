@@ -1,32 +1,16 @@
 import React, {ReactElement, useCallback, useMemo} from 'react';
-import Image from 'next/image';
-import {
-  GridBody,
-  GridContainer,
-  GridImage,
-  GridTile,
-} from './grid.component.styles';
-import {HoverBoxComponent} from './components/hover-box/hover-box.component';
+import {GridBody, GridContainer} from './grid.component.styles';
 import {LinkComponent} from '../link/link.component';
-
-export interface Tile {
-  image: {
-    src: string;
-    blur: string;
-  };
-  href?: string;
-  onClick?: () => void;
-  h3: string;
-  h4?: string;
-  span: string;
-}
+import {Tile, TileComponent} from './components/tile/tile.component';
 
 interface GridComponentProps {
   tiles: Tile[];
+  isFull?: boolean;
 }
 
 export function GridComponent({
   tiles,
+  isFull,
 }: GridComponentProps): ReactElement {
   const isButton = useCallback((tile: Tile) => typeof tile?.onClick === 'function', []);
   const areButtons = useMemo(() => tiles.some(isButton), [tiles, isButton]);
@@ -44,21 +28,7 @@ export function GridComponent({
               key={tile.image.src}
               onClick={tile.onClick}
             >
-              <GridTile>
-                <GridImage>
-                  <Image
-                    src={tile.image.src}
-                    blurDataURL={tile.image.blur}
-                    alt=""
-                    placeholder="blur"
-                    layout="responsive"
-                    width="100%"
-                    height="100%"
-                    objectFit="cover"
-                  />
-                </GridImage>
-                <HoverBoxComponent tile={tile} />
-              </GridTile>
+              <TileComponent isFull={isFull} tile={tile} />
             </button>
           ))}
 
@@ -67,21 +37,7 @@ export function GridComponent({
               key={tile.image.src}
               href={tile.href}
             >
-              <GridTile>
-                <GridImage>
-                  <Image
-                    src={tile.image.src}
-                    blurDataURL={tile.image.blur}
-                    alt=""
-                    placeholder="blur"
-                    layout="responsive"
-                    width="100%"
-                    height="100%"
-                    objectFit="cover"
-                  />
-                </GridImage>
-                <HoverBoxComponent tile={tile} />
-              </GridTile>
+              <TileComponent isFull={isFull} tile={tile} />
             </LinkComponent>
           ))}
         </GridBody>
