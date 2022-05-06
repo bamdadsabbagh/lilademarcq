@@ -24,8 +24,8 @@ export interface LDPress {
 }
 
 interface LDMyPressHeadline {
-  seoTitle: string;
-  seoDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoImage?: LDImage;
   headlineTitle: string;
   headlineBody?: string;

@@ -23,8 +23,8 @@ query {
 `;
 
 export interface LDMyHome {
-  seoTitle: string;
-  seoDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoImage?: LDImage;
   heroImagesCollection: {
     items: LDImage[];

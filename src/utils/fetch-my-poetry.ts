@@ -33,8 +33,8 @@ query {
 `;
 
 export interface LDMyPoetry {
-  seoTitle: string;
-  seoDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoImage?: LDImage;
   title: string;
   body: LDText;

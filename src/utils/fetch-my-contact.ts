@@ -10,8 +10,8 @@ interface LDQuote {
 }
 
 export interface LDMyContact {
-  seoTitle: string;
-  seoDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoImage?: LDImage;
   title: string;
   formTitle: string;

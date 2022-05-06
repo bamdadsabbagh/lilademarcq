@@ -84,8 +84,8 @@ export interface LDEvent {
 }
 
 export interface LDMyEvents {
-  seoTitle: string;
-  seoDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoImage?: LDImage;
   waitingTitle: string;
   waitingText: string;

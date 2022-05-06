@@ -64,8 +64,8 @@ export interface LDBadge {
 }
 
 export interface LDObject {
-  seoTitle: string;
-  seoDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoImage?: LDImage;
   slug: string;
   color: string;

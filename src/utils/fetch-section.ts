@@ -25,8 +25,8 @@ query {
 `;
 
 export interface LDSection {
-  seoTitle: string;
-  seoDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoImage?: LDImage;
   slug: string;
   title: string;

@@ -21,6 +21,7 @@ import {fetchMyHome, LDMyHome} from '../utils/fetch-my-home';
 import {FooterComponent} from '../components/footer/footer.component';
 import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
 import {CarouselComponent} from '../components/carousel/carousel.component';
+import {SeoComponent} from '../components/seo/seo.component';
 
 interface IndexProps {
   myHome: LDMyHome;
@@ -47,6 +48,13 @@ export default function Index({
 }: IndexProps): ReactElement {
   return (
     <>
+      <SeoComponent
+        canonical=""
+        title={myHome.seoTitle}
+        description={myHome.seoDescription}
+        image={myHome.seoImage?.url}
+      />
+
       <DefaultLayout>
         <HeroComponent>
           <CarouselComponent

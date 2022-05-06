@@ -46,8 +46,8 @@ interface ObjectThumbnailResponse {
 }
 
 export interface LDMyObjects {
-  seoTitle: string;
-  seoDescription: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoImage?: LDImage;
   objectsCollection: {
     items: {
