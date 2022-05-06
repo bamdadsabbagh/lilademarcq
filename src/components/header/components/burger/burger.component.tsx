@@ -26,6 +26,8 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
     containerRef,
     ref,
     height,
+    firstRender,
+    setFirstRender,
   } = useBurgerComponent(menu);
 
   return (
@@ -51,7 +53,9 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
         )}
         <BNav
           ref={ref}
-          close={!isHover}
+          open={isHover}
+          firstRender={firstRender}
+          setFirstRender={setFirstRender}
           onClick={() => setIsHover((h) => !h)}
         >
           {menu.map((item) => (
