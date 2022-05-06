@@ -20,10 +20,8 @@ export const Nav = styled.nav`
     display: grid;
     justify-content: center;
     grid-template-columns: 5em 7em 6.5em 6em 9em 6em 7em;
+    gap: 1px;
     //grid-template-columns: 80px 112px 96px 96px 144px 96px 128px
-  }
-
-  ${mediaQueries.above.fullhd} {
-    grid-template-columns: 95px 131px 122px 112px 170px 112px 131px;
+    //grid-template-columns: 95px 131px 122px 112px 171px 112px 131px;
   }
 `;
