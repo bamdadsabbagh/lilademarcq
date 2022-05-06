@@ -1,9 +1,9 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import {CatalogInterface, fetchCatalog} from '../../utils/fetch-catalog';
+import {fetchCatalog, LDCatalog} from '../../utils/fetch-catalog';
 
 export default async function Handler(
   _req: NextApiRequest,
-  res: NextApiResponse<CatalogInterface>,
+  res: NextApiResponse<LDCatalog>,
 ): Promise<void> {
   const catalog = await fetchCatalog();
   res.status(200).json(catalog);

@@ -1,7 +1,7 @@
 import React, {ReactElement, useRef} from 'react';
 import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
-import {LDMyContact} from '../../utils/fetch-contact';
+import {LDMyContact} from '../../utils/fetch-my-contact';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
@@ -57,6 +57,7 @@ export function ContactLayout({
                 <QuoteOpen>
                   <Image
                     src="/icons/quote-open.svg"
+                    alt=""
                     height={quoteSize.current}
                     width={quoteSize.current}
                   />
@@ -73,6 +74,7 @@ export function ContactLayout({
                 <QuoteClose>
                   <Image
                     src="/icons/quote-close.svg"
+                    alt=""
                     height={quoteSize.current}
                     width={quoteSize.current}
                   />

@@ -11,29 +11,33 @@ import {
 } from '../pages-styles/a-propos.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
-import {MetaComponent} from '../components/meta/meta.component';
 import {DefaultLayout} from '../layouts/default/default.layout';
 import {FooterComponent} from '../components/footer/footer.component';
-import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
+import {SeoComponent} from '../components/seo/seo.component';
 
 interface AProposProps {
-  about: LDSection;
-  catalog: CatalogInterface;
+  aboutSection: LDSection;
+  catalog: LDCatalog;
   socials: LDSocial[];
 }
 
 export default function APropos({
-  about,
+  aboutSection,
   catalog,
   socials,
 }: AProposProps): ReactElement {
   return (
     <>
+      <SeoComponent
+        canonical="a-propos"
+        title={aboutSection.seoTitle}
+        description={aboutSection.seoDescription}
+        image={aboutSection.seoImage?.url}
+      />
 
-      <MetaComponent description="A Propos" />
-
-      <DefaultLayout customMeta>
+      <DefaultLayout>
 
         <SectionComponent isSmallTop>
 
@@ -41,20 +45,20 @@ export default function APropos({
 
             <ImageContainer>
               <Image
-                src={about.image.url}
+                src={aboutSection.image.url}
                 alt="portrait"
                 layout="responsive"
                 width="100%"
                 height="100%"
                 placeholder="blur"
-                blurDataURL={about.image.base64}
+                blurDataURL={aboutSection.image.base64}
               />
             </ImageContainer>
 
             <TextContainer>
               <TextWrapper>
-                <h2>{about.title}</h2>
-                {documentToReactComponents(about.body.json)}
+                <h2>{aboutSection.title}</h2>
+                {documentToReactComponents(aboutSection.body.json)}
               </TextWrapper>
             </TextContainer>
 
@@ -70,13 +74,13 @@ export default function APropos({
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<AProposProps>> {
-  const about = await fetchSection('about');
+  const aboutSection = await fetchSection('about');
   const catalog = await fetchCatalog();
   const socials = await fetchSocials();
 
   return {
     props: {
-      about,
+      aboutSection,
       catalog,
       socials,
     },

@@ -10,6 +10,7 @@ interface FormResponse {
 
 export interface FormDataInterface {
   topic: string;
+  message?: string;
   name: string;
   firstName: string;
   address?: string;

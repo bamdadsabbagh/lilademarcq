@@ -1,5 +1,5 @@
 import React, {ReactElement, useCallback, useMemo, useState} from 'react';
-import {LDMyPress, LDPress} from '../../utils/fetch-press';
+import {LDMyPress, LDPress} from '../../utils/fetch-my-press';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,

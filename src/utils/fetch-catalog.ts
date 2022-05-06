@@ -13,7 +13,7 @@ query {
 }
 `;
 
-export interface CatalogInterface {
+export interface LDCatalog {
   name: string;
   pdf: {
     url: string;
@@ -22,11 +22,11 @@ export interface CatalogInterface {
 
 interface CatalogResponse {
   myCatalogCollection: {
-    items: CatalogInterface[];
+    items: LDCatalog[];
   };
 }
 
-export async function fetchCatalog(): Promise<CatalogInterface> {
+export async function fetchCatalog(): Promise<LDCatalog> {
   const response: CatalogResponse = await fetchContentful(queryCatalog);
   return response.myCatalogCollection.items[0];
 }

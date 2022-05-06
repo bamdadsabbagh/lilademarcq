@@ -2,7 +2,7 @@ import styled, {css} from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontFarmhouse, fontMontserrat} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
-import {TextWidthMobile} from '../../app/styles/common';
+import {FocusHoverShadow, TextWidthMobile} from '../../app/styles/common';
 
 export const Container = styled.div`
   display: flex;
@@ -82,12 +82,12 @@ export const Form = styled.form`
   font-size: 1.3em;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 2em 3em 3em 3em 1.4em auto auto;
+  grid-template-rows: 2em 4em 3em 3em 3em 1.4em auto auto;
   gap: 1em 0.5em;
 
   ${mediaQueries.above.tablet} {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1.4em 5em 3em 3em 3em 2em auto;
+    grid-template-rows: 3em 4em 5em 3em 3em 3em 2em auto;
     gap: 0 2em;
 
     font-size: 1.5em;
@@ -114,6 +114,28 @@ export const Select = styled.select<SelectProps>`
 
   ${fontMontserrat};
   font-size: 0.75em;
+
+  padding-bottom: 3pt;
+`;
+
+interface TextAreaProps {
+  disabled: boolean;
+}
+
+export const TextArea = styled.textarea<TextAreaProps>`
+  width: 100%;
+  height: 100%;
+  resize: none;
+
+  ${fontMontserrat};
+  font-size: 0.75em;
+
+  margin-top: 5pt;
+
+  ${simpleTransition('box-shadow, background')};
+  box-shadow: 0 1px 0 0 white;
+
+  ${({disabled}) => !disabled && FocusHoverShadow};
 `;
 
 const Label = styled.label`
@@ -135,17 +157,24 @@ export const LabelTopic = styled(Label)`
   }
 `;
 
+export const LabelMessage = styled(Label)`
+  flex-direction: column;
+
+  grid-row: 2;
+  grid-column: 1 / -1;
+`;
+
 export const LabelName = styled(Label)`
   flex-direction: column;
   justify-content: center;
 
-  grid-row: 2;
+  grid-row: 3;
   grid-column: 1 / 3;
 
   ${mediaQueries.above.tablet} {
     justify-content: flex-end;
 
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 1;
   }
 `;
@@ -154,32 +183,21 @@ export const LabelFirstName = styled(Label)`
   flex-direction: column;
   justify-content: center;
 
-  grid-row: 2;
+  grid-row: 3;
   grid-column: 3 / -1;
 
   ${mediaQueries.above.tablet} {
     justify-content: flex-end;
 
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 2;
   }
 `;
 
 export const LabelAddress = styled(Label)`
   flex-direction: column;
-  grid-row: 3;
+  grid-row: 4;
   grid-column: 1 / 3;
-
-  ${mediaQueries.above.tablet} {
-    grid-row: 2;
-    grid-column: 3;
-  }
-`;
-
-export const LabelPostcode = styled(Label)`
-  flex-direction: column;
-  grid-row: 3;
-  grid-column: 3 / 4;
 
   ${mediaQueries.above.tablet} {
     grid-row: 3;
@@ -187,10 +205,10 @@ export const LabelPostcode = styled(Label)`
   }
 `;
 
-export const LabelCity = styled(Label)`
+export const LabelPostcode = styled(Label)`
   flex-direction: column;
-  grid-row: 3;
-  grid-column: 4 / -1;
+  grid-row: 4;
+  grid-column: 3 / 4;
 
   ${mediaQueries.above.tablet} {
     grid-row: 4;
@@ -198,24 +216,35 @@ export const LabelCity = styled(Label)`
   }
 `;
 
-export const LabelContact = styled(Label)`
+export const LabelCity = styled(Label)`
   flex-direction: column;
   grid-row: 4;
+  grid-column: 4 / -1;
+
+  ${mediaQueries.above.tablet} {
+    grid-row: 5;
+    grid-column: 3;
+  }
+`;
+
+export const LabelContact = styled(Label)`
+  flex-direction: column;
+  grid-row: 5;
   grid-column: 1 / 3;
 
   ${mediaQueries.above.tablet} {
-    grid-row: 4;
+    grid-row: 5;
     grid-column: 1;
   }
 `;
 
 export const LabelPhone = styled(Label)`
   flex-direction: column;
-  grid-row: 4;
+  grid-row: 5;
   grid-column: 3 / -1;
 
   ${mediaQueries.above.tablet} {
-    grid-row: 4;
+    grid-row: 5;
     grid-column: 2;
   }
 `;
@@ -236,11 +265,11 @@ export const SubscribeContainer = styled.div`
 
   ${fontMontserrat};
 
-  grid-row: 5;
+  grid-row: 6;
   grid-column: 1 / -1;
 
   ${mediaQueries.above.tablet} {
-    grid-row: 6;
+    grid-row: 7;
     grid-column: 1 / 3;
   }
 `;
@@ -250,7 +279,7 @@ interface SubscribeCheckboxProps {
   hover: boolean;
 }
 
-export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
+export const SubscribeWrapper = styled.label<SubscribeCheckboxProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -261,6 +290,9 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
   position: relative;
   user-select: none;
 
+`;
+
+export const SubscribeCheckbox = styled.span<SubscribeCheckboxProps>`
   transform: scale(0.6);
 
   ${mediaQueries.above.tablet} {
@@ -268,7 +300,6 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
   }
 
   input {
-    position: absolute;
     opacity: 0;
   }
 
@@ -289,17 +320,15 @@ export const SubscribeCheckbox = styled.label<SubscribeCheckboxProps>`
     background: white;
   }
 
-  span:after {
-    content: '';
-    position: absolute;
-    display: none;
-  }
-
   input:checked ~ span:after {
     display: block;
   }
 
   span:after {
+    content: '';
+    position: absolute;
+    display: none;
+
     left: 6px;
     top: 2px;
     width: 9px;
@@ -314,14 +343,14 @@ interface SubscribeTextProps {
   disabled: boolean;
 }
 
-export const SubscribeText = styled.span<SubscribeTextProps>`
+export const SubscribeLabel = styled.label<SubscribeTextProps>`
   cursor: ${({disabled}) => disabled ? 'default' : 'pointer'};
 
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   font-size: 0.667em;
 
   ${mediaQueries.above.tablet} {
-    margin-left: 3rem;
+    margin-left: 2rem;
     font-size: 0.75em;
   }
 `;
@@ -341,18 +370,21 @@ export const Submit = styled.button<SubmitProps>`
   text-transform: uppercase;
 
   line-height: 2em;
+  padding-top: 2pt;
 
   position: relative;
   ${simpleTransition('color')};
 
   ${({disabled}) => disabled && SubmitSuccess};
 
-  grid-row: 6;
+  grid-row: 7;
   grid-column: 1 / -1;
 
   ${mediaQueries.above.tablet} {
-    grid-row: 6;
+    grid-row: 7;
     grid-column: 3;
+
+    padding-top: 0;
   }
 
   &:hover {
@@ -390,7 +422,7 @@ export const GoogleContainer = styled.div`
   display: inline-block;
   text-align: center;
 
-  grid-row: 7;
+  grid-row: 8;
   grid-column: 1 / -1;
 
   ${mediaQueries.above.tablet} {
@@ -398,7 +430,7 @@ export const GoogleContainer = styled.div`
 
     font-size: 0.9rem;
 
-    grid-row: 7;
+    grid-row: 8;
     grid-column: 1 / 4;
   }
 `;

@@ -1,18 +1,19 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
 import {FooterComponent} from '../components/footer/footer.component';
-import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
-import {fetchContact, LDMyContact} from '../utils/fetch-contact';
+import {fetchMyContact, LDMyContact} from '../utils/fetch-my-contact';
 import {ContactLayout} from '../layouts/contact/contact.layout';
 import {REVALIDATE} from '../constants';
 import {fetchForm, FormInterface} from '../utils/fetch-form';
 import {fetchSection, LDSection} from '../utils/fetch-section';
+import {SeoComponent} from '../components/seo/seo.component';
 
 interface Props {
-  catalog: CatalogInterface;
+  catalog: LDCatalog;
   socials: LDSocial[];
-  quotes: LDMyContact;
+  myContact: LDMyContact;
   form: FormInterface;
   contact: LDSection;
 }
@@ -20,13 +21,25 @@ interface Props {
 export default function Contact({
   catalog,
   socials,
-  quotes,
+  myContact,
   form,
   contact,
 }: Props): ReactElement {
   return (
     <>
-      <ContactLayout myContact={quotes} form={form} contactSection={contact} />
+      <SeoComponent
+        canonical="contact"
+        title={myContact.seoTitle}
+        description={myContact.seoDescription}
+        image={myContact.seoImage?.url}
+      />
+
+      <ContactLayout
+        myContact={myContact}
+        form={form}
+        contactSection={contact}
+      />
+
       <FooterComponent catalog={catalog} socials={socials} />
     </>
   );
@@ -35,7 +48,7 @@ export default function Contact({
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   const catalog = await fetchCatalog();
   const socials = await fetchSocials();
-  const quotes = await fetchContact();
+  const myContact = await fetchMyContact();
   const form = await fetchForm();
   const contact = await fetchSection('contact');
 
@@ -43,7 +56,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
     props: {
       catalog,
       socials,
-      quotes,
+      myContact,
       form,
       contact,
     },

@@ -1,6 +1,8 @@
 import {fetchContentful} from './fetch-contentful';
 import {getPlaceholder} from './get-placeholder';
-import {IMAGE_SETTINGS} from '../constants';
+import {LDImage} from './fetch-object';
+import {querySeo} from './query-seo';
+import {queryImageUrl} from './query-image-url';
 
 const queryEvents = `
 fragment EventParts on Event {
@@ -10,30 +12,18 @@ fragment EventParts on Event {
   eventLink
   eventLocation
   thumbnail {
-    url(transform: { 
-      format: WEBP,
-      quality: ${IMAGE_SETTINGS.quality},
-      width: ${IMAGE_SETTINGS.highRes},
-    })
+    ${queryImageUrl()}
     width
     height
   }
   banner {
-    url(transform: { 
-      format: WEBP,
-      quality: ${IMAGE_SETTINGS.quality},
-      width: ${IMAGE_SETTINGS.highRes},
-    })
+    ${queryImageUrl()}
     width
     height
   }
   picturesCollection {
     items {
-      url(transform: { 
-        format: WEBP,
-        quality: ${IMAGE_SETTINGS.quality},
-        width: ${IMAGE_SETTINGS.highRes},
-      })
+      ${queryImageUrl()}
       width
       height
     }
@@ -43,6 +33,7 @@ fragment EventParts on Event {
 query {
   myEventsCollection (limit: 1) {
     items {
+      ${querySeo}
       waitingTitle
       waitingText
       waitingImage {
@@ -93,6 +84,9 @@ export interface LDEvent {
 }
 
 export interface LDMyEvents {
+  seoTitle: string;
+  seoDescription: string;
+  seoImage?: LDImage;
   waitingTitle: string;
   waitingText: string;
   waitingImage: {
@@ -114,7 +108,7 @@ interface EventsResponse {
   };
 }
 
-export async function fetchEvents(): Promise<LDMyEvents> {
+export async function fetchMyEvents(): Promise<LDMyEvents> {
   const response: EventsResponse = await fetchContentful(queryEvents);
   const events = response.myEventsCollection.items[0];
 

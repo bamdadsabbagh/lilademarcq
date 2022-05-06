@@ -1,17 +1,11 @@
 import styled, {css} from 'styled-components';
 import {fontMontserrat} from '../../../../app/styles/fonts';
 import {simpleTransition} from '../../../../app/styles/transitions';
+import {FocusHoverShadow} from '../../../../app/styles/common';
 
 interface TextInputProps {
   disabled: boolean;
 }
-
-const TextInputShadow = css`
-  &:focus, &:hover {
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.85);
-    background: rgba(0, 0, 0, 0.03);
-  }
-`;
 
 const TextInputPrefixes = css`
   ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -46,7 +40,7 @@ export const TextInput = styled.input<TextInputProps>`
   ${simpleTransition('box-shadow, background')};
   box-shadow: 0 1px 0 0 white;
 
-  ${({disabled}) => !disabled && TextInputShadow};
+  ${({disabled}) => !disabled && FocusHoverShadow};
 
   ${TextInputPrefixes};
 `;

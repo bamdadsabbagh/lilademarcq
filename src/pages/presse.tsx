@@ -1,26 +1,33 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
 import {FooterComponent} from '../components/footer/footer.component';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
-import {fetchPress, LDMyPress} from '../utils/fetch-press';
+import {fetchMyPress, LDMyPress} from '../utils/fetch-my-press';
 import {PressLayout} from '../layouts/press/press.layout';
 import {REVALIDATE} from '../constants';
+import {SeoComponent} from '../components/seo/seo.component';
 
 interface Props {
-  catalog: CatalogInterface;
+  catalog: LDCatalog;
   socials: LDSocial[];
-  press: LDMyPress;
+  myPress: LDMyPress;
 }
 
 export default function Presse({
   catalog,
   socials,
-  press,
+  myPress,
 }: Props): ReactElement {
   return (
     <>
-      <PressLayout myPress={press} />
+      <SeoComponent
+        canonical="presse"
+        title={myPress.seoTitle}
+        description={myPress.seoDescription}
+        image={myPress.seoImage?.url}
+      />
+      <PressLayout myPress={myPress} />
       <FooterComponent catalog={catalog} socials={socials} />
     </>
   );
@@ -29,13 +36,13 @@ export default function Presse({
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   const catalog = await fetchCatalog();
   const socials = await fetchSocials();
-  const press = await fetchPress();
+  const myPress = await fetchMyPress();
 
   return {
     props: {
       catalog,
       socials,
-      press,
+      myPress,
     },
     revalidate: REVALIDATE,
   };

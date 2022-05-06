@@ -6,14 +6,14 @@ import linkedinWithCircle
   from '@iconify/icons-entypo-social/linkedin-with-circle';
 import {Footer, Links, Socials, Span} from './footer.component.styles';
 import {LinkComponent} from '../link/link.component';
-import {CatalogInterface} from '../../utils/fetch-catalog';
+import {LDCatalog} from '../../utils/fetch-catalog';
 import {LDSocial} from '../../utils/fetch-socials';
 import {
   SocialButtonComponent,
 } from './components/social-button/social-button.component';
 
 interface FooterComponentProps {
-  catalog: CatalogInterface;
+  catalog: LDCatalog;
   socials: LDSocial[];
 }
 
@@ -39,6 +39,7 @@ export function FooterComponent({
           <SocialButtonComponent
             key={social.slug}
             href={social.link}
+            alt={social.slug}
             front={getSocialIcon(social.slug)}
             back={social.image}
           />

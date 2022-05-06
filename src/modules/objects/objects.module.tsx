@@ -3,15 +3,15 @@ import {SectionComponent} from '../../components/section/section.component';
 import {TitleComponent} from '../../components/title/title.component';
 import {capitalizeFirstLetter} from '../../utils/capitalize-first-letter';
 import {GridComponent} from '../../components/grid/grid.component';
-import {LDMyObject} from '../../utils/fetch-my-objects';
+import {LDMyObjects} from '../../utils/fetch-my-objects';
 
 interface ObjectsModuleProps {
-  objects: LDMyObject[];
+  myObjects: LDMyObjects;
   noPaddingTop?: boolean;
 }
 
 export function ObjectsModule({
-  objects,
+  myObjects,
   noPaddingTop,
 }: ObjectsModuleProps): ReactElement {
   return (
@@ -23,7 +23,7 @@ export function ObjectsModule({
         </TitleComponent>
 
         <GridComponent
-          tiles={objects.map((object) => ({
+          tiles={myObjects.objectsCollection.items.map((object) => ({
             image: {
               src: object.thumbnail.url,
               blur: object.thumbnail.base64,

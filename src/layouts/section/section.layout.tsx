@@ -1,7 +1,6 @@
 import React, {ReactElement} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {LDSection} from '../../utils/fetch-section';
-import {MetaComponent} from '../../components/meta/meta.component';
 import {DefaultLayout} from '../default/default.layout';
 import {SectionComponent} from '../../components/section/section.component';
 import {theme} from '../../app/styles/theme';
@@ -14,10 +13,7 @@ interface SectionLayoutProps {
 export function SectionLayout({section}: SectionLayoutProps): ReactElement {
   return (
     <>
-
-      <MetaComponent description={section.title} />
-
-      <DefaultLayout customMeta>
+      <DefaultLayout>
         <SectionComponent backgroundColor={theme.salmonLight}>
           <>
             <Title>

@@ -1,5 +1,5 @@
 import {useCallback, useMemo, useState} from 'react';
-import {LDEvent, LDMyEvents} from '../../../utils/fetch-events';
+import {LDEvent, LDMyEvents} from '../../../utils/fetch-my-events';
 import {useLightbox} from '../../../hooks/use-lightbox';
 import {buildNextImageUrl} from '../../../utils/build-next-image-url';
 

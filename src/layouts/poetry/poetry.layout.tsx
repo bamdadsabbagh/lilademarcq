@@ -14,10 +14,10 @@ import {
   TriangleContainer,
 } from './poetry.layout.styles';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
-import {PoetryInterface} from '../../utils/fetch-poetry';
+import {LDMyPoetry} from '../../utils/fetch-my-poetry';
 
 interface PoetryLayoutProps {
-  poetry: PoetryInterface;
+  poetry: LDMyPoetry;
 }
 
 export function PoetryLayout({poetry}: PoetryLayoutProps): ReactElement {

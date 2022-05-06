@@ -1,12 +1,14 @@
 import {fetchContentful} from './fetch-contentful';
-import {IMAGE_SETTINGS} from '../constants';
 import {LDImage, LDText} from './fetch-object';
 import {getPlaceholder} from './get-placeholder';
+import {querySeo} from './query-seo';
+import {queryImageUrl} from './query-image-url';
 
 const queryPoetry = `
 query {
   myPoetryCollection (limit: 1) {
     items {
+      ${querySeo}
       title
       body {
         json
@@ -16,29 +18,24 @@ query {
         description
         width
         height
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.highRes},
-        })
+        ${queryImageUrl()}
       }
       poem {
         title
         description
         width
         height
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.highRes},
-        })
+        ${queryImageUrl()}
       }
     }
   }
 }
 `;
 
-export interface PoetryInterface {
+export interface LDMyPoetry {
+  seoTitle: string;
+  seoDescription: string;
+  seoImage?: LDImage;
   title: string;
   body: LDText;
   illustration?: LDImage;
@@ -47,11 +44,11 @@ export interface PoetryInterface {
 
 interface PoetryResponse {
   myPoetryCollection: {
-    items: PoetryInterface[];
+    items: LDMyPoetry[];
   };
 }
 
-export async function fetchPoetry(): Promise<PoetryInterface> {
+export async function fetchMyPoetry(): Promise<LDMyPoetry> {
   const response: PoetryResponse = await fetchContentful(queryPoetry);
   const poetry = response.myPoetryCollection.items[0];
 

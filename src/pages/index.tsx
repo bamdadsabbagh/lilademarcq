@@ -3,40 +3,39 @@ import {GetStaticPropsResult} from 'next';
 import {FormModule} from '../modules/form/form.module';
 import {ObjectsModule} from '../modules/objects/objects.module';
 import {AwardsModule} from '../modules/awards/awards.module';
-import {fetchMyObjects, LDMyObject} from '../utils/fetch-my-objects';
+import {fetchMyObjects, LDMyObjects} from '../utils/fetch-my-objects';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {fetchAwards, LDAward} from '../utils/fetch-awards';
 import {fetchValues, LDValues} from '../utils/fetch-values';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 import {REVALIDATE} from '../constants';
-import {MetaComponent} from '../components/meta/meta.component';
 import {DefaultLayout} from '../layouts/default/default.layout';
 import {
   ImageTextColsComponent,
 } from '../components/image-text-cols/image-text-cols.component';
 import {ContactModule} from '../modules/contact/contact.module';
-import {LDImage} from '../utils/fetch-object';
 import {fetchForm, FormInterface} from '../utils/fetch-form';
 import {HeroComponent} from '../components/hero/hero.component';
 import {ValuesModule} from '../modules/values/values.module';
-import {fetchHero} from '../utils/fetch-hero';
+import {fetchMyHome, LDMyHome} from '../utils/fetch-my-home';
 import {FooterComponent} from '../components/footer/footer.component';
-import {CatalogInterface, fetchCatalog} from '../utils/fetch-catalog';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
 import {CarouselComponent} from '../components/carousel/carousel.component';
 
 interface IndexProps {
+  myHome: LDMyHome;
   about: LDSection;
   awards: LDAward[];
-  objects: LDMyObject[];
+  objects: LDMyObjects;
   contact: LDSection;
   socials: LDSocial[];
   values: LDValues;
   form: FormInterface;
-  hero: LDImage[];
-  catalog: CatalogInterface;
+  catalog: LDCatalog;
 }
 
 export default function Index({
+  myHome,
   awards,
   objects,
   about,
@@ -44,18 +43,15 @@ export default function Index({
   socials,
   values,
   form,
-  hero,
   catalog,
 }: IndexProps): ReactElement {
   return (
     <>
-      <MetaComponent description="Home" />
-
-      <DefaultLayout customMeta>
+      <DefaultLayout>
         <HeroComponent>
           <CarouselComponent
             isFooter
-            slides={hero.map((image) => ({
+            slides={myHome.heroImagesCollection.items.map((image) => ({
               src: image.url,
               alt: image.description,
               width: image.width,
@@ -65,7 +61,7 @@ export default function Index({
           />
         </HeroComponent>
 
-        <ObjectsModule objects={objects} />
+        <ObjectsModule myObjects={objects} />
 
         <ImageTextColsComponent
           title={about.title}
@@ -88,6 +84,7 @@ export default function Index({
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>> {
+  const myHome = await fetchMyHome();
   const objects = await fetchMyObjects();
   const about = await fetchSection('about');
   const contact = await fetchSection('contact');
@@ -95,7 +92,6 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
   const socials = await fetchSocials();
   const values = await fetchValues();
   const form = await fetchForm();
-  const hero = await fetchHero();
   const catalog = await fetchCatalog();
 
   return {
@@ -107,7 +103,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>
       socials,
       values,
       form,
-      hero,
+      myHome,
       catalog,
     },
     revalidate: REVALIDATE,

@@ -20,3 +20,10 @@ export const FullHeight = css`
 export const TextWidthMobile = css`
   width: calc(100% - ${PADDING} * 0.5);
 `;
+
+export const FocusHoverShadow = css`
+  &:focus, &:hover {
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.03);
+  }
+`;

@@ -1,12 +1,14 @@
 import {Document} from '@contentful/rich-text-types';
 import {fetchContentful} from './fetch-contentful';
-import {IMAGE_SETTINGS} from '../constants';
 import {getPlaceholder} from './get-placeholder';
+import {queryImageUrl} from './query-image-url';
+import {querySeo} from './query-seo';
 
 const queryObject = (slug: string) => `
 query {
   objectCollection(where: { slug: "${slug}" }, limit: 1) {
     items {
+      ${querySeo}
       slug
       color
       name
@@ -19,20 +21,12 @@ query {
       thumbnail {
         width
         height
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.lowRes},
-        })
+        ${queryImageUrl(false)}
       }
       badge {
         width
         height
-        url(transform: { 
-          format: WEBP,
-          quality: ${IMAGE_SETTINGS.quality},
-          width: ${IMAGE_SETTINGS.highRes},
-        })
+        ${queryImageUrl()}
       }
       imagesCollection {
         items {
@@ -40,11 +34,7 @@ query {
           description
           width
           height
-          url(transform: { 
-            format: WEBP,
-            quality: ${IMAGE_SETTINGS.quality},
-            width: ${IMAGE_SETTINGS.highRes},
-          })
+          ${queryImageUrl()}
         }
       }
       body {
@@ -74,6 +64,9 @@ export interface LDBadge {
 }
 
 export interface LDObject {
+  seoTitle: string;
+  seoDescription: string;
+  seoImage?: LDImage;
   slug: string;
   color: string;
   name: string;
