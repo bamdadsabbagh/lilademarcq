@@ -1,3 +1,10 @@
+## [1.35.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.2...v1.35.3) (2022-05-06)
+
+
+### Bug Fixes
+
+* **Nav:** Set pixel grid above full hd screens only ([aacc704](https://github.com/bamdadsabbagh/lilademarcq/commit/aacc704618e40b6962ad6efdb721a5de73e605cc))
+
 ## [1.35.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.1...v1.35.2) (2022-05-06)
 
 
