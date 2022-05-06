@@ -43,7 +43,7 @@ interface WrapperProps {
 }
 
 const WrapperNoPadding = css`
-  padding: 0;
+  padding-bottom: 0;
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -52,7 +52,7 @@ export const Wrapper = styled.div<WrapperProps>`
   ${({fullWidthMobile}) => fullWidthMobile && WrapperNoPadding};
 
   ${mediaQueries.above.mobile} {
-    ${({fullWidthMobile}) => !fullWidthMobile && PaddingFull};
+    ${PaddingFull};
     ${({isSmallTop}) => isSmallTop && PaddingSmallTop};
   }
 

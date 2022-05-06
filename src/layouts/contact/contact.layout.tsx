@@ -37,16 +37,14 @@ export function ContactLayout({
 
   return (
     <>
-      <SectionComponent>
-        <TitleComponent align={AlignKeys.center} noPaddingBottom>
-          {myContact.title}
-        </TitleComponent>
-      </SectionComponent>
-
       <SectionComponent
         backgroundColor={theme.salmonLight}
         fullWidthMobile
       >
+        <TitleComponent align={AlignKeys.center} noPaddingBottom>
+          {myContact.title}
+        </TitleComponent>
+
         <Quotes>
           {myContact.quotesCollection.items.map((quote, key) => {
             const index = key;

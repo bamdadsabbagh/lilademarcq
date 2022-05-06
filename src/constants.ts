@@ -13,6 +13,8 @@ export const SECTION_SPACE_AROUND = '2%';
 
 export const CAROUSEL_INTERVAL = 10; // seconds
 
+export const QUOTES_PER_PAGE = 3;
+
 export type ApiEndpointKeys = 'menu' | 'catalog' | 'form';
 
 export const IMAGE_SETTINGS = {

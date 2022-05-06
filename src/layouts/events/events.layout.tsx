@@ -53,6 +53,12 @@ export function EventsLayout({
 
       {hasHeadline && (
         <>
+          <SectionComponent>
+            <TitleComponent align={AlignKeys.center} noPaddingBottom>
+              {events.headlineTitle}
+            </TitleComponent>
+          </SectionComponent>
+
           <HeroComponent>
             <ImageWrapper
               hasLink={hasHeadlineLink}
@@ -66,15 +72,12 @@ export function EventsLayout({
                 src={events.headlineEvent.banner.url}
                 alt={events.headlineEvent.title}
                 blurDataURL={events.headlineEvent.banner.base64}
-                width={events.headlineEvent.banner.width}
-                height={events.headlineEvent.banner.width * 0.5625}
+                layout="fill"
                 objectFit="cover"
                 placeholder="blur"
               />
             </ImageWrapper>
           </HeroComponent>
-
-          <SectionComponent />
         </>
       )}
 

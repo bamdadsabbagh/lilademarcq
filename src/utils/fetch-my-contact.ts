@@ -2,6 +2,7 @@ import shuffle from 'just-shuffle';
 import {LDImage, LDText} from './fetch-object';
 import {fetchContentful} from './fetch-contentful';
 import {querySeo} from './query-seo';
+import {QUOTES_PER_PAGE} from '../constants';
 
 interface LDQuote {
   author: string;
@@ -52,7 +53,7 @@ export async function fetchMyContact(): Promise<LDMyContact> {
   const myQuotes = response.myContactCollection.items[0];
 
   myQuotes.quotesCollection.items = shuffle(myQuotes.quotesCollection.items)
-    .slice(0, 4);
+    .slice(0, QUOTES_PER_PAGE);
 
   return myQuotes;
 }
