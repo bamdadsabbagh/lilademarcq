@@ -14,7 +14,7 @@ export const MainHeightMobile = css`
 `;
 
 export const FullHeight = css`
-  height: calc(100vh - ${HEADER_HEIGHT} - ${headerGap} / 3);
+  height: calc(100vh - ${HEADER_HEIGHT});
 `;
 
 export const TextWidthMobile = css`
