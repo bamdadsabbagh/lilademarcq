@@ -19,6 +19,7 @@ export function useVideoComponent(): UseVideoComponent {
 
           if (entry.isIntersecting) {
             setIsPlaying(true);
+            observer.disconnect();
           }
         },
         {
@@ -28,6 +29,10 @@ export function useVideoComponent(): UseVideoComponent {
         },
       );
       observer.observe(ref.current);
+
+      return () => {
+        observer.disconnect();
+      };
     }
   }, [ref, isPlaying]);
 
