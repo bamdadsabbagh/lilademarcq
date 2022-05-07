@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {
   BNav,
   BNavItem,
@@ -30,6 +30,25 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
     setFirstRender,
   } = useBurgerComponent(menu);
 
+  const [animation, setAnimation] = useState<BNavProps['animation']>('first-render');
+
+  useEffect(() => {
+    if (!isHover && firstRender) {
+      setAnimation('first-render');
+    } else if (isHover) {
+      if (firstRender) {
+        setFirstRender(false);
+      }
+      setAnimation('open');
+    } else {
+      setAnimation('close');
+    }
+
+    return () => {
+      setAnimation('first-render');
+    };
+  }, [firstRender, isHover, setFirstRender]);
+
   return (
     <>
       <BurgerContainer
@@ -53,9 +72,7 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
         )}
         <BNav
           ref={ref}
-          open={isHover}
-          firstRender={firstRender}
-          setFirstRender={setFirstRender}
+          animation={animation}
           onClick={() => setIsHover((h) => !h)}
         >
           {menu.map((item) => (
@@ -67,4 +84,21 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
       </BurgerContainer>
     </>
   );
+}
+
+export interface CircleProps {
+  close: boolean;
+}
+
+export interface ExpandableLineProps {
+  close?: boolean;
+  size: number;
+}
+
+export interface BNavProps {
+  animation: 'first-render' | 'open' | 'close';
+}
+
+export interface BNavItemProps {
+  active: boolean;
 }

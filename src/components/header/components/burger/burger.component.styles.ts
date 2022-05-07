@@ -1,11 +1,16 @@
 import styled, {css} from 'styled-components';
-import {Dispatch, SetStateAction} from 'react';
 import {mediaQueries} from '../../../../app/styles/breakpoints';
 import {simpleTransition} from '../../../../app/styles/transitions';
 import {
   SlideLeftCloseAnimation,
   SlideLeftOpenAnimation,
 } from '../../../../app/styles/animations';
+import {
+  BNavItemProps,
+  BNavProps,
+  CircleProps,
+  ExpandableLineProps,
+} from './burger.component';
 
 const burgerSize = '4rem';
 const lineSize = 22;
@@ -38,10 +43,6 @@ export const BurgerContainer = styled.div`
   pointer-events: none;
 `;
 
-interface BurgerProps {
-  close: boolean;
-}
-
 const CircleClose = css`
   cursor: pointer;
   transform: rotate3d(0, 0, 1, -90deg);
@@ -72,7 +73,7 @@ export const BNavTitle = styled.span<BNavTitleProps>`
   transition-delay: ${({active}) => active ? 0.67 : 0}s;
 `;
 
-export const Circle = styled.div<BurgerProps>`
+export const Circle = styled.div<CircleProps>`
   z-index: 3;
   pointer-events: auto;
 
@@ -107,11 +108,6 @@ export const Line = styled.div`
   background: ${({theme}) => theme.black};
 `;
 
-interface ExpandableLineProps {
-  close?: boolean;
-  size: number;
-}
-
 const LineFirstClosed = css`
   height: ${lineSize}px;
   transform: translateY(0);
@@ -127,15 +123,10 @@ export const ExpandableLine = styled(Line)<ExpandableLineProps>`
   transition-delay: ${({close}) => getTime(close).line}s;
 `;
 
-interface BNavProps {
-  open: boolean;
-  firstRender: boolean;
-  setFirstRender: Dispatch<SetStateAction<boolean>>;
-}
-
 const BNavOpen = css<BNavProps>`
   ${SlideLeftOpenAnimation(t * 2, t)};
-  animation-delay: ${({open}) => getTime(open).menu}s;
+  animation-delay: ${({animation}) =>
+    animation === 'open' && getTime(true).menu}s;
 `;
 
 const BNavClose = css`
@@ -150,7 +141,7 @@ export const BNav = styled.nav<BNavProps>`
   margin-left: calc(3rem - 4px);
 
   position: absolute;
-  pointer-events: ${({open}) => !open ? 'none' : 'auto'};
+  pointer-events: ${({animation}) => animation === 'open' ? 'auto' : 'none'};
 
   background: ${({theme}) => theme.white};
 
@@ -168,15 +159,10 @@ export const BNav = styled.nav<BNavProps>`
 
   z-index: 1;
 
-  ${({open, firstRender, setFirstRender}) => {
-    if (!open && firstRender) {
+  ${({animation}) => {
+    if (animation === 'first-render') {
       return BNavFirstRender;
-    }
-
-    if (open) {
-      if (firstRender) {
-        setFirstRender(false);
-      }
+    } else if (animation === 'open') {
       return BNavOpen;
     } else {
       return BNavClose;
@@ -185,10 +171,6 @@ export const BNav = styled.nav<BNavProps>`
 
   top: -1px;
 `;
-
-interface BNavItemProps {
-  active: boolean;
-}
 
 export const BNavItem = styled.span<BNavItemProps>`
   text-transform: uppercase;
