@@ -1,12 +1,13 @@
 import React, {ReactElement} from 'react';
 import {NextSeo} from 'next-seo';
 import {SEO} from '../../constants';
+import {LDImage} from '../../utils/fetch-object';
 
 interface SeoComponentProps {
   title: string;
   description: string;
   canonical: string;
-  image?: string;
+  image?: LDImage;
 }
 
 export function SeoComponent({
@@ -27,7 +28,13 @@ export function SeoComponent({
       />
       {image && (
         <NextSeo
-          openGraph={{images: [{url: `${image}`}]}}
+          openGraph={{
+            images: [
+              {
+                url: image.url,
+              },
+            ],
+          }}
         />
       )}
     </>

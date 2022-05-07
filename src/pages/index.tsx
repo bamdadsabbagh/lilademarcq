@@ -10,9 +10,7 @@ import {fetchValues, LDValues} from '../utils/fetch-values';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 import {REVALIDATE} from '../constants';
 import {DefaultLayout} from '../layouts/default/default.layout';
-import {
-  ImageTextColsComponent,
-} from '../components/image-text-cols/image-text-cols.component';
+import {AboutModule} from '../modules/about/about.module';
 import {ContactModule} from '../modules/contact/contact.module';
 import {fetchForm, FormInterface} from '../utils/fetch-form';
 import {HeroComponent} from '../components/hero/hero.component';
@@ -52,7 +50,7 @@ export default function Index({
         canonical=""
         title={myHome.seoTitle}
         description={myHome.seoDescription}
-        image={myHome.seoImage?.url}
+        image={myHome.seoImage}
       />
 
       <DefaultLayout>
@@ -71,7 +69,7 @@ export default function Index({
 
         <ObjectsModule myObjects={objects} />
 
-        <ImageTextColsComponent
+        <AboutModule
           title={about.title}
           image={about.image}
           body={about.body}

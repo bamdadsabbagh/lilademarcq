@@ -1,21 +1,12 @@
 import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
-import Image from 'next/image';
-import {SectionComponent} from '../components/section/section.component';
-import {
-  Container,
-  ImageContainer,
-  TextContainer,
-  TextWrapper,
-} from '../pages-styles/a-propos.styles';
 import {fetchSection, LDSection} from '../utils/fetch-section';
 import {REVALIDATE} from '../constants';
-import {DefaultLayout} from '../layouts/default/default.layout';
 import {FooterComponent} from '../components/footer/footer.component';
 import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 import {SeoComponent} from '../components/seo/seo.component';
+import {AboutLayout} from '../layouts/about/about.layout';
 
 interface AProposProps {
   aboutSection: LDSection;
@@ -34,39 +25,10 @@ export default function APropos({
         canonical="a-propos"
         title={aboutSection.seoTitle}
         description={aboutSection.seoDescription}
-        image={aboutSection.seoImage?.url}
+        image={aboutSection.seoImage}
       />
 
-      <DefaultLayout>
-
-        <SectionComponent isSmallTop>
-
-          <Container>
-
-            <ImageContainer>
-              <Image
-                src={aboutSection.image.url}
-                alt="portrait"
-                layout="responsive"
-                width="100%"
-                height="100%"
-                placeholder="blur"
-                blurDataURL={aboutSection.image.base64}
-              />
-            </ImageContainer>
-
-            <TextContainer>
-              <TextWrapper>
-                <h2>{aboutSection.title}</h2>
-                {documentToReactComponents(aboutSection.body.json)}
-              </TextWrapper>
-            </TextContainer>
-
-          </Container>
-
-        </SectionComponent>
-
-      </DefaultLayout>
+      <AboutLayout aboutSection={aboutSection} />
 
       <FooterComponent catalog={catalog} socials={socials} />
     </>

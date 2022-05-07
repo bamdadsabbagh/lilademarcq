@@ -25,7 +25,7 @@ export default function Cgv({
         canonical="cgv"
         title={cgvSection.seoTitle}
         description={cgvSection.seoDescription}
-        image={cgvSection.seoImage?.url}
+        image={cgvSection.seoImage}
       />
 
       <SectionLayout section={cgvSection} />

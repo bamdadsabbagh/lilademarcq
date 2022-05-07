@@ -31,7 +31,7 @@ export default function Contact({
         canonical="contact"
         title={myContact.seoTitle}
         description={myContact.seoDescription}
-        image={myContact.seoImage?.url}
+        image={myContact.seoImage}
       />
 
       <ContactLayout

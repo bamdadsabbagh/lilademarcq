@@ -9,12 +9,10 @@ export const App = styled.div`
   flex-direction: column;
 `;
 
-export const Wrapper = styled.div`
+export const Main = styled.main`
   display: flex;
   flex-direction: column;
-`;
 
-export const Main = styled.main`
   ${MainHeightMobile};
 
   ${mediaQueries.above.mobile} {

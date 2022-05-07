@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {FullHeight} from '../../app/styles/common';
 import {mediaQueries} from '../../app/styles/breakpoints';
 
-export const Container = styled.div`
+export const Container = styled.section`
   position: relative;
   width: 100%;
   display: flex;

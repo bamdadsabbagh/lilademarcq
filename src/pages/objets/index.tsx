@@ -26,7 +26,7 @@ export default function Objets({
         canonical="objets"
         title={myObjects.seoTitle}
         description={myObjects.seoDescription}
-        image={myObjects.seoImage?.url}
+        image={myObjects.seoImage}
       />
 
       <DefaultLayout>
