@@ -1,3 +1,11 @@
+## [1.36.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.0...v1.36.1) (2022-05-07)
+
+
+### Bug Fixes
+
+* **BurgerComponent:** Move render logic to hook ([0bfc33e](https://github.com/bamdadsabbagh/lilademarcq/commit/0bfc33e5e00c7f85053555e29262dd8ca8a71598))
+* **VideoComponent:** Disconnect observer on unmount or success ([5b0450f](https://github.com/bamdadsabbagh/lilademarcq/commit/5b0450fad3c8d50f7a7a7140d0ab41129901f13c))
+
 # [1.36.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.10...v1.36.0) (2022-05-07)
 
 
