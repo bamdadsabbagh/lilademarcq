@@ -1,3 +1,22 @@
+# [1.36.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.10...v1.36.0) (2022-05-07)
+
+
+### Bug Fixes
+
+* **SEO:** Improve SEO component code + Reduce queried image size ([f7b950f](https://github.com/bamdadsabbagh/lilademarcq/commit/f7b950f506f926d6916f78ebe82551d316c1654f))
+
+
+### Features
+
+* **About:** Add mobile view to AboutLayout ([7b04e7e](https://github.com/bamdadsabbagh/lilademarcq/commit/7b04e7e3028494434d2dbf940b9020da634357da))
+* **AboutModule:** Add mobile view ([f6bb23c](https://github.com/bamdadsabbagh/lilademarcq/commit/f6bb23c713873d37199211fbe1179582552da172))
+* **AboutModule:** Improve mobile view max width ([1a6a79c](https://github.com/bamdadsabbagh/lilademarcq/commit/1a6a79c9a0c89bb7f437fcae1083c395cc2365ca))
+
+
+### Performance Improvements
+
+* Improve semantics and unnecessary nesting ([f44c729](https://github.com/bamdadsabbagh/lilademarcq/commit/f44c72974f363be19f17761ab02f5a71ed49eba4))
+
 ## [1.35.10](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.9...v1.35.10) (2022-05-07)
 
 
