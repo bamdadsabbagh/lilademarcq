@@ -25,7 +25,7 @@ export default function Presse({
         canonical="presse"
         title={myPress.seoTitle}
         description={myPress.seoDescription}
-        image={myPress.seoImage?.url}
+        image={myPress.seoImage}
       />
       <PressLayout myPress={myPress} />
       <FooterComponent catalog={catalog} socials={socials} />

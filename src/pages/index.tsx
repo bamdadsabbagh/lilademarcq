@@ -52,7 +52,7 @@ export default function Index({
         canonical=""
         title={myHome.seoTitle}
         description={myHome.seoDescription}
-        image={myHome.seoImage?.url}
+        image={myHome.seoImage}
       />
 
       <DefaultLayout>

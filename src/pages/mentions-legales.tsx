@@ -25,7 +25,7 @@ export default function MentionsLegales({
         canonical="mentions-legales"
         title={mentionsLegalesSection.seoTitle}
         description={mentionsLegalesSection.seoDescription}
-        image={mentionsLegalesSection.seoImage?.url}
+        image={mentionsLegalesSection.seoImage}
       />
 
       <SectionLayout section={mentionsLegalesSection} />

@@ -34,7 +34,7 @@ export default function APropos({
         canonical="a-propos"
         title={aboutSection.seoTitle}
         description={aboutSection.seoDescription}
-        image={aboutSection.seoImage?.url}
+        image={aboutSection.seoImage}
       />
 
       <DefaultLayout>

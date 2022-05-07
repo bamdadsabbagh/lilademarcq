@@ -25,7 +25,7 @@ export default function Poesie({
         canonical="poesie"
         title={myPoetry.seoTitle}
         description={myPoetry.seoDescription}
-        image={myPoetry.seoImage?.url}
+        image={myPoetry.seoImage}
       />
       <PoetryLayout poetry={myPoetry} />
       <FooterComponent catalog={catalog} socials={socials} />

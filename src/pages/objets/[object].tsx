@@ -46,7 +46,7 @@ export default function Object({
         canonical={`objets/${object.slug}`}
         title={object.seoTitle}
         description={object.seoDescription}
-        image={object.seoImage?.url}
+        image={object.seoImage}
       />
 
       <DefaultLayout>

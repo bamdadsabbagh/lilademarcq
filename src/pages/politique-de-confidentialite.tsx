@@ -25,7 +25,7 @@ export default function PolitiqueDeConfidentialite({
         canonical="politique-de-confidentialite"
         title={privacyPolicySection.seoTitle}
         description={privacyPolicySection.seoDescription}
-        image={privacyPolicySection.seoImage?.url}
+        image={privacyPolicySection.seoImage}
       />
 
       <SectionLayout section={privacyPolicySection} />

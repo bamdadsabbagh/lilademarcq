@@ -4,6 +4,6 @@ export const querySeo = `
 seoTitle
 seoDescription
 seoImage {
-  ${queryImageUrl()}
+  ${queryImageUrl(false)}
 }
 `;

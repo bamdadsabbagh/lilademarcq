@@ -25,7 +25,7 @@ export default function Evenements({
         canonical="evenements"
         title={myEvents.seoTitle}
         description={myEvents.seoDescription}
-        image={myEvents.seoImage?.url}
+        image={myEvents.seoImage}
       />
 
       <EventsLayout events={myEvents} />
