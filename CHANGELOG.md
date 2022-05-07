@@ -1,3 +1,11 @@
+## [1.35.10](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.9...v1.35.10) (2022-05-07)
+
+
+### Bug Fixes
+
+* **SEO:** Remove ineffective `twitter:image` ([fba14a3](https://github.com/bamdadsabbagh/lilademarcq/commit/fba14a3de6ea76b8d79202d957e181d66d309c30))
+* **Styles:** Rectify full height calculation ([7022a99](https://github.com/bamdadsabbagh/lilademarcq/commit/7022a99cfdc56b11bdde23fe2afccbac18d5750f))
+
 ## [1.35.9](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.35.8...v1.35.9) (2022-05-06)
 
 
