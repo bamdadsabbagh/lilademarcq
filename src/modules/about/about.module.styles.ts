@@ -1,25 +1,31 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {fontSpectral} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
 import {SECTION_SPACE_AROUND} from '../../constants';
 
-const BodyMobile = css`
-  display: block;
-`;
-
 export const Body = styled.div`
-  ${BodyMobile};
-  padding: 0 ${SECTION_SPACE_AROUND};
+  display: grid;
+  grid-template-rows: repeat(2, auto);
 
   ${mediaQueries.above.tablet} {
-    display: grid;
+    grid-template-rows: none;
     grid-template-columns: ${SECTION_SPACE_AROUND} repeat(2, 1fr) ${SECTION_SPACE_AROUND};
     align-items: flex-start;
+    gap: 2rem;
+  }
+
+  ${mediaQueries.above.desktop} {
     gap: 3rem;
   }
 `;
 
+export const ImageContainer = styled.div`
+  width: 100%;
+`;
+
 export const Text = styled.div`
+  margin-top: 3rem;
+
   ${fontSpectral};
   font-weight: 300;
   font-size: 1.2em;
@@ -33,27 +39,8 @@ export const Text = styled.div`
     margin-top: -2px;
     margin-bottom: 1rem;
   }
-`;
-
-const ImageContainerBig = css`
-  img {
-    border-radius: 0;
-  }
-
-  width: 100%;
-  margin-right: 0;
-`;
-
-export const ImageContainer = styled.div`
-  img {
-    border-radius: 50%;
-  }
-
-  float: left;
-  width: 8em;
-  margin-right: 1.5em;
 
   ${mediaQueries.above.tablet} {
-    ${ImageContainerBig};
+    margin-top: 0;
   }
 `;
