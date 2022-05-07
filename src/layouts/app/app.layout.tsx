@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import HeaderComponent from '../../components/header/header.component';
-import {App, Main, Wrapper} from './app.layout.styles';
+import {App, Main} from './app.layout.styles';
 
 interface AppLayoutProps {
   children: ReactElement[] | ReactElement;
@@ -13,11 +13,9 @@ export function AppLayout({
     <>
       <App>
         <HeaderComponent />
-        <Wrapper>
-          <Main>
-            {children}
-          </Main>
-        </Wrapper>
+        <Main>
+          {children}
+        </Main>
       </App>
     </>
   );
