@@ -1,3 +1,11 @@
+## [1.36.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.1...v1.36.2) (2022-05-09)
+
+
+### Bug Fixes
+
+* **ContactModule:** Remove picture min dimensions + Reduce font-size for mobile ([9da1b05](https://github.com/bamdadsabbagh/lilademarcq/commit/9da1b05662ccc274876827ee2cb52b02e292fb2d))
+* **PoetryLayout:** Double available `max-height` ([c420f05](https://github.com/bamdadsabbagh/lilademarcq/commit/c420f05e03900db02e25570a300d70ae32ec4bff))
+
 ## [1.36.1](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.0...v1.36.1) (2022-05-07)
 
 
