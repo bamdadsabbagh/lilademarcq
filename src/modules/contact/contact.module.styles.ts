@@ -24,8 +24,6 @@ export const ImageContainer = styled.div`
 
   img {
     object-fit: cover;
-    min-width: 10em;
-    min-height: 20em;
     object-position: 55% 0;
   }
 `;
@@ -42,9 +40,13 @@ export const TextContainer = styled.div`
     height: 0.5em;
   }
 
-  font-size: 1.3em;
+  font-size: 1.2em;
 
   ${mediaQueries.above.mobile} {
+    font-size: 1.3em;
+  }
+
+  ${mediaQueries.above.desktop} {
     font-size: 1.4em;
   }
 `;
