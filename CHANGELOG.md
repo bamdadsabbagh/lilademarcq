@@ -1,3 +1,10 @@
+## [1.36.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.2...v1.36.3) (2022-05-09)
+
+
+### Bug Fixes
+
+* **PoetryLayout:** Increase max-height to triple of base value (for mobiles) ([d573c17](https://github.com/bamdadsabbagh/lilademarcq/commit/d573c17be0bff28548449952e306b64307cbdaee))
+
 ## [1.36.2](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.1...v1.36.2) (2022-05-09)
 
 
