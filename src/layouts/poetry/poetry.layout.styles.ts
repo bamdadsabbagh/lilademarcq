@@ -22,7 +22,7 @@ interface TextContainerProps {
 
 export const TextContainer = styled.div<TextContainerProps>`
   margin-top: calc(-1em - 4px);
-  max-height: ${({isExpanded}) => isExpanded ? '20em' : '5em'};
+  max-height: ${({isExpanded}) => isExpanded ? '40em' : '5em'};
   ${simpleTransition('max-height', 0.4)};
   overflow: hidden;
   ${TextWidthMobile};
