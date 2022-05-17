@@ -8,17 +8,19 @@ import {LDMyObjects} from '../../utils/fetch-my-objects';
 interface ObjectsModuleProps {
   myObjects: LDMyObjects;
   noPaddingTop?: boolean;
+  isMain?: boolean;
 }
 
 export function ObjectsModule({
   myObjects,
   noPaddingTop,
+  isMain = false,
 }: ObjectsModuleProps): ReactElement {
   return (
     <>
       <SectionComponent isSmallTop={noPaddingTop}>
 
-        <TitleComponent>
+        <TitleComponent isMain={isMain}>
           Objets design
         </TitleComponent>
 

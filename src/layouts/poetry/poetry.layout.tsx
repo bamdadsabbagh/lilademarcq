@@ -27,7 +27,11 @@ export function PoetryLayout({poetry}: PoetryLayoutProps): ReactElement {
   return (
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>
-        <TitleComponent align={AlignKeys.center} color={theme.salmonDark}>
+        <TitleComponent
+          align={AlignKeys.center}
+          color={theme.salmonDark}
+          isMain
+        >
           {poetry.title}
         </TitleComponent>
         <Body

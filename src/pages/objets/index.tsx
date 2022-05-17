@@ -30,7 +30,7 @@ export default function Objets({
       />
 
       <DefaultLayout>
-        <ObjectsModule myObjects={myObjects} noPaddingTop />
+        <ObjectsModule myObjects={myObjects} noPaddingTop isMain />
       </DefaultLayout>
 
       <FooterComponent catalog={catalog} socials={socials} />

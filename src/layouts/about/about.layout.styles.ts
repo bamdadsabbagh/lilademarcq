@@ -40,13 +40,13 @@ export const TextContainer = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-  h2 {
+  h1 {
     font-size: 1.4em;
     margin-bottom: 1.5em;
   }
 
   ${mediaQueries.above.tablet} {
-    h2 {
+    h1 {
       margin-bottom: 1em;
       margin-left: -0.7em;
     }
@@ -57,7 +57,7 @@ export const TextWrapper = styled.div`
   }
 
   ${mediaQueries.above.desktop} {
-    h2 {
+    h1 {
       margin-bottom: 1.5em;
       margin-left: -1em;
     }

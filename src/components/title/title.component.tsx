@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {Title} from './title.component.styles';
+import {PrimaryTitle, SecondaryTitle} from './title.component.styles';
 import {theme} from '../../app/styles/theme';
 
 export enum AlignKeys {
@@ -14,6 +14,7 @@ export interface ContentTitleComponentProps {
   color?: string;
   paddingLeft?: boolean;
   noPaddingBottom?: boolean;
+  isMain?: boolean;
 }
 
 const defaultProps = {
@@ -21,6 +22,7 @@ const defaultProps = {
   color: theme.salmon,
   paddingLeft: false,
   noPaddingBottom: false,
+  isMain: false,
 };
 
 export function TitleComponent({
@@ -29,15 +31,36 @@ export function TitleComponent({
   color = defaultProps.color,
   paddingLeft = defaultProps.paddingLeft,
   noPaddingBottom = defaultProps.noPaddingBottom,
+  isMain = defaultProps.isMain,
 }: ContentTitleComponentProps): ReactElement {
   return (
-    <Title
-      align={align}
-      color={color}
-      paddingLeft={paddingLeft}
-      noPaddingBottom={noPaddingBottom}
-    >
-      {children}
-    </Title>
+    <>
+      {isMain ? (
+        <PrimaryTitle
+          align={align}
+          color={color}
+          paddingLeft={paddingLeft}
+          noPaddingBottom={noPaddingBottom}
+        >
+          {children}
+        </PrimaryTitle>
+      ) : (
+        <SecondaryTitle
+          align={align}
+          color={color}
+          paddingLeft={paddingLeft}
+          noPaddingBottom={noPaddingBottom}
+        >
+          {children}
+        </SecondaryTitle>
+      )}
+    </>
   );
+}
+
+export interface TitleProps {
+  align: AlignKeys;
+  color: string;
+  paddingLeft: boolean;
+  noPaddingBottom: boolean;
 }

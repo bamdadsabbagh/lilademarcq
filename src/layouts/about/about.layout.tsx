@@ -40,7 +40,7 @@ export function AboutLayout({
 
             <TextContainer>
               <TextWrapper>
-                <h2>{aboutSection.title}</h2>
+                <h1>{aboutSection.title}</h1>
                 {documentToReactComponents(aboutSection.body.json)}
               </TextWrapper>
             </TextContainer>

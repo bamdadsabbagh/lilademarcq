@@ -31,7 +31,7 @@ export function EventsLayout({
       {!hasHeadline && (
         <>
           <SectionComponent>
-            <TitleComponent align={AlignKeys.center}>
+            <TitleComponent align={AlignKeys.center} isMain>
               {events.waitingTitle.toUpperCase()}
             </TitleComponent>
             <WaitingBody>
@@ -55,7 +55,11 @@ export function EventsLayout({
       {hasHeadline && (
         <>
           <SectionComponent>
-            <TitleComponent align={AlignKeys.center} noPaddingBottom>
+            <TitleComponent
+              align={AlignKeys.center}
+              noPaddingBottom
+              isMain
+            >
               {events.headlineTitle}
             </TitleComponent>
           </SectionComponent>
