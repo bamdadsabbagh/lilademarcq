@@ -41,7 +41,7 @@ export function ContactLayout({
         backgroundColor={theme.salmonLight}
         fullWidthMobile
       >
-        <TitleComponent align={AlignKeys.center} noPaddingBottom>
+        <TitleComponent align={AlignKeys.center} noPaddingBottom isMain>
           {myContact.title}
         </TitleComponent>
 

@@ -1,15 +1,8 @@
 import styled, {css} from 'styled-components';
-import {AlignKeys} from './title.component';
+import {TitleProps} from './title.component';
 import {PADDING} from '../../constants';
 import {fontFarmhouse} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
-
-interface TitleProps {
-  align: AlignKeys;
-  color: string;
-  paddingLeft: boolean;
-  noPaddingBottom: boolean;
-}
 
 const PaddingLeft = css`
   padding-left: ${PADDING};
@@ -19,7 +12,7 @@ const PaddingBottomNull = css`
   padding-bottom: 0 !important;
 `;
 
-export const Title = styled.h2<TitleProps>`
+const Title = css<TitleProps>`
   padding-bottom: calc(${PADDING} * 0.7 - 0.4rem);
 
   color: ${({color}) => color};
@@ -45,4 +38,12 @@ export const Title = styled.h2<TitleProps>`
   }
 
   ${({noPaddingBottom}) => noPaddingBottom && PaddingBottomNull};
+`;
+
+export const PrimaryTitle = styled.h1<TitleProps>`
+  ${Title};
+`;
+
+export const SecondaryTitle = styled.h2<TitleProps>`
+  ${Title};
 `;

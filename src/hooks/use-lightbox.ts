@@ -1,7 +1,5 @@
-/* eslint-disable import/no-unresolved */
-
 import {useEffect} from 'react';
-// @ts-expect-error: TS2307
+// eslint-disable-next-line import/no-unresolved
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/dist/photoswipe.css';
 
@@ -24,7 +22,7 @@ export function useLightbox(data: LightboxData[]): void {
     }
 
     l.init();
-    l.loadAndOpen();
+    l.loadAndOpen(0);
 
     return () => {
       l.destroy();

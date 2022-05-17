@@ -47,7 +47,7 @@ export function PressLayout({
   return (
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>
-        <TitleComponent align={AlignKeys.center}>
+        <TitleComponent align={AlignKeys.center} isMain>
           {myPress.headlineTitle}
         </TitleComponent>
         <LinkContainer>
