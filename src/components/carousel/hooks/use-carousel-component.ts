@@ -1,10 +1,8 @@
-/* eslint-disable import/no-unresolved */
-
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import 'photoswipe/dist/photoswipe.css';
-// @ts-expect-error: TS2307
+// eslint-disable-next-line import/no-unresolved
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import {CAROUSEL_INTERVAL} from '../../../constants';
 import {CarouselComponentProps, CarouselImage} from '../carousel.component';
@@ -147,6 +145,7 @@ export function useCarouselComponent({
       autoplay.current.play();
     });
 
+    // @ts-expect-error: TS2345
     setLightbox(l);
 
     return () => {
