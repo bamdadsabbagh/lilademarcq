@@ -1,3 +1,12 @@
+## [1.36.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.3...v1.36.4) (2022-05-17)
+
+
+### Bug Fixes
+
+* **NPM:** Update dependencies ([64be0ca](https://github.com/bamdadsabbagh/lilademarcq/commit/64be0cafdfec8faff06c16a192299c31e9728eaa))
+* **Photoswipe:** Update imports in hooks ([f0b1c1f](https://github.com/bamdadsabbagh/lilademarcq/commit/f0b1c1f0775a6c44f7202ddc2c583b74c391dbb3))
+* **SEO:** Add single `h1` tag to all pages ([38a7c05](https://github.com/bamdadsabbagh/lilademarcq/commit/38a7c05b0c86861e4c9939720656490900e9d675))
+
 ## [1.36.3](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.2...v1.36.3) (2022-05-09)
 
 
