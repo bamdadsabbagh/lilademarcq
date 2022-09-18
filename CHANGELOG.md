@@ -1,3 +1,10 @@
+## [1.36.7](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.6...v1.36.7) (2022-09-18)
+
+
+### Bug Fixes
+
+* **NPM:** Revert previous release's `yarn.lock` ([25b4c58](https://github.com/bamdadsabbagh/lilademarcq/commit/25b4c58278880c33408ea4fdc7ddb1185e44a6cf))
+
 ## [1.36.6](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.5...v1.36.6) (2022-09-18)
 
 
