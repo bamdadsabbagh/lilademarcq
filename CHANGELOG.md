@@ -1,3 +1,10 @@
+## [1.36.6](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.5...v1.36.6) (2022-09-18)
+
+
+### Bug Fixes
+
+* **NPM:** Revert dependencies versions to previous release ([acf9f2a](https://github.com/bamdadsabbagh/lilademarcq/commit/acf9f2a3d01f37beed049b8fe7b6c6e7cb752cfd))
+
 ## [1.36.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.4...v1.36.5) (2022-09-18)
 
 
