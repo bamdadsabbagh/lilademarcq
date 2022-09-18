@@ -1,3 +1,11 @@
+## [1.36.5](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.4...v1.36.5) (2022-09-18)
+
+
+### Bug Fixes
+
+* **LogoComponent:** Add wrapper to rectify size in Safari ([31200dd](https://github.com/bamdadsabbagh/lilademarcq/commit/31200dd3e9f61e76595b97b7ef64412b86371d3e)), closes [#45](https://github.com/bamdadsabbagh/lilademarcq/issues/45)
+* **NPM:** Update dependencies to latest ([84dd4a3](https://github.com/bamdadsabbagh/lilademarcq/commit/84dd4a36acca8e5bc28e3cafb7946b1e28cdbfd4))
+
 ## [1.36.4](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.3...v1.36.4) (2022-05-17)
 
 
