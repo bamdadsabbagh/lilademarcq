@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, {css, StyledComponent} from 'styled-components';
 import {simpleTransition} from '../../app/styles/transitions';
 import {fontMontserrat} from '../../app/styles/fonts';
 
@@ -37,6 +37,7 @@ export const Features = styled.div`
 interface CaptionProps {
   hasFooter: boolean;
   isReverse?: boolean;
+  children: JSX.Element;
 }
 
 export const Caption = styled.div<CaptionProps>`
@@ -55,6 +56,7 @@ export const Caption = styled.div<CaptionProps>`
 interface CaptionBodyProps {
   active: boolean;
   isReverse?: boolean;
+  children: string;
 }
 
 export const CaptionBody = styled.div<CaptionBodyProps>`
