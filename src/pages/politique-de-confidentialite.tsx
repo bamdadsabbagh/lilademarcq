@@ -1,12 +1,12 @@
-import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {fetchSection, LDSection} from '../utils/fetch-section';
+import React from 'react';
+import {FooterComponent} from '../components/footer/footer.component';
+import {SeoComponent} from '../components/seo/seo.component';
 import {REVALIDATE} from '../constants';
 import {SectionLayout} from '../layouts/section/section.layout';
 import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
+import {fetchSection, LDSection} from '../utils/fetch-section';
 import {fetchSocials, LDSocial} from '../utils/fetch-socials';
-import {FooterComponent} from '../components/footer/footer.component';
-import {SeoComponent} from '../components/seo/seo.component';
 
 interface PolitiqueDeConfidentialiteProps {
   privacyPolicySection: LDSection;
@@ -18,7 +18,7 @@ export default function PolitiqueDeConfidentialite({
   privacyPolicySection,
   catalog,
   socials,
-}: PolitiqueDeConfidentialiteProps): ReactElement {
+}: PolitiqueDeConfidentialiteProps): JSX.Element {
   return (
     <>
       <SeoComponent
@@ -30,12 +30,17 @@ export default function PolitiqueDeConfidentialite({
 
       <SectionLayout section={privacyPolicySection} />
 
-      <FooterComponent catalog={catalog} socials={socials} />
+      <FooterComponent
+        catalog={catalog}
+        socials={socials}
+      />
     </>
   );
 }
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<PolitiqueDeConfidentialiteProps>> {
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<PolitiqueDeConfidentialiteProps>
+  > {
   const privacyPolicySection = await fetchSection('privacy-policy');
   const catalog = await fetchCatalog();
   const socials = await fetchSocials();

@@ -1,14 +1,14 @@
-import React, {ReactElement} from 'react';
 import Image from 'next/image';
-import {LDMyEvents} from '../../utils/fetch-my-events';
+import React from 'react';
+import {theme} from '../../app/styles/theme';
+import {GridComponent} from '../../components/grid/grid.component';
 import {HeroComponent} from '../../components/hero/hero.component';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
   TitleComponent,
 } from '../../components/title/title.component';
-import {theme} from '../../app/styles/theme';
-import {GridComponent} from '../../components/grid/grid.component';
+import {LDMyEvents} from '../../utils/fetch-my-events';
 import {ImageWrapper, WaitingBody} from './events.layout.styles';
 import {useEventsLayout} from './hooks/use-events-layout';
 
@@ -16,28 +16,23 @@ interface EventsLayoutProps {
   events: LDMyEvents;
 }
 
-export function EventsLayout({
-  events,
-}: EventsLayoutProps): ReactElement {
-  const {
-    hasHeadline,
-    hasHeadlineLink,
-    hasPastEvents,
-    handleClick,
-  } = useEventsLayout(events);
+export function EventsLayout({events}: EventsLayoutProps): JSX.Element {
+  const {hasHeadline, hasHeadlineLink, hasPastEvents, handleClick} =
+    useEventsLayout(events);
 
   return (
     <>
       {!hasHeadline && (
         <>
           <SectionComponent>
-            <TitleComponent align={AlignKeys.center} isMain>
+            <TitleComponent
+              align={AlignKeys.center}
+              isMain
+            >
               {events.waitingTitle.toUpperCase()}
             </TitleComponent>
             <WaitingBody>
-              <span>
-                {events.waitingText}
-              </span>
+              <span>{events.waitingText}</span>
               <Image
                 src={events.waitingImage.url}
                 alt={events.waitingTitle}

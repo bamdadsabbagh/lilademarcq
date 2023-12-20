@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components';
 import {mediaQueries} from '../../../../app/styles/breakpoints';
 
 interface ContainerProps {
+  children: JSX.Element[];
   size: number;
   fontSize: number;
   x: number;
@@ -70,6 +71,7 @@ const BodyPaddingLeft = css`
 `;
 
 interface BodyProps {
+  children: string;
   paddingLeft: boolean;
 }
 

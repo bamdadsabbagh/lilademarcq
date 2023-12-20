@@ -1,12 +1,12 @@
-import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
+import React from 'react';
 import {FooterComponent} from '../components/footer/footer.component';
-import {fetchSocials, LDSocial} from '../utils/fetch-socials';
-import {fetchMyPress, LDMyPress} from '../utils/fetch-my-press';
-import {PressLayout} from '../layouts/press/press.layout';
-import {REVALIDATE} from '../constants';
 import {SeoComponent} from '../components/seo/seo.component';
+import {REVALIDATE} from '../constants';
+import {PressLayout} from '../layouts/press/press.layout';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
+import {fetchMyPress, LDMyPress} from '../utils/fetch-my-press';
+import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 
 interface Props {
   catalog: LDCatalog;
@@ -18,7 +18,7 @@ export default function Presse({
   catalog,
   socials,
   myPress,
-}: Props): ReactElement {
+}: Props): JSX.Element {
   return (
     <>
       <SeoComponent
@@ -28,7 +28,10 @@ export default function Presse({
         image={myPress.seoImage}
       />
       <PressLayout myPress={myPress} />
-      <FooterComponent catalog={catalog} socials={socials} />
+      <FooterComponent
+        catalog={catalog}
+        socials={socials}
+      />
     </>
   );
 }

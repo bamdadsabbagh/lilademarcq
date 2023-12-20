@@ -1,6 +1,6 @@
-import React, {ReactElement} from 'react';
-import {HoverBoxFull, HoverBoxHalf} from './hover-box.component.styles';
+import React from 'react';
 import {Tile} from '../tile/tile.component';
+import {HoverBoxFull, HoverBoxHalf} from './hover-box.component.styles';
 
 interface HoverBoxComponentProps {
   tile: Tile;
@@ -10,7 +10,7 @@ interface HoverBoxComponentProps {
 export function HoverBoxComponent({
   tile,
   isFull,
-}: HoverBoxComponentProps): ReactElement {
+}: HoverBoxComponentProps): JSX.Element {
   return (
     <>
       {isFull && (

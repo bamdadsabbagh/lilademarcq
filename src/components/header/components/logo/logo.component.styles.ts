@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-export const Logo = styled.svg`
+interface LogoProps {
+  children: JSX.Element;
+  id: string;
+  xmlns: string;
+  viewBox: string;
+}
+
+export const Logo = styled.svg<LogoProps>`
   height: 100%;
   width: 50%;
 `;

@@ -1,13 +1,14 @@
-import styled, {css} from 'styled-components';
 import Image from 'next/image';
-import {simpleTransition} from '../../../../app/styles/transitions';
+import styled, {css} from 'styled-components';
 import {mediaQueries} from '../../../../app/styles/breakpoints';
+import {simpleTransition} from '../../../../app/styles/transitions';
 
 const size = 4;
 const responsiveRatio = 0.6;
 
 interface Props {
   visible: boolean;
+  children: JSX.Element;
 }
 
 export const Container = styled.div`
@@ -51,7 +52,7 @@ const Face = css<Props>`
 export const Front = styled.div<Props>`
   color: ${({theme}) => theme.salmon};
   ${Face};
-  ${({visible}) => visible ? FaceOn : FaceOff};
+  ${({visible}) => (visible ? FaceOn : FaceOff)};
 
   font-size: ${size * responsiveRatio}em;
 
@@ -63,7 +64,7 @@ export const Front = styled.div<Props>`
 export const Back = styled.div<Props>`
   z-index: 1;
   ${Face};
-  ${({visible}) => visible ? BackOn : FaceOff};
+  ${({visible}) => (visible ? BackOn : FaceOff)};
 `;
 
 export const StyledImage = styled(Image)`

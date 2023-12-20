@@ -1,5 +1,7 @@
-import React, {ReactElement} from 'react';
 import Image from 'next/image';
+import React from 'react';
+import {LDBadge} from '../../utils/fetch-object';
+import {CarouselFeaturesComponent} from '../carousel-features/carousel-features.component';
 import {
   Badge,
   Embla,
@@ -12,10 +14,6 @@ import {
   Features,
 } from './carousel.component.styles';
 import {useCarouselComponent} from './hooks/use-carousel-component';
-import {
-  CarouselFeaturesComponent,
-} from '../carousel-features/carousel-features.component';
-import {LDBadge} from '../../utils/fetch-object';
 
 export interface CarouselImage {
   src: string;
@@ -43,7 +41,7 @@ export function CarouselComponent({
   badge,
   hasCaptions = false,
   hasArrows = false,
-}: CarouselComponentProps): ReactElement {
+}: CarouselComponentProps): JSX.Element {
   const {
     viewportRef,
     index,
@@ -70,7 +68,10 @@ export function CarouselComponent({
             const inView = slidesInView.indexOf(key) > -1;
 
             return (
-              <EmblaSlide key={image.src} hasLoaded={inView}>
+              <EmblaSlide
+                key={image.src}
+                hasLoaded={inView}
+              >
                 <EmblaSlideInner hasLoaded={inView}>
                   <Image
                     src={image.src}

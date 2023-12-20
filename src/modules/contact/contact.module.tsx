@@ -1,21 +1,21 @@
-import React, {ReactElement} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
-import {LDSection} from '../../utils/fetch-section';
-import {SectionComponent} from '../../components/section/section.component';
+import React from 'react';
 import {theme} from '../../app/styles/theme';
+import {SectionComponent} from '../../components/section/section.component';
+import {IMAGE_SETTINGS} from '../../constants';
+import {LDSection} from '../../utils/fetch-section';
 import {
   Container,
   ImageContainer,
   TextContainer,
 } from './contact.module.styles';
-import {IMAGE_SETTINGS} from '../../constants';
 
 interface ContactModuleProps {
   contact: LDSection;
 }
 
-export function ContactModule({contact}: ContactModuleProps): ReactElement {
+export function ContactModule({contact}: ContactModuleProps): JSX.Element {
   return (
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>

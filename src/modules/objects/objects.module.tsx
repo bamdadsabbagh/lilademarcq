@@ -1,8 +1,8 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import {GridComponent} from '../../components/grid/grid.component';
 import {SectionComponent} from '../../components/section/section.component';
 import {TitleComponent} from '../../components/title/title.component';
 import {capitalizeFirstLetter} from '../../utils/capitalize-first-letter';
-import {GridComponent} from '../../components/grid/grid.component';
 import {LDMyObjects} from '../../utils/fetch-my-objects';
 
 interface ObjectsModuleProps {
@@ -15,14 +15,11 @@ export function ObjectsModule({
   myObjects,
   noPaddingTop,
   isMain = false,
-}: ObjectsModuleProps): ReactElement {
+}: ObjectsModuleProps): JSX.Element {
   return (
     <>
       <SectionComponent isSmallTop={noPaddingTop}>
-
-        <TitleComponent isMain={isMain}>
-          Objets design
-        </TitleComponent>
+        <TitleComponent isMain={isMain}>Objets design</TitleComponent>
 
         <GridComponent
           tiles={myObjects.objectsCollection.items.map((object) => ({
@@ -35,7 +32,6 @@ export function ObjectsModule({
             span: capitalizeFirstLetter(object.description.toLowerCase()),
           }))}
         />
-
       </SectionComponent>
     </>
   );

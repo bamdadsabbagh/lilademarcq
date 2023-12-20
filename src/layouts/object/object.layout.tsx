@@ -1,11 +1,18 @@
-import React, {ReactElement, useState} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
+import React, {useState} from 'react';
 import useMeasure from 'react-use-measure';
-import {LDObject} from '../../utils/fetch-object';
+import France from '../../../public/icons/france.png';
+import Saw from '../../../public/icons/saw.png';
 import {theme} from '../../app/styles/theme';
+import {CarouselComponent} from '../../components/carousel/carousel.component';
 import {SectionComponent} from '../../components/section/section.component';
 import {TitleComponent} from '../../components/title/title.component';
+import {VideoComponent} from '../../components/video/video.component';
+import {FormModule} from '../../modules/form/form.module';
+import {FormInterface} from '../../utils/fetch-form';
+import {LDObject} from '../../utils/fetch-object';
+import {getObjectFullName} from '../../utils/get-object-full-name';
 import {
   BannerImage,
   BannerItem,
@@ -13,33 +20,23 @@ import {
   BannerText,
   ObjectDescription,
 } from './object.layout.styles';
-import {FormModule} from '../../modules/form/form.module';
-import {getObjectFullName} from '../../utils/get-object-full-name';
-import {FormInterface} from '../../utils/fetch-form';
-import {VideoComponent} from '../../components/video/video.component';
-import {CarouselComponent} from '../../components/carousel/carousel.component';
-import France from '../../../public/icons/france.png';
-import Saw from '../../../public/icons/saw.png';
 
 interface ObjectLayoutProps {
   object: LDObject;
   form: FormInterface;
 }
 
-export function ObjectLayout({
-  object,
-  form,
-}: ObjectLayoutProps): ReactElement {
+export function ObjectLayout({object, form}: ObjectLayoutProps): JSX.Element {
   const [color] = useState(theme[object.color] ?? theme.black);
   const [ref, bounds] = useMeasure();
 
   return (
     <>
-      <SectionComponent
-        backgroundColor={theme.salmonLight}
-      >
-
-        <TitleComponent color={color} paddingLeft>
+      <SectionComponent backgroundColor={theme.salmonLight}>
+        <TitleComponent
+          color={color}
+          paddingLeft
+        >
           {getObjectFullName(object)}
         </TitleComponent>
 
@@ -67,7 +64,6 @@ export function ObjectLayout({
             height={bounds.height}
           />
         )}
-
       </SectionComponent>
 
       <SectionComponent>
@@ -86,9 +82,7 @@ export function ObjectLayout({
                 placeholder="blur"
               />
             </BannerImage>
-            <BannerText>
-              {object.madeIn}
-            </BannerText>
+            <BannerText>{object.madeIn}</BannerText>
           </BannerItem>
           <BannerItem>
             <BannerImage>
@@ -100,9 +94,7 @@ export function ObjectLayout({
             </BannerImage>
             <BannerText>
               <b>{object.structure}</b>
-              <small>
-                {object.structureDetails.toLowerCase()}
-              </small>
+              <small>{object.structureDetails.toLowerCase()}</small>
             </BannerText>
           </BannerItem>
         </Banners>

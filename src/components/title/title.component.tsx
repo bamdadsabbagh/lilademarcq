@@ -1,6 +1,6 @@
-import React, {ReactElement} from 'react';
-import {PrimaryTitle, SecondaryTitle} from './title.component.styles';
+import React from 'react';
 import {theme} from '../../app/styles/theme';
+import {PrimaryTitle, SecondaryTitle} from './title.component.styles';
 
 export enum AlignKeys {
   left = 'left',
@@ -9,7 +9,7 @@ export enum AlignKeys {
 }
 
 export interface ContentTitleComponentProps {
-  children: string | ReactElement;
+  children: string | JSX.Element;
   align?: AlignKeys;
   color?: string;
   paddingLeft?: boolean;
@@ -32,7 +32,7 @@ export function TitleComponent({
   paddingLeft = defaultProps.paddingLeft,
   noPaddingBottom = defaultProps.noPaddingBottom,
   isMain = defaultProps.isMain,
-}: ContentTitleComponentProps): ReactElement {
+}: ContentTitleComponentProps): JSX.Element {
   return (
     <>
       {isMain ? (
@@ -56,11 +56,4 @@ export function TitleComponent({
       )}
     </>
   );
-}
-
-export interface TitleProps {
-  align: AlignKeys;
-  color: string;
-  paddingLeft: boolean;
-  noPaddingBottom: boolean;
 }

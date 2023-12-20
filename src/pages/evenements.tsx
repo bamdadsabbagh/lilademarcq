@@ -1,12 +1,12 @@
-import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
+import React from 'react';
 import {FooterComponent} from '../components/footer/footer.component';
-import {fetchSocials, LDSocial} from '../utils/fetch-socials';
-import {fetchMyEvents, LDMyEvents} from '../utils/fetch-my-events';
-import {EventsLayout} from '../layouts/events/events.layout';
-import {REVALIDATE} from '../constants';
 import {SeoComponent} from '../components/seo/seo.component';
+import {REVALIDATE} from '../constants';
+import {EventsLayout} from '../layouts/events/events.layout';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
+import {fetchMyEvents, LDMyEvents} from '../utils/fetch-my-events';
+import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 
 interface Props {
   catalog: LDCatalog;
@@ -18,7 +18,7 @@ export default function Evenements({
   catalog,
   socials,
   myEvents,
-}: Props): ReactElement {
+}: Props): JSX.Element {
   return (
     <>
       <SeoComponent
@@ -30,7 +30,10 @@ export default function Evenements({
 
       <EventsLayout events={myEvents} />
 
-      <FooterComponent catalog={catalog} socials={socials} />
+      <FooterComponent
+        catalog={catalog}
+        socials={socials}
+      />
     </>
   );
 }

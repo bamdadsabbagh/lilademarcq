@@ -1,28 +1,40 @@
+import {ChangeEvent} from 'react';
 import styled, {css} from 'styled-components';
+import {FocusHoverShadow} from '../../../../app/styles/common';
 import {fontMontserrat} from '../../../../app/styles/fonts';
 import {simpleTransition} from '../../../../app/styles/transitions';
-import {FocusHoverShadow} from '../../../../app/styles/common';
 
 interface TextInputProps {
+  type: 'email' | 'text';
+  name: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  defaultValue: string;
+  placeholder: string;
+  pattern: string;
+  required: boolean;
   disabled: boolean;
 }
 
 const TextInputPrefixes = css`
-  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  ::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
     color: white;
   }
 
-  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: white;
-    opacity: 1;
-  }
-
-  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+  :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
     color: white;
     opacity: 1;
   }
 
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: white;
+    opacity: 1;
+  }
+
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
     color: white;
   }
 `;

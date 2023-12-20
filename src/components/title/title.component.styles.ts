@@ -1,8 +1,8 @@
 import styled, {css} from 'styled-components';
-import {TitleProps} from './title.component';
-import {PADDING} from '../../constants';
-import {fontFarmhouse} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
+import {fontFarmhouse} from '../../app/styles/fonts';
+import {PADDING} from '../../constants';
+import {AlignKeys} from './title.component';
 
 const PaddingLeft = css`
   padding-left: ${PADDING};
@@ -39,6 +39,14 @@ const Title = css<TitleProps>`
 
   ${({noPaddingBottom}) => noPaddingBottom && PaddingBottomNull};
 `;
+
+interface TitleProps {
+  align: AlignKeys;
+  color: string;
+  paddingLeft: boolean;
+  noPaddingBottom: boolean;
+  children: JSX.Element | string;
+}
 
 export const PrimaryTitle = styled.h1<TitleProps>`
   ${Title};

@@ -19,6 +19,9 @@ interface ContainerProps {
   index: number;
   hasChildren?: boolean;
   isOpen: boolean;
+  children: JSX.Element[];
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -29,10 +32,7 @@ export const Container = styled.div<ContainerProps>`
 
   user-select: none;
 
-  height: ${({
-    hasChildren,
-    isOpen,
-  }) => hasChildren && isOpen ? '100%' : size};
+  height: ${({hasChildren, isOpen}) => (hasChildren && isOpen ? '100%' : size)};
 
   ${simpleTransition('height', 0.3)};
 
@@ -47,7 +47,7 @@ interface BorderProps {
 
 const Border = css<BorderProps>`
   width: 100%;
-  height: ${({isOpen}) => isOpen ? '100%' : size};
+  height: ${({isOpen}) => (isOpen ? '100%' : size)};
   ${simpleTransition('height', 0.3)};
   position: absolute;
   pointer-events: none;
@@ -66,6 +66,7 @@ export const BorderRight = styled.div<BorderProps>`
 interface ItemProps {
   isOpen: boolean;
   isActive: boolean;
+  children: string;
 }
 
 export const Item = styled.div<ItemProps>`
@@ -80,6 +81,7 @@ export const Item = styled.div<ItemProps>`
 
 interface DropdownContainerProps {
   isOpen: boolean;
+  children: (JSX.Element | JSX.Element[])[];
 }
 
 export const Dropdown = styled.div<DropdownContainerProps>`
@@ -92,6 +94,7 @@ export const Dropdown = styled.div<DropdownContainerProps>`
 
 interface DropdownItemProps {
   isActive: boolean;
+  children: string;
 }
 
 export const DropdownItem = styled.span<DropdownItemProps>`
@@ -99,11 +102,13 @@ export const DropdownItem = styled.span<DropdownItemProps>`
   line-height: 1.4em;
 
   ${simpleTransition('color')};
-  color: ${(props) => props.isActive ? props.theme.salmon : props.theme.grayDark};
+  color: ${(props) =>
+    props.isActive ? props.theme.salmon : props.theme.grayDark};
 
   &:hover {
     cursor: pointer;
-    color: ${(props) => props.isActive ? props.theme.salmon : props.theme.grayLight};
+    color: ${(props) =>
+    props.isActive ? props.theme.salmon : props.theme.grayLight};
   }
 `;
 

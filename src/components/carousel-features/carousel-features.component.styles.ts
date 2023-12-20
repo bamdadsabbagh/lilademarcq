@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
-import {simpleTransition} from '../../app/styles/transitions';
 import {fontMontserrat} from '../../app/styles/fonts';
+import {simpleTransition} from '../../app/styles/transitions';
 
 const footerHeight = '0.8em';
 
@@ -37,6 +37,7 @@ export const Features = styled.div`
 interface CaptionProps {
   hasFooter: boolean;
   isReverse?: boolean;
+  children: JSX.Element;
 }
 
 export const Caption = styled.div<CaptionProps>`
@@ -55,6 +56,7 @@ export const Caption = styled.div<CaptionProps>`
 interface CaptionBodyProps {
   active: boolean;
   isReverse?: boolean;
+  children: string;
 }
 
 export const CaptionBody = styled.div<CaptionBodyProps>`
@@ -68,11 +70,11 @@ export const CaptionBody = styled.div<CaptionBodyProps>`
   height: 2.5em;
   padding: 0 1.5em;
 
-  ${({isReverse}) => isReverse ? BorderRadiusRight : BorderRadiusLeft};
+  ${({isReverse}) => (isReverse ? BorderRadiusRight : BorderRadiusLeft)};
 
   background: rgba(255, 255, 255, 0.8);
 
-  transform: translateX(${({active}) => active ? 0 : 120}%);
+  transform: translateX(${({active}) => (active ? 0 : 120)}%);
   ${simpleTransition('transform', 0.3)};
 
   ${fontMontserrat};

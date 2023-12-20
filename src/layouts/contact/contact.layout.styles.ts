@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {fontSpectral} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
+import {fontSpectral} from '../../app/styles/fonts';
 
 export const Quotes = styled.div`
   display: block;
@@ -41,6 +41,7 @@ export const Quotes = styled.div`
 
 interface QuoteProps {
   backgroundColor: string;
+  children: JSX.Element[];
 }
 
 export const Quote = styled.div<QuoteProps>`

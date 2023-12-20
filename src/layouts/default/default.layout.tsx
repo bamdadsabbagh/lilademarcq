@@ -1,15 +1,9 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
 
 interface DefaultLayoutProps {
-  children: ReactElement | ReactElement[];
+  children: JSX.Element | JSX.Element[];
 }
 
-export function DefaultLayout({
-  children,
-}: DefaultLayoutProps): ReactElement {
-  return (
-    <>
-      {children}
-    </>
-  );
+export function DefaultLayout({children}: DefaultLayoutProps): JSX.Element {
+  return <>{children}</>;
 }

@@ -1,11 +1,11 @@
-import React, {ReactElement, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {LDImage} from '../../utils/fetch-object';
 import {
   Caption,
   CaptionBody,
   Features,
   Footer,
 } from './carousel-features.component.styles';
-import {LDImage} from '../../utils/fetch-object';
 
 interface CarouselFeaturesComponentProps {
   captions: LDImage['description'][];
@@ -17,7 +17,7 @@ export function CarouselFeaturesComponent({
   hasFooter,
   index,
   captions,
-}: CarouselFeaturesComponentProps): ReactElement {
+}: CarouselFeaturesComponentProps): JSX.Element {
   const [savedIndex, setSavedIndex] = useState(-1);
   const [loading, setLoading] = useState(true);
   const [caption, setCaption] = useState('');

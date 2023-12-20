@@ -1,11 +1,13 @@
 import styled, {css} from 'styled-components';
 import {WiggleAnimation} from '../../app/styles/animations';
-import {simpleTransition} from '../../app/styles/transitions';
 import {mediaQueries} from '../../app/styles/breakpoints';
+import {simpleTransition} from '../../app/styles/transitions';
 
 interface ContainerProps {
   isHover?: boolean;
   noWiggle?: boolean;
+  children: JSX.Element;
+  onClick: () => void;
 }
 
 const ContainerAnimation = css<ContainerProps>`
@@ -41,31 +43,37 @@ interface TriangleProps {
 }
 
 const TriangleTransform = (scale = 1) => css<TriangleProps>`
-  transform: scale(${scale}) translateY(${(props) => {
-  if (props.isTop) {
-    return 5;
-  } else if (props.isBottom) {
-    return -5;
-  } else if (props.isLeft) {
-    return 0;
-  } else if (props.isRight) {
-    return 0;
-  } else {
-    return 0;
-  }
-}}px) rotateZ(${(props) => {
-  if (props.isRight) {
-    return 45;
-  } else if (props.isLeft) {
-    return -135;
-  } else if (props.isTop) {
-    return -45;
-  } else if (props.isBottom) {
-    return 135;
-  } else {
-    return 0;
-  }
-}}deg);
+  transform: scale(${scale})
+    translateY(
+      ${(props) => {
+    if (props.isTop) {
+      return 5;
+    } else if (props.isBottom) {
+      return -5;
+    } else if (props.isLeft) {
+      return 0;
+    } else if (props.isRight) {
+      return 0;
+    } else {
+      return 0;
+    }
+  }}px
+    )
+    rotateZ(
+      ${(props) => {
+    if (props.isRight) {
+      return 45;
+    } else if (props.isLeft) {
+      return -135;
+    } else if (props.isTop) {
+      return -45;
+    } else if (props.isBottom) {
+      return 135;
+    } else {
+      return 0;
+    }
+  }}deg
+    );
 `;
 
 export const Triangle = styled.div<TriangleProps>`

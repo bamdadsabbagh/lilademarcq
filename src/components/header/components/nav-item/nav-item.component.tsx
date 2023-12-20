@@ -1,5 +1,6 @@
-import React, {ReactElement, useState} from 'react';
 import {useRouter} from 'next/router';
+import React, {useState} from 'react';
+import {MenuDropdownInterface} from '../../../../utils/fetch-menu';
 import {LinkComponent} from '../../../link/link.component';
 import {
   BorderLeft,
@@ -10,7 +11,6 @@ import {
   DropdownSpacer,
   Item,
 } from './nav-item.component.styles';
-import {MenuDropdownInterface} from '../../../../utils/fetch-menu';
 
 interface DropdownProps {
   index: number;
@@ -28,7 +28,7 @@ export function NavItemComponent({
   noBorderLeft,
   noBorderRight,
   dropdown,
-}: DropdownProps): ReactElement {
+}: DropdownProps): JSX.Element {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,7 +44,10 @@ export function NavItemComponent({
         {!noBorderLeft && <BorderLeft isOpen={isOpen} />}
         {!noBorderRight && <BorderRight isOpen={isOpen} />}
         <LinkComponent href={slug}>
-          <Item isOpen={isOpen} isActive={slug === router.asPath}>
+          <Item
+            isOpen={isOpen}
+            isActive={slug === router.asPath}
+          >
             {name}
           </Item>
         </LinkComponent>
@@ -53,7 +56,10 @@ export function NavItemComponent({
           <Dropdown isOpen={isOpen}>
             <DropdownSpacer />
             {dropdown.map((item) => (
-              <LinkComponent href={item.slug} key={item.slug}>
+              <LinkComponent
+                href={item.slug}
+                key={item.slug}
+              >
                 <DropdownItem isActive={item.slug === router.asPath}>
                   {item.menuName ?? item.name}
                 </DropdownItem>
@@ -62,7 +68,6 @@ export function NavItemComponent({
             <DropdownSpacer />
           </Dropdown>
         )}
-
       </Container>
     </>
   );

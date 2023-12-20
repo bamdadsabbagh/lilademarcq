@@ -1,9 +1,11 @@
+import {Ref} from 'react';
 import styled, {css} from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
 import {MAX_WIDTH} from '../../constants';
 
 interface EmblaProps {
   height?: number;
+  children: JSX.Element[];
 }
 
 export const Embla = styled.div<EmblaProps>`
@@ -13,11 +15,14 @@ export const Embla = styled.div<EmblaProps>`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  height: ${({height}) => height ? `${height}px` : 'auto'};
+  height: ${({height}) => (height ? `${height}px` : 'auto')};
 `;
 
 interface EmblaViewportProps {
   isCursor: boolean;
+  children: JSX.Element;
+  ref: Ref<HTMLDivElement>;
+  onClick: () => void;
 }
 
 const EmblaViewportCursor = css`
@@ -43,6 +48,8 @@ export const EmblaContainer = styled.div`
 
 interface EmblaSlideProps {
   hasLoaded: boolean;
+  children: JSX.Element;
+  key?: string;
 }
 
 const EmblaSlideInnerLoaded = css`
@@ -91,7 +98,13 @@ const EmblaButtonDisabled = css`
   opacity: 0.3;
 `;
 
-const EmblaButton = styled.div<{disabled: boolean;}>`
+interface EmblaButtonProps {
+  disabled: boolean;
+  children: JSX.Element;
+  onClick: () => void;
+}
+
+const EmblaButton = styled.div<EmblaButtonProps>`
   outline: 0;
   cursor: pointer;
   background-color: transparent;

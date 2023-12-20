@@ -1,5 +1,5 @@
-import React, {ReactElement} from 'react';
 import Image from 'next/image';
+import React from 'react';
 import {GridImage, GridTile} from '../../grid.component.styles';
 import {HoverBoxComponent} from '../hover-box/hover-box.component';
 
@@ -20,10 +20,7 @@ interface TileComponentProps {
   isFull?: boolean;
 }
 
-export function TileComponent({
-  tile,
-  isFull,
-}: TileComponentProps): ReactElement {
+export function TileComponent({tile, isFull}: TileComponentProps): JSX.Element {
   return (
     <>
       <GridTile>
@@ -39,7 +36,10 @@ export function TileComponent({
             objectFit="cover"
           />
         </GridImage>
-        <HoverBoxComponent isFull={isFull} tile={tile} />
+        <HoverBoxComponent
+          isFull={isFull}
+          tile={tile}
+        />
       </GridTile>
     </>
   );

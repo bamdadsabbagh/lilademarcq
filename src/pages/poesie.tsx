@@ -1,12 +1,12 @@
-import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {PoetryLayout} from '../layouts/poetry/poetry.layout';
-import {fetchMyPoetry, LDMyPoetry} from '../utils/fetch-my-poetry';
+import React from 'react';
 import {FooterComponent} from '../components/footer/footer.component';
-import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
-import {fetchSocials, LDSocial} from '../utils/fetch-socials';
-import {REVALIDATE} from '../constants';
 import {SeoComponent} from '../components/seo/seo.component';
+import {REVALIDATE} from '../constants';
+import {PoetryLayout} from '../layouts/poetry/poetry.layout';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
+import {fetchMyPoetry, LDMyPoetry} from '../utils/fetch-my-poetry';
+import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 
 interface PoesieProps {
   myPoetry: LDMyPoetry;
@@ -18,7 +18,7 @@ export default function Poesie({
   myPoetry,
   catalog,
   socials,
-}: PoesieProps): ReactElement {
+}: PoesieProps): JSX.Element {
   return (
     <>
       <SeoComponent
@@ -28,12 +28,17 @@ export default function Poesie({
         image={myPoetry.seoImage}
       />
       <PoetryLayout poetry={myPoetry} />
-      <FooterComponent catalog={catalog} socials={socials} />
+      <FooterComponent
+        catalog={catalog}
+        socials={socials}
+      />
     </>
   );
 }
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<PoesieProps>> {
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<PoesieProps>
+  > {
   const myPoetry = await fetchMyPoetry();
   const catalog = await fetchCatalog();
   const socials = await fetchSocials();

@@ -1,10 +1,18 @@
+import {ReactNode} from 'react';
 import styled from 'styled-components';
+import {mediaQueries} from '../../app/styles/breakpoints';
 import {fontSpectral} from '../../app/styles/fonts';
 import {simpleTransition} from '../../app/styles/transitions';
-import {mediaQueries} from '../../app/styles/breakpoints';
 import {MAX_WIDTH} from '../../constants';
 
-export const Container = styled.div`
+interface ContainerProps {
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  children: (JSX.Element | JSX.Element[])[];
+}
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -20,6 +28,7 @@ export const Container = styled.div`
 
 interface AwardProps {
   visible: boolean;
+  children: JSX.Element[];
 }
 
 export const Award = styled.div<AwardProps>`
@@ -47,6 +56,7 @@ export const ImageContainer = styled.div`
 
 interface ParagraphProps {
   visible: boolean;
+  children: ReactNode;
 }
 
 export const TextContainer = styled.div<ParagraphProps>`
@@ -58,9 +68,9 @@ export const TextContainer = styled.div<ParagraphProps>`
   }
 
   ${simpleTransition('opacity, max-height', 0.4)};
-  opacity: ${({visible}) => visible ? 1 : 0};
+  opacity: ${({visible}) => (visible ? 1 : 0)};
 
-  max-height: ${({visible}) => visible ? '14em' : 0};
+  max-height: ${({visible}) => (visible ? '14em' : 0)};
   margin: 0 24px;
 
   ${mediaQueries.above.mobile} {
@@ -73,7 +83,12 @@ export const TextContainer = styled.div<ParagraphProps>`
   }
 `;
 
-export const ButtonContainer = styled.div`
+interface ButtonContainerProps {
+  children: JSX.Element;
+  onClick: () => void;
+}
+
+export const ButtonContainer = styled.div<ButtonContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;

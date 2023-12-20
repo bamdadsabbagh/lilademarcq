@@ -1,16 +1,11 @@
+import {Ref} from 'react';
 import styled, {css} from 'styled-components';
-import {mediaQueries} from '../../../../app/styles/breakpoints';
-import {simpleTransition} from '../../../../app/styles/transitions';
 import {
   SlideLeftCloseAnimation,
   SlideLeftOpenAnimation,
 } from '../../../../app/styles/animations';
-import {
-  BNavItemProps,
-  BNavProps,
-  CircleProps,
-  ExpandableLineProps,
-} from './burger.component';
+import {mediaQueries} from '../../../../app/styles/breakpoints';
+import {simpleTransition} from '../../../../app/styles/transitions';
 
 const burgerSize = '4rem';
 const lineSize = 22;
@@ -22,7 +17,12 @@ const getTime = (closing: boolean) => ({
   circle: closing ? 0.9 : 0,
 });
 
-export const BurgerContainer = styled.div`
+interface BurgerContainerProps {
+  children: JSX.Element[];
+  ref: Ref<HTMLDivElement>;
+}
+
+export const BurgerContainer = styled.div<BurgerContainerProps>`
   ${mediaQueries.above.tablet} {
     display: none;
   }
@@ -50,6 +50,8 @@ const CircleClose = css`
 
 interface BNavTitleProps {
   active: boolean;
+  children: string;
+  onClick: () => void;
 }
 
 export const BNavTitle = styled.span<BNavTitleProps>`
@@ -62,16 +64,22 @@ export const BNavTitle = styled.span<BNavTitleProps>`
   left: 51pt;
 
   text-transform: uppercase;
-  pointer-events: ${({active}) => active ? 'auto' : 'none'};
+  pointer-events: ${({active}) => (active ? 'auto' : 'none')};
 
   display: flex;
   justify-content: flex-start;
   align-items: center;
 
-  opacity: ${({active}) => active ? 1 : 0};
+  opacity: ${({active}) => (active ? 1 : 0)};
   ${simpleTransition('opacity')};
-  transition-delay: ${({active}) => active ? 0.67 : 0}s;
+  transition-delay: ${({active}) => (active ? 0.67 : 0)}s;
 `;
+
+interface CircleProps {
+  close: boolean;
+  children: JSX.Element[];
+  onClick: () => void;
+}
 
 export const Circle = styled.div<CircleProps>`
   z-index: 3;
@@ -113,9 +121,14 @@ const LineFirstClosed = css`
   transform: translateY(0);
 `;
 
+interface ExpandableLineProps {
+  close?: boolean;
+  size: number;
+}
+
 export const ExpandableLine = styled(Line)<ExpandableLineProps>`
   height: ${({size}) => size * 0.89}px;
-  transform: translateY(${({size}) => ((size * 0.89 - lineSize) * 0.5)}px);
+  transform: translateY(${({size}) => (size * 0.89 - lineSize) * 0.5}px);
 
   ${({close}) => close && LineFirstClosed};
 
@@ -137,11 +150,18 @@ const BNavFirstRender = css`
   opacity: 0;
 `;
 
+export interface BNavProps {
+  animation: 'first-render' | 'open' | 'close';
+  children: JSX.Element[];
+  ref: Ref<HTMLDivElement>;
+  onClick: () => void;
+}
+
 export const BNav = styled.nav<BNavProps>`
   margin-left: calc(3rem - 4px);
 
   position: absolute;
-  pointer-events: ${({animation}) => animation === 'open' ? 'auto' : 'none'};
+  pointer-events: ${({animation}) => (animation === 'open' ? 'auto' : 'none')};
 
   background: ${({theme}) => theme.white};
 
@@ -172,14 +192,19 @@ export const BNav = styled.nav<BNavProps>`
   top: -1px;
 `;
 
+interface BNavItemProps {
+  active: boolean;
+  children: string;
+}
+
 export const BNavItem = styled.span<BNavItemProps>`
   text-transform: uppercase;
   ${simpleTransition('color')};
 
-  color: ${({theme, active}) => active ? theme.salmonDark : theme.black};
+  color: ${({theme, active}) => (active ? theme.salmonDark : theme.black)};
 
   &:hover {
     cursor: pointer;
-    color: ${({theme}) => theme.salmon}
+    color: ${({theme}) => theme.salmon};
   }
 `;

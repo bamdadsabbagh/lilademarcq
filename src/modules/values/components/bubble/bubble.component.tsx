@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
 import {Body, Container, Title} from './bubble.component.styles';
 
 interface BubbleComponentProps {
@@ -17,15 +17,16 @@ export function BubbleComponent({
   fontSize = 1,
   x = 0,
   y = 0,
-}: BubbleComponentProps): ReactElement {
+}: BubbleComponentProps): JSX.Element {
   return (
-    <Container size={size} fontSize={fontSize} x={x} y={y}>
-      {title && (
-        <Title>{title}</Title>
-      )}
-      {text && (
-        <Body paddingLeft={typeof title !== 'undefined'}>{text}</Body>
-      )}
+    <Container
+      size={size}
+      fontSize={fontSize}
+      x={x}
+      y={y}
+    >
+      {title && <Title>{title}</Title>}
+      {text && <Body paddingLeft={typeof title !== 'undefined'}>{text}</Body>}
     </Container>
   );
 }
