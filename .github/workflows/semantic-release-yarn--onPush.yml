@@ -1,23 +1,17 @@
+---
 name: semantic-release-yarn--onPush
-
 on:
   push:
-    branches:
-      - master
-
+    branches: [master]
 jobs:
   semantic-release-yarn--onPush:
     runs-on: ubuntu-latest
     steps:
-
       - uses: actions/checkout@master
-
       - uses: actions/setup-node@master
         with:
-          node-version: '14'
-
+          node-version: '16'
       - run: yarn
-
       - run: |
           npm install -g \
             semantic-release \
@@ -29,7 +23,6 @@ jobs:
             semantic-release-chrome \
             semantic-release-firefox-add-on \
             aggregate-error
-
       - run: semantic-release
         env:
           GH_TOKEN: ${{ secrets.PAT }}
