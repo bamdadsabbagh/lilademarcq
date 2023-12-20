@@ -1,5 +1,6 @@
 module.exports = {
   extends: '@bamdadsabbagh/eslint-config',
+  plugins: ['simple-import-sort'],
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx'],
