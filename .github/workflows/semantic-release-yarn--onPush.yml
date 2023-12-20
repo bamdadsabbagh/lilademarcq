@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-node@master
         with:
           node-version: '16'
-      - run: yarn
+      - run: pnpm i
       - run: |
           npm install -g \
             semantic-release \
