@@ -1,3 +1,28 @@
+# [2.0.0](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.7...v2.0.0) (2023-12-20)
+
+
+### Bug Fixes
+
+* **App:** Update eslint packages ([779cff6](https://github.com/bamdadsabbagh/lilademarcq/commit/779cff67dbb3db13e62cd77b4a53c55905625fde))
+* **Carousel:** Add missing types ([553168c](https://github.com/bamdadsabbagh/lilademarcq/commit/553168c39dddf4e73dea19bfa1d68db4adf93d69))
+* **CarouselFeatures:** Add missing children types ([d1aba68](https://github.com/bamdadsabbagh/lilademarcq/commit/d1aba6823a81b1ed3f02190cf8028bd373aa01cc))
+* **CI:** Install pnpm before using in pipeline ([9c13ee5](https://github.com/bamdadsabbagh/lilademarcq/commit/9c13ee5b487fb976be90acf9a8c2d6d247a1ee07))
+* **CI:** Update node version for release pipeline ([456d664](https://github.com/bamdadsabbagh/lilademarcq/commit/456d664d97da1063fb1c072982409dfc3391f69f))
+* **CI:** Use node 18 for release pipeline ([caf4ee2](https://github.com/bamdadsabbagh/lilademarcq/commit/caf4ee2a67c96db3fde15fed9f63ca5dcc02551c))
+* **CI:** Use pnpm instead of yarn ([85225fa](https://github.com/bamdadsabbagh/lilademarcq/commit/85225fa7dee9fdb220d64d9da733650c413bdbb5))
+* **NPM:** Add prettier and eslint import sort ([67596e5](https://github.com/bamdadsabbagh/lilademarcq/commit/67596e58c04d704b6d2b73914b27c1c171ccc3ca))
+* Specify all types ([0008b0a](https://github.com/bamdadsabbagh/lilademarcq/commit/0008b0a23569a7a94a30b051c04d923baab5fccb))
+
+
+### Features
+
+* **NPM:** Switch to pnpm ([47814e1](https://github.com/bamdadsabbagh/lilademarcq/commit/47814e165f95d1c8188bea25a3ab5a20a365630b))
+
+
+### BREAKING CHANGES
+
+* **NPM:** Package manager has been changed
+
 ## [1.36.7](https://github.com/bamdadsabbagh/lilademarcq/compare/v1.36.6...v1.36.7) (2022-09-18)
 
 
