@@ -1,25 +1,25 @@
-import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
-import {FormModule} from '../modules/form/form.module';
-import {ObjectsModule} from '../modules/objects/objects.module';
-import {AwardsModule} from '../modules/awards/awards.module';
-import {fetchMyObjects, LDMyObjects} from '../utils/fetch-my-objects';
-import {fetchSection, LDSection} from '../utils/fetch-section';
-import {fetchAwards, LDAward} from '../utils/fetch-awards';
-import {fetchValues, LDValues} from '../utils/fetch-values';
-import {fetchSocials, LDSocial} from '../utils/fetch-socials';
+import React from 'react';
+import {CarouselComponent} from '../components/carousel/carousel.component';
+import {FooterComponent} from '../components/footer/footer.component';
+import {HeroComponent} from '../components/hero/hero.component';
+import {SeoComponent} from '../components/seo/seo.component';
 import {REVALIDATE} from '../constants';
 import {DefaultLayout} from '../layouts/default/default.layout';
 import {AboutModule} from '../modules/about/about.module';
+import {AwardsModule} from '../modules/awards/awards.module';
 import {ContactModule} from '../modules/contact/contact.module';
-import {fetchForm, FormInterface} from '../utils/fetch-form';
-import {HeroComponent} from '../components/hero/hero.component';
+import {FormModule} from '../modules/form/form.module';
+import {ObjectsModule} from '../modules/objects/objects.module';
 import {ValuesModule} from '../modules/values/values.module';
-import {fetchMyHome, LDMyHome} from '../utils/fetch-my-home';
-import {FooterComponent} from '../components/footer/footer.component';
+import {fetchAwards, LDAward} from '../utils/fetch-awards';
 import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
-import {CarouselComponent} from '../components/carousel/carousel.component';
-import {SeoComponent} from '../components/seo/seo.component';
+import {fetchForm, FormInterface} from '../utils/fetch-form';
+import {fetchMyHome, LDMyHome} from '../utils/fetch-my-home';
+import {fetchMyObjects, LDMyObjects} from '../utils/fetch-my-objects';
+import {fetchSection, LDSection} from '../utils/fetch-section';
+import {fetchSocials, LDSocial} from '../utils/fetch-socials';
+import {fetchValues, LDValues} from '../utils/fetch-values';
 
 interface IndexProps {
   myHome: LDMyHome;
@@ -43,7 +43,7 @@ export default function Index({
   values,
   form,
   catalog,
-}: IndexProps): ReactElement {
+}: IndexProps): JSX.Element {
   return (
     <>
       <SeoComponent
@@ -84,12 +84,17 @@ export default function Index({
         <ContactModule contact={contact} />
       </DefaultLayout>
 
-      <FooterComponent catalog={catalog} socials={socials} />
+      <FooterComponent
+        catalog={catalog}
+        socials={socials}
+      />
     </>
   );
 }
 
-export async function getStaticProps(): Promise<GetStaticPropsResult<IndexProps>> {
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<IndexProps>
+  > {
   const myHome = await fetchMyHome();
   const objects = await fetchMyObjects();
   const about = await fetchSection('about');

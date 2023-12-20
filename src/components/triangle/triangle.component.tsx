@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
 import {theme} from '../../app/styles/theme';
 import {Container, Triangle} from './triangle.component.styles';
 
@@ -27,7 +27,7 @@ export function TriangleComponent({
   isLeft,
   isHover,
   noWiggle,
-}: TriangleComponentProps): ReactElement {
+}: TriangleComponentProps): JSX.Element {
   return (
     <Container
       isHover={isHover}

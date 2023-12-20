@@ -1,26 +1,26 @@
-import React, {ReactElement, useState} from 'react';
-import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import Image from 'next/image';
+import React, {useState} from 'react';
+import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
   TitleComponent,
 } from '../../components/title/title.component';
-import {theme} from '../../app/styles/theme';
+import {TriangleComponent} from '../../components/triangle/triangle.component';
+import {LDMyPoetry} from '../../utils/fetch-my-poetry';
 import {
   Body,
   Pictures,
   TextContainer,
   TriangleContainer,
 } from './poetry.layout.styles';
-import {TriangleComponent} from '../../components/triangle/triangle.component';
-import {LDMyPoetry} from '../../utils/fetch-my-poetry';
 
 interface PoetryLayoutProps {
   poetry: LDMyPoetry;
 }
 
-export function PoetryLayout({poetry}: PoetryLayoutProps): ReactElement {
+export function PoetryLayout({poetry}: PoetryLayoutProps): JSX.Element {
   const [isHover, setHover] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
 

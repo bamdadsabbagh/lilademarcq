@@ -1,13 +1,17 @@
-import React, {ReactElement, useRef} from 'react';
-import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
-import {LDMyContact} from '../../utils/fetch-my-contact';
+import Image from 'next/image';
+import React, {useRef} from 'react';
+import {theme} from '../../app/styles/theme';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
   TitleComponent,
 } from '../../components/title/title.component';
-import {theme} from '../../app/styles/theme';
+import {ContactModule} from '../../modules/contact/contact.module';
+import {FormModule} from '../../modules/form/form.module';
+import {FormInterface} from '../../utils/fetch-form';
+import {LDMyContact} from '../../utils/fetch-my-contact';
+import {LDSection} from '../../utils/fetch-section';
 import {uncapitalizeFirstLetter} from '../../utils/uncapitalize-first-letter';
 import {
   Author,
@@ -17,10 +21,6 @@ import {
   QuoteOpen,
   Quotes,
 } from './contact.layout.styles';
-import {FormModule} from '../../modules/form/form.module';
-import {FormInterface} from '../../utils/fetch-form';
-import {ContactModule} from '../../modules/contact/contact.module';
-import {LDSection} from '../../utils/fetch-section';
 
 interface ContactLayoutProps {
   myContact: LDMyContact;
@@ -32,7 +32,7 @@ export function ContactLayout({
   myContact,
   form,
   contactSection,
-}: ContactLayoutProps): ReactElement {
+}: ContactLayoutProps): JSX.Element {
   const quoteSize = useRef(100);
 
   return (
@@ -41,7 +41,11 @@ export function ContactLayout({
         backgroundColor={theme.salmonLight}
         fullWidthMobile
       >
-        <TitleComponent align={AlignKeys.center} noPaddingBottom isMain>
+        <TitleComponent
+          align={AlignKeys.center}
+          noPaddingBottom
+          isMain
+        >
           {myContact.title}
         </TitleComponent>
 
@@ -51,7 +55,10 @@ export function ContactLayout({
             const color = key % 2 ? theme.white : theme.salmonLight;
 
             return (
-              <Quote key={index} backgroundColor={color}>
+              <Quote
+                key={index}
+                backgroundColor={color}
+              >
                 <QuoteOpen>
                   <Image
                     src="/icons/quote-open.svg"
@@ -61,9 +68,7 @@ export function ContactLayout({
                   />
                 </QuoteOpen>
 
-                <Body>
-                  {documentToReactComponents(quote.body.json)}
-                </Body>
+                <Body>{documentToReactComponents(quote.body.json)}</Body>
 
                 <Author>
                   {`${quote.author}, ${uncapitalizeFirstLetter(quote.job)}`}
@@ -83,7 +88,10 @@ export function ContactLayout({
         </Quotes>
       </SectionComponent>
 
-      <FormModule form={form} text={myContact.formTitle} />
+      <FormModule
+        form={form}
+        text={myContact.formTitle}
+      />
 
       <ContactModule contact={contactSection} />
     </>

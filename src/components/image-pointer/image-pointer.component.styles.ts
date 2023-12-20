@@ -1,10 +1,13 @@
+import {MouseEvent} from 'react';
 import styled, {css} from 'styled-components';
-import {simpleTransition} from '../../app/styles/transitions';
 import {mediaQueries} from '../../app/styles/breakpoints';
+import {simpleTransition} from '../../app/styles/transitions';
 
 interface PointerLayerProps {
   gap: number;
   debug?: boolean;
+  children: JSX.Element[];
+  onClick: (layerElement: MouseEvent<HTMLDivElement>) => void;
 }
 
 const PointerLayerDebug = css`

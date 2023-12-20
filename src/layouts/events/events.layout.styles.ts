@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 interface ImageProps {
   hasLink: boolean;
+  children: JSX.Element;
+  onClick: () => void;
 }
 
 export const ImageWrapper = styled.div<ImageProps>`

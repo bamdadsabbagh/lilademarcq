@@ -1,14 +1,14 @@
-import React, {ReactElement} from 'react';
 import {GetStaticPropsResult} from 'next';
+import React from 'react';
 import {FooterComponent} from '../components/footer/footer.component';
-import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
-import {fetchSocials, LDSocial} from '../utils/fetch-socials';
-import {fetchMyContact, LDMyContact} from '../utils/fetch-my-contact';
-import {ContactLayout} from '../layouts/contact/contact.layout';
-import {REVALIDATE} from '../constants';
-import {fetchForm, FormInterface} from '../utils/fetch-form';
-import {fetchSection, LDSection} from '../utils/fetch-section';
 import {SeoComponent} from '../components/seo/seo.component';
+import {REVALIDATE} from '../constants';
+import {ContactLayout} from '../layouts/contact/contact.layout';
+import {fetchCatalog, LDCatalog} from '../utils/fetch-catalog';
+import {fetchForm, FormInterface} from '../utils/fetch-form';
+import {fetchMyContact, LDMyContact} from '../utils/fetch-my-contact';
+import {fetchSection, LDSection} from '../utils/fetch-section';
+import {fetchSocials, LDSocial} from '../utils/fetch-socials';
 
 interface Props {
   catalog: LDCatalog;
@@ -24,7 +24,7 @@ export default function Contact({
   myContact,
   form,
   contact,
-}: Props): ReactElement {
+}: Props): JSX.Element {
   return (
     <>
       <SeoComponent
@@ -40,7 +40,10 @@ export default function Contact({
         contactSection={contact}
       />
 
-      <FooterComponent catalog={catalog} socials={socials} />
+      <FooterComponent
+        catalog={catalog}
+        socials={socials}
+      />
     </>
   );
 }

@@ -1,10 +1,18 @@
+import {ReactNode} from 'react';
 import styled from 'styled-components';
-import {fontSpectral} from '../../app/styles/fonts';
-import {simpleTransition} from '../../app/styles/transitions';
 import {mediaQueries} from '../../app/styles/breakpoints';
 import {TextWidthMobile} from '../../app/styles/common';
+import {fontSpectral} from '../../app/styles/fonts';
+import {simpleTransition} from '../../app/styles/transitions';
 
-export const Body = styled.div`
+interface BodyProps {
+  children: JSX.Element[];
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  onClick: () => void;
+}
+
+export const Body = styled.div<BodyProps>`
   ${fontSpectral};
   font-size: 1.2em;
   padding: 0 1.2em;
@@ -18,11 +26,12 @@ export const Body = styled.div`
 
 interface TextContainerProps {
   isExpanded: boolean;
+  children: ReactNode;
 }
 
 export const TextContainer = styled.div<TextContainerProps>`
   margin-top: calc(-1em - 4px);
-  max-height: ${({isExpanded}) => isExpanded ? '60em' : '5em'};
+  max-height: ${({isExpanded}) => (isExpanded ? '60em' : '5em')};
   ${simpleTransition('max-height', 0.4)};
   overflow: hidden;
   ${TextWidthMobile};

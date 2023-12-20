@@ -1,5 +1,5 @@
-import React, {ReactElement} from 'react';
 import {NextSeo} from 'next-seo';
+import React from 'react';
 import {SEO} from '../../constants';
 import {LDImage} from '../../utils/fetch-object';
 
@@ -15,7 +15,7 @@ export function SeoComponent({
   description,
   canonical,
   image,
-}: SeoComponentProps): ReactElement {
+}: SeoComponentProps): JSX.Element {
   return (
     <>
       <NextSeo

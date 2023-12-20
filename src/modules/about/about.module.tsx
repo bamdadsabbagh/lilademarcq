@@ -1,8 +1,8 @@
-import React, {ReactElement} from 'react';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
-import {SectionComponent} from '../../components/section/section.component';
+import React from 'react';
 import {theme} from '../../app/styles/theme';
+import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
   TitleComponent,
@@ -20,14 +20,11 @@ export function AboutModule({
   title,
   image,
   body,
-}: AboutModuleProps): ReactElement {
+}: AboutModuleProps): JSX.Element {
   return (
     <>
       <SectionComponent backgroundColor={theme.salmonLight}>
-
-        <TitleComponent align={AlignKeys.center}>
-          {title}
-        </TitleComponent>
+        <TitleComponent align={AlignKeys.center}>{title}</TitleComponent>
 
         <Body>
           <span />
@@ -42,12 +39,9 @@ export function AboutModule({
               blurDataURL={image.base64}
             />
           </ImageContainer>
-          <Text>
-            {documentToReactComponents(body.json)}
-          </Text>
+          <Text>{documentToReactComponents(body.json)}</Text>
           <span />
         </Body>
-
       </SectionComponent>
     </>
   );

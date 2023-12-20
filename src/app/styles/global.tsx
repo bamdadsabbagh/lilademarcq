@@ -1,4 +1,5 @@
-import React, {ReactElement} from 'react';
+/* eslint-disable react/no-unknown-property */
+import React from 'react';
 import {createGlobalStyle} from 'styled-components';
 import '@fontsource/montserrat/200.css';
 import '@fontsource/montserrat/300.css';
@@ -10,7 +11,10 @@ import {mediaQueries} from './breakpoints';
 import {simpleTransition} from './transitions';
 
 const GlobalJSX = () => (
-  <style jsx global>{`
+  <style
+    jsx
+    global
+  >{`
     @font-face {
       font-family: Farmhouse;
       font-style: normal;
@@ -49,7 +53,7 @@ export const GlobalStyled = createGlobalStyle`
   }
 `;
 
-export const Global = (): ReactElement => (
+export const Global = (): JSX.Element => (
   <>
     <GlobalJSX />
     <GlobalStyled />

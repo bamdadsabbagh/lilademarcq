@@ -1,31 +1,26 @@
-import React, {ReactElement} from 'react';
-import Image from 'next/image';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import Image from 'next/image';
+import React from 'react';
 import {SectionComponent} from '../../components/section/section.component';
+import {LDSection} from '../../utils/fetch-section';
+import {DefaultLayout} from '../default/default.layout';
 import {
   Container,
   ImageContainer,
   TextContainer,
   TextWrapper,
 } from './about.layout.styles';
-import {DefaultLayout} from '../default/default.layout';
-import {LDSection} from '../../utils/fetch-section';
 
 interface AboutLayoutProps {
   aboutSection: LDSection;
 }
 
-export function AboutLayout({
-  aboutSection,
-}: AboutLayoutProps): ReactElement {
+export function AboutLayout({aboutSection}: AboutLayoutProps): JSX.Element {
   return (
     <>
       <DefaultLayout>
-
         <SectionComponent isSmallTop>
-
           <Container>
-
             <ImageContainer>
               <Image
                 src={aboutSection.image.url}
@@ -44,11 +39,8 @@ export function AboutLayout({
                 {documentToReactComponents(aboutSection.body.json)}
               </TextWrapper>
             </TextContainer>
-
           </Container>
-
         </SectionComponent>
-
       </DefaultLayout>
     </>
   );

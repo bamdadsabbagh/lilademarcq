@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components';
 import {mediaQueries} from '../../app/styles/breakpoints';
-import {MAX_WIDTH, PADDING} from '../../constants';
 import {FullHeight} from '../../app/styles/common';
+import {MAX_WIDTH, PADDING} from '../../constants';
 
 const PaddingFull = css`
   padding: ${PADDING} 0;
@@ -19,6 +19,7 @@ interface StyledSectionProps {
   backgroundColor: string;
   isHero: boolean;
   minHeight: string;
+  children: JSX.Element;
 }
 
 export const Section = styled.section<StyledSectionProps>`
@@ -28,7 +29,8 @@ export const Section = styled.section<StyledSectionProps>`
 
   overflow: hidden;
 
-  background: ${(props) => props.backgroundColor ? props.backgroundColor : 'none'};
+  background: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : 'none'};
 
   ${({isHero}) => isHero && FullHeight};
   ${({isHero}) => isHero && PositionRelative};
@@ -40,6 +42,7 @@ interface WrapperProps {
   isSmallTop: boolean;
   isHero: boolean;
   fullWidthMobile: boolean;
+  children: JSX.Element | JSX.Element[];
 }
 
 const WrapperNoPadding = css`
@@ -48,7 +51,7 @@ const WrapperNoPadding = css`
 
 export const Wrapper = styled.div<WrapperProps>`
   padding: calc(${PADDING} * 0.7) 0;
-  width: ${({fullWidthMobile}) => fullWidthMobile ? 100 : 90}vw;
+  width: ${({fullWidthMobile}) => (fullWidthMobile ? 100 : 90)}vw;
   ${({fullWidthMobile}) => fullWidthMobile && WrapperNoPadding};
 
   ${mediaQueries.above.mobile} {

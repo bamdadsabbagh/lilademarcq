@@ -1,12 +1,12 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import {TriangleComponent} from '../triangle/triangle.component';
+import {useImagePointerComponent} from './hooks/use-image-pointer-component';
 import {
   LayerCenter,
   LayerLeft,
   LayerRight,
   Layers,
 } from './image-pointer.component.styles';
-import {useImagePointerComponent} from './hooks/use-image-pointer-component';
-import {TriangleComponent} from '../triangle/triangle.component';
 
 export interface ImagePointerComponentProps {
   gap: number;
@@ -22,7 +22,7 @@ export function ImagePointerComponent({
   onClickCenter,
   onClickRight,
   debug,
-}: ImagePointerComponentProps): ReactElement {
+}: ImagePointerComponentProps): JSX.Element {
   const {handleClick} = useImagePointerComponent({
     onClickCenter,
     onClickLeft,
@@ -37,11 +37,17 @@ export function ImagePointerComponent({
         debug={debug}
       >
         <LayerLeft>
-          <TriangleComponent isLeft noWiggle />
+          <TriangleComponent
+            isLeft
+            noWiggle
+          />
         </LayerLeft>
         {onClickCenter ? <LayerCenter /> : <span />}
         <LayerRight>
-          <TriangleComponent isRight noWiggle />
+          <TriangleComponent
+            isRight
+            noWiggle
+          />
         </LayerRight>
       </Layers>
     </>

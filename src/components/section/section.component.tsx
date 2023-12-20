@@ -1,8 +1,8 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
 import {Section, Wrapper} from './section.component.styles';
 
 export interface ContentSectionComponentProps {
-  children: ReactElement | ReactElement[];
+  children: JSX.Element | JSX.Element[];
   backgroundColor?: string;
   isSmallTop?: boolean;
   isHero?: boolean;
@@ -17,7 +17,7 @@ export function SectionComponent({
   isHero,
   minHeight,
   fullWidthMobile,
-}: ContentSectionComponentProps): ReactElement {
+}: ContentSectionComponentProps): JSX.Element {
   return (
     <Section
       backgroundColor={backgroundColor}

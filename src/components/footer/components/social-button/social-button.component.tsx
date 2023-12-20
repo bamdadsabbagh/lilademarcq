@@ -1,13 +1,13 @@
-import React, {ReactElement, useState} from 'react';
 import {Icon, IconifyIcon} from '@iconify/react';
+import React, {useState} from 'react';
+import {IMAGE_SETTINGS} from '../../../../constants';
+import {LDImage} from '../../../../utils/fetch-object';
 import {
   Back,
   Container,
   Front,
   StyledImage,
 } from './social-button.component.styles';
-import {LDImage} from '../../../../utils/fetch-object';
-import {IMAGE_SETTINGS} from '../../../../constants';
 
 interface SocialButtonComponentProps {
   href: string;
@@ -21,7 +21,7 @@ export function SocialButtonComponent({
   alt,
   front,
   back,
-}: SocialButtonComponentProps): ReactElement {
+}: SocialButtonComponentProps): JSX.Element {
   const [isHover, setIsHover] = useState(false);
 
   return (

@@ -1,6 +1,6 @@
-import React, {ReactElement, useState} from 'react';
-import {TextInput} from './input.component.styles';
+import React, {ChangeEvent, useState} from 'react';
 import {FormRegex} from '../../../../utils/validate-form';
+import {TextInput} from './input.component.styles';
 
 interface TextInputComponentProps {
   name: string;
@@ -24,7 +24,7 @@ export function InputComponent({
   isPostcode = false,
   isPhone = false,
   isTextAndNumber = false,
-}: TextInputComponentProps): ReactElement {
+}: TextInputComponentProps): JSX.Element {
   const [, setValue] = useState('');
 
   const [pattern] = useState(() => {
@@ -46,7 +46,9 @@ export function InputComponent({
       <TextInput
         type={isEmail ? 'email' : 'text'}
         name={name}
-        onChange={(e) => setValue(e.currentTarget.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setValue(e.currentTarget.value)
+        }
         defaultValue={defaultValue}
         placeholder={placeholder}
         pattern={pattern}

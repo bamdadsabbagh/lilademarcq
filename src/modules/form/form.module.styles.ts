@@ -1,8 +1,9 @@
+import {FormEvent} from 'react';
 import styled, {css} from 'styled-components';
-import {simpleTransition} from '../../app/styles/transitions';
-import {fontFarmhouse, fontMontserrat} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
 import {FocusHoverShadow, TextWidthMobile} from '../../app/styles/common';
+import {fontFarmhouse, fontMontserrat} from '../../app/styles/fonts';
+import {simpleTransition} from '../../app/styles/transitions';
 
 export const Container = styled.div`
   display: flex;
@@ -11,7 +12,14 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const TitleContainer = styled.div`
+interface TitleContainerProps {
+  children: JSX.Element[];
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}
+
+export const TitleContainer = styled.div<TitleContainerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,8 +35,9 @@ export const TitleContainer = styled.div`
   }
 `;
 
-interface FormProps {
+interface FormContainerProps {
   visible: boolean;
+  children: JSX.Element;
 }
 
 export const Title = styled.h3`
@@ -52,15 +61,15 @@ export const Title = styled.h3`
   }
 `;
 
-export const FormContainer = styled.div<FormProps>`
+export const FormContainer = styled.div<FormContainerProps>`
   display: flex;
   justify-content: center;
 
   overflow: hidden;
 
-  margin-top: ${({visible}) => visible ? '2em' : 0};
-  max-height: ${({visible}) => visible ? '800px' : 0};
-  opacity: ${({visible}) => visible ? 1 : 0};
+  margin-top: ${({visible}) => (visible ? '2em' : 0)};
+  max-height: ${({visible}) => (visible ? '800px' : 0)};
+  opacity: ${({visible}) => (visible ? 1 : 0)};
 
   width: 100%;
   height: 100%;
@@ -68,7 +77,12 @@ export const FormContainer = styled.div<FormProps>`
   ${simpleTransition('max-height, opacity, margin-top', 0.25)}
 `;
 
-export const Form = styled.form`
+interface FormProps {
+  children: JSX.Element[];
+  onSubmit: (e: FormEvent) => void;
+}
+
+export const Form = styled.form<FormProps>`
   display: grid;
 
   ${TextWidthMobile};
@@ -99,6 +113,11 @@ export const Form = styled.form`
 interface SelectProps {
   backgroundColor: string;
   color: string;
+  children: (JSX.Element | JSX.Element[])[];
+  name: string;
+  disabled: boolean;
+  defaultValue: string;
+  required: boolean;
 }
 
 export const Select = styled.select<SelectProps>`
@@ -120,6 +139,8 @@ export const Select = styled.select<SelectProps>`
 
 interface TextAreaProps {
   disabled: boolean;
+  name: string;
+  maxLength: number;
 }
 
 export const TextArea = styled.textarea<TextAreaProps>`
@@ -147,7 +168,12 @@ const Label = styled.label`
   height: 100%;
 `;
 
-export const LabelTopic = styled(Label)`
+interface LabelProps {
+  children: (JSX.Element | string)[] | JSX.Element;
+  htmlFor?: string;
+}
+
+export const LabelTopic = styled(Label)<LabelProps>`
   grid-row: 1;
   grid-column: 1 / -1;
 
@@ -157,14 +183,14 @@ export const LabelTopic = styled(Label)`
   }
 `;
 
-export const LabelMessage = styled(Label)`
+export const LabelMessage = styled(Label)<LabelProps>`
   flex-direction: column;
 
   grid-row: 2;
   grid-column: 1 / -1;
 `;
 
-export const LabelName = styled(Label)`
+export const LabelName = styled(Label)<LabelProps>`
   flex-direction: column;
   justify-content: center;
 
@@ -179,7 +205,7 @@ export const LabelName = styled(Label)`
   }
 `;
 
-export const LabelFirstName = styled(Label)`
+export const LabelFirstName = styled(Label)<LabelProps>`
   flex-direction: column;
   justify-content: center;
 
@@ -194,7 +220,7 @@ export const LabelFirstName = styled(Label)`
   }
 `;
 
-export const LabelAddress = styled(Label)`
+export const LabelAddress = styled(Label)<LabelProps>`
   flex-direction: column;
   grid-row: 4;
   grid-column: 1 / 3;
@@ -205,7 +231,7 @@ export const LabelAddress = styled(Label)`
   }
 `;
 
-export const LabelPostcode = styled(Label)`
+export const LabelPostcode = styled(Label)<LabelProps>`
   flex-direction: column;
   grid-row: 4;
   grid-column: 3 / 4;
@@ -216,7 +242,7 @@ export const LabelPostcode = styled(Label)`
   }
 `;
 
-export const LabelCity = styled(Label)`
+export const LabelCity = styled(Label)<LabelProps>`
   flex-direction: column;
   grid-row: 4;
   grid-column: 4 / -1;
@@ -227,7 +253,7 @@ export const LabelCity = styled(Label)`
   }
 `;
 
-export const LabelContact = styled(Label)`
+export const LabelContact = styled(Label)<LabelProps>`
   flex-direction: column;
   grid-row: 5;
   grid-column: 1 / 3;
@@ -238,7 +264,7 @@ export const LabelContact = styled(Label)`
   }
 `;
 
-export const LabelPhone = styled(Label)`
+export const LabelPhone = styled(Label)<LabelProps>`
   flex-direction: column;
   grid-row: 5;
   grid-column: 3 / -1;
@@ -252,6 +278,8 @@ export const LabelPhone = styled(Label)`
 interface SubmitProps {
   backgroundColor: string;
   disabled: boolean;
+  children: string;
+  type: 'submit';
 }
 
 const SubmitSuccess = css<SubmitProps>`
@@ -274,12 +302,15 @@ export const SubscribeContainer = styled.div`
   }
 `;
 
-interface SubscribeCheckboxProps {
+interface SubscribeWrapperProps {
   backgroundColor: string;
   hover: boolean;
+  children: JSX.Element[];
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
 }
 
-export const SubscribeWrapper = styled.label<SubscribeCheckboxProps>`
+export const SubscribeWrapper = styled.label<SubscribeWrapperProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,8 +320,13 @@ export const SubscribeWrapper = styled.label<SubscribeCheckboxProps>`
 
   position: relative;
   user-select: none;
-
 `;
+
+interface SubscribeCheckboxProps {
+  children: JSX.Element[];
+  backgroundColor: string;
+  hover: boolean;
+}
 
 export const SubscribeCheckbox = styled.span<SubscribeCheckboxProps>`
   transform: scale(0.6);
@@ -310,8 +346,8 @@ export const SubscribeCheckbox = styled.span<SubscribeCheckboxProps>`
     width: 25px;
     border-radius: 50%;
     border: 2px solid white;
-    background: ${({hover}) => hover ? 'white' : 'transparent'};
-    cursor: ${({hover}) => hover ? 'pointer' : 'inherit'};
+    background: ${({hover}) => (hover ? 'white' : 'transparent')};
+    cursor: ${({hover}) => (hover ? 'pointer' : 'inherit')};
 
     ${simpleTransition('background')};
   }
@@ -341,10 +377,13 @@ export const SubscribeCheckbox = styled.span<SubscribeCheckboxProps>`
 
 interface SubscribeTextProps {
   disabled: boolean;
+  children: string;
+  htmlFor: string;
+  onClick: () => void;
 }
 
 export const SubscribeLabel = styled.label<SubscribeTextProps>`
-  cursor: ${({disabled}) => disabled ? 'default' : 'pointer'};
+  cursor: ${({disabled}) => (disabled ? 'default' : 'pointer')};
 
   margin-left: 1rem;
   font-size: 0.667em;
@@ -388,7 +427,7 @@ export const Submit = styled.button<SubmitProps>`
   }
 
   &:hover {
-    cursor: ${(props) => props.disabled ? 'default' : 'pointer'};
+    cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
     color: ${(props) => !props.disabled && props.backgroundColor};
     z-index: 1;
 

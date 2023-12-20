@@ -51,6 +51,7 @@ export const Links = styled.div`
 
 interface SpanProps {
   noAfter?: boolean;
+  children: string | JSX.Element;
 }
 
 const SpanAfter = css`

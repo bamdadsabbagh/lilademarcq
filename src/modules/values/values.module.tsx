@@ -1,24 +1,25 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
 import {SectionComponent} from '../../components/section/section.component';
 import {
   AlignKeys,
   TitleComponent,
 } from '../../components/title/title.component';
+import {LDValues} from '../../utils/fetch-values';
 import {BubbleComponent} from './components/bubble/bubble.component';
 import {Bubbles, Image} from './values.module.styles';
-import {LDValues} from '../../utils/fetch-values';
 
 interface ValuesModuleProps {
   values: LDValues;
 }
 
-export function ValuesModule({values}: ValuesModuleProps): ReactElement {
+export function ValuesModule({values}: ValuesModuleProps): JSX.Element {
   return (
     <>
-      <SectionComponent isHero minHeight="50em">
-        <TitleComponent align={AlignKeys.right}>
-          Mes Valeurs
-        </TitleComponent>
+      <SectionComponent
+        isHero
+        minHeight="50em"
+      >
+        <TitleComponent align={AlignKeys.right}>Mes Valeurs</TitleComponent>
 
         <Bubbles>
           <BubbleComponent

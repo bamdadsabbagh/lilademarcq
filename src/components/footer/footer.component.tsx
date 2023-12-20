@@ -1,16 +1,12 @@
-import React, {ReactElement, useCallback} from 'react';
-import instagramWithCircle
-  from '@iconify/icons-entypo-social/instagram-with-circle';
+import instagramWithCircle from '@iconify/icons-entypo-social/instagram-with-circle';
+import linkedinWithCircle from '@iconify/icons-entypo-social/linkedin-with-circle';
 import facebookIcon from '@iconify/icons-fa6-brands/facebook';
-import linkedinWithCircle
-  from '@iconify/icons-entypo-social/linkedin-with-circle';
-import {Footer, Links, Socials, Span} from './footer.component.styles';
-import {LinkComponent} from '../link/link.component';
+import React, {useCallback} from 'react';
 import {LDCatalog} from '../../utils/fetch-catalog';
 import {LDSocial} from '../../utils/fetch-socials';
-import {
-  SocialButtonComponent,
-} from './components/social-button/social-button.component';
+import {LinkComponent} from '../link/link.component';
+import {SocialButtonComponent} from './components/social-button/social-button.component';
+import {Footer, Links, Socials, Span} from './footer.component.styles';
 
 interface FooterComponentProps {
   catalog: LDCatalog;
@@ -20,7 +16,7 @@ interface FooterComponentProps {
 export function FooterComponent({
   catalog,
   socials,
-}: FooterComponentProps): ReactElement {
+}: FooterComponentProps): JSX.Element {
   const getSocialIcon = useCallback((slug: string) => {
     if (slug === 'instagram') {
       return instagramWithCircle;
@@ -33,7 +29,6 @@ export function FooterComponent({
 
   return (
     <Footer>
-
       <Socials>
         {socials.map((social) => (
           <SocialButtonComponent
@@ -56,15 +51,11 @@ export function FooterComponent({
         </LinkComponent>
 
         <LinkComponent href="/mentions-legales">
-          <Span>
-            Mentions Légales
-          </Span>
+          <Span>Mentions Légales</Span>
         </LinkComponent>
 
         <Span noAfter>
-          <LinkComponent href={catalog.pdf.url}>
-            {catalog.name}
-          </LinkComponent>
+          <LinkComponent href={catalog.pdf.url}>{catalog.name}</LinkComponent>
         </Span>
       </Links>
     </Footer>

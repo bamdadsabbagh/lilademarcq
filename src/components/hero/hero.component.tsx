@@ -1,18 +1,14 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
 import {Container} from './hero.component.styles';
 
 interface HeroComponentProps {
-  children: ReactElement;
+  children: JSX.Element;
 }
 
-export function HeroComponent({
-  children,
-}: HeroComponentProps): ReactElement {
+export function HeroComponent({children}: HeroComponentProps): JSX.Element {
   return (
     <>
-      <Container>
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </>
   );
 }

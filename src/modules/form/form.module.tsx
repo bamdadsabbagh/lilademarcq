@@ -1,6 +1,10 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React, {ReactElement, useCallback} from 'react';
+import React, {useCallback} from 'react';
+import {theme} from '../../app/styles/theme';
+import {LinkComponent} from '../../components/link/link.component';
+import {SectionComponent} from '../../components/section/section.component';
 import {TriangleComponent} from '../../components/triangle/triangle.component';
+import {FormInterface} from '../../utils/fetch-form';
+import {InputComponent} from './components/input/input.component';
 import {
   Container,
   Form,
@@ -25,12 +29,7 @@ import {
   Title,
   TitleContainer,
 } from './form.module.styles';
-import {theme} from '../../app/styles/theme';
 import {useFormModule} from './hooks/use-form-module';
-import {InputComponent} from './components/input/input.component';
-import {FormInterface} from '../../utils/fetch-form';
-import {LinkComponent} from '../../components/link/link.component';
-import {SectionComponent} from '../../components/section/section.component';
 
 enum FormInputKeys {
   topic = 'topic',
@@ -60,7 +59,7 @@ export function FormModule({
   form,
   text = defaultProps.text,
   backgroundColor = defaultProps.backgroundColor,
-}: FormModuleProps): ReactElement {
+}: FormModuleProps): JSX.Element {
   const {
     wasSubmitted,
     submitText,
@@ -94,7 +93,6 @@ export function FormModule({
         </TitleContainer>
         <FormContainer visible={isOpen}>
           <Form onSubmit={handleSubmit}>
-
             <LabelTopic htmlFor={cleanSlug(form.topicTitle)}>
               {form.topicTitle}
               <Select
@@ -105,9 +103,17 @@ export function FormModule({
                 defaultValue=""
                 required
               >
-                <option value="" disabled />
+                <option
+                  value=""
+                  disabled
+                />
                 {form.topic.map((topic) => (
-                  <option key={topic} value={topic}>{topic}</option>
+                  <option
+                    key={topic}
+                    value={topic}
+                  >
+                    {topic}
+                  </option>
                 ))}
               </Select>
             </LabelTopic>
@@ -227,14 +233,13 @@ export function FormModule({
             </Submit>
 
             <GoogleContainer>
-              This site is protected by reCAPTCHA and the
-              Google&nbsp;
-              <LinkComponent href="https://policies.google.com/privacy">Privacy
-                Policy
+              This site is protected by reCAPTCHA and the Google&nbsp;
+              <LinkComponent href="https://policies.google.com/privacy">
+                Privacy Policy
               </LinkComponent>
               &nbsp;and&nbsp;
-              <LinkComponent href="https://policies.google.com/terms">Terms of
-                Service
+              <LinkComponent href="https://policies.google.com/terms">
+                Terms of Service
               </LinkComponent>
               &nbsp;apply.
             </GoogleContainer>

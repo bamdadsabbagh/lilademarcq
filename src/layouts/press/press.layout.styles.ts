@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {simpleTransition} from '../../app/styles/transitions';
-import {fontFarmhouse} from '../../app/styles/fonts';
 import {mediaQueries} from '../../app/styles/breakpoints';
+import {fontFarmhouse} from '../../app/styles/fonts';
+import {simpleTransition} from '../../app/styles/transitions';
 
 export const LinkContainer = styled.div`
   display: flex;
@@ -10,6 +10,7 @@ export const LinkContainer = styled.div`
 
 interface ButtonProps {
   backgroundColor: string;
+  children: string;
 }
 
 export const Button = styled.button<ButtonProps>`

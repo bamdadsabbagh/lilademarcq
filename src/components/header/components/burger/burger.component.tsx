@@ -1,22 +1,23 @@
-import React, {ReactElement, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {MenuInterface} from '../../../../utils/fetch-menu';
+import {LinkComponent} from '../../../link/link.component';
 import {
   BNav,
   BNavItem,
+  BNavProps,
   BNavTitle,
   BurgerContainer,
   Circle,
   ExpandableLine,
   Line,
 } from './burger.component.styles';
-import {LinkComponent} from '../../../link/link.component';
-import {MenuInterface} from '../../../../utils/fetch-menu';
 import {useBurgerComponent} from './hooks/use-burger-component';
 
 interface BurgerComponentProps {
   menu: MenuInterface;
 }
 
-export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
+export function BurgerComponent({menu}: BurgerComponentProps): JSX.Element {
   const {
     router,
     isHover,
@@ -30,7 +31,8 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
     setFirstRender,
   } = useBurgerComponent(menu);
 
-  const [animation, setAnimation] = useState<BNavProps['animation']>('first-render');
+  const [animation, setAnimation] =
+    useState<BNavProps['animation']>('first-render');
 
   useEffect(() => {
     if (!isHover && firstRender) {
@@ -51,14 +53,15 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
 
   return (
     <>
-      <BurgerContainer
-        ref={containerRef}
-      >
+      <BurgerContainer ref={containerRef}>
         <Circle
           close={!isHover}
           onClick={() => setIsHover((h) => !h)}
         >
-          <ExpandableLine close={!isHover} size={height} />
+          <ExpandableLine
+            close={!isHover}
+            size={height}
+          />
           <Line />
           <Line />
         </Circle>
@@ -76,29 +79,17 @@ export function BurgerComponent({menu}: BurgerComponentProps): ReactElement {
           onClick={() => setIsHover((h) => !h)}
         >
           {menu.map((item) => (
-            <LinkComponent href={item.slug} key={item.slug}>
-              <BNavItem active={item.slug === router.asPath}>{item.name}</BNavItem>
+            <LinkComponent
+              href={item.slug}
+              key={item.slug}
+            >
+              <BNavItem active={item.slug === router.asPath}>
+                {item.name}
+              </BNavItem>
             </LinkComponent>
           ))}
         </BNav>
       </BurgerContainer>
     </>
   );
-}
-
-export interface CircleProps {
-  close: boolean;
-}
-
-export interface ExpandableLineProps {
-  close?: boolean;
-  size: number;
-}
-
-export interface BNavProps {
-  animation: 'first-render' | 'open' | 'close';
-}
-
-export interface BNavItemProps {
-  active: boolean;
 }

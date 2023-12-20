@@ -1,8 +1,8 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
 import {LinkComponent} from '../../../link/link.component';
 import {Logo, LogoContainer} from './logo.component.styles';
 
-export function LogoComponent(): ReactElement {
+export function LogoComponent(): JSX.Element {
   return (
     <>
       <LinkComponent href="/">

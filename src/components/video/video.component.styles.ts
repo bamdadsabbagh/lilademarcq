@@ -1,8 +1,11 @@
+import {Ref} from 'react';
 import styled from 'styled-components';
 
 interface ContainerProps {
   width: number;
   height: number;
+  children: JSX.Element;
+  ref: Ref<HTMLDivElement>;
 }
 
 export const Container = styled.div<ContainerProps>`
